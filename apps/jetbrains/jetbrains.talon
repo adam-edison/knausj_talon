@@ -244,8 +244,34 @@ go breakpoints: user.idea("action ViewBreakpoints")
 toggle [line] breakpoint: user.idea("action ToggleLineBreakpoint")
 toggle method breakpoint: user.idea("action ToggleMethodBreakpoint")
 run menu: user.idea("action ChooseRunConfiguration")
-run test: user.idea("action RunClass")
-run test again: user.idea("action Rerun")
+
+#run test: user.idea("action RunClass")
+#run test again: user.idea("action Rerun")
+
+
+run test: 
+  edit.save()
+  key("ctrl-cmd-r")
+
+run this test:
+  kedit.save()
+  sleep(100ms)
+  key("ctrl-shift-r")
+
+debug continue:
+  key("cmd-alt-r")
+
+stop test:
+  key(cmd-f2)
+  sleep(100ms)
+  key(cmd-f2)
+
+debug this test:
+  edit.save()
+  sleep(100ms)
+  key("ctrl-shift-d")
+
+
 debug test: user.idea("action DebugClass")
 step over: user.idea("action StepOver")
 step into: user.idea("action StepInto")
@@ -257,15 +283,20 @@ continue: user.idea("action Resume")
 (grow | shrink) window left: user.idea("action ResizeToolWindowLeft")
 (grow | shrink) window up: user.idea("action ResizeToolWindowUp")
 (grow | shrink) window down: user.idea("action ResizeToolWindowDown")
+
 # Movement
-go next (error | air): user.idea("action GotoNextError")
-go last (error | air): user.idea("action GotoPreviousError")
-fix next (error | air):
-    user.idea("action GotoNextError")
-    user.idea("action ShowIntentionActions")
-fix last (error | air):
-    user.idea("action GotoPreviousError")
-    user.idea("action ShowIntentionActions")
+next problem: user.idea("action GotoNextError")
+
+last problem: user.idea("action GotoPreviousError")
+
+fix next: 
+  user.idea("action GotoNextError")
+  user.idea("action ShowIntentionActions")
+
+fix last: 
+  user.idea("action GotoPreviousError")
+  user.idea("action ShowIntentionActions")
+
 # Special Selects
 select less: user.idea("action EditorUnSelectWord")
 select (more|this): user.idea("action EditorSelectWord")
@@ -297,6 +328,7 @@ refactor last <user.text> [over]: user.idea("find prev {text}, action Refactorin
 refactor next <user.text> [over]: user.idea("find next {text}, action Refactorings.QuickListPopupAction")
 replace last <user.text> [over]: user.idea("find prev {text}, action EditorPaste")
 replace next <user.text> [over]: user.idea("find next {text}, action EditorPaste")
+replace all: key(alt-a)
 select last <user.text> [over]: user.idea("find prev {text}")
 select next <user.text> [over]: user.idea("find next {text}")
 
@@ -307,3 +339,36 @@ go camel right: user.camel_right()
 
 # requires plug-in: black-pycharm
 blacken: user.idea("action BLACKReformatCode")
+
+close (others|everything else): key(alt-cmd-w)
+(view|close|show|hide) changes: key(cmd-9)
+
+expand: 
+  key(cmd-=)
+  sleep(50ms)
+  key(down)
+
+run this test file:
+  edit.jump_line(1)
+  sleep(100ms)
+  edit.line_start()
+  key("ctrl-shift-r")
+
+run again:
+  key(cmd-4)
+  sleep(200ms)
+  key(cmd-r)
+
+run failed tests:
+  key(ctrl-shift-cmd-f)
+
+split this:
+  key(ctrl-shift-alt-right)
+
+hide 1:
+  key(cmd-1)
+  sleep(200ms)
+  key(cmd-1)
+
+next project:
+  key(cmd-alt-`)
