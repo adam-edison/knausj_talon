@@ -95,6 +95,7 @@ ctx.lists["user.abbreviation"] = {
     "generate": "gen",
     "hypertext": "http",
     "history": "hist",
+    "implementation": "impl",
     "image": "img",
     "import table": "iat",
     "import address table": "iat",
@@ -214,4 +215,5 @@ ctx.lists["user.abbreviation"] = {
     "web": "www",
     "what the fuck": "wtf",
     "window": "win",
+    "pull requests": "PRs"
 }

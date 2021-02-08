@@ -2,6 +2,7 @@ import os
 import os.path
 import requests
 import time
+import re
 from pathlib import Path
 from talon import ctrl, ui, Module, Context, actions, clip
 import tempfile
@@ -198,13 +199,25 @@ class EditActions:
 class WinActions:
     def filename():
         title = actions.win.title()
-        result = title.split(" ")
-        
-        for word in result:
-            if "." in word:
-                return word
+        # result = re.search("(.*) - (.*)/((.*).[a-z]+)", title) # for 2019
+        result = re.search("(.*) [\\W]+ ([\\w]*)\.([\\w]*)( \\[.*\\])*", title) # for 2021
+
+        if result != None:
+            file = result.groups()[1] + "." + result.groups()[2]
+            # print("file: " + file)
+            return file
 
         return ""
+
+
+@ctx.action_class("edit")
+class edit_actions:
+    def jump_line(n: int):
+        actions.user.idea("goto {} 0".format(n))
+        # move the cursor to the first nonwhite space character of the line
+        actions.user.idea("action EditorLineEnd")
+        actions.user.idea("action EditorLineStart")
+
 
 @ctx.action_class("user")
 class UserActions:

@@ -3,14 +3,14 @@ from typing import Set
 from talon import Module, Context, actions, app
 import sys
 
-default_alphabet = "air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
+default_alphabet = "air bat cap drum each fine gust harp sit jury krunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
     " "
 )
 letters_string = "abcdefghijklmnopqrstuvwxyz"
 
 default_digits = "zero one two three four five six seven eight nine".split(" ")
 numbers = [str(i) for i in range(10)]
-default_f_digits = "one two three four five six seven eight nine ten eleven twelve".split(
+default_f_digits = "one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen".split(
     " "
 )
 
@@ -114,6 +114,8 @@ ctx = Context()
 modifier_keys = {
     # If you find 'alt' is often misrecognized, try using 'alter'.
     "alt": "alt",  #'alter': 'alt',
+    "command": "cmd", 
+    "apple": "cmd",
     "control": "ctrl",  #'troll':   'ctrl',
     "shift": "shift",  #'sky':     'shift',
     "super": "super",
@@ -131,10 +133,8 @@ ctx.lists["self.letter"] = alphabet
 punctuation_words = {
     # TODO: I'm not sure why we need these, I think it has something to do with
     # Dragon. Possibly it has been fixed by later improvements to talon? -rntz
-    "`": "`",
-    ",": ",",  # <== these things
-    "back tick": "`",
-    "grave": "`",
+    "`": "`", ",": ",", # <== these things
+    "tick": "`",
     "comma": ",",
     "period": ".",
     "full stop": ".",
@@ -144,14 +144,14 @@ punctuation_words = {
     "question mark": "?",
     "exclamation mark": "!",
     "exclamation point": "!",
+    "exclaim": "!",
     "dollar sign": "$",
     "asterisk": "*",
     "hash sign": "#",
     "number sign": "#",
     "percent sign": "%",
-    "at sign": "@",
-    "and sign": "&",
-    "ampersand": "&",
+    "spiral": "@",
+    "amper": "&",
 }
 symbol_key_words = {
     "dot": ".",
@@ -164,19 +164,18 @@ symbol_key_words = {
     "slash": "/",
     "backslash": "\\",
     "minus": "-",
+    "negative": "-",
     "dash": "-",
     "equals": "=",
     "plus": "+",
     "tilde": "~",
     "bang": "!",
     "dollar": "$",
-    "down score": "_",
+    "score": "_",
     "under score": "_",
     "paren": "(",
-    "L paren": "(",
-    "left paren": "(",
-    "R paren": ")",
-    "right paren": ")",
+    "left pen": "(",
+    "right pen": ")",
     "brace": "{",
     "left brace": "{",
     "R brace": "}",
@@ -190,13 +189,27 @@ symbol_key_words = {
     "greater than": ">",
     "star": "*",
     "pound": "#",
-    "hash": "#",
+    "hash tag": "#",
     "percent": "%",
     "caret": "^",
     "amper": "&",
     "pipe": "|",
     "dubquote": '"',
     "double quote": '"',
+    "divide": "/",
+    "tick": "`",
+    "score": "_",
+    "eyes": ":",
+    "left curve": "(",
+    "right curve": ")",
+    "left curly": "{",
+    "right curly": "}",
+    "squiggly": "~",
+    "spiral": "@",
+    "space": " ",
+    "wit": " ",
+    "semi": ";",
+    "coal": ":"
 }
 
 # make punctuation words also included in {user.symbol_keys}
@@ -224,11 +237,11 @@ simple_keys = [
 ]
 
 alternate_keys = {
-    "delete": "backspace",
-    "forward delete": "delete",
-    #'junk': 'backspace',
-    "page up": "pageup",
-    "page down": "pagedown",
+    "delete": "delete",
+    "junk": "backspace",
+    "chunk": "backspace",
+    "wit": "space",
+    "key": "enter"
 }
 # mac apparently doesn't have the menu key.
 if app.platform in ("windows", "linux"):
@@ -239,7 +252,7 @@ special_keys = {k: k for k in simple_keys}
 special_keys.update(alternate_keys)
 ctx.lists["self.special_key"] = special_keys
 ctx.lists["self.function_key"] = {
-    f"F {default_f_digits[i]}": f"f{i + 1}" for i in range(12)
+    f"funk {default_f_digits[i]}": f"f{i + 1}" for i in range(15)
 }
 
 
