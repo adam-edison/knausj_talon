@@ -216,3 +216,12 @@ cut word right:
 cut line:
     edit.select_line()
     edit.cut()
+
+clip:
+    edit.copy()
+
+glue:
+    edit.paste()
+
+scissors:
+    edit.cut()

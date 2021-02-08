@@ -5,6 +5,63 @@ tag(): user.line_commands
 tag(): user.multiple_cursors
 tag(): user.splits
 tag(): user.tabs
+
+#talon app actions (+custom tab actions)
+action(user.tab_final): user.idea("action GoToLastTab")
+action(app.tab_next): user.idea("action NextTab")
+action(app.tab_previous): user.idea("action PreviousTab")
+
+action(app.tab_close): user.idea("action CloseContent")
+action(app.tab_reopen): user.idea("action ReopenClosedTab")
+#talon code actions
+action(code.toggle_comment): user.idea("action CommentByLineComment")
+
+#talon edit actions
+
+# these conflict with package view vs editor -- best to just use shortcuts
+# action(edit.copy): user.idea("action EditorCopy")
+# action(edit.cut): user.idea("action EditorCut")
+# action(edit.delete): user.idea("action EditorBackSpace")
+# action(edit.paste): user.idea("action EditorPaste")
+action(edit.find_next): user.idea("action FindNext")
+action(edit.find_previous): user.idea("action FindPrevious")
+action(edit.find): user.idea("action Find")
+action(edit.line_clone):  user.idea("action EditorDuplicate")
+action(edit.line_swap_down):  user.idea("action MoveLineDown")
+action(edit.line_swap_up):  user.idea("action MoveLineUp")
+action(edit.indent_more): user.idea("action EditorIndentLineOrSelection")
+action(edit.indent_less): user.idea("action EditorUnindentSelection")
+action(edit.select_line): user.idea("action EditorSelectLine")
+action(edit.select_word): user.idea("action EditorSelectWord")
+action(edit.select_all): user.idea("action $SelectAll")
+action(edit.file_start): user.idea("action EditorTextStart")
+action(edit.file_end): user.idea("action EditorTextEnd")
+action(edit.extend_file_start): user.idea("action EditorTextStartWithSelection")
+action(edit.extend_file_end): user.idea("action EditorTextEndWithSelection")
+
+# splits.py support begin
+action(user.split_clear_all): user.idea("action UnsplitAll")
+action(user.split_clear): user.idea("action Unsplit")
+action(user.split_flip): user.idea("action ChangeSplitOrientation")
+action(user.split_last): user.idea("action LastSplitter")
+action(user.split_next): user.idea("action NextSplitter")
+action(user.split_window_down): user.idea("action MoveTabDown")
+action(user.split_window_horizontally): user.idea("action SplitHorizontally")
+#action(user.split_window_left): user.idea("action MoveTabLeft")
+action(user.split_window_right): user.idea("action MoveTabRight")
+#action(user.split_window_up): user.idea("action MoveTabUp")
+action(user.split_window_vertically): user.idea("action SplitVertically")
+action(user.split_window): user.idea("action EditSourceInNewWindow")
+# splits.py support end
+
+# multiple_cursors.py support begin
+action(user.multi_cursor_add_above): user.idea("action EditorCloneCaretAbove")
+action(user.multi_cursor_add_below): user.idea("action EditorCloneCaretBelow")
+action(user.multi_cursor_disable): key(escape)
+action(user.multi_cursor_enable): key(shift-alt-insert)
+action(user.multi_cursor_select_all_occurrences): user.idea("action SelectAllOccurrences")
+action(user.multi_cursor_select_fewer_occurrences): user.idea("action UnselectPreviousOccurrence")
+action(user.multi_cursor_select_more_occurrences): user.idea("action SelectNextOccurrence")
 # multiple_cursors.py support end
 
 # Auto complete
