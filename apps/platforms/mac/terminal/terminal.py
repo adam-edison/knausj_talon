@@ -71,7 +71,7 @@ class UserActions:
         actions.key("enter")
 
     def terminal_list_all_directories():
-        actions.insert("ls -a")
+        actions.insert("ls -al")
         actions.key("enter")
 
     def terminal_change_directory(path: str):
@@ -96,3 +96,6 @@ class UserActions:
         actions.insert("y")
         actions.key("enter")
 
+    def terminal_kill_this():
+        actions.key("ctrl-c")
+        actions.insert("enter")

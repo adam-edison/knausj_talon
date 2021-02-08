@@ -1,6 +1,6 @@
 tag: user.code_comment
 -
-comment: user.code_comment()
+comment (out|this): user.code_comment()
 comment line:
     #todo: this should probably be a single function once
     #.talon supports implementing actions with parameters?

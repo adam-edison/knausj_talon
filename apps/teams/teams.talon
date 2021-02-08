@@ -61,3 +61,14 @@ view week: key(ctrl-alt-3)
 (safe|send) meeting request: key(ctrl-s)
 join [from] meeting [details]: key(alt-shift-j)
 go to suggested time: key(alt-shift-s)
+
+# TODO: AGE: this isn't working
+teams line:
+    key(shift-enter)
+    sleep(100ms)
+    insert("-")
+    sleep(100ms)
+    key(shift-enter)
+    key(up)
+    key(delete)
+    key(down)

@@ -41,6 +41,26 @@ state reduce:
     
 state spread: "..."
 
-^funky <user.text>$: user.code_default_function(text)
+return <user.text>: 
+  insert("return {text};")
+  key(left)
+
+^funky <user.text>$: user.code_private_function(text)
 ^pro funky <user.text>$: user.code_protected_function(text)
 ^pub funky <user.text>$: user.code_public_function(text)
+
+if [<user.formatters>] <user.text> then:
+    formatters = formatters or "NOOP"
+    insert("if (")
+    user.insert_formatted(text, formatters)
+    insert(") {}")
+    key(left)
+    key(enter)
+
+require <user.text>:
+    insert("const {{ {text} }} = require('');")
+    key(left:3)
+
+plate: 
+    insert("${}")
+    key(left)

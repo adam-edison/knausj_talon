@@ -25,5 +25,7 @@ class Actions:
         """Repeats the last command"""
 
     def terminal_kill_all():
-        """kills the running command"""
+        """kills the running command and confirms"""
 
+    def terminal_kill_this():
+        """kills the currently running command"""

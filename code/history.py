@@ -1,3 +1,4 @@
+from datetime import datetime
 from talon import imgui, Module, speech_system, actions, app
 
 # We keep command_history_size lines of history, but by default display only
@@ -24,16 +25,18 @@ def on_phrase(j):
     except:
         val = parse_phrase(j["phrase"])
 
-    if val != "":
-        history.append(val)
-        history = history[-setting_command_history_size.get() :]
+    now = datetime.now()
+    current_time = now.strftime("[%H:%M:%S]")
 
+    if val != "":
+        history.append(current_time + " " + val)
+        history = history[-setting_command_history_size.get():]
 
 # todo: dynamic rect?
 @imgui.open(y=0)
 def gui(gui: imgui.GUI):
     global history
-    gui.text("Command History")
+    gui.text("Command History")# history
     gui.line()
     text = (
         history[:] if hist_more else history[-setting_command_history_display.get() :]

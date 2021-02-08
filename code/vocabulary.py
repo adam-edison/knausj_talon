@@ -70,12 +70,13 @@ ctx.settings["dictate.word_map"] = get_list_from_csv(
 # Don't edit this. Edit 'additional_vocabulary.csv' instead
 _simple_vocab_default = ["nmap", "admin", "Cisco", "Citrix", "VPN", "DNS", "Minecraft"]
 
-# Defaults for different pronounciations of words that need to be added to
+# Defaults for different pronunciations of words that need to be added to
 # Talon's vocabulary.
 _default_vocabulary = {
     "N map": "nmap",
     "under documented": "under-documented",
 }
+
 _default_vocabulary.update({word: word for word in _simple_vocab_default})
 
 # "user.vocabulary" is used to explicitly add words/phrases that Talon doesn't
