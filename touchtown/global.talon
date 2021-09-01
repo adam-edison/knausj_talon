@@ -32,10 +32,6 @@ sublime clean:
     sleep(200ms)
     key(ctrl-alt-enter)
 
-users for campus <user.number> over:
-    user.paste("""select username, usertypeid, deleted, password
-    from dbo.users where campusid = {number}""")
-
 run term:
     edit.copy()
     user.switcher_focus("iterm")
@@ -65,7 +61,7 @@ kill all notifications:
     insert("killall NotificationCenter\n")
     
 regex any:
-    insert("[\s\S]*")
+    insert("[\\s\\S]*")
 
 regex not <user.text>:
     insert("^((?!{text}).)*$")

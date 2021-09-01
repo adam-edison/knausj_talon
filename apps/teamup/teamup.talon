@@ -28,6 +28,27 @@ description [line] [<number>]:
     sleep(100ms)
     key("down:{moves}")
 
+complete single:
+    mouse_click()
+    sleep(1000ms)
+    
+    # change calendar to completed
+    key(tab:7)
+    sleep(100ms)
+    key(backspace:2)
+    insert("completed")
+    key(enter)
+
+    # save
+    sleep(500ms)
+    key(tab)
+    key(enter)
+
+    # choose single when window comes up
+    sleep(1500ms)
+    key(tab)
+    key(enter)
+
 complete here:
     # rewrite in python so we can detect "Single" window
     # click the mouse to select the event and bring up details

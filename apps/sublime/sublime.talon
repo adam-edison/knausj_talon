@@ -7,15 +7,12 @@ force close:
     key(cmd-w)
     sleep(500ms)
     key(cmd-backspace)
-
-action(edit.line_clone):
-    key("cmd-shift-d")
-
+    
 saver:
     edit.save()
     sleep(200ms)
     key(escape)
-
+    
 looks good:
     edit.save()
     sleep(200ms)
@@ -23,7 +20,7 @@ looks good:
     key(cmd-w)
     sleep(100ms)
     user.switcher_focus("iterm")
-
+    
 complete:
     key(home)
     sleep(100ms)

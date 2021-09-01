@@ -5,76 +5,13 @@ tag(): user.line_commands
 tag(): user.multiple_cursors
 tag(): user.splits
 tag(): user.tabs
-
-#talon app actions (+custom tab actions)
-action(user.tab_final): user.idea("action GoToLastTab")
-action(app.tab_next): user.idea("action NextTab")
-action(app.tab_previous): user.idea("action PreviousTab")
-
-action(app.tab_close): user.idea("action CloseContent")
-action(app.tab_reopen): user.idea("action ReopenClosedTab")
-#talon code actions
-action(code.toggle_comment): user.idea("action CommentByLineComment")
-
-#talon edit actions
-
-# these conflict with package view vs editor -- best to just use shortcuts
-# action(edit.copy): user.idea("action EditorCopy")
-# action(edit.cut): user.idea("action EditorCut")
-action(edit.delete): key(backspace)
-action(edit.paste): key(cmd-v)
-action(edit.find_next): user.idea("action FindNext")
-action(edit.find_previous): user.idea("action FindPrevious")
-action(edit.find): user.idea("action Find")
-action(edit.line_clone):  user.idea("action EditorDuplicate")
-action(edit.line_swap_down):  user.idea("action MoveLineDown")
-action(edit.line_swap_up):  user.idea("action MoveLineUp")
-action(edit.indent_more): user.idea("action EditorIndentLineOrSelection")
-action(edit.indent_less): user.idea("action EditorUnindentSelection")
-
-# select entire line to avoid bad behavior with delete commands
-action(edit.select_line):
-  key(end)
-  key(shift-home)
-  key(shift-home)
-
-action(edit.select_word): user.idea("action EditorSelectWord")
-action(edit.select_all): user.idea("action $SelectAll")
-action(edit.file_start): user.idea("action EditorTextStart")
-action(edit.file_end): user.idea("action EditorTextEnd")
-action(edit.extend_file_start): user.idea("action EditorTextStartWithSelection")
-action(edit.extend_file_end): user.idea("action EditorTextEndWithSelection")
-
-# splits.py support begin
-action(user.split_clear_all): user.idea("action UnsplitAll")
-action(user.split_clear): user.idea("action Unsplit")
-action(user.split_flip): user.idea("action ChangeSplitOrientation")
-action(user.split_last): user.idea("action LastSplitter")
-action(user.split_next): user.idea("action NextSplitter")
-action(user.split_window_down): user.idea("action MoveTabDown")
-action(user.split_window_horizontally): user.idea("action SplitHorizontally")
-#action(user.split_window_left): user.idea("action MoveTabLeft")
-action(user.split_window_right): user.idea("action MoveTabRight")
-#action(user.split_window_up): user.idea("action MoveTabUp")
-action(user.split_window_vertically): user.idea("action SplitVertically")
-action(user.split_window): user.idea("action EditSourceInNewWindow")
-# splits.py support end
-
-# multiple_cursors.py support begin
-action(user.multi_cursor_add_above): user.idea("action EditorCloneCaretAbove")
-action(user.multi_cursor_add_below): user.idea("action EditorCloneCaretBelow")
-action(user.multi_cursor_disable): key(escape)
-action(user.multi_cursor_enable): key(shift-alt-insert)
-action(user.multi_cursor_select_all_occurrences): user.idea("action SelectAllOccurrences")
-action(user.multi_cursor_select_fewer_occurrences): user.idea("action UnselectPreviousOccurrence")
-action(user.multi_cursor_select_more_occurrences): user.idea("action SelectNextOccurrence")
 # multiple_cursors.py support end
 
 # Auto complete
 #complete: user.idea("action CodeCompletion")
 #perfect: user.idea("action CodeCompletion,action CodeCompletion")
 smart: user.idea("action SmartTypeCompletion")
-finish:  user.idea("action EditorCompleteStatement")
+finish: user.idea("action EditorCompleteStatement")
 # Copying
 grab <number>: user.idea_grab(number)
 # Actions
@@ -82,7 +19,7 @@ grab <number>: user.idea_grab(number)
 (action | please) <user.text>:
     user.idea("action GotoAction")
     insert(text)
-# Refactoring
+    # Refactoring
 refactor: user.idea("action Refactorings.QuickListPopupAction")
 refactor <user.text>:
     user.idea("action Refactorings.QuickListPopupAction")
@@ -103,14 +40,14 @@ fix imports: user.idea("action OptimizeImports")
 (moment of|enter|exit) zen: key(ctrl-shift-alt-z)
 
 cleanup:
-  key(esc)
-  key(ctrl-alt-o)
-  sleep(500ms)
-  key(cmd-alt-l)
-  sleep(500ms)
-  key(cmd-s)
-
-#navigation
+    key(esc)
+    key(ctrl-alt-o)
+    sleep(500ms)
+    key(cmd-alt-l)
+    sleep(500ms)
+    key(cmd-s)
+    
+    #navigation
 (go declaration | follow): user.idea("action GotoDeclaration")
 go (implementation | body): user.idea("action GotoImplementation")
 go usage: user.idea("action FindUsages")
@@ -125,14 +62,14 @@ go forward: user.idea("action Forward")
 #   sleep(500ms)
 #   insert(text)
 search class: user.idea("action GotoClass")
-(search file|open) [<user.text>]: 
-  user.idea("action GotoFile")
-  sleep(150ms)
-  insert(text or "")
-search path [<user.text>]: 
-  key(cmd-shift-f)
-  sleep(150ms)
-  insert(text or "")
+(search file|open) [<user.text>]:
+    user.idea("action GotoFile")
+    sleep(150ms)
+    insert(text or "")
+search path [<user.text>]:
+    key(cmd-shift-f)
+    sleep(150ms)
+    insert(text or "")
 search symbol: user.idea("action GotoSymbol")
 search symbol <user.text>$:
     user.idea("action GotoSymbol")
@@ -144,13 +81,13 @@ surround [this] with <user.text> [over]:
     idea("action SurroundWith")
     sleep(500ms)
     insert(text)
-
+    
 surround try catch:
-  key(cmd-alt-t)
-  sleep(300ms)
-  key(6)
-
-# Making these longer to reduce collisions with real code dictation.
+    key(cmd-alt-t)
+    sleep(300ms)
+    key(6)
+    
+    # Making these longer to reduce collisions with real code dictation.
 insert generated <user.text> [over]:
     user.idea("action Generate")
     sleep(500ms)
@@ -169,7 +106,7 @@ play recording <user.text> [over]:
     insert(text)
     sleep(500ms)
     Key("enter")
-# Marks
+    # Marks
 go mark: user.idea("action ShowBookmarks")
 toggle mark: user.idea("action ToggleBookmark")
 go next mark: user.idea("action GotoNextBookmark")
@@ -201,7 +138,7 @@ create file <user.text> [over]:
     user.idea("action NewElement")
     sleep(500ms)
     insert(text)
-# Task Management
+    # Task Management
 go task: user.idea("action tasks.goto")
 go browser task: user.idea("action tasks.open.in.browser")
 switch task: user.idea("action tasks.switch")
@@ -279,52 +216,52 @@ run menu: user.idea("action ChooseRunConfiguration")
 
 # bookmarks
 bookmark:
-  key("f3")
-
+    key("f3")
+    
 go bookmarks:
-  key("cmd-f3")
-
-# TODO: AGE: remove this?
-run test: 
-  user.idea("action ReformatCode")
-  edit.save()
-  key("ctrl-cmd-r")
-
+    key("cmd-f3")
+    
+    # TODO: AGE: remove this?
+run test:
+    user.idea("action ReformatCode")
+    edit.save()
+    key("ctrl-cmd-r")
+    
 test this:
-  user.idea("action ReformatCode")
-  edit.save()
-  sleep(100ms)
-  key("ctrl-shift-r")
-
+    user.idea("action ReformatCode")
+    edit.save()
+    sleep(100ms)
+    key("ctrl-shift-r")
+    
 debug continue:
-  key("cmd-alt-r")
-
+    key("cmd-alt-r")
+    
 stop test:
-  key(cmd-f2)
-  sleep(100ms)
-  key(cmd-f2)
-
+    key(cmd-f2)
+    sleep(100ms)
+    key(cmd-f2)
+    
 debug test:
-  edit.save()
-  sleep(100ms)
-  key("ctrl-shift-d")
-
+    edit.save()
+    sleep(100ms)
+    key("ctrl-shift-d")
+    
 debug file:
-  edit.jump_line(1)
-  sleep(100ms)
-  edit.line_start()
-  key("ctrl-shift-d")
-  sleep(300ms)
-  # return to last edited line
-  key("cmd-shift-backspace")
-
+    edit.jump_line(1)
+    sleep(100ms)
+    edit.line_start()
+    key("ctrl-shift-d")
+    sleep(300ms)
+    # return to last edited line
+    key("cmd-shift-backspace")
+    
 stop running:
-  key(cmd-f2)
-  sleep(100ms)
-  key(cmd-f2)
-
-
-#debug test: user.idea("action DebugClass")
+    key(cmd-f2)
+    sleep(100ms)
+    key(cmd-f2)
+    
+    
+    #debug test: user.idea("action DebugClass")
 step over: user.idea("action StepOver")
 step out: key(shift-f8)
 step into: user.idea("action StepInto")
@@ -343,17 +280,17 @@ next problem: user.idea("action GotoNextError")
 last problem: user.idea("action GotoPreviousError")
 
 fixer:
-  user.idea("action ShowIntentionActions")
-
-fix next: 
-  user.idea("action GotoNextError")
-  user.idea("action ShowIntentionActions")
-
-fix last: 
-  user.idea("action GotoPreviousError")
-  user.idea("action ShowIntentionActions")
-
-# Special Selects
+    user.idea("action ShowIntentionActions")
+    
+fix next:
+    user.idea("action GotoNextError")
+    user.idea("action ShowIntentionActions")
+    
+fix last:
+    user.idea("action GotoPreviousError")
+    user.idea("action ShowIntentionActions")
+    
+    # Special Selects
 select less: user.idea("action EditorUnSelectWord")
 select (more|this): user.idea("action EditorSelectWord")
 #jet brains-specific line commands. see line_commands.talon for generic ones
@@ -372,17 +309,17 @@ refactor <number> until <number>:
 clone <number>: user.line_clone(number)
 
 copy <number> until <number>:
-  user.select_range(number_1, number_2) 
-  edit.copy()
-
+    user.select_range(number_1, number_2)
+    edit.copy()
+    
 (select|grab) <number> until <number>:
-  user.select_range(number_1, number_2) 
-
+    user.select_range(number_1, number_2)
+    
 clear <number> until <number>:
-  user.select_range(number_1, number_2) 
-  key(cmd-backspace)
-
-#find/replace
+    user.select_range(number_1, number_2)
+    key(cmd-backspace)
+    
+    #find/replace
 clear last <user.text> [over]: user.idea("find prev {text}, action EditorBackSpace")
 clear next <user.text> [over]: user.idea("find next {text}, action EditorBackSpace")
 comment last <user.text> [over]: user.idea("find prev {text}, action CommentByLineComment")
@@ -408,166 +345,166 @@ go camel right: user.camel_right()
 blacken: user.idea("action BLACKReformatCode")
 
 go case:
-  key(cmd-down)
-
+    key(cmd-down)
+    
 debug case:
-  key(ctrl-shift-d)
-
+    key(ctrl-shift-d)
+    
 close others: key(alt-cmd-w)
 
-close right: 
-  key(shift-cmd-w)
-  sleep(20ms)
-  key(right)
-
+close right:
+    key(shift-cmd-w)
+    sleep(20ms)
+    key(right)
+    
 (show|hide) changes: key(cmd-9)
-good to go: 
-  key(cmd-9)
-  user.switcher_focus("iterm")
-
-expand: 
-  key(cmd-=)
-  sleep(50ms)
-  key(down)
-
+good to go:
+    key(cmd-9)
+    user.switcher_focus("iterm")
+    
+expand:
+    key(cmd-=)
+    sleep(50ms)
+    key(down)
+    
 test file:
-  edit.save()
-  edit.jump_line(1)
-  sleep(100ms)
-  edit.line_start()
-  key("ctrl-shift-r")
-  sleep(100ms)
-
+    edit.save()
+    edit.jump_line(1)
+    sleep(100ms)
+    edit.line_start()
+    key("ctrl-shift-r")
+    sleep(100ms)
+    
 mocha file:
-  user.idea("action ReformatCode")
-  edit.save()
-  edit.jump_line(1)
-  sleep(100ms)
-  edit.line_start()
-  key("ctrl-shift-r")
-  sleep(100ms)
-  key(down)
-  sleep(100ms)
-  key(enter)
-
+    user.idea("action ReformatCode")
+    edit.save()
+    edit.jump_line(1)
+    sleep(100ms)
+    edit.line_start()
+    key("ctrl-shift-r")
+    sleep(100ms)
+    key(down)
+    sleep(100ms)
+    key(enter)
+    
 (rerun|run again):
-  key(cmd-4)
-  sleep(200ms)
-  key(cmd-r)
-
+    key(cmd-4)
+    sleep(200ms)
+    key(cmd-r)
+    
 focus run <number>:
-  key(cmd-4)
-  sleep(200ms)
-  key(cmd-4)
-  sleep(200ms)
-  key(down)
-  repeat(number)
-
+    key(cmd-4)
+    sleep(200ms)
+    key(cmd-4)
+    sleep(200ms)
+    key(down)
+    repeat(number)
+    
 run failed tests:
-  key(ctrl-shift-cmd-f)
-
+    key(ctrl-shift-cmd-f)
+    
 split right:
-  key(ctrl-shift-alt-right)
-
+    key(ctrl-shift-alt-right)
+    
 hide 1:
-  key(cmd-1)
-  sleep(200ms)
-  key(cmd-1)
-
+    key(cmd-1)
+    sleep(200ms)
+    key(cmd-1)
+    
 next project:
-  key(cmd-alt-`)
-
+    key(cmd-alt-`)
+    
 documentation:
-  insert("/**\n")
-
+    insert("/**\n")
+    
 resolve conflicts:
-  key(cmd-shift-i)
-  sleep(200ms)
-  key(c)
-
+    key(cmd-shift-i)
+    sleep(200ms)
+    key(c)
+    
 open merge:
-  key(alt-m)
-
+    key(alt-m)
+    
 apply non conflicting [changes]:
-  key(ctrl-cmd-m)
-  sleep(100ms)
-  key(a)
-
+    key(ctrl-cmd-m)
+    sleep(100ms)
+    key(a)
+    
 accept only right:
-  key(ctrl-shift-left)
-  # ignore left
-  key(shift-ctrl-alt-4)
-
+    key(ctrl-shift-left)
+    # ignore left
+    key(shift-ctrl-alt-4)
+    
 accept right:
-  key(ctrl-shift-left)
-
+    key(ctrl-shift-left)
+    
 accept left:
-  key(ctrl-shift-right)
-
+    key(ctrl-shift-right)
+    
 append right:
-  key(ctrl-shift-cmd-left)
-
+    key(ctrl-shift-cmd-left)
+    
 append left:
-  key(ctrl-shift-cmd-right)
-
+    key(ctrl-shift-cmd-right)
+    
 ignore right:
-  key(shift-ctrl-alt-6)
-
+    key(shift-ctrl-alt-6)
+    
 ignore left:
-  key(shift-ctrl-alt-4)
-
+    key(shift-ctrl-alt-4)
+    
 next change:
-  key(f7)
-
+    key(f7)
+    
 last change:
-  key(shift-f7)
-
+    key(shift-f7)
+    
 apply selected changes: key(ctrl-shift-alt-enter)
 
 hard fix:
-  key("cmd-shift-enter")
-
+    key("cmd-shift-enter")
+    
 distractions:
-  key("ctrl-cmd-alt-d")
-
+    key("ctrl-cmd-alt-d")
+    
 clear <number>:
-  edit.jump_line(number)
-  key(cmd-backspace)
-
+    edit.jump_line(number)
+    key(cmd-backspace)
+    
 rename this:
-  key(shift-f6)
-
+    key(shift-f6)
+    
 complete:
-  key(ctrl-space)
-
-# TODO: AGE - focus 1,2,3 (goes to tab ctrl-alt-t, then #)
-
+    key(ctrl-space)
+    
+    # TODO: AGE - focus 1,2,3 (goes to tab ctrl-alt-t, then #)
+    
 search left off:
-  user.idea("action FindInPath")
-  sleep(100ms)
-  insert("TODO: LEFT OFF HERE - ")
-  sleep(200ms)
-  key(enter)
-
+    user.idea("action FindInPath")
+    sleep(100ms)
+    insert("TODO: LEFT OFF HERE - ")
+    sleep(200ms)
+    key(enter)
+    
 insert left off:
-  key(end)
-  insert("// TODO: LEFT OFF HERE - ")
-
-extract method: 
-  key(cmd-alt-m)
-
+    key(end)
+    insert("// TODO: LEFT OFF HERE - ")
+    
+extract method:
+    key(cmd-alt-m)
+    
 perfect:
-  key(ctrl-shift-alt-s)
-
+    key(ctrl-shift-alt-s)
+    
 open only <user.text>:
-  key(cmd-p)
-  sleep(500ms)
-  insert(text)
-  sleep(500ms)
-  key(enter)
-  sleep(500ms)
-  key(cmd-alt-w)
-  
-
+    key(cmd-p)
+    sleep(500ms)
+    insert(text)
+    sleep(500ms)
+    key(enter)
+    sleep(500ms)
+    key(cmd-alt-w)
+    
+    
 do suggested:
-  key(shift-alt-enter)
+    key(shift-alt-enter)
