@@ -5,7 +5,7 @@ web app repo: "tt-webapp"
 # key(ctrl-keypad_4)
 
 touch town copy right:
-    copyright = "/**\n*  Copyright 2020, Touchtown, Inc.  All rights reserved.\n*  This program is protected by US and International Copyright Laws.\n*/"
+    copyright = "/*\n*  Copyright 2021, Touchtown, Inc.  All rights reserved.\n*  This program is protected by US and International Copyright Laws.\n*/"
     user.paste(copyright)
 
 sublime clean:

@@ -52,7 +52,7 @@ private <user.text>:
 private final <user.text>:
     variable = user.formatted_text(text, "PRIVATE_CAMEL_CASE")
     className = user.formatted_text(text, "PUBLIC_CAMEL_CASE")
-    user.paste("private final {className} {variable} = new {className}();")
+    user.paste("private final {className} {variable};")
     key(left)
     key(left)
     
