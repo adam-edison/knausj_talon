@@ -49,6 +49,20 @@ complete single:
     key(tab)
     key(enter)
 
+make this work:
+    insert("Work")
+    key(tab:7)
+    sleep(100ms)
+    key(backspace:2)
+    insert("work")
+    key(enter)
+
+    # save
+    sleep(500ms)
+    key(tab)
+    key(enter)
+
+
 complete here:
     # rewrite in python so we can detect "Single" window
     # click the mouse to select the event and bring up details
