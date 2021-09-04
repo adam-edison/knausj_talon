@@ -414,7 +414,13 @@ hide 1:
 next project:
     key(cmd-alt-`)
     
-documentation:
+sense <user.text>:
+    insert("{text}.")
+    sleep(500ms)
+    key(enter)
+    key(esc)
+
+document:
     insert("/**\n")
     
 resolve conflicts:
