@@ -9,7 +9,3 @@ class tab_actions:
 
     def tab_final():
         """Jumps to the final tab"""
-
-    def tab_close_wrapper():
-        """Closes the current tab"""
-        actions.app.tab_close()

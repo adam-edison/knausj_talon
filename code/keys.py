@@ -3,14 +3,14 @@ from typing import Set
 from talon import Module, Context, actions, app
 import sys
 
-default_alphabet = "air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
+default_alphabet = "air bat cap drum each fine gust harp sit jury krunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
     " "
 )
 letters_string = "abcdefghijklmnopqrstuvwxyz"
 
 default_digits = "zero one two three four five six seven eight nine".split(" ")
 numbers = [str(i) for i in range(10)]
-default_f_digits = "one two three four five six seven eight nine ten eleven twelve".split(
+default_f_digits = "one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen".split(
     " "
 )
 
@@ -114,6 +114,8 @@ ctx = Context()
 modifier_keys = {
     # If you find 'alt' is often misrecognized, try using 'alter'.
     "alt": "alt",  #'alter': 'alt',
+    "command": "cmd", 
+    "apple": "cmd",
     "control": "ctrl",  #'troll':   'ctrl',
     "shift": "shift",  #'sky':     'shift',
     "super": "super",
@@ -125,15 +127,14 @@ ctx.lists["self.modifier_key"] = modifier_keys
 alphabet = dict(zip(default_alphabet, letters_string))
 ctx.lists["self.letter"] = alphabet
 
-# `punctuation_words` is for words you want available BOTH in dictation and as key names in command mode.
-# `symbol_key_words` is for key names that should be available in command mode, but NOT during dictation.
+# `punctuation_words` is for words you want available BOTH in dictation and as
+# key names in command mode. `symbol_key_words` is for key names that should be
+# available in command mode, but NOT during dictation.
 punctuation_words = {
     # TODO: I'm not sure why we need these, I think it has something to do with
     # Dragon. Possibly it has been fixed by later improvements to talon? -rntz
-    "`": "`",
-    ",": ",",  # <== these things
-    "back tick": "`",
-    "grave": "`",
+    "`": "`", ",": ",", # <== these things
+    "tick": "`",
     "comma": ",",
     "period": ".",
     "full stop": ".",
@@ -143,23 +144,18 @@ punctuation_words = {
     "question mark": "?",
     "exclamation mark": "!",
     "exclamation point": "!",
+    "exclaim": "!",
+    "dollar sign": "$",
     "asterisk": "*",
     "hash sign": "#",
     "number sign": "#",
     "percent sign": "%",
-    "at sign": "@",
-    "and sign": "&",
-    "ampersand": "&",
-
-    # Currencies
-    "dollar sign": "$",
-    "pound sign": "£",
+    "spiral": "@",
+    "amper": "&",
 }
 symbol_key_words = {
     "dot": ".",
-    "point": ".",
     "quote": "'",
-    "apostrophe": "'",
     "L square": "[",
     "left square": "[",
     "square": "[",
@@ -168,18 +164,18 @@ symbol_key_words = {
     "slash": "/",
     "backslash": "\\",
     "minus": "-",
+    "negative": "-",
     "dash": "-",
     "equals": "=",
     "plus": "+",
     "tilde": "~",
     "bang": "!",
-    "down score": "_",
+    "dollar": "$",
+    "score": "_",
     "under score": "_",
     "paren": "(",
-    "L paren": "(",
-    "left paren": "(",
-    "R paren": ")",
-    "right paren": ")",
+    "left pen": "(",
+    "right pen": ")",
     "brace": "{",
     "left brace": "{",
     "R brace": "}",
@@ -192,17 +188,28 @@ symbol_key_words = {
     "right angle": ">",
     "greater than": ">",
     "star": "*",
-    "hash": "#",
+    "pound": "#",
+    "hash tag": "#",
     "percent": "%",
     "caret": "^",
     "amper": "&",
     "pipe": "|",
     "dubquote": '"',
     "double quote": '"',
-
-    # Currencies
-    "dollar": "$",
-    "pound": "£",
+    "divide": "/",
+    "tick": "`",
+    "score": "_",
+    "eyes": ":",
+    "left curve": "(",
+    "right curve": ")",
+    "left curly": "{",
+    "right curly": "}",
+    "squiggly": "~",
+    "spiral": "@",
+    "space": " ",
+    "wit": " ",
+    "semi": ";",
+    "coal": ":"
 }
 
 # make punctuation words also included in {user.symbol_keys}
@@ -230,11 +237,11 @@ simple_keys = [
 ]
 
 alternate_keys = {
-    "delete": "backspace",
-    "forward delete": "delete",
-    #'junk': 'backspace',
-    "page up": "pageup",
-    "page down": "pagedown",
+    "delete": "delete",
+    "junk": "backspace",
+    "chunk": "backspace",
+    "wit": "space",
+    "key": "enter"
 }
 # mac apparently doesn't have the menu key.
 if app.platform in ("windows", "linux"):
@@ -245,7 +252,7 @@ special_keys = {k: k for k in simple_keys}
 special_keys.update(alternate_keys)
 ctx.lists["self.special_key"] = special_keys
 ctx.lists["self.function_key"] = {
-    f"F {default_f_digits[i]}": f"f{i + 1}" for i in range(12)
+    f"funk {default_f_digits[i]}": f"f{i + 1}" for i in range(15)
 }
 
 

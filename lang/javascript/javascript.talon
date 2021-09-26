@@ -1,7 +1,5 @@
-mode: command
-and mode: user.javascript
-mode: command
-and mode: user.auto_lang
+mode: user.javascript
+mode: user.auto_lang
 and code.language: javascript
 -
 tag(): user.code_operators
@@ -43,6 +41,26 @@ state reduce:
     
 state spread: "..."
 
-^funky <user.text>$: user.code_default_function(text)
+return <user.text>: 
+  insert("return {text};")
+  key(left)
+
+^funky <user.text>$: user.code_private_function(text)
 ^pro funky <user.text>$: user.code_protected_function(text)
 ^pub funky <user.text>$: user.code_public_function(text)
+
+if [<user.formatters>] <user.text> then:
+    formatters = formatters or "NOOP"
+    insert("if (")
+    user.insert_formatted(text, formatters)
+    insert(") {}")
+    key(left)
+    key(enter)
+
+require <user.text>:
+    insert("const {{ {text} }} = require('');")
+    key(left:3)
+
+plate: 
+    insert("${}")
+    key(left)

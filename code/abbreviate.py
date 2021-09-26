@@ -5,7 +5,9 @@ from talon import Context, Module
 mod = Module()
 mod.list("abbreviation", desc="Common abbreviation")
 
-abbreviations = {
+
+ctx = Context()
+ctx.lists["user.abbreviation"] = {
     "address": "addr",
     "administrator": "admin",
     "administrators": "admins",
@@ -93,6 +95,7 @@ abbreviations = {
     "generate": "gen",
     "hypertext": "http",
     "history": "hist",
+    "implementation": "impl",
     "image": "img",
     "import table": "iat",
     "import address table": "iat",
@@ -212,7 +215,5 @@ abbreviations = {
     "web": "www",
     "what the fuck": "wtf",
     "window": "win",
+    "pull requests": "PRs"
 }
-
-ctx = Context()
-ctx.lists["user.abbreviation"] = abbreviations

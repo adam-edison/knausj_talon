@@ -1,20 +1,14 @@
-app: datagrip
-
+mode: command
+win.title: /(\.localdev)|(.sql)/
 -
-select: "SELECT "
-star: "*"
-from: "FROM "
-select star from: "SELECT * FROM "
-where: "WHERE "
-order by: "ORDER BY "
-descending: " DESC"
-ascending: " ASC"
+select star from: "select * from "
+where: "where "
+order by: "order by "
+descending: " desc"
+ascending: " asc"
 dot i d: ".id"
-is not null: " IS NOT NULL"
-is null: " IS NULL"
+is not null: " is not null"
+is null: " is null"
 inner join:
     insert("INNER JOIN  ON ")
-    key(left)
-    key(left)
-    key(left)
-    key(left)
+    key(left:4)

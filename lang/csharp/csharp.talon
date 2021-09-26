@@ -1,7 +1,5 @@
-mode: command
-and mode: user.csharp
-mode: command
-and mode: user.auto_lang
+mode: user.csharp
+mode: user.auto_lang
 and code.language: csharp
 -
 tag(): user.code_operators

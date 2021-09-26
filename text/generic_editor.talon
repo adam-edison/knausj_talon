@@ -1,4 +1,4 @@
-find it:
+finder:
     edit.find()
 
 next one:
@@ -13,7 +13,8 @@ go word right:
 go left:
     edit.left()
 
-go right:
+(go right|next):
+    sleep(10ms)
     edit.right()
 
 go up:
@@ -55,10 +56,12 @@ go page up:
 
 # selecting
 select line:
-    edit.select_line()
+    edit.line_start()
+    edit.extend_line_end()
 
 select all:
     edit.select_all()
+
 
 select left:
     edit.extend_left()
@@ -71,9 +74,6 @@ select up:
 
 select down:
     edit.extend_line_down()
-
-select word:
-    edit.select_word()
 
 select word left:
     edit.extend_word_left()
@@ -104,10 +104,14 @@ indent [more]:
 clear line:
     edit.delete_line()
 
-clear left:
-    key(backspace)
+clear after:
+    key(shift-end)
+    sleep(20ms)
+    key(delete)
 
-clear right:
+clear before:
+    key(shift-home)
+    sleep(20ms)
     key(delete)
 
 clear up:
@@ -117,9 +121,6 @@ clear up:
 clear down:
     edit.extend_line_down()
     edit.delete()
-
-clear word:
-    edit.delete_word()
 
 clear word left:
     edit.extend_word_left()
@@ -150,70 +151,98 @@ clear all:
     edit.delete()
 
 #copy commands
-copy all:
+copy all: 
     edit.select_all()
-    edit.copy()
-#to do: do we want these variants, seem to conflict
-# copy left:
-#      edit.extend_left()
-#      edit.copy()
-# copy right:
-#     edit.extend_right()
-#     edit.copy()
-# copy up:
-#     edit.extend_up()
-#     edit.copy()
-# copy down:
-#     edit.extend_down()
-#     edit.copy()
-
-copy word:
-    edit.select_word()
-    edit.copy()
-
-copy word left:
-    edit.extend_word_left()
-    edit.copy()
-
-copy word right:
-    edit.extend_word_right()
     edit.copy()
 
 copy line:
-    edit.select_line()
+    edit.line_start()
+    edit.extend_line_end()
     edit.copy()
-
+#to do: do we want these variants, seem to conflict
+# copy left: 
+#      edit.extend_left()
+#      edit.copy()
+# copy right: 
+#     edit.extend_right()
+#     edit.copy()
+# copy up: 
+#     edit.extend_up()
+#     edit.copy()
+# copy down: 
+#     edit.extend_down()
+#     edit.copy()
+copy word left: 
+    edit.extend_word_left()
+    edit.copy()
+copy word right: 
+    edit.extend_word_right()
+    edit.copy()
 #cut commands
-cut all:
+cut all: 
     edit.select_all()
     edit.cut()
-#to do: do we want these variants
-# cut left:
-#      edit.select_all()
-#      edit.cut()
-# cut right:
-#      edit.select_all()
-#      edit.cut()
-# cut up:
-#      edit.select_all()
-#     edit.cut()
-# cut down:
-#     edit.select_all()
-#     edit.cut()
 
-cut word:
-    edit.select_word()
-    edit.cut()
-
-cut word left:
+cut word left: 
     edit.extend_word_left()
     edit.cut()
 
-cut word right:
+cut word right: 
     edit.extend_word_right()
     edit.cut()
 
-cut line:
-    edit.select_line()
-    edit.cut()
+paste over all:
+    edit.select_all()
+    edit.paste()
 
+paste over right:
+    key(shift-end)
+    sleep(100ms)
+    key(delete)
+    sleep(100ms)
+    edit.paste()
+
+
+(copy|copier) right:
+    key(shift-end)
+    sleep(100ms)
+    edit.copy()
+
+(cut|scissors) right:
+    key(shift-end)
+    sleep(100ms)
+    edit.cut()  
+
+clear right:
+    key(shift-end)
+    sleep(100ms)
+    key(delete)
+
+clear left:
+    key(shift-home)
+    sleep(100ms)
+    key(delete)
+
+paste plain:
+    key(cmd-shift-v)
+    sleep(200ms)
+
+bottom:
+    key("cmd-down")
+
+topper:
+    key("cmd-up")
+
+(dawn|rise): edit.line_start()
+(dusk|fall): edit.line_end()
+
+splash: 
+    edit.line_end()
+    insert(",")
+
+underline: key("cmd-u")
+bold: key("cmd-b")
+italic: key("cmd-i")
+
+# tiny enter
+squeeze: key(shift-enter)

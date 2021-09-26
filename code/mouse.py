@@ -148,19 +148,20 @@ class Actions:
         if eye_zoom_mouse.zoom_mouse.enabled:
             eye_zoom_mouse.zoom_mouse.on_pop(eye_zoom_mouse.zoom_mouse.state)
 
-    def mouse_drag(button: int):
-        """Press and hold/release a specific mouse button for dragging"""
-        # Clear any existing drags
-        self.mouse_drag_end()
+    def mouse_drag():
+        """(TEMPORARY) Press and hold/release button 0 depending on state for dragging"""
+        # todo: fixme temporary fix for drag command
+        button_down = len(list(ctrl.mouse_buttons_down())) > 0
+        # print(str(ctrl.mouse_buttons_down()))
+        if not button_down:
+            # print("start drag...")
+            ctrl.mouse_click(button=0, down=True)
+            # app.notify("drag started")
+        else:
+            # print("end drag...")
+            ctrl.mouse_click(button=0, up=True)
 
-        # Start drag
-        ctrl.mouse_click(button=button, down=True)
-
-    def mouse_drag_end():
-        """ Releases any held mouse buttons """
-        buttons_held_down = list(ctrl.mouse_buttons_down())
-        for button in buttons_held_down:
-            ctrl.mouse_click(button=button, up=True)
+        # app.notify("drag stopped")
 
     def mouse_sleep():
         """Disables control mouse, zoom mouse, and re-enables cursor"""
@@ -178,14 +179,14 @@ class Actions:
         """Scrolls down"""
         mouse_scroll(setting_mouse_wheel_down_amount.get())()
 
-    def mouse_scroll_down_continuous():
+    def mouse_scroll_down_continuous(delay:str="60ms"):
         """Scrolls down continuously"""
         global continuous_scoll_mode
         continuous_scoll_mode = "scroll down continuous"
         mouse_scroll(setting_mouse_continuous_scroll_amount.get())()
 
         if scroll_job is None:
-            start_scroll()
+            start_scroll(delay)
 
         if setting_mouse_hide_mouse_gui.get() == 0:
             gui_wheel.show()
@@ -194,14 +195,14 @@ class Actions:
         """Scrolls up"""
         mouse_scroll(-setting_mouse_wheel_down_amount.get())()
 
-    def mouse_scroll_up_continuous():
+    def mouse_scroll_up_continuous(delay:str="60ms"):
         """Scrolls up continuously"""
         global continuous_scoll_mode
         continuous_scoll_mode = "scroll up continuous"
         mouse_scroll(-setting_mouse_continuous_scroll_amount.get())()
 
         if scroll_job is None:
-            start_scroll()
+            start_scroll(delay)
         if setting_mouse_hide_mouse_gui.get() == 0:
             gui_wheel.show()
 
@@ -234,6 +235,38 @@ class Actions:
         rect = ui.active_window().rect
         ctrl.mouse_move(rect.left + (rect.width / 2), rect.top + (rect.height / 2))
 
+    def mouse_move_position(pos: str):
+        """move the cursor to the given string (x,y) coordinates on the screen"""
+        x, y = map(float, pos.strip('()').split(','))
+        ctrl.mouse_move(x, y)
+    
+    def mouse_move(x: int, y: int):
+        """move the cursor to the given (x,y) coordinates on the screen"""
+        ctrl.mouse_move(x, y)
+
+    def mouse_move_relative(x: int, y: int):
+        """move the cursor from its current position in the amount (x,y)"""
+        position = ctrl.mouse_pos()
+        print(position)
+        newX = position[0] + x
+        newY = position[1] + y
+        print(newX)
+        print(newY)
+        ctrl.mouse_move(newX, newY)
+
+    def mouse_down(button: int):
+        """hold the mouse button down"""
+        ctrl.mouse_click(button, down=True)
+
+    def mouse_up(button: int):
+        """release the mouse button"""
+        ctrl.mouse_click(button, down=False)
+
+    def click_if_control_mouse_disabled():
+        """Click the left mouse button if neither Control Mouse or Zoom Mouse is enabled"""
+        if((not eye_zoom_mouse.zoom_mouse.enabled) and (not config.control_mouse)):
+            ctrl.mouse_click(0)
+            actions.user.grid_close()
 
 def show_cursor_helper(show):
     """Show/hide the cursor"""
@@ -305,9 +338,9 @@ def scroll_continuous_helper():
         actions.mouse_scroll(by_lines=False, y=int(scroll_amount / 10))
 
 
-def start_scroll():
+def start_scroll(delay:str):
     global scroll_job
-    scroll_job = cron.interval("60ms", scroll_continuous_helper)
+    scroll_job = cron.interval(delay, scroll_continuous_helper)
     # if eye_zoom_mouse.zoom_mouse.enabled and eye_mouse.mouse.attached_tracker is not None:
     #    eye_zoom_mouse.zoom_mouse.sleep(True)
 
@@ -387,3 +420,27 @@ if app.platform == "mac":
                 e.modify()
 
     tap.register(tap.MMOVE | tap.HOOK, on_move)
+
+# TODO: put this somewhere useful maybe repl commans talon file?
+# get all settings/tags --> talon repl command registry.decls
+
+# TODO: make fast mode and slow mode:
+
+# Ok so I’m still using 0.09 for speech.timeout and really liking it.  
+# There are certain situations where it is too aggressive, but they’re fairly predictable (eg kebab-naming a big git branch :blush:).  
+# So I made commands “slow mode” and “fast mode” so that I can toggle timeout between 0.09 and 0.3:
+
+# slow_mode.talon:
+# mode: user.slow
+# -
+# settings():
+#     speech.timeout = 0.3
+# fast mode: mode.disable("user.slow")
+
+# slow_mode.py
+# from talon import Module
+# mod = Module()
+# mod.mode("slow")
+
+# standard.talon
+# slow mode: mode.enable("user.slow")

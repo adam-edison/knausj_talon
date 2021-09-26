@@ -22,6 +22,7 @@ mod = Module()
 mod.mode("homophones")
 mod.list("homophones_canonicals", desc="list of words ")
 
+
 main_screen = ui.main_screen()
 
 
@@ -56,24 +57,7 @@ def close_homophones():
     actions.mode.disable("user.homophones")
 
 
-PHONES_FORMATTERS = [
-    lambda word: word.capitalize(),
-    lambda word: word.upper(),
-]
-
-
-def find_matching_format_function(word_with_formatting, format_functions):
-    """ Finds the formatter function from a list of formatter functions which transforms a word into itself.
-     Returns an identity function if none exists """
-    for formatter in format_functions:
-        formatted_word = formatter(word_with_formatting)
-        if word_with_formatting == formatted_word:
-            return formatter
-
-    return lambda word: word
-
-
-def raise_homophones(word_to_find_homophones_for, forced=False, selection=False):
+def raise_homophones(word, forced=False, selection=False):
     global quick_replace
     global active_word_list
     global show_help
@@ -84,37 +68,33 @@ def raise_homophones(word_to_find_homophones_for, forced=False, selection=False)
     is_selection = selection
 
     if is_selection:
-        word_to_find_homophones_for = word_to_find_homophones_for.strip()
+        word = word.strip()
 
-    formatter = find_matching_format_function(word_to_find_homophones_for, PHONES_FORMATTERS)
+    is_capitalized = word == word.capitalize()
+    is_upper = word.isupper()
 
-    word_to_find_homophones_for = word_to_find_homophones_for.lower()
+    word = word.lower()
 
-    if word_to_find_homophones_for not in all_homophones:
-        app.notify("homophones.py", '"%s" not in homophones list' % word_to_find_homophones_for)
+    if word not in all_homophones:
+        app.notify("homophones.py", '"%s" not in homophones list' % word)
         return
 
-    valid_homophones = all_homophones[word_to_find_homophones_for]
-
-    # Move current word to end of list to reduce searcher's cognitive load
-    valid_homophones_reordered = (
-        list(
-            filter(
-                lambda word_from_list: word_from_list.lower() != word_to_find_homophones_for, valid_homophones)
-        ) + [word_to_find_homophones_for]
-    )
-    active_word_list = list(map(formatter, valid_homophones_reordered))
-
+    active_word_list = all_homophones[word]
     if (
-            is_selection
-            and len(active_word_list) == 2
-            and quick_replace
-            and not force_raise
+        is_selection
+        and len(active_word_list) == 2
+        and quick_replace
+        and not force_raise
     ):
-        if word_to_find_homophones_for == active_word_list[0].lower():
+        if word == active_word_list[0].lower():
             new = active_word_list[1]
         else:
             new = active_word_list[0]
+
+        if is_capitalized:
+            new = new.capitalize()
+        elif is_upper:
+            new = new.upper()
 
         clip.set(new)
         actions.edit.paste()
@@ -136,13 +116,8 @@ def gui(gui: imgui.GUI):
         gui.line()
         index = 1
         for word in active_word_list:
-            if gui.button("Choose {}: {}".format(index, word)):
-                actions.insert(actions.user.homophones_select(index))
-                actions.user.homophones_hide()
+            gui.text("Choose {}: {} ".format(index, word))
             index = index + 1
-
-        if gui.button("Phones hide"):
-            actions.user.homophones_hide()
 
 
 def show_help_gui():
@@ -190,10 +165,3 @@ class Actions:
         )
         app.notify(error)
         raise error
-
-    def homophones_get(word: str) -> [str] or None:
-        """Get homophones for the given word"""
-        word = word.lower()
-        if word in all_homophones:
-            return all_homophones[word]
-        return None

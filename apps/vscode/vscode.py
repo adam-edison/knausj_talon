@@ -42,9 +42,6 @@ app: vscode
 @ctx.action_class("app")
 class AppActions:
     # talon app actions
-    def tab_open():
-        actions.user.vscode("workbench.action.files.newUntitledFile")
-
     def tab_close():
         actions.user.vscode("workbench.action.closeActiveEditor")
 
@@ -209,9 +206,6 @@ class UserActions:
 
     def multi_cursor_select_more_occurrences():
         actions.user.vscode("editor.action.addSelectionToNextFindMatch")
-
-    def multi_cursor_skip_occurrence():
-        actions.user.vscode("editor.action.moveSelectionToNextFindMatch")
 
     # snippet.py support beginHelp close
     def snippet_search(text: str):

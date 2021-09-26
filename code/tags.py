@@ -9,8 +9,6 @@ tagList = [
     "git",  # commandline tag for git commands
     "ida",
     "tabs",
-    "generic_windows_shell",
-    "generic_unix_shell",
     "taskwarrior",  # commandline tag for taskwarrior commands
     "tmux",
     "windbg",

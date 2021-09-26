@@ -41,11 +41,8 @@ inside (bracket | braces):
 inside percent:
 	insert("%%")
 	key(left)
-inside (quotes | string):
-	insert("''")
-	key(left)
-inside (double quotes | dubquotes):
-    insert('""')
+inside quotes:
+	insert('""')
 	key(left)
 inside (graves | back ticks):
 	insert("``")
@@ -66,9 +63,6 @@ percent that:
     text = edit.selected_text()
     user.paste("%{text}%")
 quote that:
-    text = edit.selected_text()
-    user.paste("'{text}'")
-(double quote | dubquote) that:
     text = edit.selected_text()
     user.paste('"{text}"')
 (grave | back tick) that:

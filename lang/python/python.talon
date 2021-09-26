@@ -1,7 +1,5 @@
-mode: command
-and mode: user.python
-mode: command
-and mode: user.auto_lang
+mode: user.python
+mode: user.auto_lang
 and code.language: python
 -
 tag(): user.code_operators
@@ -18,9 +16,6 @@ settings():
 #python-specific grammars
 dunder in it: "__init__"
 state (def | deaf | deft): "def "
-state try: "try:\n"
-state except: "except "
-state raise: "raise "
 self taught: "self."
 pie test: "pytest"
 state past: "pass"
@@ -32,7 +27,6 @@ state past: "pass"
 #^pro static funky <user.text>$: user.code_protected_static_function(text)
 #^pub static funky <user.text>$: user.code_public_static_function(text)
 raise {user.python_exception}: user.insert_cursor("raise {python_exception}([|])")
-except {user.python_exception}: "except {python_exception}:"
 
 # for annotating function parameters
 is type {user.python_type_list}:
@@ -53,3 +47,6 @@ toggle imports: user.code_toggle_libraries()
 import <user.code_libraries>:
     user.code_insert_library(code_libraries, "")
     key(end enter)
+
+add list item <user.text>:
+    insert("\"{text}\": \"{text}\",")

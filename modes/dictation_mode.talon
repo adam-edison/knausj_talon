@@ -74,3 +74,7 @@ spell that <user.formatters> <user.letters>:
 # Escape, type things that would otherwise be commands
 ^escape <user.text>$:
     auto_insert(user.text)
+
+over$:
+    mode.disable("dictation")
+    mode.enable("command")

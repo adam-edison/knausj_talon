@@ -65,12 +65,12 @@ show shortcuts: key(ctrl-shift-l)
 # zen switch:
 
 # File Commands
-file hunt [<user.text>]:
-    key(ctrl-shift-r)
-    sleep(50ms)
-    insert(text or "")
-# file copy path:
-# file create sibling:
+search file [<user.text>]: 
+  key(ctrl-shift-r)
+  sleep(50ms)
+  insert(text or "")
+# file copy path: 
+# file create sibling:   
 file create: key(ctrl-n)
 file open folder: key(alt-shift-w x)
 file rename:

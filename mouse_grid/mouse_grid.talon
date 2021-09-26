@@ -2,6 +2,7 @@ tag: user.mouse_grid_enabled
 -
 M grid:
     user.grid_select_screen(1)
+griddle:
     user.grid_activate()
 
 grid win:

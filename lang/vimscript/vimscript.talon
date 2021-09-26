@@ -1,7 +1,5 @@
-mode: command
-and mode: user.vimscript
-mode: command
-and mode: user.auto_lang
+mode: user.vimscript
+mode: user.auto_lang
 and code.language: vimscript
 -
 tag(): user.code_operators

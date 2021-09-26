@@ -1,8 +1,6 @@
 from talon import Context, Module, actions, imgui, settings, ui
 import os
 
-# TODO: fit this to generic_terminal
-
 ctx = Context()
 ctx.matches = r"""
 app: apple_terminal
@@ -12,6 +10,9 @@ directories_to_exclude = {}
 
 @ctx.action_class('edit')
 class EditActions:
+    def paste():       actions.key('shift-insert')
+    def copy():        actions.key('ctrl-insert')
+    
     def delete_line(): actions.key('ctrl-u')
 
 
@@ -70,7 +71,7 @@ class UserActions:
         actions.key("enter")
 
     def terminal_list_all_directories():
-        actions.insert("ls -a")
+        actions.insert("ls -al")
         actions.key("enter")
 
     def terminal_change_directory(path: str):
@@ -95,3 +96,6 @@ class UserActions:
         actions.insert("y")
         actions.key("enter")
 
+    def terminal_kill_this():
+        actions.key("ctrl-c")
+        actions.insert("enter")
