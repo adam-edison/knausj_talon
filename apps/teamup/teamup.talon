@@ -6,18 +6,11 @@ win.title: /\| Teamup/
 
 # TODO: AGE: create a key command in python that sends the key and sleeps a configurable number of milliseconds changeable in storage 
 # (retrieved from storage API, inserts default value if not present)
-    
 
-complete:
-    key(home)
-    sleep(100ms)
-    user.paste("✅")
-    sleep(100ms)
-    key(space:2)
 
 hide completed:
     # hide completed, because it toggles on...
-    user.mouse_move(115, 438)
+    user.mouse_move(115, 480)
     sleep(100ms)
     mouse_click()
 
@@ -83,7 +76,7 @@ completer:
     key(enter)
 
     # hide completed calendar
-    sleep(500ms)
+    sleep(1500ms)
     user.mouse_move(72, 477)
     mouse_click()
 
@@ -94,13 +87,12 @@ completer:
 
 delete here [single]:
     mouse_click()
-    user.mouse_move(1199, 413)
-    mouse_click()
-    sleep(300ms)
-    user.mouse_move(1030, 370)
+    sleep(500ms)
+    user.hover_center_image("teamup-delete-button")
     mouse_click()
 
-future events:
+
+future:
     user.hover_center_image("teamup-future-events")
     mouse_click()
 
@@ -118,7 +110,8 @@ mark complete:
     key(home)
     sleep(100ms)
     user.paste("✅")
-    key(space)
+    sleep(100ms)
+    key(space:2)
 
 mark skipped:
     key(home)
@@ -172,9 +165,9 @@ tomorrow midnight:
     key(enter)
     
 single:
-    key(tab)
-    sleep(50ms)
-    key(enter)
+    user.hover_center_image("teamup-single")
+    mouse_click()
+
 
 earlier <number> minutes:
     user.mouse_down(0)

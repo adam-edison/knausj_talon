@@ -1,4 +1,5 @@
-(control mouse|controller|holder|freeze|thaw): user.mouse_toggle_control_mouse()
+(control mouse|controller|holder): user.mouse_toggle_control_mouse()
+(freeze|looking): user.temporarily_toggle_control_mouse(2000)
 (zoom mouse|zoomer): user.mouse_toggle_zoom_mouse()
 (camera overlay|overlay): user.mouse_toggle_camera_overlay()
 (run calibration|calibration): user.mouse_calibrate()
@@ -61,7 +62,7 @@ scroll tiny up: mouse_scroll(20)
 scroll tiny up here:
     user.mouse_move_center_active_window()
     mouse_scroll(20)
-scroll upper: user.mouse_scroll_down_continuous()
+upper: user.mouse_scroll_down_continuous()
 scroll upper slow: user.mouse_scroll_down_continuous("200ms")
 scroll upper here:
     user.mouse_move_center_active_window()
@@ -73,7 +74,7 @@ scroll tiny down: mouse_scroll(-20)
 scroll tiny down here:
     user.mouse_move_center_active_window()
     mouse_scroll(-20)
-scroll downer: user.mouse_scroll_up_continuous()
+downer: user.mouse_scroll_up_continuous()
 scroll downer slow: user.mouse_scroll_up_continuous("200ms")
 scroll downer here:
     user.mouse_move_center_active_window()

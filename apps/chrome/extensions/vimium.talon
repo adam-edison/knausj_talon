@@ -1,15 +1,21 @@
+app: chrome
+-
+
 # for vimium in chrome
 # fine (f) --> show letters for navigation
 # esc --> get rid of cursor in text box
 
-vim: "f"
+nav$: "f"
 
-vimmy:
+go nav:
 	key("esc")
 	sleep(20ms)
 	key("f")
 
-vimmier: 
+go nav new: 
 	key("esc")
 	sleep(20ms)
+	key(shift-f)
+
+nav new: 
 	key(shift-f)

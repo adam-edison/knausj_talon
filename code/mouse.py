@@ -123,6 +123,12 @@ class Actions:
         """Start calibration"""
         eye_mouse.calib_start()
 
+    def temporarily_toggle_control_mouse(milliseconds: int):
+        """Toggles control mouse, sleeps, and then toggles it again"""
+        toggle_control(not config.control_mouse)
+        actions.sleep(f"{milliseconds}ms")
+        toggle_control(not config.control_mouse)
+
     def mouse_toggle_control_mouse():
         """Toggles control mouse"""
         toggle_control(not config.control_mouse)

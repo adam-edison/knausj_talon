@@ -74,6 +74,7 @@ directory talon: "cd ~/.talon/user/anti-rsi-talon\n"
 directory care web hook: "cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk/lambdas/pcc_webhook\n"
 directory care authorizer: "cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk/lambdas/pcc_basic_auth_authorizer\n"
 directory care shared: "cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk/lambdas/shared/nodejs\n"
+directory core aws: "cd ~/files-shared/projects/tt-core-aws\n"
 
 start databases:
     user.paste("docker container start webapp-sqlserver; docker container start webapp-postgresql\n")

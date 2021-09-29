@@ -21,7 +21,7 @@ looks good:
     sleep(100ms)
     user.switcher_focus("iterm")
     
-complete:
+mark complete:
     key(home)
     sleep(100ms)
     key(right:3)
@@ -33,3 +33,10 @@ complete:
     edit.save()
     sleep(200ms)
     key(esc)
+
+mark clear:
+    key(home)
+    sleep(10ms)
+    key(right:2)
+    sleep(10ms)
+    key(delete:4)

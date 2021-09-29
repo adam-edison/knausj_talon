@@ -6,6 +6,12 @@ key(keypad_minus):
     user.mouse_sleep()
     mode.disable("face")
 
+key(cmd-ctrl-f2):
+    speech.set_microphone("None")
+    speech.disable()
+    user.mouse_sleep()
+    mode.disable("face")
+
 key(keypad_multiply):
     user.mouse_toggle_control_mouse()
     user.mouse_toggle_zoom_mouse()
@@ -15,6 +21,11 @@ key(keypad_divide):
     user.mouse_toggle_control_mouse()
 
 key(keypad_plus):
+    speech.set_microphone("CORSAIR HS60 HAPTIC Gaming Headset")
+    mode.enable("face")
+    speech.enable()
+
+key(cmd-ctrl-f1):
     speech.set_microphone("CORSAIR HS60 HAPTIC Gaming Headset")
     mode.enable("face")
     speech.enable()

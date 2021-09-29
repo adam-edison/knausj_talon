@@ -2,8 +2,10 @@
 # item 1 --> just say enter, otherwise it's the item as pictured
 # TODO: AGE: override this command in azure for context menus
 (item|choose) [down] <number>:
+    sleep(20ms)
     key(down)
     repeat(number - 2)
+    sleep(20ms)
     key(enter)
 
 empty [down] <number>:

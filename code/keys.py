@@ -207,7 +207,7 @@ symbol_key_words = {
     "squiggly": "~",
     "spiral": "@",
     "space": " ",
-    "wit": " ",
+    "rift": " ",
     "semi": ";",
     "coal": ":"
 }
@@ -240,7 +240,7 @@ alternate_keys = {
     "delete": "delete",
     "junk": "backspace",
     "chunk": "backspace",
-    "wit": "space",
+    "rift": "space",
     "key": "enter"
 }
 # mac apparently doesn't have the menu key.

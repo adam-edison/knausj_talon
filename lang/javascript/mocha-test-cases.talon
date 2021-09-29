@@ -23,14 +23,14 @@ expect sink <user.text>:
         expect(actual).to.equal(4);
     }});""")
 
-async test that <user.text>:
+async test it <user.text>:
     user.paste("""
     it('{text}', async function () {{
         const actual = await calculate();
         expect(actual).to.equal(4);
     }});""")
 
-^test that <user.text>$:
+^test it <user.text>$:
     user.paste("""
     it('{text}', function () {{
         // do something
