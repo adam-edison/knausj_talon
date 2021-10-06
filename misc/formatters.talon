@@ -16,9 +16,19 @@ sentence <user.text> period:
 
 {user.prose_formatter} <user.prose>$: user.insert_formatted(prose, prose_formatter)
 {user.prose_formatter} <user.prose> (over|fin): user.insert_formatted(prose, prose_formatter)
+
 {user.prose_formatter} <user.prose> wit: 
     user.insert_formatted(prose, prose_formatter)
     insert(" ")
+
+{user.prose_formatter} <user.prose> period: 
+    user.insert_formatted(prose, prose_formatter)
+    insert(". ")
+
+{user.prose_formatter} <user.prose> wave: 
+    user.insert_formatted(prose, prose_formatter)
+    insert(", ")
+
 <user.format_text>+$: user.insert_many(format_text_list)
 <user.format_text>+ (over|fin): user.insert_many(format_text_list)
 <user.formatters> that: user.formatters_reformat_selection(user.formatters)

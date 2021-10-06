@@ -56,6 +56,69 @@ make this work:
     key(enter)
 
 
+# // TODO: AGE: revamp to use vim um, like complete AL, or start now AL (after having said nav to see the links)
+
+complete <user.letter>:
+    insert("{letter_1}")
+    sleep(1500ms)
+
+    # change calendar to completed
+    key(tab:7)
+    sleep(100ms)
+    key(backspace:2)
+    insert("completed")
+    key(enter)
+
+    # save
+    sleep(500ms)
+    key(tab)
+    key(enter)
+
+    # hide completed calendar
+    sleep(2000ms)
+    user.mouse_move(72, 477)
+    mouse_click()
+
+complete <user.letter> <user.letter>:
+    insert("{letter_1}{letter_2}")
+    sleep(1500ms)
+
+    # change calendar to completed
+    key(tab:7)
+    sleep(100ms)
+    key(backspace:2)
+    insert("completed")
+    key(enter)
+
+    # save
+    sleep(500ms)
+    key(tab)
+    key(enter)
+
+    # hide completed calendar
+    sleep(2000ms)
+    user.mouse_move(72, 477)
+    mouse_click()
+
+
+complete this:
+    # change calendar to completed
+    key(tab:7)
+    sleep(100ms)
+    key(backspace:2)
+    insert("completed")
+    key(enter)
+
+    # save
+    sleep(500ms)
+    key(tab)
+    key(enter)
+
+    # hide completed calendar
+    sleep(2000ms)
+    user.mouse_move(72, 477)
+    mouse_click()
+
 completer:
     # rewrite in python so we can detect "Single" window
     # click the mouse to select the event and bring up details
@@ -130,6 +193,19 @@ mark clear:
     sleep(200ms)
     key(delete:2)
 
+
+sprint work standing:
+    insert("Sprint Work - Standing")
+    key(tab:7)
+    sleep(50ms)
+    key(backspace)
+    insert("work")
+    key(enter)
+    sleep(50ms)
+    key(tab)
+    sleep(50ms)
+    key(enter)
+
 sprint work:
     insert("Sprint Work")
     key(tab:7)
@@ -169,7 +245,7 @@ single:
     mouse_click()
 
 
-earlier <number> minutes:
+earlier <number> [minutes]:
     user.mouse_down(0)
     sleep(500ms)
     adjustment = -3 * number
@@ -177,7 +253,7 @@ earlier <number> minutes:
     sleep(500ms)
     user.mouse_up(0)
 
-later <number> minutes:
+later <number> [minutes]:
     user.mouse_down(0)
     sleep(500ms)
     adjustment = 4 * number
@@ -193,8 +269,33 @@ later <number> (hour|hours):
     sleep(500ms)
     user.mouse_up(0)
 
+stop now:
+    now = user.time_now_12h(5)
+    today = user.date_slash_format()
+
+    mouse_click(0)
+    sleep(1000ms)
+
+    # today
+    key(tab:3)
+    sleep(50ms)
+    insert(today)
+
+    # now
+    key(tab)
+    sleep(50ms)
+    insert(now)
+    sleep(50ms)
+    key(tab)
+
+    # save
+    sleep(200ms)
+    key(tab:4)
+    sleep(50ms)
+    key(enter)
+
 start now:
-    now = user.time_now_12h()
+    now = user.time_now_12h(5)
     today = user.date_slash_format()
 
     mouse_click(0)
@@ -289,3 +390,21 @@ start <number>:
     key(tab:5)
     sleep(50ms)
     key(enter)
+
+# // TODO: AGE: fix scrolling in general, allowing for a natural or normal scrolling variable
+# // TODO: AGE: extract this scroll down function in order to re use it across multiple applications, center_scroll_down
+scroll down:
+    user.mouse_move(671, 441)
+    sleep(200ms)
+    user.mouse_scroll_up()
+    repeat(2)
+
+scroll up:
+    print("sccrolling")
+    user.mouse_move(671, 441)
+    sleep(200ms)
+    user.mouse_scroll_down()
+    repeat(2)   
+
+
+# TODO: AGE: add a start at four pm or 3 am or whatever - needs python

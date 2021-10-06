@@ -6,11 +6,9 @@ tag(): user.tabs
 
 settings():
     key_wait = 2
-    
-open {user.web_links}: user.open_link_new_tab("{user.web_links}")
-show {user.web_links}: user.open_link_current_tab("{user.web_links}")
 
-
+open {user.website}: user.open_link_new_tab(website)
+show {user.website}: user.open_link_current_tab(website)
 
 tab here:
     mouse_click(1)

@@ -18,29 +18,6 @@ ctx.matches = r"""
 app: chrome
 """
 
-mod.list('web_links', desc='URLs to visit in a browser')
-ctx.lists['self.web_links'] = {
-    "my subtasks": "https://touchtown.atlassian.net/issues/?filter=12094",
-    "quire": "https://quire.io/w/Personal-0987?sublist=Today&group=date&sort=date&filter=Planned",
-    "now": "https://quire.io/w/Personal-0987?sublist=Today&group=date&sort=date&filter=In+Progress",
-    "admin": "https://quire.io/w/Personal-0987?sublist=Today&group=date&sort=date&filter=Planned&tag=Admin",
-    "chores": "https://quire.io/w/Personal-0987?sublist=Today&group=date&sort=date&filter=Planned&tag=Chores",
-    "food": "https://quire.io/w/Personal-0987?sublist=Today&group=date&sort=date&filter=Planned&tag=Food+and+Medication",
-    "exercise": "https://quire.io/w/Personal-0987?sublist=Today&group=date&sort=date&filter=Planned&tag=Exercise",
-    "meditation": "https://quire.io/w/Personal-0987?sublist=Today&group=date&sort=date&filter=Planned&tag=Meditation",
-    "finances": "https://docs.google.com/spreadsheets/d/1ci-nY3Nq4WfZUEFsxJjND8lee7vnqf15lKNuWrvcAhE/edit?usp=sharing",
-    "slack": "https://app.slack.com/client/T7FPSMV8F/C7ENXA7C4",
-    "sprint board": "https://touchtown.atlassian.net/secure/RapidBoard.jspa?rapidView=51&quickFilter=84",
-    "backlog": "https://touchtown.atlassian.net/secure/RapidBoard.jspa?rapidView=51&view=planning.nodetail&selectedIssue=TTDEV-362&epics=visible&issueLimit=100&selectedEpic=TTDEV-93",
-    "drive": "https://drive.google.com/drive/my-drive",
-    "sleep log": "https://docs.google.com/spreadsheets/d/1BglPUb7S8WByykr6Q6inHy9Af6U5Tl8uTqaAdooSbD0/edit#gid=0",
-    "bit bucket": "https://bitbucket.org/dashboard/overview",
-    "confluence": "https://touchtown.atlassian.net/wiki/home",
-    "teamup": "https://teamup.com/c/zxmaf9/personal",
-    "work load": "https://touchtown.atlassian.net/secure/ConfigureReport.jspa?developer=5d52cc4c9ca6120db899542d&subtaskInclusion=onlyAssigned&selectedProjectId=10230&reportKey=com.atlassian.jira.plugin.system.reports%3Adeveloper-workload&Next=Next"
-}
-
-
 @mod.action_class
 class Actions:
     def open_link_new_tab(link: str):

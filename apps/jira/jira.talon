@@ -41,6 +41,8 @@ mark clear:
 
 mark space:
     key(home)
+    sleep(10ms)
+    key(end)
     sleep(100ms)
     key(left)
     key(space)

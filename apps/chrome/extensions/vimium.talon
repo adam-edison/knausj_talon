@@ -5,7 +5,9 @@ app: chrome
 # fine (f) --> show letters for navigation
 # esc --> get rid of cursor in text box
 
-nav$: "f"
+(nav|navi)$: "f"
+
+hover nav$: "p"
 
 go nav:
 	key("esc")

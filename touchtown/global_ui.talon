@@ -56,11 +56,16 @@ copy table here:
     key(enter)
 ##################
 
-term run last:
+(term run last|term again):
     user.switcher_focus("iterm")
     sleep(100ms)
     key(up)
     key(enter)
+
+term test:
+    user.switcher_focus("iterm")
+    sleep(200ms)
+    insert("npm run test\n")
 
 # TODO: AGE: move to keys
 goggles: ": "
@@ -162,7 +167,8 @@ focus task:
     user.mouse_move(2432, 57)
     mouse_click(0)
 
-wait: sleep(500ms)
+waiter: 
+    sleep(1000ms)
 
 plunger:
     key(pagedown)

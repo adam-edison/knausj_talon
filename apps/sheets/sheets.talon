@@ -51,3 +51,10 @@ go bottom:
     key(cmd-end)
 
 next: key(right)
+
+insert row: 
+    key(cmd-alt-=)
+    sleep(500ms)
+    key(up:2)
+    sleep(20ms)
+    key(enter)

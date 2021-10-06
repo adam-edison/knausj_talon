@@ -37,7 +37,8 @@ rename file: user.idea("action RenameFile")
 
 fix imports: user.idea("action OptimizeImports")
 
-(moment of|enter|exit) zen: key(ctrl-shift-alt-z)
+zen mode: key(ctrl-shift-alt-z)
+reload: key(cmd-alt-y)
 
 cleanup:
     key(esc)
@@ -440,41 +441,52 @@ resolve conflicts:
 open merge:
     key(alt-m)
     
-apply non conflicting [changes]:
+
+take both:
+    key(ctrl-shift-left)
+    sleep(500ms)
+    key(ctrl-shift-right)
+
+take (non conflicting|easy):
     key(ctrl-cmd-m)
     sleep(100ms)
     key(a)
     
-accept only right:
+take right only:
     key(ctrl-shift-left)
-    # ignore left
     key(shift-ctrl-alt-4)
     
-accept right:
+take left only:
+    key(ctrl-shift-right)
+    key(shift-ctrl-alt-6)
+
+take right:
     key(ctrl-shift-left)
     
-accept left:
+take left:
     key(ctrl-shift-right)
     
-append right:
+pend right:
     key(ctrl-shift-cmd-left)
     
-append left:
+pend left:
     key(ctrl-shift-cmd-right)
     
-ignore right:
+scratch right:
     key(shift-ctrl-alt-6)
     
-ignore left:
+scratch left:
     key(shift-ctrl-alt-4)
     
-next change:
+next con:
     key(f7)
     
-last change:
+last con:
     key(shift-f7)
     
-apply selected changes: key(ctrl-shift-alt-enter)
+aptake selected [changes]: key(ctrl-shift-alt-enter)
+
+looks good: key(cmd-enter)
 
 hard fix:
     key("cmd-shift-enter")
@@ -523,3 +535,7 @@ open only <user.text>:
     
 do suggested:
     key(shift-alt-enter)
+
+output:
+    user.mouse_move(892, 867)
+    mouse_click()

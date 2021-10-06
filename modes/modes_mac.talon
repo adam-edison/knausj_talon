@@ -12,16 +12,13 @@ key(cmd-ctrl-f2):
     user.mouse_sleep()
     mode.disable("face")
 
-key(keypad_multiply):
-    user.mouse_toggle_control_mouse()
-    user.mouse_toggle_zoom_mouse()
-
-key(keypad_divide):
-    # keeps tracker on while looking around
-    user.mouse_toggle_control_mouse()
-
 key(keypad_plus):
     speech.set_microphone("CORSAIR HS60 HAPTIC Gaming Headset")
+    mode.enable("face")
+    speech.enable()
+
+key(keypad_multiply):
+    speech.set_microphone("MacBook Pro Microphone")
     mode.enable("face")
     speech.enable()
 

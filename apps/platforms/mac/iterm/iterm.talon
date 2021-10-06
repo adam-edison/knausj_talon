@@ -23,6 +23,15 @@ find failing:
   sleep(100ms)
   key(enter)
 
+failure <number>:
+  key(cmd-f)
+  sleep(200ms)
+  insert("{number}\) ")
+  sleep(100ms)
+  key(enter)
+  sleep(100ms)
+  key(esc)
+
 find messy error:
   key(cmd-f)
   sleep(200ms)

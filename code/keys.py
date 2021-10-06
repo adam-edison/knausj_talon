@@ -207,7 +207,7 @@ symbol_key_words = {
     "squiggly": "~",
     "spiral": "@",
     "space": " ",
-    "rift": " ",
+    "wit": " ",
     "semi": ";",
     "coal": ":"
 }
@@ -240,8 +240,9 @@ alternate_keys = {
     "delete": "delete",
     "junk": "backspace",
     "chunk": "backspace",
-    "rift": "space",
-    "key": "enter"
+    "wit": "space",
+    "stick": "enter",
+    "caper": "escape"
 }
 # mac apparently doesn't have the menu key.
 if app.platform in ("windows", "linux"):

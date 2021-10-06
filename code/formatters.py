@@ -151,7 +151,7 @@ formatters_words = {
     "camel": formatters_dict["PRIVATE_CAMEL_CASE"],
     "snippet": formatters_dict["TICKED"],
     "dotted": formatters_dict["DOT_SEPARATED"],
-    "doubler": formatters_dict["DOUBLE_QUOTED_STRING"],
+    "spoken": formatters_dict["DOUBLE_QUOTED_STRING"],
     "dunder": formatters_dict["DOUBLE_UNDERSCORE"],
     "pascal": formatters_dict["PUBLIC_CAMEL_CASE"],
     "kebab": formatters_dict["DASH_SEPARATED"],
@@ -165,7 +165,7 @@ formatters_words = {
     "smash": formatters_dict["NO_SPACES"],
     "snake": formatters_dict["SNAKE_CASE"],
     "speak": formatters_dict["NOOP"],
-    "singler": formatters_dict["SINGLE_QUOTED_STRING"],
+    "quote": formatters_dict["SINGLE_QUOTED_STRING"],
     "title": formatters_dict["CAPITALIZE_ALL_WORDS"],
     "wiki": formatters_dict["PUBLIC_CAMEL_CASE"],
     # disable a few formatters for now

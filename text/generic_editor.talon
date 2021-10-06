@@ -4,23 +4,23 @@ finder:
 next one:
     edit.find_next()
 
-go word left:
+(go word left|whirl):
     edit.word_left()
 
-go word right:
+(go word right|wire):
     edit.word_right()
 
-go left:
+(go left|last):
     edit.left()
 
 (go right|next):
     sleep(10ms)
     edit.right()
 
-go up:
+(go up|jump):
     edit.up()
 
-go down:
+(go down|duck):
     edit.down()
 
 go line start:

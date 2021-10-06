@@ -60,7 +60,10 @@ kill all notifications:
     sleep(200ms)
     insert("killall NotificationCenter\n")
     
-regex any:
+
+regex any: "(.*)"
+
+regex any line:
     insert("[\\s\\S]*")
 
 regex not <user.text>:

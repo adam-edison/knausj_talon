@@ -1,5 +1,6 @@
 (control mouse|controller|holder): user.mouse_toggle_control_mouse()
-(freeze|looking): user.temporarily_toggle_control_mouse(2000)
+freeze: user.temporarily_toggle_control_mouse(2000)
+flash: user.temporarily_toggle_control_mouse(1200)
 (zoom mouse|zoomer): user.mouse_toggle_zoom_mouse()
 (camera overlay|overlay): user.mouse_toggle_camera_overlay()
 (run calibration|calibration): user.mouse_calibrate()
