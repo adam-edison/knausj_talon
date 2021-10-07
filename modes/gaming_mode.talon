@@ -6,3 +6,4 @@ mode: user.gaming
     mode.disable("user.gaming")
     mode.disable("dictation")
     mode.enable("command")
+    app.notify("command mode")

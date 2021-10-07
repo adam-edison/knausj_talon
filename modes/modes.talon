@@ -45,6 +45,7 @@ talon mode: user.talon_mode()
     mode.disable("sleep")
     mode.disable("command")
     mode.enable("user.gaming")
+    app.notify("gaming mode")
 
 # hello <user.text>$:
 #     mode.disable("command")
