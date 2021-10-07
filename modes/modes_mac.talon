@@ -1,3 +1,4 @@
+os: mac
 mode: all
 -
 key(keypad_minus):
