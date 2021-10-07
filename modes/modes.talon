@@ -41,6 +41,7 @@ talon mode: user.talon_mode()
     mode.disable("dictation")
     mode.enable("command")
 ^gaming mode$:
+    print("switching to gaming mode")
     mode.disable("sleep")
     mode.disable("command")
     mode.enable("user.gaming")

@@ -153,6 +153,20 @@ class Actions:
         """Trigger zoom mouse if enabled"""
         if eye_zoom_mouse.zoom_mouse.enabled:
             eye_zoom_mouse.zoom_mouse.on_pop(eye_zoom_mouse.zoom_mouse.state)
+        
+    def mouse_button_down(button: int):
+        """Hold the mouse button down"""
+        button_down = len(list(ctrl.mouse_buttons_down())) > 0
+
+        if not button_down:
+            ctrl.mouse_click(button, down=True)
+
+    def mouse_button_up(button: int):
+        """Release the mouse button"""
+        button_down = len(list(ctrl.mouse_buttons_down())) > 0
+
+        if button_down:
+            ctrl.mouse_click(button, up=True)
 
     def mouse_drag():
         """(TEMPORARY) Press and hold/release button 0 depending on state for dragging"""

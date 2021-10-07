@@ -1,3 +1,4 @@
+os: mac
 tag: terminal
 -
 

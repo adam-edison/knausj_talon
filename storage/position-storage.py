@@ -55,3 +55,19 @@ class Actions:
         """Gets the mouse position coordinates from storage and throws them on the clipboard"""
         value = storage.get(key)
         return value
+
+    def store_mouse_coordinates_separately(key: str):
+        """Sets the current mouse position coordinates x/y separately in storage"""
+        position =  ctrl.mouse_pos()
+        x = round(position[0])
+        y = round(position[1])
+        storage.set(f"{key}_x", x)
+        storage.set(f"{key}_y", y)
+
+    def get_mouse_x(key: str):
+        """Gets the current mouse position x coordinate from storage"""
+        return storage.get(f"{key}_x")
+
+    def get_mouse_y(key: str):
+        """Gets the current mouse position y coordinate from storage"""
+        return storage.get(f"{key}_y")
