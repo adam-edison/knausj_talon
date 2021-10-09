@@ -1,4 +1,5 @@
 os: mac
+mode: user.gaming
 -
 
 face(raise_eyebrows): 

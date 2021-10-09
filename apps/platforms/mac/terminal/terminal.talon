@@ -13,5 +13,4 @@ suspend:
     key(ctrl-z)
 resume:
     insert("fg")
-    key(enter)
-    
+    key(enter)    

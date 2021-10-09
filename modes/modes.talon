@@ -36,16 +36,16 @@ talon mode: user.talon_mode()
     user.code_clear_language_mode()
     mode.disable("user.gdb")
 ^command mode$:
+    app.notify("switching to command mode")
     mode.disable("sleep")
     mode.disable("user.gaming")
     mode.disable("dictation")
     mode.enable("command")
 ^gaming mode$:
-    print("switching to gaming mode")
+    app.notify("switching to gaming mode")
     mode.disable("sleep")
     mode.disable("command")
     mode.enable("user.gaming")
-    app.notify("gaming mode")
 
 # hello <user.text>$:
 #     mode.disable("command")
