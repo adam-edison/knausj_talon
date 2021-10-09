@@ -1,19 +1,16 @@
-# face(raise_eyebrows):
-    
+os: mac
+-
 
-# face(stick_out_tongue):
-#     key(end)
-#     sleep(50ms)
-#     key(enter)
+face(raise_eyebrows): 
+    mouse_click(1)
 
-# face(smile):
-#     key(enter)
+face(smile):
+    mouse_click(0)
+    sleep(10ms)
+    mouse_click(0)
 
-# face(eye_blink):
-#     mouse_click(0)
-
-# TODO: AGE: start using facial expression bindings (mac-only files)
-# e.g. long blink = enter
+face(pucker_lips_outwards):
+    mouse_click(0)
 
 # Then bind any supported expressions (not just the right click expression) in a .talon file. For example, `face(smile): ...` or `face(smile:end): ...` - just like hotkeys and voice commands. 
 # These expressions are supported on macOS Catalina:

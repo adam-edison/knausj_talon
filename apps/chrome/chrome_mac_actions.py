@@ -57,8 +57,6 @@ class EditActions:
         actions.key('enter')
         # need to select next line
         # because some editors insert bullet points automatically
-        # like JIRA, github, etc
-        # TODO: AGE should implement specific line clone based upon window title like | JIRA, for example
         actions.edit.select_line()
         actions.key('delete')
         actions.edit.paste()
