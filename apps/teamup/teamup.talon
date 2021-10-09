@@ -400,7 +400,6 @@ scroll down:
     repeat(2)
 
 scroll up:
-    print("sccrolling")
     user.mouse_move(671, 441)
     sleep(200ms)
     user.mouse_scroll_down()

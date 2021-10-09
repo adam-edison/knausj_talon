@@ -14,7 +14,7 @@ link this clip:
     sleep(1000ms)
     key(enter)
 
-scroll down:
+(scrounge|scroll down):
     user.mouse_move(671, 441)
     sleep(200ms)
     user.mouse_scroll_up()
@@ -56,7 +56,7 @@ mark (in progress|working):
 
 # make these assign to <list> and insert list item
 
-assign me:
+assign myself:
     key(a)
     sleep(200ms)
     insert("adam e")
@@ -82,7 +82,7 @@ bdd tests:
     insert("BDD Tests")
     key(enter)
 
-assign tice:
+assign (theis|tice):
     key(a)
     sleep(200ms)
     insert("theis")
@@ -130,19 +130,25 @@ focus center:
     user.mouse_move(969, 182)
 	mouse_click()
 
-subtask code review:
+subtask single:
+    user.hover_center_image("jira-create-subtask")
+    mouse_click()
+    sleep(1000ms)
     insert("Code Review\n")
-    sleep(3000ms)
+    sleep(1000ms)
     insert("PR Feedback\n")
-    sleep(3000ms)
+    sleep(1000ms)
 
-subtask two code reviews:
+subtask double:
+    user.hover_center_image("jira-create-subtask")
+    mouse_click()
+    sleep(1000ms)
     insert("Code Reviewer #1\n")
-    sleep(3000ms)
+    sleep(1000ms)
     insert("Code Reviewer #2\n")
-    sleep(3000ms)
+    sleep(1000ms)
     insert("PR Feedback\n"
-    sleep(3000ms)
+    sleep(1000ms)
 
 create subtask:
     user.hover_center_image("jira-create-subtask")
@@ -158,3 +164,11 @@ estimate <number>:
     key(cmd-a)
     key(delete)
     insert("{number}h\n")
+
+tasks section:
+    key(cmd-b)
+    sleep(10ms)
+    key(cmd-u)
+    insert("Tasks\n")
+    sleep(20ms)
+    insert("* ")

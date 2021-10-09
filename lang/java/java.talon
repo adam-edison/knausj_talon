@@ -261,3 +261,5 @@ getter setter to string:
     key(enter)
     sleep(200ms)
     key(enter)
+
+suppress local field: "@SuppressWarnings(\"FieldCanBeLocal\")"

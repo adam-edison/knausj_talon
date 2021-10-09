@@ -2,11 +2,11 @@
 # (say|write) <user.text>$: user.insert_formatted(text, "NOOP")
 # (say|write) <user.text> over: user.insert_formatted(text, "NOOP")
 
-(say|speak) <user.text> wave:
+speak <user.text> wave:
   user.insert_formatted(text, "NOOP")
   insert(", ")
 
-(say|speak) <user.text> period:
+speak <user.text> period:
   user.insert_formatted(text, "NOOP")
   insert(". ")
 

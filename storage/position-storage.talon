@@ -1,7 +1,7 @@
 # storage.set('key', value)
 # storage.get('key') == value
 
-store mouse <number>: 
+set mouse <number>: 
     user.store_set_mouse_position("mouse {number}")
 
 get mouse <number>:
