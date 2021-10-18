@@ -139,6 +139,12 @@ formatters_dict = {
         if i == 0 or word not in words_to_keep_lowercase
         else word,
     ),
+    "CONDENSED": (
+        SEP,
+        lambda i, word, _: word
+        if word not in words_to_keep_lowercase
+        else "",
+    ),
     "FIRST_THREE": (NOSEP, lambda i, word, _: word[0:3]),
     "FIRST_FOUR": (NOSEP, lambda i, word, _: word[0:4]),
     "FIRST_FIVE": (NOSEP, lambda i, word, _: word[0:5]),
@@ -168,6 +174,7 @@ formatters_words = {
     "quote": formatters_dict["SINGLE_QUOTED_STRING"],
     "title": formatters_dict["CAPITALIZE_ALL_WORDS"],
     "wiki": formatters_dict["PUBLIC_CAMEL_CASE"],
+    "condensed": formatters_dict["CONDENSED"],
     # disable a few formatters for now
     # "tree": formatters_dict["FIRST_THREE"],
     # "quad": formatters_dict["FIRST_FOUR"],

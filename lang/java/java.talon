@@ -4,6 +4,8 @@ and code.language: java
 -
 tag(): user.code_operators
 tag(): user.code_generic
+tag(): user.tabs
+
 mock private <user.text>:
     variable = user.formatted_text(text, "PRIVATE_CAMEL_CASE")
     className = user.formatted_text(text, "PUBLIC_CAMEL_CASE")
@@ -77,14 +79,25 @@ at inject mocks:
     insert("@InjectMocks")
     
 simple nested <user.text>:
-    classNamePart = user.formatted_text(text, "PUBLIC_CAMEL_CASE")
-    user.paste("@Nested\n@DisplayName(\"{text}\")\nclass {classNamePart} {{\n\n}}")
+    className = user.formatted_text(text, "PUBLIC_CAMEL_CASE,CONDENSED")
+    user.paste("@Nested\n@DisplayName(\"{text}\")\nclass {className} {{\n\n}}")
     key(up:2)
-    
-nested <user.text>:
-    classNamePart = user.formatted_text(text, "PUBLIC_CAMEL_CASE")
-    user.paste("@Nested\n@ConfigureIntegrationTest\n@DisplayName(\"{text}\")\nclass {classNamePart} {{\n\n}}")
-    key(up:2)
+
+when given <user.text>:
+    className = user.formatted_text(text, "PUBLIC_CAMEL_CASE,CONDENSED")
+    user.paste("@When @DisplayName(\"Given {text}\") class {className} {{")
+    key(enter)
+
+when when <user.text>:
+    className = user.formatted_text(text, "PUBLIC_CAMEL_CASE,CONDENSED")
+    user.paste("@When @DisplayName(\"When {text}\") class {className} {{")
+    key(enter)
+
+when and <user.text>:
+    className = user.formatted_text(text, "PUBLIC_CAMEL_CASE,CONDENSED")
+    user.paste("@When @DisplayName(\"and {text}\") class {className} {{")
+    key(enter)
+
     
 at before each:
     key(enter)
@@ -93,7 +106,18 @@ at before each:
 at after each:
     key(enter)
     insert("@AfterEach")
-    
+
+before all:
+    user.paste("@BeforeAll\nvoid setup() {{\n\n}}")
+    sleep(20ms)
+    key(up:2)
+    sleep(20ms)
+    key(end)
+    sleep(20ms)
+    key(enter)
+    sleep(20ms)
+    key(delete)
+
 before each:
     user.paste("@BeforeEach\nvoid setup() {{\n\n}}")
     sleep(20ms)
@@ -263,3 +287,85 @@ getter setter to string:
     key(enter)
 
 suppress local field: "@SuppressWarnings(\"FieldCanBeLocal\")"
+
+prepare <number> after <number>:
+    edit.jump_line(number_1)
+    sleep(100ms)
+    key(end)
+    sleep(100ms)
+    key(shift-home)
+    sleep(100ms)
+    edit.cut()
+    sleep(500ms)
+    edit.jump_line(number_2)
+    edit.line_end()
+    sleep(20ms)
+    key(enter)
+    insert("@BeforeAll void prepare() {{ ")
+    sleep(30ms)
+    edit.paste()
+    insert(" }}")
+    sleep(20ms)
+    key(end)
+    key(enter)
+
+cleanup <number> after <number>:
+    edit.jump_line(number_1)
+    sleep(100ms)
+    key(end)
+    sleep(100ms)
+    key(shift-home)
+    sleep(100ms)
+    edit.cut()
+    sleep(500ms)
+    edit.jump_line(number_2)
+    sleep(100ms)
+    edit.line_end()
+    sleep(20ms)
+    key(enter)
+    insert("@AfterAll void cleanup() {{ ")
+    sleep(30ms)
+    edit.paste()
+    insert(" }}")
+    sleep(20ms)
+
+param event type:
+    user.paste("@ParameterizedTest(name = \"with event type of {{0}}\")")
+
+collect test info:
+    user.paste("""@AfterEach
+    void collectTestInfo(TestInfo testInfo, TestReporter testReporter) {{
+        conditions.addGiven(testInfo.getDisplayName());
+        testReporter.publishEntry(conditions.toString());
+        conditions.removeLastGiven();
+    }}
+    """)
+
+collect test info short:
+    user.paste("""@AfterEach
+    void collectTestInfo(TestReporter testReporter) {{
+        testReporter.publishEntry(conditions.toString());
+    }}
+    """)
+
+outcome then <user.text>:
+    user.paste("conditions.addOutcome(\"Then {text}\");")
+    sleep(100ms)
+    key(left:3)
+
+condition when <user.text>:
+    user.paste("conditions.addCondition(\"When {text}\");")
+    sleep(100ms)
+    key(left:3)
+
+outcome and <user.text>:
+    user.paste("conditions.addOutcome(\"and {text}\");")
+    sleep(100ms)
+    key(left:3)
+
+replace outline:
+    key(end)
+    sleep(100ms)
+    key(shift-home)
+    sleep(100ms)
+    user.paste("conditions = new TestOutline(\"Given a PointClickCare webhook event\");")

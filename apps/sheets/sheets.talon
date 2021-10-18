@@ -50,7 +50,9 @@ go top:
 go bottom:
     key(cmd-end)
 
-next: key(right)
+next: 
+    sleep(100ms)
+    key(right)
 
 insert row: 
     key(cmd-alt-=)

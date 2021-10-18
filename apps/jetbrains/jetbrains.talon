@@ -286,6 +286,13 @@ fixer:
 fix next:
     user.idea("action GotoNextError")
     user.idea("action ShowIntentionActions")
+
+auto correct:
+    user.idea("action GotoNextError")
+    user.idea("action ShowIntentionActions")
+    sleep(200ms)
+    key(enter)
+    sleep(1000ms)
     
 fix last:
     user.idea("action GotoPreviousError")
@@ -539,3 +546,32 @@ do suggested:
 output:
     user.mouse_move(892, 867)
     mouse_click()
+
+split window left:
+    key(shift-f4)
+    sleep(100ms)
+    key(ctrl-cmd-alt-left)
+    sleep(100ms)
+    key(cmd-alt-left)
+
+other option:
+    key(shift-tab)
+    sleep(100ms)
+    key(space)
+
+find <user.text>:
+    key(cmd-f)
+    sleep(100ms)
+    user.paste("{text}")
+
+pin it: key(cmd-ctrl-p)
+
+left foot:
+    user.mouse_move(454, 863)
+    mouse_click()
+
+refresh left foot:
+    user.mouse_move(454, 863)
+    mouse_click()
+    sleep(500ms)
+    key(cmd-r)

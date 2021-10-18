@@ -35,12 +35,17 @@ class Actions:
 
 # defined outside the class so it is effectively private
 def get_line_text():
+    temporary = clip.text()
+
     actions.key("end")
     actions.key("shift-home")
     actions.sleep("200ms")
     actions.edit.copy()
     actions.sleep("200ms")
-    return clip.text()
+    lineText = clip.text()
+
+    clip.set(temporary)
+    return lineText
 
 def get_all_occurrences_positions(needle, haystack):
     return [m.start() for m in re.finditer(needle, haystack)]

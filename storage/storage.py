@@ -71,3 +71,11 @@ class Actions:
     def get_mouse_y(key: str):
         """Gets the current mouse position y coordinate from storage"""
         return storage.get(f"{key}_y")
+
+    def get_data_value(key: str):
+        """Gets the data value from storage, given the key"""
+        return storage.get(key)
+
+    def set_data(key: str, value: str):
+        """Sets the key value pair in storage"""
+        storage.set(key, value)

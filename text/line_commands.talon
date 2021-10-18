@@ -5,10 +5,23 @@ tag: user.line_commands
     edit.jump_line(number)
     edit.line_end()
 
+more after <number>: 
+    edit.jump_line(number)
+    edit.line_end()
+    key(enter:2)
+
 after <number>: 
     edit.jump_line(number)
     edit.line_end()
     key(enter)
+
+paste after <number>:
+    edit.jump_line(number)
+    sleep(20ms)
+    key(end)
+    sleep(20ms)
+    key(enter)
+    edit.paste()
 
 (dawn|rise) <number>: 
     edit.jump_line(number)

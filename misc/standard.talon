@@ -31,6 +31,6 @@ slap:
 	edit.line_end()
 	key(enter)
 
-swipe:
+slap soft:
 	edit.line_end()
 	key(shift-enter)

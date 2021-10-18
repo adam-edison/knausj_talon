@@ -77,3 +77,10 @@ issue prod <number>:
 
 link to issue [dev] <number>:
     insert("https://touchtown.atlassian.net/browse/TTDEV-{number}")
+
+sublime <number>:
+    user.switcher_focus("sublime")
+    sleep(750ms)
+    edit.jump_line(number)
+    sleep(20ms)
+    key(end)

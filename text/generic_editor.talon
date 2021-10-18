@@ -104,16 +104,6 @@ indent [more]:
 clear line:
     edit.delete_line()
 
-clear after:
-    key(shift-end)
-    sleep(20ms)
-    key(delete)
-
-clear before:
-    key(shift-home)
-    sleep(20ms)
-    key(delete)
-
 clear up:
     edit.extend_line_up()
     edit.delete()

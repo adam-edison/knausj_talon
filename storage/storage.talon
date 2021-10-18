@@ -14,3 +14,6 @@ insert click at mouse <number>:
     position = user.store_get_mouse_position("mouse {number}")
     insert("user.mouse_move({position})\n")
     insert("mouse_click()")
+
+#set <number>: user.set_data("store {number}", value)
+# restore <number

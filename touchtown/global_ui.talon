@@ -171,15 +171,24 @@ waiter:
     sleep(1000ms)
 
 plunger:
+    sleep(200ms)
     key(pagedown)
     sleep(250ms)
+    key(up:3)
 
 riser:
+    sleep(200ms)    
     key(pageup)
     sleep(250ms)
+    key(up:3)
 
 stamp below:
     edit.copy()
     sleep(50ms)
     key(down)
     edit.paste()
+
+on:
+    sleep(500ms)
+    key(tab)
+    sleep(500ms)

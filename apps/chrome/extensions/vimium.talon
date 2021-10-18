@@ -5,19 +5,19 @@ app: chrome
 # fine (f) --> show letters for navigation
 # esc --> get rid of cursor in text box
 
-(nav|navi)$: "f"
+(vim|vimmy)$: "f"
 
-hover nav$: "p"
+hover vim$: "p"
 
-go nav:
+go vim$:
 	key("esc")
 	sleep(20ms)
 	key("f")
 
-go nav new: 
+go vim new$: 
 	key("esc")
 	sleep(20ms)
 	key(shift-f)
 
-nav new: 
+vim new$: 
 	key(shift-f)

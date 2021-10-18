@@ -14,6 +14,10 @@ link this clip:
     sleep(1000ms)
     key(enter)
 
+description:
+    user.mouse_move(671, 441)
+    mouse_click()
+
 (scrounge|scroll down):
     user.mouse_move(671, 441)
     sleep(200ms)
@@ -40,6 +44,8 @@ mark clear:
     key(delete)
 
 mark space:
+    key(home)
+    sleep(10ms)
     key(home)
     sleep(10ms)
     key(end)

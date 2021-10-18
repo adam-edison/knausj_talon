@@ -6,21 +6,22 @@ mod = Module()
 
 @mod.action_class
 class Actions:
-    def hover_center_image(imageName: str,):
+    def hover_center_image(imageName: str, threshold: float=0.90):
         """centers mouse over the image"""
 
         # starts in the .talon directory for the image file path
-        locate_hover(f"./screen-captures/{imageName}.png", threshold=0.80)
+        print(image_location(imageName))
+        locate_hover(image_location(imageName), threshold=threshold)
 
-    def click_center_image(imageName: str):
+    def click_center_image(imageName: str, threshold: float=0.90):
         """clicks the center of the image"""
-        hover_center_image(imageName)
+        actions.user.hover_center_image(imageName, threshold=threshold)
         actions.mouse_click(0)
 
-    def screen_contains_image(imageName: str):
+    def screen_contains_image(imageName: str, threshold: float=0.90):
         """returns first match if the image is found, otherwise returns false"""
 
-        results = locate(f"./screen-captures/{imageName}.png", threshold=0.90)
+        results = locate(image_location(imageName), threshold=threshold)
         
         if (len(results) == 0):
             return False
@@ -28,7 +29,7 @@ class Actions:
             return results[0]
 
     # def hover_center_image_rect(imageName: str, x1: int, y1: int, x2: int, y2: int):
-    # locate_hover(f"./screen-captures/{imageName}.png", threshold=0.80, rect=RECT_HERE)
+    # locate_hover(image_location(imageName), threshold=0.80, rect=RECT_HERE)
 
     # quadrants
     # 1: top right
@@ -41,3 +42,6 @@ class Actions:
 
     # def hover_center_image_subquadrant(imageName: str, quadrant: int, subquadrant: int):
     # e.g. top right quadrant of screen
+
+def image_location(imageName:str):
+    return f"./screen-captures/{imageName}.png"

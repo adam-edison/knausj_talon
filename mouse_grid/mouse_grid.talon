@@ -9,7 +9,7 @@ grid win:
     user.grid_place_window()
     user.grid_activate()
 
-grid <user.number_key>+:
+user.number_key>+:
     user.grid_activate()
     user.grid_narrow_list(number_key_list)
 

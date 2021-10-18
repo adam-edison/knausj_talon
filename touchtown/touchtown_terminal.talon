@@ -120,3 +120,6 @@ care rebase:
 
 rebase onto care:
     insert("git rebase point-click-care-feature\n")
+
+app debug profile:
+    insert("./gradlew appRunDebug -PawsProfileName=YOUR_PROFILE")

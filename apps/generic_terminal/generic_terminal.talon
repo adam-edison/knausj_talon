@@ -19,5 +19,5 @@ rim raff: "rm -rf "
 clear view: "clear\n"
 
 
-python version old: "ln -s -f /usr/bin/python2.7 /usr/local/bin/python && python --version\n"
-python version new: "ln -s -f /usr/local/bin/python3.9 /usr/local/bin/python && python --version\n"
+set python version old: "ln -s -f /usr/bin/python2.7 /usr/local/bin/python && python --version\n"
+set python version new: "ln -s -f /usr/local/bin/python3.9 /usr/local/bin/python && python --version\n"
