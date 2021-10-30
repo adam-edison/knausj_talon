@@ -12,9 +12,24 @@ settings():
 <user.number_string>: "{number_string}"
 <user.ordinals>: core.repeat_command(ordinals-1)
 
+curse yes: user.mouse_show_cursor()
+curse no: user.mouse_hide_cursor()
+
 parrot(tut):
     mouse_click(1)
 
+parrot(cluck):
+    mouse_click(1)
+
+parrot(hiss):
+    key(shift:down)
+
+parrot(hiss:repeat):
+    sleep(100ms)
+    mouse_click(1)
+
+parrot(hiss:stop):
+    key(shift:up)
 
 
 
