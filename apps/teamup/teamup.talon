@@ -1,6 +1,9 @@
 win.title: /\| Teamup/
 -
 
+settings():
+    key_wait = 2
+
 # TODO: AGE: move these things to python code so they can be reused
 # TODO: AGE: start here now: """set start time to now for the calendar event currently under the mouse pointer"""
 
@@ -196,27 +199,15 @@ mark clear:
 
 sprint work standing:
     insert("Sprint Work - Standing")
-    key(tab:7)
-    sleep(50ms)
-    key(backspace)
-    insert("work")
-    key(enter)
-    sleep(50ms)
-    key(tab)
-    sleep(50ms)
-    key(enter)
+    key(tab:9)
+    insert("Planned\n")
 
 sprint work:
     insert("Sprint Work")
-    key(tab:7)
-    sleep(50ms)
-    key(backspace)
-    insert("work")
-    key(enter)
-    sleep(50ms)
+    key(tab:9)
+    insert("Planned\n")
     key(tab)
-    sleep(50ms)
-    key(enter)
+    insert("Sitting\n")
 
 tomorrow midnight:
     mouse_click(0)

@@ -15,5 +15,10 @@ insert click at mouse <number>:
     insert("user.mouse_move({position})\n")
     insert("mouse_click()")
 
-#set <number>: user.set_data("store {number}", value)
-# restore <number
+store <number>: 
+    edit.copy()
+    user.set_data_from_clipboard("clip {number}")
+
+retrieve <number>:
+    value = user.get_data("clip {number}")
+    user.paste("{value}")

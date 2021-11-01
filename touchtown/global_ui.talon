@@ -192,3 +192,9 @@ on:
     sleep(500ms)
     key(tab)
     sleep(500ms)
+
+paste down:
+    sleep(200ms)
+    edit.paste()
+    sleep(100ms)
+    key(down)

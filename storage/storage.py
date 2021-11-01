@@ -52,7 +52,7 @@ class Actions:
         return value
 
     def store_get_mouse_position(key: str):
-        """Gets the mouse position coordinates from storage and throws them on the clipboard"""
+        """Gets the mouse position coordinates from storage"""
         value = storage.get(key)
         return value
 
@@ -72,10 +72,16 @@ class Actions:
         """Gets the current mouse position y coordinate from storage"""
         return storage.get(f"{key}_y")
 
-    def get_data_value(key: str):
+    def get_data(key: str):
         """Gets the data value from storage, given the key"""
         return storage.get(key)
 
     def set_data(key: str, value: str):
         """Sets the key value pair in storage"""
         storage.set(key, value)
+
+    def set_data_from_clipboard(key: str):
+        """Sets the key value pair in storage"""
+        value = clip.get()
+        storage.set(key, value)
+        return value

@@ -11,6 +11,12 @@ class Actions:
         actions.sleep("1000ms")
         Actions.complete_this_open_event()
 
+    def complete_this_event_under_cursor():
+        """complete this calendar event under the mouse cursor"""
+        Actions.edit_event_under_cursor()
+        actions.sleep("1000ms")
+        Actions.complete_this_open_event()
+
     def complete_this_open_event():
         """mark this calendar event as completed"""
         set_event_color_graphite()
@@ -33,6 +39,10 @@ class Actions:
         actions.insert(navigation)
         event_edit_button()
 
+    def delete_event_by_vimium(navigation:str):
+        """delete this calendar event by sending the navigation string first"""
+        actions.insert(navigation)
+        event_delete_single()
 
 def set_event_color_graphite():
     if (not actions.user.screen_contains_image("gcal-calendar-icon")):
@@ -45,11 +55,10 @@ def set_event_color_graphite():
     actions.key("down")
     actions.sleep("500ms")
     actions.key("up")
-    actions.sleep("30ms")
+    actions.sleep("50ms")
     actions.key("left")
-    actions.sleep("30ms")
+    actions.sleep("100ms")
     actions.key("enter")
-    actions.sleep("30ms")
     actions.sleep("500ms")
 
 def event_edit_button():
@@ -63,3 +72,13 @@ def event_duplicate_button():
     actions.key("tab:3")
     actions.sleep("500ms")
     actions.key("down:2 enter")
+
+def event_delete_single():
+    actions.sleep("1000ms")
+    actions.key("tab:2")
+    actions.sleep("500ms")
+    actions.key("enter")
+
+    # single
+    actions.sleep("1000ms")
+    actions.key("enter")
