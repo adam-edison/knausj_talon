@@ -9,6 +9,7 @@ app run care: "./gradlew clean && sleep 2 && AWS_REGION=us-east-1 AWS_PROFILE=de
 app debug care: "./gradlew clean && sleep 2 && AWS_REGION=us-east-1 AWS_PROFILE=dev ./gradlew appRunDebug > startup.log\n"
 app test unit: "./gradlew clean && ./gradlew test -PexcludeIntegrationTests\n"
 app test all: "./gradlew clean && ./gradlew test\n"
+app test integration: "./gradlew clean && ./gradlew test --tests integration.*\n"
 app war: 
     user.paste("./gradlew clean && sleep 2 && ./gradlew war -PgenerateLicenseAttribution=true && \\\n")
     user.paste("sleep 2 && git checkout src/main/webapp/WEB-INF/inc/tv/credits_attribution.inc && \\\n")

@@ -204,10 +204,14 @@ sprint work standing:
 
 sprint work:
     insert("Sprint Work")
-    key(tab:9)
+    key(tab:7)
+    key(backspace:3)
+    insert("Job\n")
+    key(tab:2)
     insert("Planned\n")
     key(tab)
     insert("Sitting\n")
+    key(tab enter)
 
 tomorrow midnight:
     mouse_click(0)

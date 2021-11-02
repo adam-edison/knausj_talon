@@ -6,7 +6,7 @@ flash: user.temporarily_toggle_control_mouse(1200)
 (run calibration|calibration): user.mouse_calibrate()
 
 # parrot(tut): mouse_click()
-# parrot(cluck): mouse_click()
+parrot(cluck): mouse_click()
 
 touching:
     mouse_click(0)
