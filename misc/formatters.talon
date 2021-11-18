@@ -59,7 +59,7 @@ constant <user.text>:
 ^<number> by <number>$:
   insert("{number_1} x {number_2}")
 
-wave:
+waver:
   insert(", ")
 
 period:

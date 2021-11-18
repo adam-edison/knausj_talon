@@ -146,3 +146,7 @@ class EditActions:
         actions.key('cmd--')
     def zoom_reset():
         actions.key('cmd-0')
+
+
+
+# TODO: AGE: "Copy to <app>" - copy, focus app, paste

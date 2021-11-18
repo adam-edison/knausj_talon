@@ -29,15 +29,15 @@ complete single:
     sleep(1000ms)
     
     # change calendar to completed
-    key(tab:7)
+    key(tab:9)
     sleep(100ms)
-    key(backspace:2)
-    insert("completed")
+    key(backspace)
+    insert("complete")
     key(enter)
 
     # save
     sleep(500ms)
-    key(tab)
+    key(shift-tab)
     key(enter)
 
     # choose single when window comes up
@@ -63,99 +63,79 @@ make this work:
 
 complete <user.letter>:
     insert("{letter_1}")
-    sleep(1500ms)
+    sleep(2000ms)
 
-    # change calendar to completed
-    key(tab:7)
+    # change status field to completed
+    key(tab:9)
     sleep(100ms)
-    key(backspace:2)
-    insert("completed")
+    key(backspace)
+    insert("complete")
     key(enter)
 
     # save
     sleep(500ms)
-    key(tab)
+    key(shift-tab)
     key(enter)
-
-    # hide completed calendar
-    sleep(2000ms)
-    user.mouse_move(72, 477)
-    mouse_click()
 
 complete <user.letter> <user.letter>:
     insert("{letter_1}{letter_2}")
     sleep(1500ms)
 
-    # change calendar to completed
-    key(tab:7)
+    # change status field to completed
+    key(tab:9)
     sleep(100ms)
-    key(backspace:2)
-    insert("completed")
+    key(backspace)
+    insert("complete")
     key(enter)
 
     # save
     sleep(500ms)
-    key(tab)
+    key(shift-tab)
     key(enter)
 
-    # hide completed calendar
+delete <user.letter>:
+    insert("{letter_1}")
     sleep(2000ms)
-    user.mouse_move(72, 477)
-    mouse_click()
-
-
-complete this:
-    # change calendar to completed
-    key(tab:7)
-    sleep(100ms)
-    key(backspace:2)
-    insert("completed")
-    key(enter)
-
-    # save
-    sleep(500ms)
-    key(tab)
-    key(enter)
-
-    # hide completed calendar
-    sleep(2000ms)
-    user.mouse_move(72, 477)
-    mouse_click()
-
-completer:
-    # rewrite in python so we can detect "Single" window
-    # click the mouse to select the event and bring up details
-    mouse_click()
-    user.store_set_mouse_position("talon trigger completer")
-    sleep(1000ms)
-    
-    # change calendar to completed
-    key(tab:7)
-    sleep(100ms)
-    key(backspace:2)
-    insert("completed")
-    key(enter)
-
-    # save
-    sleep(500ms)
-    key(tab)
-    key(enter)
-
-    # hide completed calendar
-    sleep(1500ms)
-    user.mouse_move(72, 477)
-    mouse_click()
-
-    # move mouse back to where it was
-    position = user.store_get_mouse_position("talon trigger completer")
-    user.mouse_move_position(position)
-
-
-delete here [single]:
-    mouse_click()
-    sleep(500ms)
     user.hover_center_image("teamup-delete-button")
     mouse_click()
+
+delete <user.letter> <user.letter>:
+    insert("{letter_1}{letter_2}")
+    sleep(1500ms)
+    user.hover_center_image("teamup-delete-button")
+    mouse_click()
+
+edit <user.letter> <user.letter> position <user.text>:
+    insert("{letter_1}{letter_2}")
+    sleep(1500ms)
+
+    # change position field
+    key(tab:10)
+    sleep(100ms)
+    key(backspace)
+    insert("{text}")
+    key(enter)
+
+    # save
+    sleep(500ms)
+    key(shift-tab:2)
+    key(enter)
+
+edit <user.letter> position <user.text>:
+    insert("{letter}")
+    sleep(1500ms)
+
+    # change position field
+    key(tab:10)
+    sleep(100ms)
+    key(backspace)
+    insert("{text}")
+    key(enter)
+
+    # save
+    sleep(500ms)
+    key(shift-tab:2)
+    key(enter)
 
 
 future:
@@ -209,6 +189,24 @@ sprint work:
     insert("Job\n")
     key(tab:2)
     insert("Planned\n")
+    key(shift-tab enter)
+
+flashtract work:
+    insert("Flashtract Work")
+    key(tab:7)
+    key(backspace:3)
+    insert("Professional\n")
+    key(tab:2)
+    insert("Planned\n")
+    key(shift-tab enter)
+
+key(cmd-\):
+    insert("Sprint Work")
+    key(tab:7)
+    key(backspace:3)
+    insert("Job\n")
+    key(tab:2)
+    insert("Planned\n")
     key(tab)
     insert("Sitting\n")
     key(tab enter)
@@ -230,15 +228,12 @@ tomorrow midnight:
     key(tab)
 
     # save
-    sleep(200ms)
-    key(tab:5)
-    sleep(50ms)
+    user.tab_after_element("Save")
     key(enter)
     
 single:
     user.hover_center_image("teamup-single")
     mouse_click()
-
 
 earlier <number> [minutes]:
     user.mouse_down(0)

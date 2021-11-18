@@ -1,5 +1,7 @@
 win.title: /(JIRA)|(Task Assignment)/
 -
+settings():
+    key_wait = 2.6
 
 zero time:
     key(tab)
@@ -27,7 +29,9 @@ description:
 mark complete:
     key(home)
     sleep(200ms)
-    insert(":white_check_:")
+    insert(":")
+    sleep(200ms)
+    insert("white_check")
     sleep(100ms)
     key(enter)
 
@@ -57,8 +61,11 @@ mark space:
 mark (in progress|working):
     key(home)
     sleep(200ms)
-    insert(":construction:")
+    insert(":")
+    sleep(200ms)
+    insert("construction")
     sleep(100ms)
+    key(enter)
 
 # make these assign to <list> and insert list item
 
@@ -153,7 +160,7 @@ subtask double:
     sleep(1000ms)
     insert("Code Reviewer #2\n")
     sleep(1000ms)
-    insert("PR Feedback\n"
+    insert("PR Feedback\n")
     sleep(1000ms)
 
 create subtask:
@@ -178,3 +185,8 @@ tasks section:
     insert("Tasks\n")
     sleep(20ms)
     insert("* ")
+
+paste comment:
+    insert("m")
+    sleep(1000ms)
+    edit.paste()
