@@ -5,11 +5,31 @@ settings():
     key_wait = 2
 
 # TODO: AGE: move these things to python code so they can be reused
-# TODO: AGE: start here now: """set start time to now for the calendar event currently under the mouse pointer"""
 
 # TODO: AGE: create a key command in python that sends the key and sleeps a configurable number of milliseconds changeable in storage 
 # (retrieved from storage API, inserts default value if not present)
 
+# TODO: AGE: start in <number> [minutes] -- using vimium
+
+# TODO: AGE: start making multi-prompt commands (setters, actions) - e.g. create new event
+
+# class Dog:
+
+#     kind = 'canine'         # class variable shared by all instances
+
+#     def __init__(self, name):
+#         self.name = name    # instance variable unique to each instance
+
+# >>> d = Dog('Fido')
+# >>> e = Dog('Buddy')
+# >>> d.kind                  # shared by all dogs
+# 'canine'
+# >>> e.kind                  # shared by all dogs
+# 'canine'
+# >>> d.name                  # unique to d
+# 'Fido'
+# >>> e.name                  # unique to e
+# 'Buddy'
 
 hide completed:
     # hide completed, because it toggles on...
@@ -177,19 +197,16 @@ mark clear:
     key(delete:2)
 
 
-sprint work standing:
-    insert("Sprint Work - Standing")
-    key(tab:9)
-    insert("Planned\n")
-
-sprint work:
+sprint work [sitting]:
     insert("Sprint Work")
     key(tab:7)
     key(backspace:3)
     insert("Job\n")
     key(tab:2)
     insert("Planned\n")
-    key(shift-tab enter)
+    key(tab)
+    insert("sitting\n")
+    key(shift-tab:2 enter)
 
 flashtract work:
     insert("Flashtract Work")

@@ -69,21 +69,21 @@ mark (in progress|working):
 
 # make these assign to <list> and insert list item
 
-assign myself:
+assign to me:
     key(a)
     sleep(200ms)
     insert("adam e")
     sleep(1000ms)
     key(enter)
 
-assign none:
+assign to none:
     key(a)
     sleep(200ms)
     insert("Unassigned")
     sleep(1500ms)
     key(enter)
 
-assign golden:
+assign to golden:
     key(a)
     sleep(200ms)
     insert("golden")
@@ -95,42 +95,42 @@ bdd tests:
     insert("BDD Tests")
     key(enter)
 
-assign (theis|tice):
+assign (to theis|tice):
     key(a)
     sleep(200ms)
     insert("theis")
     sleep(1000ms)
     key(enter)
 
-assign kercher:
+assign to kercher:
     key(a)
     sleep(200ms)
     insert("kercher")
     sleep(1000ms)
     key(enter)
 
-assign drake:
+assign to drake:
     key(a)
     sleep(200ms)
     insert("drake")
     sleep(1000ms)
     key(enter)
 
-assign alex:
+assign to alex:
     key(a)
     sleep(200ms)
     insert("alex")
     sleep(1000ms)
     key(enter)
 
-assign nicole:
+assign to nicole:
     key(a)
     sleep(200ms)
     insert("nicole")
     sleep(1000ms)
     key(enter)
 
-assign stuck:
+assign to lindsey:
     key(a)
     sleep(200ms)
     insert("stuck")
