@@ -1,6 +1,3 @@
-os: mac
-mode: all
--
 key(keypad_minus):
     speech.set_microphone("None")
     speech.disable()

@@ -217,7 +217,7 @@ flashtract work:
     insert("Planned\n")
     key(shift-tab enter)
 
-key(cmd-\):
+key(ctrl-\):
     insert("Sprint Work")
     key(tab:7)
     key(backspace:3)

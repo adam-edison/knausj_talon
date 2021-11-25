@@ -16,11 +16,11 @@ block fifteen:
 block twenty:
     key(ctrl-cmd-alt-4)
 
+block twenty five:
+    key(ctrl-alt-p)
+
 block thirty:
     key(ctrl-cmd-alt-5)
 
 block sixty:
     key(ctrl-cmd-alt-6)
-
-block twenty five:
-    key(ctrl-alt-p)

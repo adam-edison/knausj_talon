@@ -186,10 +186,15 @@ class EditActions:
     def extend_file_start():      actions.user.idea('action EditorTextStartWithSelection')
     def extend_file_end():        actions.user.idea('action EditorTextEndWithSelection')
     def jump_line(n: int):
-        actions.user.idea("goto {} 0".format(n))
+        actions.key('cmd-l')
+        actions.sleep('300ms')
+        actions.insert(n)
+        actions.sleep('200ms')
+        actions.key('enter')
         # move the cursor to the first nonwhite space character of the line
-        actions.user.idea("action EditorLineEnd")
-        actions.user.idea("action EditorLineStart")
+        actions.key('end')
+        actions.sleep('100ms')
+        actions.key('home')
 
     def save():
         # becomes save and optimize imports
@@ -215,13 +220,13 @@ class WinActions:
         return ""
 
 
-@ctx.action_class("edit")
-class edit_actions:
-    def jump_line(n: int):
-        actions.user.idea("goto {} 0".format(n))
-        # move the cursor to the first nonwhite space character of the line
-        actions.user.idea("action EditorLineEnd")
-        actions.user.idea("action EditorLineStart")
+# @ctx.action_class("edit")
+# class edit_actions:
+#     def jump_line(n: int):
+#         actions.user.idea("goto {} 0".format(n))
+#         # move the cursor to the first nonwhite space character of the line
+#         actions.user.idea("action EditorLineEnd")
+#         actions.user.idea("action EditorLineStart")
 
 
 @ctx.action_class("user")

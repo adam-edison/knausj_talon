@@ -53,6 +53,17 @@ tag: terminal
     insert(": \"")
     key(left)
 
+[git] commit message plain:
+    user.paste("git commit -m \"\"")
+    key(left)
+
+[git] commit all plain:
+    user.paste("git add -A")
+    key(enter)
+    sleep(500ms)
+    user.paste("git commit -m \"\"")
+    key(left)
+
 [git] commit all:
     user.paste("git add -A\n")
     insert("git branch | grep '*' | awk '{{print $2}}' | cut -d '-' -f 1-2 | tr -d '\\n' | pbcopy")

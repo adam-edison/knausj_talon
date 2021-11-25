@@ -384,13 +384,14 @@ expand:
     sleep(50ms)
     key(down)
     
-test file:
+run test file:
     edit.save()
     edit.jump_line(1)
     sleep(100ms)
     edit.line_start()
-    key("ctrl-shift-r")
-    sleep(100ms)
+    key(ctrl-shift-r)
+    sleep(1000ms)
+    key(cmd-+)
     
 mocha file:
     user.idea("action ReformatCode")

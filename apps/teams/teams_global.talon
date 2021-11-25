@@ -1,4 +1,5 @@
 mode: all
+os: mac
 -
 
 key(cmd-keypad_enter):

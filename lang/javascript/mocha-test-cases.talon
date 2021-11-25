@@ -1,4 +1,4 @@
-win.title: /.test.js/
+win.title: /(.test.js)|(.spec.ts)/
 _
 new test class <user.text>:
     className = user.formatted_text(text, "PUBLIC_CAMEL_CASE")
@@ -23,14 +23,14 @@ expect sink <user.text>:
         expect(actual).to.equal(4);
     }});""")
 
-async test it <user.text>:
+async test <user.text>:
     user.paste("""
-    it('{text}', async function () {{
+    it('{text}', async () => {{
         const actual = await calculate();
         expect(actual).to.equal(4);
     }});""")
 
-^test it <user.text>$:
+^test <user.text>$:
     user.paste("""
     it('{text}', function () {{
         // do something
@@ -63,7 +63,7 @@ after each:
 
 describe when <user.text>:
     user.paste("""
-    describe('when {text}', function () {{
+    describe('when {text}', () => {{
     \t
     }});""")
     key(home)
