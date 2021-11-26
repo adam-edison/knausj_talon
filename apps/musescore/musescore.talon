@@ -33,3 +33,6 @@ dotted {user.musical_duration} rest:
     user.change_rhythm(user.musical_duration)
     user.toggle_dotted()
     user.insert_rest()
+
+tie:
+    key(shift-=)

@@ -530,7 +530,14 @@ extract method:
     
 perfect:
     key(ctrl-shift-alt-s)
-    
+
+open <user.text>:
+    key(cmd-p)
+    sleep(500ms)
+    insert(text)
+    sleep(500ms)
+    key(enter)
+
 open only <user.text>:
     key(cmd-p)
     sleep(500ms)
