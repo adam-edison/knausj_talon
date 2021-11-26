@@ -17,16 +17,6 @@ ctx_default.lists["user.musical_duration"] = {
     "thirty second": "2",
 }
 
-ctx_default.lists["user.musical_letter"] = {
-    "a": "a",
-    "b": "b",
-    "c": "c",
-    "d": "d",
-    "e": "e",
-    "f": "f",
-    "g": "g",
-}
-
 ctx_default.lists["user.musical_interval"] = {
     "second": "second",
     "third": "third",
@@ -62,10 +52,20 @@ class Actions:
     def insert_rest():
         """insert a rest"""
         actions.key("0")
+    
+    def insert_note(letter: str):
+        """insert a note"""
+        actions.insert(f"${letter}")
 
     def toggle_dotted():
         """toggle dot duration"""
         actions.key(".")
+
+    def insert_single_note_rhythm(duration: str):
+        """insert the rhythm on A"""
+        Actions.change_rhythm(duration)
+        Actions.insert_note("a")
+
 
 # Add some MuseScore Talon voice commands for rhythm entry to be easier
 

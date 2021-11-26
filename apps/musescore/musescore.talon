@@ -16,8 +16,12 @@ settings():
 
 # Try to work on score with these shortcuts
 
-{user.musical_duration}:
+(rhythm | hit) {user.musical_duration}+:
+    user.insert_single_note_rhythm(user.musical_duration)
+
+{user.musical_duration} {user.letter}:
     user.change_rhythm(user.musical_duration)
+    user.insert_note(user.letter)
 
 rest:
     user.insert_rest()
