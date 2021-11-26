@@ -2,7 +2,7 @@ win.title: /\| Teamup/
 -
 
 settings():
-    key_wait = 2
+    key_wait = 2.4
 
 # TODO: AGE: move these things to python code so they can be reused
 
@@ -99,7 +99,7 @@ complete <user.letter>:
 
 complete <user.letter> <user.letter>:
     insert("{letter_1}{letter_2}")
-    sleep(1500ms)
+    sleep(2000ms)
 
     # change status field to completed
     key(tab:9)

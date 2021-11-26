@@ -54,7 +54,7 @@ go (implementation | body): user.idea("action GotoImplementation")
 go usage: user.idea("action FindUsages")
 go type: user.idea("action GotoTypeDeclaration")
 go test: user.idea("action GotoTest")
-(retreat|go back): user.idea("action Back")
+(retreat|go back): key(cmd-alt-left)
 go forward: user.idea("action Forward")
 # Search
 # find (everywhere | all): user.idea("action SearchEverywhere")
