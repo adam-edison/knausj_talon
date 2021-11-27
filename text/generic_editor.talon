@@ -1,3 +1,6 @@
+mac: os
+-
+
 finder:
     edit.find()
 

@@ -1,4 +1,5 @@
 mode: command
+os: mac
 -
 focus {user.quick_tabs_keywords}: 
     user.switcher_focus("chrome")

@@ -1,16 +1,15 @@
-# os: windows
-# mode: all
-# -
-# key(ctrl-alt-1):
-#     speech.set_microphone("None")
-#     speech.disable()
-#     user.mouse_sleep()
+os: windows
+mode: all
+-
+key(shift-ctrl-f1):
+    app.notify("hello")
+    # speech.set_microphone("None")
+    # speech.disable()
+    # user.mouse_sleep()
+    # mode.disable("face")
 
-# key(ctrl-alt-2):
-#     speech.set_microphone("MPOW Wireless Gaming Headset")
-#     speech.enable()
-
-# key(ctrl-alt-3):
+# key(f2):
 #     speech.set_microphone("CORSAIR HS60 HAPTIC Gaming Headset")
 #     speech.enable()
-# # *****
+
+# *****

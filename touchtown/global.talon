@@ -1,4 +1,5 @@
-
+os: mac
+-
 web app: "webapp"
 web app repo: "tt-webapp"
 # how to hit numpad

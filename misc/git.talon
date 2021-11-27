@@ -49,7 +49,7 @@ tag: terminal
     key(enter)
     insert("git commit -m \"")
     sleep(500ms)
-    key(cmd-v)
+    edit.paste()
     insert(": \"")
     key(left)
 
@@ -70,7 +70,7 @@ tag: terminal
     key(enter)
     sleep(500ms)
     insert("git commit -m \"")
-    key(cmd-v)
+    edit.paste()
     insert(": \"")
     key(left)
 
@@ -111,7 +111,7 @@ tag: terminal
 [git] rebase: "git rebase\n"
 [git] rebase clip: 
     insert("git rebase -i ")
-    key(cmd-v)
+    edit.paste()
     key(enter)
 [git] rebase continue: "git rebase --continue\n"
 [git] rebase skip: "git rebase --skip"

@@ -1,3 +1,6 @@
+os: mac
+-
+
 # for items in a list in context menu or dropdown
 # item 1 --> just say enter, otherwise it's the item as pictured
 # TODO: AGE: override this command in azure for context menus

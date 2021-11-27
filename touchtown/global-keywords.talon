@@ -1,3 +1,6 @@
+os: mac
+-
+
 # TODO: AGE split out into javascript, java, markdown language files which should already exist
 (boolean | boullion): "boolean"
 constant: "const "
