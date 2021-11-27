@@ -16,7 +16,7 @@ settings():
 
 # Try to work on score with these shortcuts
 
-(rhythm | hit) {user.musical_duration}+:
+(rhythm | hit) {user.musical_duration}:
     user.insert_single_note_rhythm(user.musical_duration)
 
 {user.musical_duration} {user.letter}:
@@ -34,5 +34,6 @@ dotted {user.musical_duration} rest:
     user.toggle_dotted()
     user.insert_rest()
 
-tie:
+tie that:
+    key(left)
     key(shift-=)

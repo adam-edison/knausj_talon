@@ -215,7 +215,9 @@ flashtract work:
     insert("Professional\n")
     key(tab:2)
     insert("Planned\n")
-    key(shift-tab enter)
+    key(tab)
+    insert("sitting\n")
+    key(shift-tab:2 enter)
 
 key(ctrl-\):
     insert("Sprint Work")
@@ -252,6 +254,14 @@ single:
     user.hover_center_image("teamup-single")
     mouse_click()
 
+longer <number> [minutes]:
+    user.mouse_down(0)
+    sleep(200ms)
+    adjustment = 3 * number
+    user.mouse_move_relative(0, adjustment)
+    sleep(200ms)
+    user.mouse_up(0)
+
 earlier <number> [minutes]:
     user.mouse_down(0)
     sleep(500ms)
@@ -277,7 +287,7 @@ later <number> (hour|hours):
     user.mouse_up(0)
 
 stop now:
-    now = user.time_now_12h(5)
+    now = user.time_12h(5)
     today = user.date_slash_format()
 
     mouse_click(0)
@@ -302,7 +312,7 @@ stop now:
     key(enter)
 
 start now:
-    now = user.time_now_12h(5)
+    now = user.time_12h(5)
     today = user.date_slash_format()
 
     mouse_click(0)
@@ -325,6 +335,33 @@ start now:
     key(tab:5)
     sleep(50ms)
     key(enter)
+
+start plus <number> [minutes]:
+    print("starting plus number")
+    now = user.time_12h(5, number)
+    today = user.date_slash_format()
+
+    mouse_click(0)
+    sleep(1000ms)
+
+    # today
+    key(tab)
+    sleep(50ms)
+    insert(today)
+
+    # now
+    key(tab)
+    sleep(50ms)
+    insert(now)
+    sleep(50ms)
+    key(tab)
+
+    # save
+    sleep(200ms)
+    key(tab:5)
+    sleep(50ms)
+    key(enter)
+
 
 start oh <number>:
     today = user.date_slash_format()

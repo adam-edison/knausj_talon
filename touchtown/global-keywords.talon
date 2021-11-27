@@ -244,13 +244,13 @@ object dot:
     user.paste("object.")
 
 
-to do:
-    insert("TODO: ")
-    key(cmd-/)
-
 to do age [<user.text>]:
     content = text or ""
     insert("// TODO: AGE: {content}")
+
+to do [<user.text>]:
+    content = text or ""
+    insert("// TODO: {content}")
 
 assign this:
     insert("this.")

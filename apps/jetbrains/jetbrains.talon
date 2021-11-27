@@ -408,7 +408,7 @@ mocha file:
     
 (rerun|run again):
     key(cmd-4)
-    sleep(200ms)
+    sleep(500ms)
     key(cmd-r)
     
 focus run <number>:

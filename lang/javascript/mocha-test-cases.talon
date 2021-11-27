@@ -70,6 +70,15 @@ describe when <user.text>:
     key(up)
     key(end)
 
+describe <user.text>:
+    user.paste("""
+    describe('{text}', () => {{
+    \t
+    }});""")
+    key(home)
+    key(up)
+    key(end)
+
 surround describe block:
     edit.cut()
     sleep(100ms)    

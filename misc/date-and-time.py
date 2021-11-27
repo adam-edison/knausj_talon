@@ -30,9 +30,9 @@ class Actions:
         result = endDate.strftime("%b %d, %Y")
         return result
 
-    def time_now_12h(roundNearestMinutes:int=1):
+    def time_12h(roundNearestMinutes:int=1, offsetMinutes:int=0):
         """Returns the date (today + offset) in MMM DD, YYYY"""
         now = datetime.now()
         rounded = now + (datetime.min - now) % timedelta(minutes=roundNearestMinutes)
-        result = rounded.strftime("%H:%M %p")
-        return result
+        result = rounded + + timedelta(minutes=offsetMinutes)
+        return result.strftime("%H:%M %p")
