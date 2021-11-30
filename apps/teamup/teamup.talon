@@ -31,6 +31,11 @@ settings():
 # >>> e.name                  # unique to e
 # 'Buddy'
 
+
+# Can make a multi drag and drop by:
+# "add to group" (takes x,y coords of mouse)
+# "group later <> [minutes]" - will loop through and drag them all, and remove them from the group
+
 hide completed:
     # hide completed, because it toggles on...
     user.mouse_move(115, 480)
@@ -208,7 +213,7 @@ sprint work [sitting]:
     insert("sitting\n")
     key(shift-tab:2 enter)
 
-flashtract work:
+flashtract work [sitting]:
     insert("Flashtract Work")
     key(tab:7)
     key(backspace:3)

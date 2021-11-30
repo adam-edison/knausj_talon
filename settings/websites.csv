@@ -1,0 +1,34 @@
+URL, Spoken name
+https://www.amazon.com/, amazon
+https://dropbox.com/, dropbox
+https://www.google.com/, google
+https://calendar.google.com, google calendar
+https://maps.google.com/, google maps
+https://scholar.google.com/, google scholar
+https://mail.google.com/, gmail
+https://github.com/, github
+https://gist.github.com/, gist
+https://en.wikipedia.org/, wikipedia
+https://www.youtube.com/, youtube
+
+
+
+https://calendar.google.com/calendar/u/0/r/week?tab=mc, calendar
+https://touchtown.atlassian.net/issues/?filter=12094, my subtasks
+https://docs.google.com/spreadsheets/d/1ci-nY3Nq4WfZUEFsxJjND8lee7vnqf15lKNuWrvcAhE/edit?usp=sharing, finances
+https://touchtown.atlassian.net/jira/software/c/projects/TTDEV/boards/51/backlog?epics=visible&issueLimit=100&selectedEpic=TTDEV-542, dev priorities
+https://touchtown.atlassian.net/jira/software/c/projects/TTDEV/boards/51?assignee=5d52cc4c9ca6120db899542d, sprint board
+https://touchtown.atlassian.net/secure/RapidBoard.jspa?rapidView=51&view=planning.nodetail&selectedIssue=TTDEV-362&epics=visible&issueLimit=100&selectedEpic=TTDEV-93, backlog
+https://drive.google.com/drive/my-drive, drive
+https://docs.google.com/spreadsheets/d/1BglPUb7S8WByykr6Q6inHy9Af6U5Tl8uTqaAdooSbD0/edit#gid=0, sleep log
+
+
+https://bitbucket.org/dashboard/overview, bit bucket
+https://touchtown.atlassian.net/wiki/home, confluence
+https://teamup.com/c/zxmaf9/personal, teamup
+https://touchtown.atlassian.net/secure/ConfigureReport.jspa?developer=5d52cc4c9ca6120db899542d&subtaskInclusion=onlyAssigned&selectedProjectId=10230&reportKey=com.atlassian.jira.plugin.system.reports%3Adeveloper-workload&Next=Next, work load
+https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/$252Faws$252Flambda$252Fpcc-webhook-processor-dev, care dev processor logs
+https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/$252Faws$252Flambda$252Fpcc-webhook-authorizer-dev, care dev authorizer logs
+https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/$252Faws$252Flambda$252Fpcc-webhook-processor-qa, care qa processor logs
+https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/$252Faws$252Flambda$252Fpcc-webhook-authorizer-qa, care qa authorizer logs
+https://login.pointclickcare.com/home/userLogin.xhtml, care sandbox

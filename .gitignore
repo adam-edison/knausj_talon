@@ -1,5 +1,4 @@
 # Dev stuff
 __pycache__
 *.sw?
-# Locally generated
-/settings
+

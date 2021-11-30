@@ -160,11 +160,12 @@ task here:
     sleep(20ms)
     insert("* [ ] ")
 
-next task:
+next task [<user.text>]:
+    result = text or ''
     key(end)
     sleep(100ms)
     key(enter)
-    insert("* [ ] ")
+    insert("* [ ] ${result}")
 
 child task:
     key(end)
