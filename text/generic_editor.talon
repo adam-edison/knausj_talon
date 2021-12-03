@@ -1,4 +1,4 @@
-mac: os
+os: mac
 -
 
 finder:
@@ -239,3 +239,10 @@ italic: key("cmd-i")
 
 # tiny enter
 squeeze: key(shift-enter)
+
+paste right:
+    key(shift-end)
+    sleep(100ms)
+    key(delete)
+    sleep(100ms)
+    edit.paste()

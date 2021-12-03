@@ -21,8 +21,6 @@ app config apply: "git stash apply stash@{{0}}\n"
 care install:
     user.paste("cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk && \\\n")
     user.paste("rm package-lock.json; rm -rf node_modules; npm install &&\\\n")
-    user.paste("cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk/lambdas/shared/nodejs && \\\n")
-    user.paste("rm package-lock.json; rm -rf node_modules; npm install &&\\\n")
     user.paste("cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk/lambdas/pcc_basic_auth_authorizer && \\\n")
     user.paste("rm package-lock.json; rm -rf node_modules; npm install &&\\\n")
     user.paste("cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk/lambdas/pcc_webhook && \\\n")
@@ -31,8 +29,6 @@ care install:
 
 care deploy dev: 
     user.paste("cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk && \\\n")
-    user.paste("rm package-lock.json; rm -rf node_modules; npm install &&\\\n")
-    user.paste("cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk/lambdas/shared/nodejs && \\\n")
     user.paste("rm package-lock.json; rm -rf node_modules; npm install &&\\\n")
     user.paste("cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk/lambdas/pcc_basic_auth_authorizer && \\\n")
     user.paste("rm package-lock.json; rm -rf node_modules; npm install &&\\\n")
@@ -85,8 +81,6 @@ care test all:
     user.paste("cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk && \\\n")
     user.paste("npm run lint -- --fix && \\\n")
     user.paste("npm run test && \\\n")
-    user.paste("cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk/lambdas/shared/nodejs && \\\n")
-    user.paste("npm run test-coverage && \\\n")
     user.paste("cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk/lambdas/pcc_basic_auth_authorizer && \\\n")
     user.paste("npm run test-coverage && \\\n")
     user.paste("cd ~/files-shared/projects/tt-aws_configuration_pointclickcare/cdk/lambdas/pcc_webhook && \\\n")
@@ -124,3 +118,6 @@ rebase onto care:
 
 app debug profile:
     insert("./gradlew appRunDebug -PawsProfileName=YOUR_PROFILE")
+
+build cdk:
+    insert("npx cdk synth WorkOrderServiceStack-local\n")

@@ -38,7 +38,9 @@ mark complete:
 mark skipped:
     key(home)
     sleep(200ms)
-    insert(":fast_for:")
+    insert(":")
+    sleep(200ms)
+    insert(":fast_for")
     sleep(100ms)
     key(enter)
 
