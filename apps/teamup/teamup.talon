@@ -201,6 +201,15 @@ mark clear:
     sleep(200ms)
     key(delete:2)
 
+talon work:
+    insert("Talon Work")
+    key(tab:7)
+    key(backspace:3)
+    insert("Talon\n")
+    key(tab:2)
+    insert("Planned\n")
+    key(shift-tab enter)
+
 
 sprint work [sitting]:
     insert("Sprint Work")
@@ -209,9 +218,7 @@ sprint work [sitting]:
     insert("Job\n")
     key(tab:2)
     insert("Planned\n")
-    key(tab)
-    insert("sitting\n")
-    key(shift-tab:2 enter)
+    key(shift-tab enter)
 
 flashtract work [sitting]:
     insert("Flashtract Work")

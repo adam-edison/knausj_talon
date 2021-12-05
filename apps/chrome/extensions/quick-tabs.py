@@ -13,5 +13,6 @@ ctx.lists['self.quick_tabs_keywords'] = {
     "jira": "- Jira",
     "bit bucket": "- Bitbucket",
     "drive": "Google Drive",
-    "lucid chart": "lucid"
+    "lucid chart": "lucid",
+    "schedule": "Teamup"
 }

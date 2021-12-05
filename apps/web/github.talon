@@ -1,6 +1,5 @@
 # https://help.github.com/en/github/getting-started-with-github/keyboard-shortcuts
-tag: browser
-win.title: /github.com/
+win.title: /github/
 -
 
 # site wide shortcuts
@@ -55,3 +54,8 @@ mute thread: key(shift-m)
 
 # pull request list
 open issue: key(o)
+
+mark complete:
+    key(end)
+    sleep(100ms)
+    user.paste("  ✅")
