@@ -2,7 +2,8 @@ win.title: /\| Teamup/
 -
 
 settings():
-    key_wait = 2.4
+    key_wait = 10
+    insert_wait = 10
 
 # TODO: AGE: move these things to python code so they can be reused
 
@@ -33,7 +34,7 @@ settings():
 
 
 # Can make a multi drag and drop by:
-# "add to group" (takes x,y coords of mouse)
+# "group mark" (takes x,y coords of mouse)
 # "group later <> [minutes]" - will loop through and drag them all, and remove them from the group
 
 hide completed:
@@ -84,7 +85,7 @@ make this work:
     key(enter)
 
 
-# // TODO: AGE: revamp to use vim um, like complete AL, or start now AL (after having said nav to see the links)
+# // TODO: AGE: revamp to use vimium, like complete AL, or start now AL (after having said nav to see the links)
 
 complete <user.letter>:
     insert("{letter_1}")
@@ -162,11 +163,6 @@ edit <user.letter> position <user.text>:
     key(shift-tab:2)
     key(enter)
 
-
-future:
-    user.hover_center_image("teamup-future-events")
-    mouse_click()
-
 save this:
     user.hover_center_image("teamup-save-button")
     mouse_click()
@@ -211,38 +207,11 @@ talon work:
     key(shift-tab enter)
 
 
-sprint work [sitting]:
-    insert("Sprint Work")
-    key(tab:7)
-    key(backspace:3)
-    insert("Job\n")
-    key(tab:2)
-    insert("Planned\n")
-    key(shift-tab enter)
+sprint work [{user.teamup_position}]:
+    position = teamup_position or "sitting"
+    user.teamup_event_sprint_work(position)
 
-flashtract work [sitting]:
-    insert("Flashtract Work")
-    key(tab:7)
-    key(backspace:3)
-    insert("Professional\n")
-    key(tab:2)
-    insert("Planned\n")
-    key(tab)
-    insert("sitting\n")
-    key(shift-tab:2 enter)
-
-key(ctrl-\):
-    insert("Sprint Work")
-    key(tab:7)
-    key(backspace:3)
-    insert("Job\n")
-    key(tab:2)
-    insert("Planned\n")
-    key(tab)
-    insert("Sitting\n")
-    key(tab enter)
-
-tomorrow midnight:
+tomorrow [<number>]$:
     mouse_click(0)
     sleep(1000ms)
 
@@ -251,20 +220,16 @@ tomorrow midnight:
     sleep(50ms)
     insert(user.date_slash_format(1))
 
-    # midnight
+    # midnight is 0000am
+    time = number or "0000am"
     key(tab)
     sleep(50ms)
-    insert("0000am")
+    insert(time)
     sleep(50ms)
     key(tab)
 
     # save
-    user.tab_after_element("Save")
-    key(enter)
-    
-single:
-    user.hover_center_image("teamup-single")
-    mouse_click()
+    user.teamup_save()
 
 longer <number> [minutes]:
     user.mouse_down(0)
@@ -284,7 +249,7 @@ earlier <number> [minutes]:
 
 later <number> [minutes]:
     user.mouse_down(0)
-    sleep(500ms)
+    sleep(800ms)
     adjustment = 4 * number
     user.mouse_move_relative(0, adjustment)
     sleep(500ms)
@@ -292,11 +257,15 @@ later <number> [minutes]:
 
 later <number> (hour|hours):
     user.mouse_down(0)
-    sleep(500ms)
+    sleep(800ms)
     adjustment = 240 * number
     user.mouse_move_relative(0, adjustment)
     sleep(500ms)
     user.mouse_up(0)
+
+next <number> [minutes]:
+    adjustment = 4 * number
+    user.mouse_move_relative(0, adjustment)
 
 stop now:
     now = user.time_12h(5)
@@ -323,7 +292,7 @@ stop now:
     sleep(50ms)
     key(enter)
 
-start now:
+start now$:
     now = user.time_12h(5)
     today = user.date_slash_format()
 
@@ -348,7 +317,7 @@ start now:
     sleep(50ms)
     key(enter)
 
-start plus <number> [minutes]:
+start [now] plus <number> [minutes]:
     print("starting plus number")
     now = user.time_12h(5, number)
     today = user.date_slash_format()
@@ -463,3 +432,70 @@ scroll up:
 
 
 # TODO: AGE: add a start at four pm or 3 am or whatever - needs python
+
+default$: 
+    user.teamup_event_under_mouse_set_defaults("planned", "medium", "sitting", "manual")
+
+default single:
+    user.teamup_event_under_mouse_set_defaults("planned", "medium", "sitting", "manual")
+    sleep(500ms)
+    user.teamup_click_single()
+
+quickly {user.teamup_position}:
+    user.teamup_event_under_mouse_set_defaults("complete", "medium", teamup_position, "manual")
+
+fate {user.teamup_position}$:
+    user.teamup_event_under_mouse_set_defaults("planned", "medium", teamup_position, "manual")
+    sleep(500ms)
+    user.teamup_click_future()
+
+fate {user.teamup_priority} {user.teamup_position}$:
+    user.teamup_event_under_mouse_set_defaults("planned", teamup_priority, teamup_position, "manual")
+    sleep(500ms)
+    user.teamup_click_future()
+
+future {user.teamup_position}:
+    user.teamup_event_under_mouse_position_value(teamup_position)
+    sleep(500ms)
+    user.teamup_click_future()
+
+future {user.teamup_priority}:
+    user.teamup_event_under_mouse_priority_value(teamup_priority)
+    sleep(500ms)
+    user.teamup_click_future()
+
+
+clear marks: user.teamup_clear_image_locations()
+
+single:
+    user.teamup_click_single()
+
+future:
+    user.teamup_click_future()
+
+{user.teamup_position}:
+    user.teamup_event_under_mouse_position_value(teamup_position)
+
+{user.teamup_status}:
+    user.teamup_event_under_mouse_status_value(teamup_status)
+
+{user.teamup_priority}:
+    user.teamup_event_under_mouse_priority_value(teamup_priority)
+
+timer <user.text> to [<number>] <user.text>:
+    prefix = number or ""
+    user.teamup_event_under_mouse_timer_value("TimeR Machine > {text_1} > {prefix} {text_2}")
+
+positively confirm delete:
+    user.teamup_delete_menu()
+
+positively confirm delete future:
+    user.teamup_delete_menu()
+    sleep(500ms)
+    user.teamup_click_future()
+
+undo that:
+    user.teamup_undo_toast()
+
+duplicate {user.teamup_calendar}:
+    user.teamup_duplicate_event(teamup_calendar)

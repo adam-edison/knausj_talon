@@ -267,11 +267,8 @@ class Actions:
     def mouse_move_relative(x: int, y: int):
         """move the cursor from its current position in the amount (x,y)"""
         position = ctrl.mouse_pos()
-        print(position)
         newX = position[0] + x
         newY = position[1] + y
-        print(newX)
-        print(newY)
         ctrl.mouse_move(newX, newY)
 
     def mouse_down(button: int):

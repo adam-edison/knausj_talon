@@ -5,7 +5,7 @@ tag: terminal
 app clean: "AWS_PROFILE=dev ./gradlew clean\n"
 app run dev: "./gradlew clean && ./gradlew appRun -Pdeployment=dev\n"
 app run work: "./gradlew clean && AWS_PROFILE=dev AWS_REGION=us-east-1 SPRING_PROFILES_ACTIVE=localWorkOrderService ./gradlew appRun > startup.log\n"
-app run care: "./gradlew clean && sleep 2 && AWS_REGION=us-east-1 AWS_PROFILE=dev ./gradlew appRun > startup.log\n"
+app run care: "./gradlew clean && AWS_REGION=us-east-1 AWS_PROFILE=dev ./gradlew appRun > startup.log\n"
 app debug care: "./gradlew clean && sleep 2 && AWS_REGION=us-east-1 AWS_PROFILE=dev ./gradlew appRunDebug > startup.log\n"
 app test unit: "./gradlew clean && ./gradlew test -PexcludeIntegrationTests\n"
 app test all: "./gradlew clean && ./gradlew test\n"

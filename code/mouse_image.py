@@ -18,15 +18,19 @@ class Actions:
         actions.user.hover_center_image(imageName, threshold=threshold)
         actions.mouse_click(0)
 
-    def screen_contains_image(imageName: str, threshold: float=0.90):
-        """returns first match if the image is found, otherwise returns false"""
+    # def screen_contains_image_top_half(imageName: str, threshold: float=0.90):
+    #     """returns first match if the image is found in the top half of the screen, otherwise returns false"""
+    #     top_half = 
+    #     results = locate(image_location(imageName), threshold=threshold, rect=)
+    #     return results[0] if (len(results) == 0) else False
 
-        results = locate(image_location(imageName), threshold=threshold)
-        
-        if (len(results) == 0):
-            return False
-        else:
-            return results[0]
+
+    def get_image_locations(imageName: str, threshold: float=0.90):
+        """returns all locations as array of rectangles if image is found, otherwise throws an exception"""
+        try:
+            return locate(image_location(imageName), threshold=threshold)
+        except:
+            raise RuntimeError(f"Unable to locate control by image {imageName}")
 
     # def hover_center_image_rect(imageName: str, x1: int, y1: int, x2: int, y2: int):
     # locate_hover(image_location(imageName), threshold=0.80, rect=RECT_HERE)

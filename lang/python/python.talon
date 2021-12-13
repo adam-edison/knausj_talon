@@ -48,5 +48,9 @@ import <user.code_libraries>:
     user.code_insert_library(code_libraries, "")
     key(end enter)
 
-add list item <user.text>:
-    insert("\"{text}\": \"{text}\",")
+item <user.text>:
+    insert("\"{text}\": \"{text}\",\n")
+
+item <user.text> plus <user.text>:
+    insert("\"{text_1}\": \"{text_1}\",\n")
+    insert("\"{text_2}\": \"{text_2}\",\n")
