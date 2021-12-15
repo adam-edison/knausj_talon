@@ -34,3 +34,6 @@ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-group
 https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/$252Faws$252Flambda$252Fpcc-webhook-processor-qa, care qa processor logs
 https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/$252Faws$252Flambda$252Fpcc-webhook-authorizer-qa, care qa authorizer logs
 https://login.pointclickcare.com/home/userLogin.xhtml, care sandbox
+
+https://localhost:8443/home/of/tv/tv/portal.jsp, local content manager
+https://localhost:8443/home/residentapps/mobile/#/login, local community apps

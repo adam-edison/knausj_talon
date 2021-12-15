@@ -117,10 +117,19 @@ class Actions:
 
         click_center_control("teamup-save-button")
         revert_to_original_mouse_position()
+        
+    def teamup_title(title: str):
+        """set title of an event"""
+        ctrl.mouse_click(0)
+        wait_for_event_details_loading()
+        actions.edit.select_line()
+        actions.insert(f"{title}\n")
 
-    def teamup_event_sprint_work(position: str):
+    def teamup_event_sprint_work(position: str, minutes: int):
         """insert sprint work event, where event details is open and focused at event title"""
         
+        Actions.teamup_drag_event(minutes)
+
         actions.insert(f"Sprint Work")
 
         actions.key("tab:7")
@@ -160,6 +169,26 @@ class Actions:
     def teamup_event_under_mouse_timer_value(value: str):
         """set the Timer value for the event currently under the mouse pointer"""
         click_event_and_set_field(4, value)
+
+    def teamup_drag_event(minutes: int, direction: str):
+        """dragged the mouse down, based upon the minutes provided in the minutes"""
+        actions.user.mouse_down(0)
+        actions.sleep("800ms")
+
+        adjustment = 0
+
+        if direction == "down" and minutes < 10:
+            adjustment = 4 * minutes
+
+        if direction == "down" and minutes >= 10:
+            adjustment = 3.5 * minutes
+
+        if direction == "up":
+            adjustment = -3.5 * minutes
+
+        actions.user.mouse_move_relative(0, adjustment)
+        actions.sleep("500ms")
+        actions.user.mouse_up(0)
 
 def click_event_and_set_field(field: int, value: str):
     click_through_to_where_input()

@@ -197,19 +197,15 @@ mark clear:
     sleep(200ms)
     key(delete:2)
 
-talon work:
-    insert("Talon Work")
-    key(tab:7)
-    key(backspace:3)
-    insert("Talon\n")
-    key(tab:2)
-    insert("Planned\n")
-    key(shift-tab enter)
-
-
-sprint work [{user.teamup_position}]:
+talon work [{user.teamup_position}] [<number>]:
     position = teamup_position or "sitting"
-    user.teamup_event_sprint_work(position)
+    duration = number or 20
+    user.teamup_event_sprint_work(position, duration)
+
+sprint work [{user.teamup_position}] [<number>]:
+    position = teamup_position or "sitting"
+    duration = number or 25
+    user.teamup_event_sprint_work(position, duration)
 
 tomorrow [<number>]$:
     mouse_click(0)
@@ -240,20 +236,10 @@ longer <number> [minutes]:
     user.mouse_up(0)
 
 earlier <number> [minutes]:
-    user.mouse_down(0)
-    sleep(500ms)
-    adjustment = -3 * number
-    user.mouse_move_relative(0, adjustment)
-    sleep(500ms)
-    user.mouse_up(0)
+    user.teamup_drag_event(number, "up")
 
 later <number> [minutes]:
-    user.mouse_down(0)
-    sleep(800ms)
-    adjustment = 4 * number
-    user.mouse_move_relative(0, adjustment)
-    sleep(500ms)
-    user.mouse_up(0)
+    user.teamup_drag_event(number, "down")
 
 later <number> (hour|hours):
     user.mouse_down(0)
@@ -482,7 +468,7 @@ future:
 {user.teamup_priority}:
     user.teamup_event_under_mouse_priority_value(teamup_priority)
 
-timer <user.text> to [<number>] <user.text>:
+timer <user.text> and [<number>] <user.text>:
     prefix = number or ""
     user.teamup_event_under_mouse_timer_value("TimeR Machine > {text_1} > {prefix} {text_2}")
 

@@ -2,7 +2,7 @@
 # (say|write) <user.text>$: user.insert_formatted(text, "NOOP")
 # (say|write) <user.text> over: user.insert_formatted(text, "NOOP")
 
-speak <user.text> wave:
+speak <user.text> waver:
   user.insert_formatted(text, "NOOP")
   insert(", ")
 
@@ -25,7 +25,7 @@ sentence <user.text> period:
     user.insert_formatted(prose, prose_formatter)
     insert(". ")
 
-{user.prose_formatter} <user.prose> wave: 
+{user.prose_formatter} <user.prose> waver: 
     user.insert_formatted(prose, prose_formatter)
     insert(", ")
 
