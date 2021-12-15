@@ -121,7 +121,7 @@ class Actions:
     def teamup_event_sprint_work(position: str):
         """insert sprint work event, where event details is open and focused at event title"""
         
-        actions.insert(f"Sprint Work\n")
+        actions.insert(f"Sprint Work")
 
         actions.key("tab:7")
         clear_input()
