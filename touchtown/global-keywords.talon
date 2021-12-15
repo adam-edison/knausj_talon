@@ -290,3 +290,7 @@ this auto set <user.text>:
     key(ctrl-space)
 
 care branch: "point-click-care-feature"
+
+my name: "Adam Edison"
+my first name: "Adam"
+my last name: "Edison"
