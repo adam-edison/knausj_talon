@@ -5,19 +5,12 @@ app: chrome
 # fine (f) --> show letters for navigation
 # esc --> get rid of cursor in text box
 
-(vim|vimmy)$: "f"
-
-hover vim$: "p"
-
-go vim$:
+# used most frequently
+letter$:
 	key("esc")
 	sleep(20ms)
 	key("f")
 
-go vim new$: 
-	key("esc")
-	sleep(20ms)
-	key(shift-f)
+lettering$: "f"
 
-vim new$: 
-	key(shift-f)
+hover$: "p"
