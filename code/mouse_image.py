@@ -48,4 +48,4 @@ class Actions:
     # e.g. top right quadrant of screen
 
 def image_location(imageName:str):
-    return f"./screen-captures/{imageName}.png"
+    return f"./user/knausj_talon/screen-captures/{imageName}.png"

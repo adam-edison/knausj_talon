@@ -13,6 +13,12 @@ ctx.lists['self.teamup_calendar'] = {
     "talon": "talon",
     "admin": "admin",
     "meditation": "meditation",
+    "care": "care",
+    "exercise": "exercise",
+    "housework": "housework",
+    "appointments": "appointments",
+    "social": "social",
+    
 }
 
 ctx.lists['self.teamup_position'] = {
