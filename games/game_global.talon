@@ -2,15 +2,15 @@ os: windows
 -
 
 
-key(ctrl-f1):
+key(f1):
     user.switcher_focus("Discord")
-    sleep(500ms)
+    sleep(100ms)
     key(ctrl-shift-m)
-    sleep(1000ms)
+    sleep(100ms)
     key(alt-tab)
 
-key(ctrl-f2):
+key(ctrl-f1):
     speech.enable()
 
-key(ctrl-f3):
+key(ctrl-f2):
     speech.disable()
