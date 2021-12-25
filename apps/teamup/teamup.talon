@@ -171,7 +171,7 @@ agenda:
     user.mouse_move(1844, 181)
     mouse_click()
 
-set {user.calendar}: user.set_to_calendar(user.calendar)
+calendar {user.teamup_calendar}: user.teamup_set_to_calendar(teamup_calendar)
 
 mark complete:
     key(home)
@@ -277,6 +277,9 @@ stop now:
     key(tab:4)
     sleep(50ms)
     key(enter)
+
+# TODO: add "in progress now", basically {status} now
+# TODO: add "in progress now plus []", basically {status} now plus []
 
 start now$:
     now = user.time_12h(5)
@@ -464,6 +467,11 @@ future:
 
 {user.teamup_status}:
     user.teamup_event_under_mouse_status_value(teamup_status)
+
+{user.teamup_status} single:
+    user.teamup_event_under_mouse_status_value(teamup_status)
+    sleep(1000ms)
+    user.teamup_click_single()
 
 {user.teamup_priority}:
     user.teamup_event_under_mouse_priority_value(teamup_priority)

@@ -9,15 +9,10 @@ mod.list('teamup_status', desc='status of an event')
 mod.list('teamup_priority', desc='priority of an event')
 
 ctx.lists['self.teamup_calendar'] = {
-    "appointments": "appointments",
-    "chores": "chores",
-    "completed": "completed",
-    "exercise": "exercise",
-    "fun": "fun",
-    "health": "health",
-    "recovery": "recovery",
     "job": "job",
     "talon": "talon",
+    "admin": "admin",
+    "meditation": "meditation",
 }
 
 ctx.lists['self.teamup_position'] = {
@@ -32,7 +27,8 @@ ctx.lists['self.teamup_position'] = {
 ctx.lists['self.teamup_status'] = {
     "planned": "planned",
     "skipped": "skipped",
-    "complete": "complete",
+    "completed": "completed",
+    "in progress": "in progress",
 }
 
 ctx.lists['self.teamup_priority'] = {
@@ -44,6 +40,9 @@ ctx.lists['self.teamup_priority'] = {
 
 
 # lazy loads the locations of controls in the gui - if we've found them once, don't search for them again
+# TODO: downscale the images (half resolution using Preview)
+# TODO: test without memorized locations - is it fast enough?
+# TODO: if downscaled images without memorized locations is still too slow, perhaps use save button as key image and others are stored relative to that location
 control_locations = {}
 
 mouse_start = {}
@@ -94,6 +93,18 @@ class Actions:
         click_center_control("teamup-save-button")
         revert_to_original_mouse_position()
 
+    def teamup_set_to_calendar(calendar: str):
+        """sets the event calendar under the mouse pointer, to the supplied calendar"""
+
+        click_through_to_where_input()
+
+        actions.key("shift-tab")
+        clear_input()
+        actions.insert(f"{calendar}\n")
+        
+        click_center_control("teamup-save-button")
+        revert_to_original_mouse_position()
+
     def teamup_event_under_mouse_set_defaults(status: str, priority: str, position: str, timer: str):
         """set the default custom fields for the calendar event currently under the mouse pointer"""
         
@@ -128,7 +139,7 @@ class Actions:
     def teamup_event_sprint_work(position: str, minutes: int):
         """insert sprint work event, where event details is open and focused at event title"""
         
-        Actions.teamup_drag_event(minutes)
+        Actions.teamup_drag_event(minutes, "down")
 
         actions.insert(f"Sprint Work")
 
@@ -252,3 +263,7 @@ def clear_input():
     actions.key("backspace:3")
 
 # TODO: make a debug print function that only works if debug mode is enabled in settings
+
+# TODO: revamp this to have all image positions be relative to a single image position that is found every time
+
+# TODO: saying in progress makes it also start a timer for the length of the event

@@ -6,7 +6,7 @@ import sys
 # default_alphabet = "air bat cap drum each fine gust harp sit jury krunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
 #     " "
 # )
-default_alphabet = "air bat cap drum each fine gust harp sit jury krunch look made near odd pit quench red sun trap urge vest whack plex yank zip".split(
+default_alphabet = "air bat cap drum each fine gust harp sit jury krunch look made near odd pit quench red sun trap urge vest wish plex yank zip".split(
     " "
 )
 
