@@ -1,16 +1,18 @@
 os: windows
+mode: user.gaming
 -
-
-
 key(f1):
-    user.switcher_focus("Discord")
-    sleep(100ms)
-    key(ctrl-shift-m)
-    sleep(100ms)
-    key(alt-tab)
-
-key(ctrl-f1):
-    speech.enable()
-
-key(ctrl-f2):
-    speech.disable()
+    key(ctrl-`)
+    sleep(1000ms)
+    key(ctrl:down)
+    sleep(20ms)
+    key(shift:down)
+    sleep(20ms)
+    key(m)
+    sleep(20ms)
+    key(ctrl:up)
+    sleep(20ms)
+    key(shift:up)
+    sleep(20ms)
+    sleep(1000ms)
+    key(ctrl-`)

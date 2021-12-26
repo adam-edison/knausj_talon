@@ -1,3 +1,4 @@
+import platform
 from talon import ctrl, ui, Module, Context, actions, clip, app
 
 ctx = Context()
@@ -49,7 +50,7 @@ ctx.lists['self.teamup_priority'] = {
 # TODO: downscale the images (half resolution using Preview)
 # TODO: test without memorized locations - is it fast enough?
 # TODO: if downscaled images without memorized locations is still too slow, perhaps use save button as key image and others are stored relative to that location
-control_locations = {}
+image_locations = {}
 
 mouse_start = {}
 
@@ -57,7 +58,7 @@ mouse_start = {}
 class Actions:
     def teamup_clear_image_locations():
         """clear the stored image locations (in case the GUI has changed position on the screen)"""
-        control_locations.clear()
+        image_locations.clear()
 
     def teamup_undo_toast():
         """click undo toast message"""
@@ -247,18 +248,24 @@ def click_input_beneath(controlName: str):
     actions.user.mouse_move(location[0], location[1])
     ctrl.mouse_click(0)
 
-def get_control_center_point(controlName: str):
+# TODO: this image location dictionary really needs to become its own module - outside of teamup entirely
 
-    if control_locations.get(controlName) is None:
-        all_locations = actions.user.get_image_locations(controlName, 0.65)
+def get_control_center_point(controlName: str):
+    imageName = controlName
+
+    if (platform.system() == "Windows"):
+        imageName += "-windows"
+
+    if image_locations.get(imageName) is None:
+        all_locations = actions.user.get_image_locations(imageName, 0.65)
 
         if len(all_locations) == 0:
-            print(f"Unable to find control for {controlName}. Aborting...")
+            raise Exception(f"Unable to find control for {imageName}. Aborting...")
 
-        control_locations[controlName] = actions.user.get_image_locations(controlName, 0.65)[0]
-        print(f"Added {controlName} in {control_locations}")
+        image_locations[imageName] = all_locations[0]
+        print(f"Added {imageName} in {image_locations}")
 
-    location = control_locations.get(controlName)
+    location = image_locations.get(imageName)
     
     clickX = int(location.x + location.width / 2)
     clickY = int(location.y + location.height / 2)

@@ -10,12 +10,12 @@ def on_phrase(j):
 
 speech_system.register('post:phrase', on_phrase)
 
-def on_ready():
-    global job
-    if actions.speech.enabled():
-       job = cron.after('15m', actions.speech.disable)
+# def on_ready():
+#     global job
+#     if actions.speech.enabled():
+#        job = cron.after('15m', actions.speech.disable)
 
-app.register("ready", on_ready)
+# app.register("ready", on_ready)
 
 # https://github.com/nriley/knausj_talon/blob/nriley/misc/screen.py
 
