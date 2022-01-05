@@ -176,9 +176,7 @@ calendar {user.teamup_calendar}: user.teamup_set_to_calendar(teamup_calendar)
 mark complete:
     key(home)
     sleep(100ms)
-    user.paste("✅")
-    sleep(100ms)
-    key(space:2)
+    user.paste("✅ ")
 
 mark skipped:
     key(home)

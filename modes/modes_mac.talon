@@ -1,3 +1,6 @@
+os: mac
+mode: all
+-
 key(keypad_minus):
     speech.set_microphone("None")
     speech.disable()
@@ -13,6 +16,5 @@ key(keypad_multiply):
     speech.enable()
 
 key(keypad_divide):
-    mode.disable("face")
-
-# *****
+    speech.set_microphone("HD Webcam C615")
+    speech.enable()

@@ -6,7 +6,7 @@ import sys
 # default_alphabet = "air bat cap drum each fine gust harp sit jury krunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
 #     " "
 # )
-default_alphabet = "air bat cap drum each fine gust harp sit jury krunch look made near odd pit quench red sun trap urge vest wish plex yank zip".split(
+default_alphabet = "air bat cap drum each fine gust harp sit jury kind look made near odd pit quench red sun trap urge vest wish plex yank zip".split(
     " "
 )
 
@@ -175,7 +175,6 @@ symbol_key_words = {
     "tilde": "~",
     "bang": "!",
     "dollar": "$",
-    "score": "_",
     "under score": "_",
     "paren": "(",
     "left pen": "(",
@@ -202,7 +201,7 @@ symbol_key_words = {
     "double quote": '"',
     "divide": "/",
     "tick": "`",
-    "score": "_",
+    "under score": "_",
     "eyes": ":",
     "left curve": "(",
     "right curve": ")",

@@ -1,8 +1,8 @@
-win.title: /Google Calendar/
+win.title: /(Google Calendar)|(- Calendar -)/
 -
 
 settings():
-    key_wait = 2.2
+    key_wait = 8
 
 edit <user.letter>: user.edit_event_by_vimium("{letter}")
 edit <user.letter> <user.letter>: user.edit_event_by_vimium("{letter_1}{letter_2}")
