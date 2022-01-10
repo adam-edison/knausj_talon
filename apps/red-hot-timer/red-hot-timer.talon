@@ -4,23 +4,12 @@ os: mac
 (times up|shut up):
     key(ctrl-alt-r)
 
-block five:
-    key(ctrl-cmd-alt-1)
-
-block ten:
-    key(ctrl-cmd-alt-2)
-
-block fifteen:
-    key(ctrl-cmd-alt-3)
-
-block twenty:
-    key(ctrl-cmd-alt-4)
-
-block twenty five:
-    key(ctrl-alt-p)
-
-block thirty:
-    key(ctrl-cmd-alt-5)
-
-block sixty:
-    key(ctrl-cmd-alt-6)
+block [<user.text>] <number>:
+    title = text or ""
+    key(ctrl-shift-alt-cmd-t)
+    sleep(200ms)
+    insert("{number}m {title}")
+    sleep(500ms)
+    key(enter)
+    sleep(5000ms)
+    key(esc)
