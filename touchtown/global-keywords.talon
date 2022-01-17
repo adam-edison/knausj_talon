@@ -46,10 +46,6 @@ export this:
 error dot message:
     insert("error.message")
 
-a sink: "async "
-await: "await "
-
-
 arrow function <user.text> over:
     result = user.formatted_text(text, "PRIVATE_CAMEL_CASE")
     insert("const ")

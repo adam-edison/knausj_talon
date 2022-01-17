@@ -1,5 +1,8 @@
 tag: terminal
 -
+
+git revert head <number_small>: "git revert --no-commit HEAD~{number_small}..\n"
+
 # Standard commands
 [git] add patch: "git add . -p\n"
 [git] add blank: "git add "
@@ -18,6 +21,7 @@ tag: terminal
 # we would not want to do this by mistake ever
 [git] checkout dot: "git checkout ." 
 [git] checkout develop: "git checkout develop && git fetch -p && git pull\n"
+[git] checkout dev: "git checkout dev && git fetch -p && git pull\n"
 [git] checkout clip:
     insert("git checkout ")
     edit.paste()
@@ -44,7 +48,7 @@ tag: terminal
 
 [git] clone: "git clone "
 
-[git] commit message:
+[git] commit message$:
     insert("git branch | grep '*' | awk '{{print $2}}' | cut -d '-' -f 1-2 | tr -d '\\n' | pbcopy")
     key(enter)
     insert("git commit -m \"")
@@ -64,15 +68,15 @@ tag: terminal
     user.paste("git commit -m \"\"")
     key(left)
 
-[git] commit all:
+[git] commit all$:
     user.paste("git add -A\n")
     insert("git branch | grep '*' | awk '{{print $2}}' | cut -d '-' -f 1-2 | tr -d '\\n' | pbcopy")
     key(enter)
     sleep(500ms)
-    insert("git commit -m \"")
+    insert("git commit\n")
+    sleep(1000ms)
     edit.paste()
-    insert(": \"")
-    key(left)
+    insert(": ")
 
 [git] squash to initial:
     user.paste("[git] rebase --interactive :/initial\n")
@@ -89,7 +93,7 @@ tag: terminal
 [git] fetch: "git fetch -p\n"
 [git] log all: "git log\n"
 [git] log all changes: "git log -c\n"
-[git] log: "git log --oneline\n"
+[git] log [one line]: "git log --oneline\n"
 [git] log changes: "git log -c "
 # [git] merge: "git merge "
 # [git] move: "git mv "
@@ -122,7 +126,6 @@ tag: terminal
 [git] remove: "git rm "
 [git] (remove|delete) branch: "git branch -d "
 [git] (remove|delete) remote branch: "git push --delete origin "
-[git] reset: "git reset "
 [git] reset soft: "git reset --soft "
 [git] reset hard: "git reset --hard "
 [git] restore: "git restore "
@@ -154,7 +157,7 @@ stash temporary:
     insert("}")
 [git] stash list: "git stash list\n"
 [git] stash show: "git stash show"
-(status|report): "git status\n"
+^(report|status)$: "git status\n"
 [git] submodule add:  "git submodule add "
 [git] tag: "git tag "
 

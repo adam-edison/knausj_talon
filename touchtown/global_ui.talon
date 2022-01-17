@@ -84,7 +84,7 @@ jet path:
     key(cmd-a)
     key(cmd-v)
 
-(poster|save comment):
+poster:
     key(cmd-enter)
 
 (uncomment|comment) [that]:
@@ -135,6 +135,13 @@ paste word:
 
 saver:
     edit.save()
+
+paste back:
+    edit.copy()
+    sleep(200ms)
+    key(cmd-tab)
+    sleep(200ms)
+    edit.paste()
 
 switch back:
     key(cmd-tab)

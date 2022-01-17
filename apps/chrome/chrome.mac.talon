@@ -22,7 +22,7 @@ copy address:
     browser.focus_address()
     edit.copy()
     
-clone tab:
+tab dupe:
     browser.focus_address()
     edit.copy()
     sleep(100ms)
@@ -34,3 +34,14 @@ clone tab:
     browser.focus_address()
     
 dot com: insert(".com")
+
+# for pasting to previously open tab, assuming Previous Tab extension is installed
+paste last:
+    edit.copy()
+    sleep(200ms)
+    key(ctrl-q)
+    sleep(200ms)
+    edit.paste()
+
+tab switch:
+    key(ctrl-q)

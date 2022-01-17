@@ -330,6 +330,7 @@ start [now] plus <number> [minutes]:
     sleep(50ms)
     key(enter)
 
+# TODO: AGE: add a start at four pm or 3 am or whatever - needs python
 
 start oh <number>:
     today = user.date_slash_format()
@@ -417,66 +418,47 @@ scroll up:
     user.mouse_scroll_down()
     repeat(2)   
 
+work block:
+    insert("Work")
+    key(tab:7)
+    key(backspace:3)
+    insert("Job\n\t\t")
+    insert("Planned\n\t")
+    insert("Sitting\n")
 
-# TODO: AGE: add a start at four pm or 3 am or whatever - needs python
+    # save
+    key(shift-tab:2)
+    key(enter)
 
-default$: 
-    user.teamup_event_under_mouse_set_defaults("planned", "medium", "sitting", "manual")
+status {user.teamup_status}:
+    # set status
+    key(tab:9)
+    key(backspace)
+    insert("{teamup_status}\n")
 
-default single:
-    user.teamup_event_under_mouse_set_defaults("planned", "medium", "sitting", "manual")
-    sleep(500ms)
-    user.teamup_click_single()
+    # save
+    key(shift-tab)
+    key(enter)
 
-quickly {user.teamup_position}:
-    user.teamup_event_under_mouse_set_defaults("complete", "medium", teamup_position, "manual")
+(pose|position) {user.teamup_position}:
+    # set status
+    key(tab:10)
+    key(backspace)
+    insert("{teamup_position}\n")
 
-fate {user.teamup_position}$:
-    user.teamup_event_under_mouse_set_defaults("planned", "medium", teamup_position, "manual")
-    sleep(500ms)
-    user.teamup_click_future()
-
-fate {user.teamup_priority} {user.teamup_position}$:
-    user.teamup_event_under_mouse_set_defaults("planned", teamup_priority, teamup_position, "manual")
-    sleep(500ms)
-    user.teamup_click_future()
-
-future {user.teamup_position}:
-    user.teamup_event_under_mouse_position_value(teamup_position)
-    sleep(500ms)
-    user.teamup_click_future()
-
-future {user.teamup_priority}:
-    user.teamup_event_under_mouse_priority_value(teamup_priority)
-    sleep(500ms)
-    user.teamup_click_future()
-
+    # save
+    key(shift-tab:2)
+    key(enter)
 
 clear marks: user.teamup_clear_image_locations()
 
 single:
-    user.teamup_click_single()
+    key(tab)
+    sleep(50ms)
+    key(enter)
 
 future:
     user.teamup_click_future()
-
-{user.teamup_position}:
-    user.teamup_event_under_mouse_position_value(teamup_position)
-
-{user.teamup_status}:
-    user.teamup_event_under_mouse_status_value(teamup_status)
-
-{user.teamup_status} single:
-    user.teamup_event_under_mouse_status_value(teamup_status)
-    sleep(1000ms)
-    user.teamup_click_single()
-
-{user.teamup_priority}:
-    user.teamup_event_under_mouse_priority_value(teamup_priority)
-
-timer <user.text> and [<number>] <user.text>:
-    prefix = number or ""
-    user.teamup_event_under_mouse_timer_value("TimeR Machine > {text_1} > {prefix} {text_2}")
 
 positively confirm delete:
     user.teamup_delete_menu()

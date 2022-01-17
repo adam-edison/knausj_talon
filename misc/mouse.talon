@@ -8,12 +8,12 @@ flash: user.temporarily_toggle_control_mouse(1200)
 # parrot(tut): mouse_click()
 parrot(cluck): mouse_click()
 
-touching:
+^touch$:
     mouse_click(0)
     # close the mouse grid if open
     user.grid_close()
     
-menu:
+^poke$:
     mouse_click(1)
     # close the mouse grid if open
     user.grid_close()
