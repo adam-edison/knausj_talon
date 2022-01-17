@@ -7,28 +7,26 @@ mod = Module()
 mod.list('teamup_calendar', desc='names of subcalendars')
 mod.list('teamup_position', desc='general physical position for activity')
 mod.list('teamup_status', desc='status of an event')
-mod.list('teamup_priority', desc='priority of an event')
 
 ctx.lists['self.teamup_calendar'] = {
     "job": "job",
     "talon": "talon",
     "admin": "admin",
-    "meditation": "meditation",
+    "qi gong": "qi gong",
     "care": "care",
     "exercise": "exercise",
     "housework": "housework",
     "appointments": "appointments",
     "social": "social",
-    
+    "fun": "fun",
 }
 
 ctx.lists['self.teamup_position'] = {
-    "sitting": "sitting",
     "standing": "standing",
-    "mixed": "mixed",
+    "sitting": "sitting",
     "moving": "moving",
-    "reclining": "reclining",
     "lying": "lying",
+    "multi": "multi",
 }
 
 ctx.lists['self.teamup_status'] = {
@@ -36,15 +34,8 @@ ctx.lists['self.teamup_status'] = {
     "skipped": "skipped",
     "completed": "completed",
     "in progress": "in progress",
+    "done minimally": "done minimally",
 }
-
-ctx.lists['self.teamup_priority'] = {
-    "urgent": "urgent",
-    "high": "high",
-    "medium": "medium",
-    "low": "low",
-}
-
 
 # lazy loads the locations of controls in the gui - if we've found them once, don't search for them again
 # TODO: downscale the images (half resolution using Preview)
@@ -56,10 +47,6 @@ mouse_start = {}
 
 @mod.action_class
 class Actions:
-    def teamup_clear_image_locations():
-        """clear the stored image locations (in case the GUI has changed position on the screen)"""
-        image_locations.clear()
-
     def teamup_undo_toast():
         """click undo toast message"""
         click_center_control("teamup-undo-toast")
@@ -256,16 +243,12 @@ def get_control_center_point(controlName: str):
     if (platform.system() == "Windows"):
         imageName += "-windows"
 
-    if image_locations.get(imageName) is None:
-        all_locations = actions.user.get_image_locations(imageName, 0.65)
+    all_locations = actions.user.get_image_locations(imageName, 0.65)
 
-        if len(all_locations) == 0:
-            raise Exception(f"Unable to find control for {imageName}. Aborting...")
+    if len(all_locations) == 0:
+        raise Exception(f"Unable to find control for {imageName}. Aborting...")
 
-        image_locations[imageName] = all_locations[0]
-        print(f"Added {imageName} in {image_locations}")
-
-    location = image_locations.get(imageName)
+    location = all_locations[0]
     
     clickX = int(location.x + location.width / 2)
     clickY = int(location.y + location.height / 2)

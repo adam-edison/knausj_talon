@@ -59,11 +59,6 @@ class user_actions:
         actions.sleep("100ms")
         actions.key("esc")
 
-    def tab_after_element(search: str):
-        actions.user.select_text_element(search)
-        actions.sleep("100ms")
-        actions.key("tab")
-
 @ctx.action_class("browser")
 class browser_actions:
     def go(url: str):

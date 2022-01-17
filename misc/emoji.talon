@@ -2,8 +2,8 @@ mode: command
 -
 
 emoji complete: user.paste("✅")
-emoji progress: user.paste("🚧")
+emoji in progress: user.paste("🚧")
 emoji skip: user.paste("⏩")
-emoji ((happy [path])|green): user.paste("🟢")
-emoji ((sad [path])|red): user.paste("🔴")
-smiley: " :-) "
+emoji green: user.paste("🟢")
+emoji red: user.paste("🔴")
+emoji smiley: "😀"

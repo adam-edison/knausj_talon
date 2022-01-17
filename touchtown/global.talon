@@ -5,9 +5,26 @@ web app repo: "tt-webapp"
 # how to hit numpad
 # key(ctrl-keypad_4)
 
-touch town copy right:
-    copyright = "/*\n*  Copyright 2021, Touchtown, Inc.  All rights reserved.\n*  This program is protected by US and International Copyright Laws.\n*/"
-    user.paste(copyright)
+mission: key(ctrl-up)
+quest: key(ctrl-down)
+
+sublime tab:
+    key(cmd-c)
+    user.switcher_focus("sublime")
+    sleep(750ms)
+    key(cmd-n)
+    sleep(1000ms)
+    key(cmd-v)
+
+sublime after:
+    key(cmd-c)
+    user.switcher_focus("sublime")
+    sleep(750ms)
+    key(end)
+    sleep(50ms)
+    key(enter:2)
+    sleep(50ms)
+    key(cmd-v)
 
 sublime clean:
     key(cmd-a)
@@ -33,13 +50,22 @@ sublime clean:
     sleep(200ms)
     key(ctrl-alt-enter)
 
-run term:
+term run:
     edit.copy()
     user.switcher_focus("iterm")
     edit.paste()
     key(enter)
 
-see in term:
+term <number_small> run:
+    edit.copy()
+    user.switcher_focus("iterm")
+    sleep(50ms)
+    key("cmd-{number_small}")
+    sleep(100ms)
+    edit.paste()
+    key(enter)
+
+term transfer:
     edit.copy()
     user.switcher_focus("iterm")
     edit.paste()

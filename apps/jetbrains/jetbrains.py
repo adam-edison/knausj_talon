@@ -79,13 +79,6 @@ class EditActions:
         actions.sleep('100ms')
         actions.key('home')
 
-    def save():
-        # becomes save and optimize imports
-        actions.key('ctrl-alt-o')
-        actions.sleep('500ms')
-        actions.key('cmd-s')
-        actions.sleep('300ms')
-
 
 
 @ctx.action_class("win")

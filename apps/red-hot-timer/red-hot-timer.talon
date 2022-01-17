@@ -2,14 +2,12 @@ os: mac
 -
 
 (times up|shut up):
-    key(ctrl-alt-r)
+    key(ctrl-shift-cmd-alt-r)
 
-block [<user.text>] <number>:
+^block <number> [<user.text>]$:
     title = text or ""
     key(ctrl-shift-alt-cmd-t)
     sleep(200ms)
     insert("{number}m {title}")
     sleep(500ms)
     key(enter)
-    sleep(5000ms)
-    key(esc)
