@@ -458,7 +458,11 @@ single:
     key(enter)
 
 future:
-    user.teamup_click_future()
+    key(tab)
+    sleep(50ms)
+    key(down)
+    sleep(50ms)
+    key(enter)
 
 positively confirm delete:
     user.teamup_delete_menu()

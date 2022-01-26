@@ -3,10 +3,7 @@ from typing import Set
 from talon import Module, Context, actions, app
 import sys
 
-# default_alphabet = "air bat cap drum each fine gust harp sit jury krunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
-#     " "
-# )
-default_alphabet = "air bat cap drum each fine gust harp sit jury kind look made near odd pit quench red sun trap urge vest wish plex yank zip".split(
+default_alphabet = "air bat cap drum each fine gust harp sit jury krunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
     " "
 )
 
@@ -117,14 +114,14 @@ def letters(m) -> str:
 ctx = Context()
 modifier_keys = {
     # If you find 'alt' is often misrecognized, try using 'alter'.
-    "alt": "alt",  #'alter': 'alt',
-    "command": "cmd", 
+    "alt": "alt",  # 'alter': 'alt',
+    "command": "cmd",
     "apple": "cmd",
-    "control": "ctrl",  #'troll':   'ctrl',
-    "shift": "shift",  #'sky':     'shift',
+    "control": "ctrl",  # 'troll':   'ctrl',
+    "shift": "shift",  # 'sky':     'shift',
     "super": "super",
 }
-if app.platform  == "mac":
+if app.platform == "mac":
     modifier_keys["command"] = "cmd"
     modifier_keys["option"] = "alt"
 ctx.lists["self.modifier_key"] = modifier_keys
@@ -137,7 +134,7 @@ ctx.lists["self.letter"] = alphabet
 punctuation_words = {
     # TODO: I'm not sure why we need these, I think it has something to do with
     # Dragon. Possibly it has been fixed by later improvements to talon? -rntz
-    "`": "`", ",": ",", # <== these things
+    "`": "`", ",": ",",  # <== these things
     "tick": "`",
     "comma": ",",
     "period": ".",
@@ -265,4 +262,3 @@ class Actions:
     def get_alphabet() -> dict:
         """Provides the alphabet dictionary"""
         return alphabet
-
