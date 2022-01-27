@@ -86,7 +86,7 @@ def first_vs_rest(first_func, rest_func=lambda w: w):
     Set first argument to None if you want the first word to be passed
     through unchanged."""
     if first_func is None:
-        first_func = lambda w: w
+        def first_func(w): return w
 
     def formatter_function(i, word, _):
         return first_func(word) if i == 0 else rest_func(word)
@@ -280,7 +280,8 @@ class Actions:
             return
         unformatted = re.sub(r"[^a-zA-Z0-9]+", " ", selected)
         # Split on camelCase, including numbes
-        unformatted = re.sub(r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])|(?<=[a-zA-Z])(?=[0-9])|(?<=[0-9])(?=[a-zA-Z])", " ", unformatted)
+        unformatted = re.sub(
+            r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])|(?<=[a-zA-Z])(?=[0-9])|(?<=[0-9])(?=[a-zA-Z])", " ", unformatted)
         unformatted = unformatted.lower()
         # TODO: Separate out studleycase vars
 
@@ -310,4 +311,5 @@ def gui(gui: imgui.GUI):
     gui.text("List formatters")
     gui.line()
     for name in sorted(set(formatters_words.keys())):
-        gui.text(f"{name} | {format_phrase_no_history(['one', 'two', 'three'], name)}")
+        gui.text(
+            f"{name} | {format_phrase_no_history(['one', 'two', 'three'], name)}")
