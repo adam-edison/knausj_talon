@@ -97,13 +97,13 @@ issue [dev] <number>:
 issue prod <number>: 
     insert("TTPROD-{number}")
 
-issue KFC <number>: 
+[issue] KFC <number>: 
     insert("KFC-{number}")
 
 link KFC <number>: 
     insert("https://kasa.atlassian.net/browse/KFC-{number}")
 
-link to issue [dev] <number>:
+link issue [dev] <number>:
     insert("https://touchtown.atlassian.net/browse/TTDEV-{number}")
 
 sublime <number>:

@@ -1,6 +1,13 @@
 os: mac
 -
 
+[(insert|append)] empty line:
+    key(enter)
+    sleep(20ms)
+    key(shift-home)
+    sleep(20ms)
+    key(backspace)
+
 finder:
     edit.find()
 
