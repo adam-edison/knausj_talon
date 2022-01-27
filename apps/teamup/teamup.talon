@@ -430,27 +430,7 @@ work block:
     key(shift-tab:2)
     key(enter)
 
-status {user.teamup_status}:
-    # set status
-    key(tab:9)
-    key(backspace)
-    insert("{teamup_status}\n")
-
-    # save
-    key(shift-tab)
-    key(enter)
-
-(pose|position) {user.teamup_position}:
-    # set status
-    key(tab:10)
-    key(backspace)
-    insert("{teamup_position}\n")
-
-    # save
-    key(shift-tab:2)
-    key(enter)
-
-clear marks: user.teamup_clear_image_locations()
+    clear marks: user.teamup_clear_image_locations()
 
 single:
     key(tab)
@@ -477,3 +457,32 @@ undo that:
 
 duplicate {user.teamup_calendar}:
     user.teamup_duplicate_event(teamup_calendar)
+
+########################################################
+# These commands assume the edit window is already open
+########################################################
+[status] {user.teamup_status}:
+    key(tab:9)
+    key(backspace)
+    insert("{teamup_status}\n")
+    key(shift-tab:9)
+
+[position] {user.teamup_position}:
+    key(tab:10)
+    key(backspace)
+    insert("{teamup_position}\n")
+    key(shift-tab:10)
+
+[calendar] {user.teamup_calendar}:
+    key(tab:7)
+    key(backspace:3)
+    insert("{teamup_calendar}\n")
+    key(shift-tab:7)
+
+[repeat] daily:
+    key(tab:6)
+    key(space)
+    key(shift-tab:6)
+
+saver:
+    key(enter)

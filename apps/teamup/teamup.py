@@ -19,6 +19,8 @@ ctx.lists['self.teamup_calendar'] = {
     "appointments": "appointments",
     "social": "social",
     "fun": "fun",
+    "sleep": "sleep",
+    "food": "food",
 }
 
 ctx.lists['self.teamup_position'] = {
@@ -45,6 +47,7 @@ image_locations = {}
 
 mouse_start = {}
 
+
 @mod.action_class
 class Actions:
     def teamup_undo_toast():
@@ -68,7 +71,7 @@ class Actions:
     def teamup_click_future():
         """click the future button"""
         click_center_control("teamup-future")
-    
+
     def teamup_duplicate_event(calendar: str):
         """duplicate the event under the mouse pointer, to the supplied calendar"""
 
@@ -76,14 +79,13 @@ class Actions:
         actions.sleep("200ms")
         click_center_control("teamup-duplicate-menu")
 
-
         wait_for_event_details_loading()
         click_input_beneath("teamup-where-label")
 
         actions.key("shift-tab")
         clear_input()
         actions.insert(f"{calendar}\n")
-        
+
         click_center_control("teamup-save-button")
         revert_to_original_mouse_position()
 
@@ -95,13 +97,13 @@ class Actions:
         actions.key("shift-tab")
         clear_input()
         actions.insert(f"{calendar}\n")
-        
+
         click_center_control("teamup-save-button")
         revert_to_original_mouse_position()
 
     def teamup_event_under_mouse_set_defaults(status: str, priority: str, position: str, timer: str):
         """set the default custom fields for the calendar event currently under the mouse pointer"""
-        
+
         click_through_to_where_input()
 
         actions.key("tab")
@@ -122,7 +124,7 @@ class Actions:
 
         click_center_control("teamup-save-button")
         revert_to_original_mouse_position()
-        
+
     def teamup_title(title: str):
         """set title of an event"""
         ctrl.mouse_click(0)
@@ -132,7 +134,7 @@ class Actions:
 
     def teamup_event_sprint_work(position: str, minutes: int):
         """insert sprint work event, where event details is open and focused at event title"""
-        
+
         Actions.teamup_drag_event(minutes, "down")
 
         actions.insert(f"Sprint Work")
@@ -195,15 +197,17 @@ class Actions:
         actions.sleep("500ms")
         actions.user.mouse_up(0)
 
+
 def click_event_and_set_field(field: int, value: str):
     click_through_to_where_input()
 
     actions.key(f"tab:{field}")
     clear_input()
     actions.insert(value)
-    
+
     click_center_control("teamup-save-button")
     revert_to_original_mouse_position()
+
 
 def click_through_to_where_input():
     position = ctrl.mouse_pos()
@@ -214,28 +218,34 @@ def click_through_to_where_input():
     click_input_beneath("teamup-where-label")
     wait_for_slow_ui()
 
+
 def wait_for_event_details_loading():
     actions.sleep("800ms")
+
 
 def wait_for_slow_ui():
     actions.sleep("200ms")
 
+
 def click_center_control(controlName: str):
-    location = get_control_center_point(controlName) # 0 = x, 1 = y
+    location = get_control_center_point(controlName)  # 0 = x, 1 = y
     actions.user.mouse_move(location[0], location[1])
     actions.sleep("100ms")
     ctrl.mouse_click(0)
 
+
 def revert_to_original_mouse_position():
     ctrl.mouse_move(mouse_start['x'], mouse_start['y'])
 
+
 def click_input_beneath(controlName: str):
-    location = get_control_center_point(controlName) # 0 = x, 1 = y
+    location = get_control_center_point(controlName)  # 0 = x, 1 = y
     location = [location[0], location[1] + 25]
     actions.user.mouse_move(location[0], location[1])
     ctrl.mouse_click(0)
 
 # TODO: this image location dictionary really needs to become its own module - outside of teamup entirely
+
 
 def get_control_center_point(controlName: str):
     imageName = controlName
@@ -249,10 +259,11 @@ def get_control_center_point(controlName: str):
         raise Exception(f"Unable to find control for {imageName}. Aborting...")
 
     location = all_locations[0]
-    
+
     clickX = int(location.x + location.width / 2)
     clickY = int(location.y + location.height / 2)
     return [clickX, clickY]
+
 
 def clear_input():
     actions.edit.delete_line()
