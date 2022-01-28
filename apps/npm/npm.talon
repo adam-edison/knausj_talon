@@ -1,6 +1,7 @@
 tag: terminal
 -
 # Standard commands
+package install: "npm install\n"
 package install save: "npm install --save\n"
 package install save dev: "npm install --save-dev\n"
 package [run] build: "npm run build\n"

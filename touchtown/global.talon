@@ -91,16 +91,16 @@ regex any line:
 regex not <user.text>:
     insert("^((?!{text}).)*$")
 
-issue [dev] <number>: 
+issue dev <number>: 
     insert("TTDEV-{number}")
 
 issue prod <number>: 
     insert("TTPROD-{number}")
 
-[issue] KFC <number>: 
+issue [kay] <number>: 
     insert("KFC-{number}")
 
-link KFC <number>: 
+link [kay] <number>: 
     insert("https://kasa.atlassian.net/browse/KFC-{number}")
 
 link issue [dev] <number>:
@@ -112,3 +112,6 @@ sublime <number>:
     edit.jump_line(number)
     sleep(20ms)
     key(end)
+
+other window:
+    key(cmd-`)

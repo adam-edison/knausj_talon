@@ -418,31 +418,20 @@ scroll up:
     user.mouse_scroll_down()
     repeat(2)   
 
-work block:
+work ({user.teamup_position}| block):
+    position = user.teamup_position or "Sitting"
     insert("Work")
     key(tab:7)
     key(backspace:3)
     insert("Job\n\t\t")
     insert("Planned\n\t")
-    insert("Sitting\n")
+    insert("{position}\n")
 
     # save
     key(shift-tab:2)
     key(enter)
 
-    clear marks: user.teamup_clear_image_locations()
-
-single:
-    key(tab)
-    sleep(50ms)
-    key(enter)
-
-future:
-    key(tab)
-    sleep(50ms)
-    key(down)
-    sleep(50ms)
-    key(enter)
+clear marks: user.teamup_clear_image_locations()
 
 positively confirm delete:
     user.teamup_delete_menu()
@@ -461,17 +450,9 @@ duplicate {user.teamup_calendar}:
 ########################################################
 # These commands assume the edit window is already open
 ########################################################
-[status] {user.teamup_status}:
-    key(tab:9)
-    key(backspace)
-    insert("{teamup_status}\n")
-    key(shift-tab:9)
+[status] {user.teamup_status}: user.teamup_editor_set_status(teamup_status)
 
-[position] {user.teamup_position}:
-    key(tab:10)
-    key(backspace)
-    insert("{teamup_position}\n")
-    key(shift-tab:10)
+[position] {user.teamup_position}: user.teamup_editor_set_position(teamup_position)
 
 [calendar] {user.teamup_calendar}:
     key(tab:7)
@@ -486,3 +467,15 @@ duplicate {user.teamup_calendar}:
 
 saver:
     key(enter)
+
+
+#############################################################################
+# When prompted (modal is visible), assuming custom js is injected into page
+#     ( see https://github.com/adam-edison/custom-javascript-chrome-snippets )
+#############################################################################
+
+[apply] single: key(shift-cmd-s)
+
+[apply] future: key(shift-cmd-f)
+
+[apply] all: key(shift-cmd-a)

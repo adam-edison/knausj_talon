@@ -250,3 +250,5 @@ go camel right: user.camel_right()
 
 # requires plug-in: black-pycharm
 blacken: user.idea("action BLACKReformatCode")
+
+resolve conflicts: key(cmd-shift-i)

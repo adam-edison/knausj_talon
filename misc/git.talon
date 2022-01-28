@@ -84,7 +84,7 @@ git revert head <number_small>: "git revert --no-commit HEAD~{number_small}..\n"
 [git] squash to merged:
     user.paste("[git] rebase --interactive :/Merged\n")
 
-[git] commit edit: "git commit\n"
+^[git] commit [edit]$: "git commit\n"
 [git] commit amend: "git commit --amend\n"
 [git] diff (colour|color) words: "git diff --color-words "
 [git] diff all: "git diff\n"

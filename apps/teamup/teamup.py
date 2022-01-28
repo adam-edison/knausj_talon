@@ -13,14 +13,16 @@ ctx.lists['self.teamup_calendar'] = {
     "talon": "talon",
     "admin": "admin",
     "qi gong": "qi gong",
-    "care": "care",
+    "hygiene": "hygiene",
     "exercise": "exercise",
     "housework": "housework",
     "appointments": "appointments",
+    "therapy": "therapy",
     "social": "social",
     "fun": "fun",
     "sleep": "sleep",
     "food": "food",
+    "professional development": "professional development",
 }
 
 ctx.lists['self.teamup_position'] = {
@@ -35,8 +37,8 @@ ctx.lists['self.teamup_status'] = {
     "planned": "planned",
     "skipped": "skipped",
     "completed": "completed",
-    "in progress": "in progress",
     "done minimally": "done minimally",
+    "minimal": "done minimally",
 }
 
 # lazy loads the locations of controls in the gui - if we've found them once, don't search for them again
@@ -46,6 +48,11 @@ ctx.lists['self.teamup_status'] = {
 image_locations = {}
 
 mouse_start = {}
+
+# TODO: populate and use this instead of set number of tabs to get to a field
+editor_layout = {
+
+}
 
 
 @mod.action_class
@@ -124,6 +131,20 @@ class Actions:
 
         click_center_control("teamup-save-button")
         revert_to_original_mouse_position()
+
+    def teamup_editor_set_status(status: str):
+        """set the status of an event, already open in the editor"""
+        actions.key("tab:9")
+        actions.key("backspace")
+        actions.insert(f"{status}\n")
+        actions.key("shift-tab:9")
+
+    def teamup_editor_set_position(position: str):
+        """set the position of an event, already open in the editor"""
+        actions.key("tab:10")
+        actions.key("backspace")
+        actions.insert(f"{position}\n")
+        actions.key("shift-tab:10")
 
     def teamup_title(title: str):
         """set title of an event"""
@@ -268,6 +289,13 @@ def get_control_center_point(controlName: str):
 def clear_input():
     actions.edit.delete_line()
     actions.key("backspace:3")
+
+
+def set_field_value(index: int, value: str):
+    actions.key("tab:9")
+    actions.key("backspace")
+    actions.insert(f"{status}\n")
+    actions.key("shift-tab:9")
 
 # TODO: make a debug print function that only works if debug mode is enabled in settings
 
