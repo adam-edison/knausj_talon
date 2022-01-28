@@ -134,17 +134,11 @@ class Actions:
 
     def teamup_editor_set_status(status: str):
         """set the status of an event, already open in the editor"""
-        actions.key("tab:9")
-        actions.key("backspace")
-        actions.insert(f"{status}\n")
-        actions.key("shift-tab:9")
+        set_field_value(9, status)
 
     def teamup_editor_set_position(position: str):
         """set the position of an event, already open in the editor"""
-        actions.key("tab:10")
-        actions.key("backspace")
-        actions.insert(f"{position}\n")
-        actions.key("shift-tab:10")
+        set_field_value(10, position)
 
     def teamup_title(title: str):
         """set title of an event"""
@@ -292,10 +286,10 @@ def clear_input():
 
 
 def set_field_value(index: int, value: str):
-    actions.key("tab:9")
+    actions.key(f"tab:{index}")
     actions.key("backspace")
-    actions.insert(f"{status}\n")
-    actions.key("shift-tab:9")
+    actions.insert(f"{value}\n")
+    actions.key(f"shift-tab:{index}")
 
 # TODO: make a debug print function that only works if debug mode is enabled in settings
 
