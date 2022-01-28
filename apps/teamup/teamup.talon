@@ -454,11 +454,7 @@ duplicate {user.teamup_calendar}:
 
 [position] {user.teamup_position}: user.teamup_editor_set_position(teamup_position)
 
-[calendar] {user.teamup_calendar}:
-    key(tab:7)
-    key(backspace:3)
-    insert("{teamup_calendar}\n")
-    key(shift-tab:7)
+[calendar] {user.teamup_calendar}: user.teamup_editor_set_calendar(teamup_calendar)
 
 [repeat] daily:
     key(tab:6)

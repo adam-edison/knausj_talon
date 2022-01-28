@@ -22,7 +22,7 @@ ctx.lists['self.teamup_calendar'] = {
     "fun": "fun",
     "sleep": "sleep",
     "food": "food",
-    "professional development": "professional development",
+    "learning": "learning",
 }
 
 ctx.lists['self.teamup_position'] = {
@@ -50,8 +50,16 @@ image_locations = {}
 mouse_start = {}
 
 # TODO: populate and use this instead of set number of tabs to get to a field
-editor_layout = {
-
+editor_field_shortcuts = {
+    # save
+    # calendar
+    # start date/time
+    # end date/time
+    # title
+    # description
+    # delete
+    # status
+    # position
 }
 
 
@@ -139,6 +147,10 @@ class Actions:
     def teamup_editor_set_position(position: str):
         """set the position of an event, already open in the editor"""
         set_field_value(10, position)
+
+    def teamup_editor_set_calendar(calendar: str):
+        """set the calendar of an event, already open in the editor"""
+        set_field_value(7, calendar)
 
     def teamup_title(title: str):
         """set title of an event"""
