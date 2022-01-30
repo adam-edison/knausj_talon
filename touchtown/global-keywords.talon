@@ -142,15 +142,6 @@ check box:
     sleep(50ms)
     insert("x")
 
-complete:
-    key(home)
-    sleep(100ms)
-    key(right:3)
-    sleep(50ms)
-    key(delete)
-    sleep(50ms)
-    insert("x")
-
 task here:
     key(home)
     sleep(20ms)

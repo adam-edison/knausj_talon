@@ -50,7 +50,7 @@ sublime clean:
     sleep(200ms)
     key(ctrl-alt-enter)
 
-term [<number_small>] run:
+term run [<number_small>]:
     tabNumber = number_small or 1
     edit.copy()
     user.switcher_focus("iterm")

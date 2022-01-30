@@ -59,12 +59,6 @@ copy table here:
     key(enter)
 ##################
 
-(term run last|term again):
-    user.switcher_focus("iterm")
-    sleep(100ms)
-    key(up)
-    key(enter)
-
 term test:
     user.switcher_focus("iterm")
     sleep(200ms)

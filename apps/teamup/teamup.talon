@@ -447,6 +447,8 @@ undo that:
 duplicate {user.teamup_calendar}:
     user.teamup_duplicate_event(teamup_calendar)
 
+# TODO: view planned, view all - calling custom js shortcuts to focus the status field
+
 ########################################################
 # These commands assume the edit window is already open
 ########################################################
