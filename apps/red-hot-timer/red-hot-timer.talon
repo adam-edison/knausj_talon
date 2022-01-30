@@ -8,6 +8,10 @@ os: mac
     title = text or ""
     key(ctrl-shift-alt-cmd-t)
     sleep(200ms)
-    insert("{number}m {title}")
+    insert("{number}m")
     sleep(500ms)
     key(enter)
+    user.switcher_focus("textedit")
+    sleep(200ms)
+    edit.delete_line()
+    insert("{title}")
