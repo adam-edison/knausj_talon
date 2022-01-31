@@ -431,6 +431,19 @@ work ({user.teamup_position}| block):
     key(shift-tab:2)
     key(enter)
 
+[work] meeting {user.teamup_position}:
+    position = user.teamup_position or "Sitting"
+    insert("Work Meeting")
+    key(tab:7)
+    key(backspace:3)
+    insert("Job\n\t\t")
+    insert("Planned\n\t")
+    insert("{position}\n")
+
+    # save
+    key(shift-tab:2)
+    key(enter)
+
 clear marks: user.teamup_clear_image_locations()
 
 positively confirm delete:
