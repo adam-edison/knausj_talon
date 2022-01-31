@@ -1,17 +1,16 @@
-win.title: /Gmail/
+win.title: /(Gmail|Kasa Living Mail)/
 -
+settings():
+    key_wait = 5
 
-board table:
-    user.mouse_move(499, 541)
-    sleep(100ms)
-    mouse_click(0)
-
-inbox: "gi"
 shortcuts: "?"
+
+# navigation
+inbox: "gi"
+
+# selection
+select unread: "*u"
+select read: "*r"
+
+# actions
 archive: "e"
-next message: key(enter)
-archive next:
-    key(enter)
-    sleep(500ms)
-    key(e)
-    sleep(100ms)
