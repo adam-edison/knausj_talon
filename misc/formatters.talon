@@ -2,18 +2,6 @@
 # (say|write) <user.text>$: user.insert_formatted(text, "NOOP")
 # (say|write) <user.text> over: user.insert_formatted(text, "NOOP")
 
-speak <user.text> waver:
-  user.insert_formatted(text, "NOOP")
-  insert(", ")
-
-speak <user.text> period:
-  user.insert_formatted(text, "NOOP")
-  insert(". ")
-
-sentence <user.text> period:
-  user.insert_formatted(text, "NOOP")
-  insert(". ")
-
 {user.prose_formatter} <user.prose>$: user.insert_formatted(prose, prose_formatter)
 {user.prose_formatter} <user.prose> (over|fin): user.insert_formatted(prose, prose_formatter)
 
@@ -58,12 +46,6 @@ constant <user.text>:
 
 ^<number> by <number>$:
   insert("{number_1} x {number_2}")
-
-waver:
-  insert(", ")
-
-period:
-  insert(". ")
 
 ^code word:
   key(alt-left)
