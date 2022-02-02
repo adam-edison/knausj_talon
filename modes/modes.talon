@@ -54,3 +54,8 @@ talon mode: user.talon_mode()
 
 # hello <user.text> over:
 #     user.dictation_insert(text)
+
+
+# Yes, you can make whatever modes you want
+# mod.mode("x", desc="some game")
+# Then user.x is the mode name

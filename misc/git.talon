@@ -70,13 +70,22 @@ git revert head <number_small>: "git revert --no-commit HEAD~{number_small}..\n"
 
 [git] commit all$:
     user.paste("git add -A\n")
-    insert("git branch | grep '*' | awk '{{print $2}}' | cut -d '-' -f 1-2 | tr -d '\\n' | pbcopy")
+    insert("git rev-parse --abbrev-ref HEAD | cut -d '-' -f 1-2 | tr -d '\\n' | pbcopy")
     key(enter)
     sleep(500ms)
     insert("git commit\n")
     sleep(1000ms)
     edit.paste()
     insert(": ")
+
+[git] push first [time]: 
+    insert("git rev-parse --abbrev-ref HEAD | pbcopy")
+    key(enter)
+    sleep(500ms)
+    insert("git push --set-upstream origin ")
+    edit.paste()
+    sleep(200ms)
+    key(enter)
 
 [git] squash to initial:
     user.paste("[git] rebase --interactive :/initial\n")
@@ -97,7 +106,7 @@ git revert head <number_small>: "git revert --no-commit HEAD~{number_small}..\n"
 [git] log changes: "git log -c "
 # [git] merge: "git merge "
 # [git] move: "git mv "
-[git] checkout new branch: "git checkout -b "
+[git] checkout branch: "git checkout -b "
 [git] checkout last: "git checkout -\n"
 [git] pull: "git pull\n"
 [git] pull origin: "git pull origin "

@@ -32,12 +32,17 @@ _search_engine_defaults = {
     "wiki": "https://en.wikipedia.org/w/index.php?search=%s",
 }
 
+websites_escaped = {
+    "work audit": "https://teamup.com/c/moqsyr/personal?tz=America%2FNew_York&view=TA&date=2022-02-01&filterby=10462212&filterby_status[]=completed&dateRange=week&numberOfDays=5&numberOfWeeks=4&tableCells=[{\"label\":\"table_view.table.cells.start\",\"id\":\"start\",\"visible\":true,\"active\":true,\"width\":140,\"position\":0,\"definitionType\":\"default\"},{\"label\":\"table_view.table.cells.end\",\"id\":\"end\",\"visible\":true,\"active\":true,\"width\":140,\"position\":1,\"definitionType\":\"default\"},{\"label\":\"table_view.table.cells.recurrence\",\"id\":\"recurrence\",\"visible\":true,\"active\":true,\"width\":100,\"position\":3,\"definitionType\":\"default\"},{\"label\":\"table_view.table.cells.title\",\"id\":\"builtin_title\",\"visible\":true,\"position\":4,\"active\":true,\"width\":200,\"definitionType\":\"builtin_title\"},{\"label\":\"table_view.table.cells.calendars\",\"id\":\"builtin_calendars\",\"visible\":true,\"position\":5,\"active\":true,\"width\":150,\"definitionType\":\"builtin_calendars\"},{\"label\":\"table_view.table.cells.who\",\"id\":\"builtin_who\",\"visible\":true,\"position\":6,\"active\":false,\"width\":100,\"definitionType\":\"builtin_who\"},{\"label\":\"table_view.table.cells.where\",\"id\":\"builtin_location\",\"visible\":true,\"position\":7,\"active\":true,\"width\":100,\"definitionType\":\"builtin_location\"},{\"label\":\"Status\",\"id\":\"status\",\"visible\":true,\"position\":8,\"active\":true,\"width\":100,\"definitionType\":\"choices\"},{\"label\":\"Position\",\"id\":\"position\",\"visible\":true,\"position\":9,\"active\":true,\"width\":100,\"definitionType\":\"choices\"},{\"label\":\"table_view.table.cells.signup\",\"id\":\"builtin_signup\",\"visible\":false,\"position\":10,\"active\":false,\"width\":100,\"definitionType\":\"builtin_signup\"},{\"label\":\"table_view.table.cells.notes\",\"id\":\"builtin_notes\",\"visible\":true,\"position\":11,\"active\":true,\"width\":200,\"definitionType\":\"builtin_notes\"},{\"label\":\"table_view.table.cells.comments\",\"id\":\"builtin_comments\",\"visible\":false,\"position\":12,\"active\":true,\"width\":100,\"definitionType\":\"builtin_comments\"}]&wrapContent=true&customStartDate=2022-01-24&customEndDate=2022-01-30&sortBy=[{\"cell\":\"start\",\"direction\":\"asc\"}]"
+}
+
 ctx = Context()
 ctx.lists["self.website"] = get_list_from_csv(
     "websites.csv",
     headers=("URL", "Spoken name"),
     default=website_defaults,
-)
+) | websites_escaped
+
 ctx.lists["self.search_engine"] = get_list_from_csv(
     "search_engines.csv",
     headers=("URL Template", "Name"),

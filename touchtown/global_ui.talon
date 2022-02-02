@@ -157,34 +157,13 @@ dire up:
 quit this:
     key(cmd-q)
 
-
-# Yes, you can make whatever modes you want
-# mod.mode("x", desc="some game")
-# Then user.x is the mode name
-
 (show|hide) changes:
     user.switcher_focus("intellij")
     sleep(500ms)
     key(cmd-9)
 
-focus task:
-    user.mouse_move(2432, 57)
-    mouse_click(0)
-
 waiter: 
     sleep(1000ms)
-
-plunger:
-    sleep(200ms)
-    key(pagedown)
-    sleep(250ms)
-    key(up:3)
-
-riser:
-    sleep(200ms)    
-    key(pageup)
-    sleep(250ms)
-    key(up:3)
 
 stamp below:
     edit.copy()
@@ -192,13 +171,24 @@ stamp below:
     key(down)
     edit.paste()
 
-on:
-    sleep(500ms)
-    key(tab)
-    sleep(500ms)
-
 paste down:
     sleep(200ms)
     edit.paste()
     sleep(100ms)
     key(down)
+
+link clip:
+    key(cmd-k)
+    sleep(200ms)
+    edit.paste()
+
+link line clip:
+    key(end)
+    sleep(50ms)
+    key(shift-home)
+    sleep(200ms)
+    key(cmd-k)
+    sleep(200ms)
+    edit.paste()
+    sleep(50ms)
+    key(enter)

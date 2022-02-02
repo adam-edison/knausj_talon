@@ -28,9 +28,7 @@ tag require:
     insert("tag: ")
 tag set:
     insert("tag(): ")
-    #commands for dictating key combos
-key <user.keys> over: "{keys}"
-key <user.modifiers> over: "{modifiers}"
+
 #funk commands, consistent with other languages
 toggle funk: user.code_toggle_functions()
 funk <user.code_functions>:
@@ -45,9 +43,17 @@ funk wrap <number>:
 sleep <number>:
 	insert("sleep({number}ms)")
 
-key normal:
-	insert("key()")
-	key(left)
+# TODO: do this better
+#commands for dictating key combos
+key <user.keys> over: "{keys}"
+key <user.modifiers> over: "{modifiers}"
+
+key <user.keys>:
+    insert("key({keys})")
+
+key [<user.text>]:
+    command = text or ""
+	insert("key({command})")
 
 insert normal:
 	insert("insert(\"\")")
