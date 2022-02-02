@@ -252,3 +252,5 @@ go camel right: user.camel_right()
 blacken: user.idea("action BLACKReformatCode")
 
 resolve conflicts: key(cmd-shift-i)
+
+close others: key(cmd-alt-w)
