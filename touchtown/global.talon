@@ -103,15 +103,5 @@ issue [kay] <number>:
 link [kay] <number>: 
     insert("https://kasa.atlassian.net/browse/KFC-{number}")
 
-link issue [dev] <number>:
-    insert("https://touchtown.atlassian.net/browse/TTDEV-{number}")
-
-sublime <number>:
-    user.switcher_focus("sublime")
-    sleep(750ms)
-    edit.jump_line(number)
-    sleep(20ms)
-    key(end)
-
 other window:
     key(cmd-`)

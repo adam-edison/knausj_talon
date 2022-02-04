@@ -32,7 +32,7 @@ extract interface: user.idea("action ExtractInterface")
 extract method: user.idea("action ExtractMethod")
 refactor in line: user.idea("action Inline")
 refactor move: user.idea("action Move")
-refactor rename: user.idea("action RenameElement")
+(refactor|fact) rename: user.idea("action RenameElement")
 rename file: user.idea("action RenameFile")
 fix (format | formatting): user.idea("action ReformatCode")
 fix imports: user.idea("action OptimizeImports")
@@ -52,12 +52,20 @@ find (everywhere | all) <user.text> [over]:
     insert(text)
 (search | find) class: user.idea("action GotoClass")
 (search | find) file: user.idea("action GotoFile")
+
+(search | find) file <user.text>:
+    search_text = user.formatted_text(title, "NOOP")
+    user.idea("action GotoFile")
+    sleep(500ms)
+    insert("{search_text}\n")
+
 (search | find) path: user.idea("action FindInPath")
 (search | find) symbol: user.idea("action GotoSymbol")
 (search | find) symbol <user.text>$:
     user.idea("action GotoSymbol")
     insert(text)
     key("enter")
+
 recent: user.idea("action RecentFiles")
 
 surround [this] with <user.text> [over]:

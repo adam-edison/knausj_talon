@@ -13,13 +13,23 @@ saver:
     sleep(200ms)
     key(escape)
     
-looks good:
+commit it:
     edit.save()
     sleep(200ms)
     key(escape)
     key(cmd-w)
     sleep(100ms)
     user.switcher_focus("iterm")
+
+ship it:
+    edit.save()
+    sleep(200ms)
+    key(escape)
+    key(cmd-w)
+    sleep(100ms)
+    user.switcher_focus("iterm")
+    sleep(100ms)
+    insert("git push\n")
     
 mark complete:
     key(home)

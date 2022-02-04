@@ -27,14 +27,17 @@ git revert head <number_small>: "git revert --no-commit HEAD~{number_small}..\n"
     edit.paste()
     key(enter)
 [git] checkout master: "git checkout master\n"
-# it would be better to prompt for this number - hard to get it all in with voice and guarantee correctness
-[git] checkout <number>:
-    insert("git fetch -p && git checkout `git branch -r | grep 'DEV.*\-{number}\-' | sed -E 's/(.*)\/(.*)/\\2/'`\n")
+
 # TODO: AGE fix this, it doesn't work - 5 mod checks out 5 files
 # [git] checkout <number> mod:
 #     command = "git checkout `git status | grep modified | awk '{{print $2}}' | head -n {number}`"
 #     # require hitting enter to confirm this - it is not reversible, so not safe if mis-recognized
 #     insert(command)
+
+[git] checkout <number> [<user.word>]:
+    text = word or ""
+    #insert("git fetch -p && git checkout `git branch | grep '.*{number}.*{text}' | sed -E 's/(.*)\/(.*)/\\2/'`\n")
+    insert("git fetch -p && git checkout `git branch | grep '.*{number}.*{text}'`\n")
 
 [git] branch delete <number>:
     insert("git branch -D $(git branch | grep {number})")

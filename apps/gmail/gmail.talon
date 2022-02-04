@@ -14,3 +14,4 @@ select read: "*r"
 
 # actions
 archive: "e"
+mark all as read: ""
