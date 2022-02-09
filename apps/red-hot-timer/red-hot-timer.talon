@@ -7,11 +7,7 @@ os: mac
 ^block <number> [<user.text>]$:
     title = text or ""
     formatted = user.formatted_text(title, "CAPITALIZE_ALL_WORDS")
-    key(ctrl-shift-alt-cmd-t)
-    sleep(200ms)
-    insert("{number}m")
-    sleep(500ms)
-    key(enter)
+    user.red_hot_timer_set(number)
     sleep(100ms)
     user.switcher_focus("textedit")
     sleep(200ms)

@@ -380,29 +380,24 @@ start double oh <number>:
     sleep(50ms)
     key(enter)
 
-start <number>:
-    today = user.date_slash_format()
-
+<number> future here:
     mouse_click(0)
     sleep(1000ms)
 
-    # today
-    key(tab)
-    sleep(50ms)
-    insert(today)
-
-    # now
-    key(tab)
+    # time
+    key(tab:2)
     sleep(50ms)
     insert("{number}")
     sleep(50ms)
     key(tab)
 
     # save
-    sleep(200ms)
-    key(tab:5)
-    sleep(50ms)
-    key(enter)
+    key(cmd-s)
+    sleep(500ms)
+
+    # future
+    key(shift-cmd-f)
+
 
 # // TODO: AGE: fix scrolling in general, allowing for a natural or normal scrolling variable
 # // TODO: AGE: extract this scroll down function in order to re use it across multiple applications, center_scroll_down

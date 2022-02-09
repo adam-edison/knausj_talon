@@ -54,7 +54,7 @@ find (everywhere | all) <user.text> [over]:
 (search | find) file: user.idea("action GotoFile")
 
 (search | find) file <user.text>:
-    search_text = user.formatted_text(title, "NOOP")
+    search_text = user.formatted_text(text, "NOOP")
     user.idea("action GotoFile")
     sleep(500ms)
     insert("{search_text}\n")
@@ -196,6 +196,7 @@ toggle [line] breakpoint: user.idea("action ToggleLineBreakpoint")
 toggle method breakpoint: user.idea("action ToggleMethodBreakpoint")
 run menu: user.idea("action ChooseRunConfiguration")
 run test: user.idea("action RunClass")
+test file: key(ctrl-shift-r)
 run [test] again: user.idea("action Rerun")
 debug test: user.idea("action DebugClass")
 step over: user.idea("action StepOver")

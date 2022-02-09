@@ -157,19 +157,18 @@ dire up:
 quit this:
     key(cmd-q)
 
-(show|hide) changes:
+show changes:
     user.switcher_focus("intellij")
     sleep(500ms)
     key(cmd-9)
 
+approve changes:
+    key(cmd-9)
+    user.switcher_focus("iterm")
+
+
 waiter: 
     sleep(1000ms)
-
-stamp below:
-    edit.copy()
-    sleep(50ms)
-    key(down)
-    edit.paste()
 
 paste down:
     sleep(200ms)

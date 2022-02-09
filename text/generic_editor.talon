@@ -233,8 +233,8 @@ bottom:
 topper:
     key("cmd-up")
 
-(dawn|rise): edit.line_start()
-(dusk|fall): edit.line_end()
+rise: edit.line_start()
+fall: edit.line_end()
 
 splash: 
     edit.line_end()
@@ -253,3 +253,10 @@ paste right:
     key(delete)
     sleep(100ms)
     edit.paste()
+
+stamp <user.word>:
+    mouse_click(0)
+    sleep(10ms)
+    mouse_click(0)
+    sleep(50ms)
+    insert(word)

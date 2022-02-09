@@ -193,8 +193,9 @@ class CodeActions:
 @ctx.action_class("edit")
 class EditActions:
     # talon edit actions
-    def copy():
-        actions.user.idea("action EditorCopy")
+    # broken in editor context
+    # def copy():
+    #     actions.user.idea("action EditorCopy")
 
     def cut():
         actions.user.idea("action EditorCut")

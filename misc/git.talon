@@ -81,6 +81,16 @@ git revert head <number_small>: "git revert --no-commit HEAD~{number_small}..\n"
     edit.paste()
     insert(": ")
 
+[git] commit updated$:
+    user.paste("git add -u\n")
+    insert("git rev-parse --abbrev-ref HEAD | cut -d '-' -f 1-2 | tr -d '\\n' | pbcopy")
+    key(enter)
+    sleep(500ms)
+    insert("git commit\n")
+    sleep(1000ms)
+    edit.paste()
+    insert(": ")
+
 [git] push first [time]: 
     insert("git rev-parse --abbrev-ref HEAD | pbcopy")
     key(enter)

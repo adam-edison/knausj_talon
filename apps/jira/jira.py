@@ -6,6 +6,7 @@ app: chrome
 win.title: /(JIRA)|(Task Assignment)/
 """
 
+
 @ctx.action_class('edit')
 class EditActions:
     def line_clone():
