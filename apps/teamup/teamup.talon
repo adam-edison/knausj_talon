@@ -505,4 +505,4 @@ saver:
 
 show day:
     today = user.date_dash_format()
-    user.open_link_current_tab("https://teamup.com/c/moqsyr/personal?tz=America%2FNew_York&view=D&date={today}&filterby_status[]=planned")
+    user.open_link_current_tab("https://teamup.com/c/moqsyr/personal?refresh=10tz=America%2FNew_York&view=D&date={today}&filterby_status[]=planned")
