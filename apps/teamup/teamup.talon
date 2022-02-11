@@ -67,9 +67,8 @@ complete single:
     key(enter)
 
     # choose single when window comes up
-    sleep(1500ms)
-    key(tab)
-    key(enter)
+    sleep(500ms)
+    key(shift-cmd-s)
 
 make this work:
     insert("Work")
@@ -89,7 +88,7 @@ make this work:
 
 complete <user.letter>:
     insert("{letter_1}")
-    sleep(2000ms)
+    sleep(1500ms)
 
     # change status field to completed
     key(tab:9)
@@ -105,7 +104,7 @@ complete <user.letter>:
 
 complete <user.letter> <user.letter>:
     insert("{letter_1}{letter_2}")
-    sleep(2000ms)
+    sleep(1500ms)
 
     # change status field to completed
     key(tab:9)
@@ -118,6 +117,9 @@ complete <user.letter> <user.letter>:
     sleep(500ms)
     key(shift-tab)
     key(enter)
+
+delete single:
+    
 
 delete <user.letter>:
     insert("{letter_1}")
@@ -399,19 +401,34 @@ start double oh <number>:
     key(shift-cmd-f)
 
 
-# // TODO: AGE: fix scrolling in general, allowing for a natural or normal scrolling variable
-# // TODO: AGE: extract this scroll down function in order to re use it across multiple applications, center_scroll_down
-scroll down:
-    user.mouse_move(671, 441)
-    sleep(200ms)
-    user.mouse_scroll_up()
-    repeat(2)
+buffer time:
+    insert("Buffer Time")
+    key(tab:7)
+    key(backspace:3)
+    insert("Buffer\n\t\t")
+    insert("Planned\n")
 
-scroll up:
-    user.mouse_move(671, 441)
-    sleep(200ms)
-    user.mouse_scroll_down()
-    repeat(2)   
+    # save
+    key(cmd-s)
+
+buffer time daily:
+    insert("Buffer Time")
+    key(tab:7)
+    key(backspace:3)
+    insert("Buffer\n\t\t")
+    insert("Planned\n")
+    key(shift-tab:9)
+
+    # daily
+    key(tab:6)
+    sleep(10ms)
+    key(space)
+    sleep(10ms)
+    key(shift-tab:6)
+    sleep(100ms)
+
+    # save
+    key(cmd-s)
 
 work ({user.teamup_position}| block):
     position = user.teamup_position or "Sitting"
@@ -426,7 +443,7 @@ work ({user.teamup_position}| block):
     key(shift-tab:2)
     key(enter)
 
-[work] meeting {user.teamup_position}:
+meeting [{user.teamup_position}]:
     position = user.teamup_position or "Sitting"
     insert("Work Meeting")
     key(tab:7)
@@ -485,3 +502,7 @@ saver:
 [apply] future: key(shift-cmd-f)
 
 [apply] all: key(shift-cmd-a)
+
+show day:
+    today = user.date_dash_format()
+    user.open_link_current_tab("https://teamup.com/c/moqsyr/personal?tz=America%2FNew_York&view=D&date={today}&filterby_status[]=planned")

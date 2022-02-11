@@ -17,6 +17,7 @@ git revert head <number_small>: "git revert --no-commit HEAD~{number_small}..\n"
 [git] blame: "git blame "
 [git] branch local: "git branch\n"
 [git] branch remote: "git branch --remote\n"
+[git] branch remote <number>: "git branch -r | grep '.*{number}.*'\n"
 
 # we would not want to do this by mistake ever
 [git] checkout dot: "git checkout ." 
@@ -38,6 +39,11 @@ git revert head <number_small>: "git revert --no-commit HEAD~{number_small}..\n"
     text = word or ""
     #insert("git fetch -p && git checkout `git branch | grep '.*{number}.*{text}' | sed -E 's/(.*)\/(.*)/\\2/'`\n")
     insert("git fetch -p && git checkout `git branch | grep '.*{number}.*{text}'`\n")
+
+[git] checkout remote <number> [<user.word>]:
+    text = word or ""
+    #insert("git fetch -p && git checkout `git branch | grep '.*{number}.*{text}' | sed -E 's/(.*)\/(.*)/\\2/'`\n")
+    insert("git fetch -p && git checkout -b `git branch -r | grep '.*{number}.*{text}'`\n")
 
 [git] branch delete <number>:
     insert("git branch -D $(git branch | grep {number})")

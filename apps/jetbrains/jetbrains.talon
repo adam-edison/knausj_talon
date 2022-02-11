@@ -212,10 +212,10 @@ continue: user.idea("action Resume")
 # Movement
 go next (error | air): user.idea("action GotoNextError")
 go last (error | air): user.idea("action GotoPreviousError")
-fix next (error | air):
+fix next:
     user.idea("action GotoNextError")
     user.idea("action ShowIntentionActions")
-fix last (error | air):
+fix last:
     user.idea("action GotoPreviousError")
     user.idea("action ShowIntentionActions")
 # Special Selects
@@ -263,3 +263,5 @@ blacken: user.idea("action BLACKReformatCode")
 resolve conflicts: key(cmd-shift-i)
 
 close others: key(cmd-alt-w)
+
+open only <user.text>: user.idea_open_only(text)

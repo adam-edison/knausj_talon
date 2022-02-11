@@ -81,6 +81,10 @@ jet path:
 poster:
     key(cmd-enter)
 
+dumper:
+    edit.paste()
+    key(cmd-enter)
+
 (uncomment|comment) [that]:
     key(cmd-/)
 

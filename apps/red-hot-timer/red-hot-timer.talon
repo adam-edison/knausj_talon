@@ -8,8 +8,9 @@ os: mac
     title = text or ""
     formatted = user.formatted_text(title, "CAPITALIZE_ALL_WORDS")
     user.red_hot_timer_set(number)
-    sleep(100ms)
-    user.switcher_focus("textedit")
-    sleep(200ms)
-    edit.delete_line()
-    insert("{formatted}")
+    user.text_edit_caption(formatted)
+
+^block <number> line$:
+    text = user.line_copy()
+    user.red_hot_timer_set(number)
+    user.text_edit_caption(text)

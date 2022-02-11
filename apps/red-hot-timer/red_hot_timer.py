@@ -17,3 +17,11 @@ class Actions:
         actions.insert(f"{minutes}m")
         actions.sleep("500ms")
         actions.key("enter")
+
+    def text_edit_caption(text: str):
+        """set the text in textedit"""
+        actions.sleep("100ms")
+        actions.user.switcher_focus("textedit")
+        actions.sleep("200ms")
+        actions.edit.select_all()
+        actions.insert(text)

@@ -156,9 +156,7 @@ copy all:
     edit.copy()
 
 copy line:
-    edit.line_start()
-    edit.extend_line_end()
-    edit.copy()
+    user.line_copy()
 #to do: do we want these variants, seem to conflict
 # copy left: 
 #      edit.extend_left()

@@ -44,3 +44,10 @@ class Actions:
     def line_clone(line: int):
         """Clones specified line at current position"""
 
+    def line_copy():
+        """copies current line to clipboard and returns contents"""
+        actions.edit.line_start()
+        actions.edit.extend_line_end()
+        actions.edit.copy()
+        actions.sleep("100ms")
+        return clip.text()

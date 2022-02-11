@@ -162,6 +162,16 @@ class Actions:
             global extendCommands
             extendCommands = []
 
+    def idea_open_only(text: str):
+        """open a file after searching by filename, and close all others"""
+        actions.key("cmd-p")
+        actions.sleep("400ms")
+        actions.insert(text)
+        actions.sleep("100ms")
+        actions.key("enter")
+        actions.sleep("200ms")
+        actions.key("cmd-alt-w")
+
 
 ctx.matches = r"""
 app: jetbrains

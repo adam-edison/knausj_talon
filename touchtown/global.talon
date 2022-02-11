@@ -103,5 +103,17 @@ issue [kay] <number>:
 link [kay] <number>: 
     insert("https://kasa.atlassian.net/browse/KFC-{number}")
 
+link issue [kay] <number>:
+    user.paste("KFC-{number}")
+    sleep(20ms)
+    key(shift-left:8)
+    sleep(20ms)
+    key(cmd-k)
+    sleep(50ms)
+    user.paste("https://kasa.atlassian.net/browse/KFC-{number}")
+    sleep(50ms)
+    key(enter)
+
+
 other window:
     key(cmd-`)

@@ -29,6 +29,7 @@ class Actions:
         for words in macro[:-1]:
             print(words)
             actions.mimic(words)
+            actions.sleep("10ms")
 
 
 def fn(d):
