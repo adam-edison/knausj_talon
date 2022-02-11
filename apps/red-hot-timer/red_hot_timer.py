@@ -24,4 +24,4 @@ class Actions:
         actions.user.switcher_focus("textedit")
         actions.sleep("200ms")
         actions.edit.select_all()
-        actions.insert(text)
+        actions.user.paste(text)

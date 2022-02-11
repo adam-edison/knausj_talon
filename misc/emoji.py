@@ -24,9 +24,9 @@ class Actions:
     def emoji_mark_line(emoji: str):
         """Adds an emoji and a space to the beginning of the current line"""
         actions.key("end")
-        actions.sleep("10ms")
+        actions.sleep("20ms")
         actions.key("home")
-        actions.sleep("10ms")
+        actions.sleep("20ms")
         Actions.emoji_insert_spaced(emoji)
 
     def emoji_insert_spaced(emoji: str):
