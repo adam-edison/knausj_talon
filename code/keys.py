@@ -199,7 +199,6 @@ symbol_key_words = {
     "divide": "/",
     "tick": "`",
     "under": "_",
-    "eyes": ":",
     "left curve": "(",
     "right curve": ")",
     "left curly": "{",

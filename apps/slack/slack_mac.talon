@@ -28,11 +28,11 @@ add line: key(shift-enter)
 (slack | lack) (slap | slaw | slapper): key(cmd-right shift-enter)
 (slack | lack) (react | reaction): key(cmd-shift-\)
 
-(slack | lack) (react | reaction) <user.text>: 
+react <user.word>: 
     key(cmd-shift-\)
     sleep(50ms)
-    insert(text)
-    sleep(100ms)
+    insert(word)
+    sleep(500ms)
     key(enter)
 
 (insert command | commandify): key(cmd-shift-c)
@@ -59,3 +59,4 @@ bold: key(cmd-b)
 emote <user.text>: "{text}"
 toggle left sidebar: key(cmd-shift-d)
 toggle right sidebar: key(cmd-.)
+
