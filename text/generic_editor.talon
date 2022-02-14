@@ -157,6 +157,9 @@ copy all:
 
 copy line:
     user.line_copy()
+
+cut line:
+    user.line_cut()
 #to do: do we want these variants, seem to conflict
 # copy left: 
 #      edit.extend_left()

@@ -51,3 +51,11 @@ class Actions:
         actions.edit.copy()
         actions.sleep("100ms")
         return clip.text()
+
+    def line_cut():
+        """cuts current line to clipboard and returns contents"""
+        actions.edit.line_start()
+        actions.edit.extend_line_end()
+        actions.edit.cut()
+        actions.sleep("100ms")
+        return clip.text()
