@@ -115,5 +115,9 @@ link issue [kay] <number>:
     key(enter)
 
 
-other window:
+[other] window:
     key(cmd-`)
+
+check talon log:
+    user.switcher_focus("code")
+    user.open_file("talon.log")

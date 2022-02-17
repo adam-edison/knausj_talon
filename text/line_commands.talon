@@ -15,14 +15,6 @@ after <number>:
     edit.line_end()
     key(enter)
 
-paste after <number>:
-    edit.jump_line(number)
-    sleep(20ms)
-    key(end)
-    sleep(20ms)
-    key(enter)
-    edit.paste()
-
 (dawn|rise) <number>: 
     edit.jump_line(number)
     edit.line_start()
@@ -56,7 +48,11 @@ clear <number>:
     edit.select_line()
     key(backspace:2)
 
-# TODO: AGE clear <number> until <number>:
+clear <number> plus <number>: 
+    start = number
+    end = number_1 + number_2
+    user.select_range(start, end)
+    edit.delete()
 
 # ONLY CONSIDER BELOW TODO after trying draft window
 # TODO: AGE before <symbol or letter> <nth occurence> - maybe use experimental correction interface instead (textarea, draft window)
@@ -70,7 +66,7 @@ blank <number>:
     edit.select_line()
     key(backspace)
 
-clear range <number> until <number>: 
+clear <number> until <number>: 
     user.select_range(number_1, number_2)
     edit.delete()
 

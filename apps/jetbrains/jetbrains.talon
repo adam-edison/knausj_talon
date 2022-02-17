@@ -198,6 +198,11 @@ run menu: user.idea("action ChooseRunConfiguration")
 run test: user.idea("action RunClass")
 test file: key(ctrl-shift-r)
 run [test] again: user.idea("action Rerun")
+rerun:
+    key(cmd-4)
+    sleep(100ms)
+    key(cmd-r)
+
 debug test: user.idea("action DebugClass")
 step over: user.idea("action StepOver")
 step into: user.idea("action StepInto")
@@ -265,3 +270,8 @@ resolve conflicts: key(cmd-shift-i)
 close others: key(cmd-alt-w)
 
 open only <user.text>: user.idea_open_only(text)
+
+apply (safe|non conflicting): key(ctrl-shift-.)
+(magic |apply) simple: key(ctrl-shift-/)
+last conflict: key(ctrl-shift-up)
+next conflict: key(ctrl-shift-down)

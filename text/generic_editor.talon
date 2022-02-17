@@ -11,6 +11,16 @@ os: mac
 finder:
     edit.find()
 
+finder clip:
+    edit.find()
+    sleep(10ms)
+    edit.paste()
+
+finder <user.text>:
+    edit.find()
+    sleep(10ms)
+    insert(text)
+
 next one:
     edit.find_next()
 

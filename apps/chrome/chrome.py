@@ -18,6 +18,7 @@ ctx.matches = r"""
 app: chrome
 """
 
+
 @mod.action_class
 class Actions:
     def open_link_new_tab(link: str):
@@ -27,13 +28,38 @@ class Actions:
         actions.user.paste(link)
         actions.sleep("100ms")
         actions.key("enter")
-    
+
     def open_link_current_tab(link: str):
         """opens the link in the current tab"""
         actions.key("cmd-l")
         actions.user.paste(link)
         actions.sleep("100ms")
         actions.key("enter")
+
+    def select_text_element(search: str):
+        """selects the element by text search"""
+        actions.key("cmd-f")
+        actions.sleep("100ms")
+        actions.user.paste(search)
+        actions.sleep("100ms")
+        actions.key("enter")
+        actions.sleep("100ms")
+        actions.key("esc")
+
+    def trigger_text_element(search: str):
+        """triggers the element by search and enter"""
+        Actions.select_text_element(search)
+        actions.sleep("100ms")
+        actions.key("enter")
+
+    def trigger_link_text(search: str):
+        """triggers link by search and enter"""
+        actions.key("cmd-f")
+        actions.sleep("100ms")
+        actions.user.paste(search)
+        actions.sleep("100ms")
+        actions.key("enter")
+
 
 @ctx.action_class("user")
 class user_actions:
@@ -50,14 +76,6 @@ class user_actions:
         else:
             actions.key("ctrl-9")
 
-    def select_text_element(search: str):
-        actions.key("cmd-f")
-        actions.sleep("100ms")
-        actions.user.paste(search)
-        actions.sleep("100ms")
-        actions.key("enter")
-        actions.sleep("100ms")
-        actions.key("esc")
 
 @ctx.action_class("browser")
 class browser_actions:
