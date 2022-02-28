@@ -136,11 +136,11 @@ punctuation_words = {
     # Dragon. Possibly it has been fixed by later improvements to talon? -rntz
     "`": "`", ",": ",",  # <== these things
     "tick": "`",
-    "comma": ",",
+    "drip": ",",
     "period": ".",
     "full stop": ".",
     "semicolon": ";",
-    "colon": ":",
+    "stack": ":",
     "forward slash": "/",
     "question mark": "?",
     "exclamation mark": "!",
@@ -206,7 +206,6 @@ symbol_key_words = {
     "space": " ",
     "wit": " ",
     "semi": ";",
-    "coal": ":"
 }
 
 # make punctuation words also included in {user.symbol_keys}

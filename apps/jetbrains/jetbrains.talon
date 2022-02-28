@@ -196,7 +196,9 @@ toggle [line] breakpoint: user.idea("action ToggleLineBreakpoint")
 toggle method breakpoint: user.idea("action ToggleMethodBreakpoint")
 run menu: user.idea("action ChooseRunConfiguration")
 run test: user.idea("action RunClass")
-test file: key(ctrl-shift-r)
+run test <number>: 
+    edit.jump_line(number)
+    user.idea("action RunClass")
 run [test] again: user.idea("action Rerun")
 rerun:
     key(cmd-4)
@@ -204,6 +206,10 @@ rerun:
     key(cmd-r)
 
 debug test: user.idea("action DebugClass")
+debug test <number>:
+    edit.jump_line(number)
+    user.idea("action DebugClass")
+
 step over: user.idea("action StepOver")
 step into: user.idea("action StepInto")
 step smart: user.idea("action SmartStepInto")

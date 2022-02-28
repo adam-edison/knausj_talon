@@ -279,5 +279,15 @@ this auto set <user.text>:
 care branch: "point-click-care-feature"
 
 my name: "Adam Edison"
-my first name: "Adam"
-my last name: "Edison"
+my first [name]: "Adam"
+my last [name]: "Edison"
+
+# TODO: figure out how to make "Find All <text>" an edit shortcut that all apps can override
+search talon <user.word>:
+    user.switcher_focus("code")
+    sleep(200ms)
+    key(cmd-shift-f)
+    sleep(50ms)
+    insert(word)
+    sleep(50ms)
+    key(enter)

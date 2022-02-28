@@ -57,7 +57,7 @@ git revert head <number_small>: "git revert --no-commit HEAD~{number_small}..\n"
 
 [git] clone: "git clone "
 
-[git] commit message$:
+[git] commit message issue$:
     insert("git branch | grep '*' | awk '{{print $2}}' | cut -d '-' -f 1-2 | tr -d '\\n' | pbcopy")
     key(enter)
     insert("git commit -m \"")
@@ -66,26 +66,29 @@ git revert head <number_small>: "git revert --no-commit HEAD~{number_small}..\n"
     insert(": \"")
     key(left)
 
-[git] commit message plain:
+[git] commit message:
     user.paste("git commit -m \"\"")
     key(left)
 
-[git] commit all plain:
+[git] commit all:
     user.paste("git add -A")
     key(enter)
     sleep(500ms)
     user.paste("git commit -m \"\"")
     key(left)
 
-[git] commit all$:
+[git] commit all issue$:
     user.paste("git add -A\n")
     insert("git rev-parse --abbrev-ref HEAD | cut -d '-' -f 1-2 | tr -d '\\n' | pbcopy")
     key(enter)
     sleep(500ms)
-    insert("git commit\n")
-    sleep(1000ms)
-    edit.paste()
-    insert(": ")
+    issue = user.clipboard_get()
+    insert("git commit -m \"{issue}: \"")
+    key(left)
+
+ship it:
+    key(enter)
+    insert("git push\n")
 
 [git] commit updated$:
     user.paste("git add -u\n")
