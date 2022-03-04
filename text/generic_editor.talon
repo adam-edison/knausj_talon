@@ -30,10 +30,10 @@ next one:
 (go word right|wire):
     edit.word_right()
 
-(go left|last):
+(go left|shield):
     edit.left()
 
-(go right|next):
+(go right|sword):
     sleep(10ms)
     edit.right()
 

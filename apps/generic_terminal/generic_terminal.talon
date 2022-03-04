@@ -21,3 +21,6 @@ clear view: "clear\n"
 
 set python version old: "ln -s -f /usr/bin/python2.7 /usr/local/bin/python && python --version\n"
 set python version new: "ln -s -f /usr/local/bin/python3.9 /usr/local/bin/python && python --version\n"
+
+beginning: key(ctrl-a)
+ending: key(ctrl-e)

@@ -136,11 +136,11 @@ punctuation_words = {
     # Dragon. Possibly it has been fixed by later improvements to talon? -rntz
     "`": "`", ",": ",",  # <== these things
     "tick": "`",
-    "drip": ",",
+    "comma": ",",
     "period": ".",
     "full stop": ".",
     "semicolon": ";",
-    "stack": ":",
+    "coal": ":",
     "forward slash": "/",
     "question mark": "?",
     "exclamation mark": "!",
@@ -237,7 +237,7 @@ alternate_keys = {
     "junk": "backspace",
     "chunk": "backspace",
     "wit": "space",
-    "stick": "enter",
+    "shoot": "enter",
     "caper": "escape"
 }
 # mac apparently doesn't have the menu key.

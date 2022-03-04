@@ -273,7 +273,7 @@ blacken: user.idea("action BLACKReformatCode")
 
 resolve conflicts: key(cmd-shift-i)
 
-close others: key(cmd-alt-w)
+(close others | solo): key(cmd-alt-w)
 
 open only <user.text>: user.idea_open_only(text)
 
