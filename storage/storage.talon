@@ -19,6 +19,6 @@ store <number>:
     edit.copy()
     user.set_data_from_clipboard("clip {number}")
 
-retrieve <number>:
+fetch <number>:
     value = user.get_data("clip {number}")
     user.paste("{value}")

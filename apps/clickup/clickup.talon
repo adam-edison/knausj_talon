@@ -18,3 +18,13 @@ sibling:
     key(end)
     key(enter)
     key(tab)
+
+# monkey:
+#     key(cmd-f)
+#     sleep(300ms)
+#     user.paste("⭐️")
+#     key(enter)
+    # sleep(10ms)
+    # key(esc)
+    # sleep(10ms)
+    # key(end)

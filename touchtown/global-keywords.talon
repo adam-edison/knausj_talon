@@ -283,7 +283,7 @@ my first [name]: "Adam"
 my last [name]: "Edison"
 
 # TODO: figure out how to make "Find All <text>" an edit shortcut that all apps can override
-search talon <user.text>:
+talon search <user.text>:
     user.switcher_focus("code")
     sleep(200ms)
     key(cmd-shift-f)
@@ -291,3 +291,8 @@ search talon <user.text>:
     insert(text)
     sleep(50ms)
     key(enter)
+
+report:
+    user.switcher_focus("iterm")
+    insert("clear\n")
+    insert("git status\n")

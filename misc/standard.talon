@@ -19,10 +19,15 @@ page down: key(pgdown)
 (copier|copy that): edit.copy()
 (cutter|cut that): edit.cut()
 (paster|paste that): edit.paste()
-undo that: edit.undo()
-redo that: edit.redo()
 paste match: edit.paste_match_style()
 paste value: key(cmd-shift-v)
+paste mouse: 
+	mouse_click()
+	sleep(200ms)
+	edit.paste()
+undo that: edit.undo()
+redo that: edit.redo()
+
 file save: edit.save()  
 (pad | padding): 
 	insert("  ") 

@@ -28,6 +28,21 @@ add line: key(shift-enter)
 (slack | lack) (slap | slaw | slapper): key(cmd-right shift-enter)
 (slack | lack) (react | reaction): key(cmd-shift-\)
 
+react looking:
+    key(cmd-shift-\)
+    sleep(50ms)
+    insert("eyes")
+    sleep(500ms)
+    key(enter)  
+    
+react skip:
+    key(cmd-shift-\)
+    sleep(50ms)
+    insert("fast")
+    sleep(300ms)
+    key(enter)
+    user.mouse_move_relative(0, 140)
+
 react <user.word>: 
     key(cmd-shift-\)
     sleep(50ms)
@@ -59,4 +74,3 @@ bold: key(cmd-b)
 emote <user.text>: "{text}"
 toggle left sidebar: key(cmd-shift-d)
 toggle right sidebar: key(cmd-.)
-

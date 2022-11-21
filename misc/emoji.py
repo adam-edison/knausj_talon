@@ -8,6 +8,7 @@ mod.list('emoji_names', desc='names of emojis')
 
 ctx.lists['self.emoji_names'] = {
     "complete": "✅",
+    "check": "✅",
     "in progress": "🚧",
     "working": "🚧",
     "skip": "⏩",
@@ -15,7 +16,9 @@ ctx.lists['self.emoji_names'] = {
     "red": "🔴",
     "blocked": "🔴",
     "waiting": "🫖",
-    "smiley": "😀"
+    "smiley": "😀",
+    "current": "⭐️",
+    "star": "⭐️",
 }
 
 
@@ -30,10 +33,14 @@ class Actions:
         Actions.emoji_insert_spaced(emoji)
 
     def emoji_insert_spaced(emoji: str):
-        """Inserts and emoji and a space"""
-        actions.user.paste(emoji)
+        """Inserts an emoji and a space"""
+        Actions.emoji_insert(emoji)
         actions.sleep("10ms")
         actions.insert(" ")
+
+    def emoji_insert(emoji: str):
+        """Inserts an emoji"""
+        actions.user.paste(emoji)
 
     def emoji_clear_line():
         """Clears the emoji and a space at the beginning of the current line"""

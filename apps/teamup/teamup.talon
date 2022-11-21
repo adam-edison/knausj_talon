@@ -2,8 +2,8 @@ win.title: /\| Teamup/
 -
 
 settings():
-    key_wait = 10
-    insert_wait = 10
+    key_wait = 5
+    insert_wait = 5
 
 # TODO: AGE: move these things to python code so they can be reused
 
@@ -50,25 +50,20 @@ description [line] [<number>]:
     sleep(100ms)
     key("down:{moves}")
 
-complete single:
+team complete:
     mouse_click()
-    sleep(1000ms)
-    
-    # change calendar to completed
-    key(tab:9)
+    sleep(500ms)
+    user.teamup_editor_set_status("complete")
     sleep(100ms)
-    key(backspace)
-    insert("complete")
     key(enter)
 
-    # save
+team in progress:
+    mouse_click()
     sleep(500ms)
-    key(shift-tab)
+    user.teamup_editor_set_status("in progress")
+    sleep(100ms)
     key(enter)
 
-    # choose single when window comes up
-    sleep(500ms)
-    key(shift-cmd-s)
 
 make this work:
     insert("Work")
@@ -478,8 +473,6 @@ duplicate {user.teamup_calendar}:
 # These commands assume the edit window is already open
 ########################################################
 [status] {user.teamup_status}: user.teamup_editor_set_status(teamup_status)
-
-[position] {user.teamup_position}: user.teamup_editor_set_position(teamup_position)
 
 [calendar] {user.teamup_calendar}: user.teamup_editor_set_calendar(teamup_calendar)
 

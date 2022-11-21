@@ -8,7 +8,7 @@ key(keypad_minus):
     mode.disable("face")
 
 key(keypad_plus):
-    speech.set_microphone("CORSAIR HS60 HAPTIC Gaming Headset")
+    speech.set_microphone("MPOW Wireless Gaming Headset")
     speech.enable()
 
 key(keypad_multiply):

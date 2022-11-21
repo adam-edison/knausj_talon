@@ -7,6 +7,7 @@ tag(): user.multiple_cursors
 tag(): user.snippets
 tag(): user.splits
 tag(): user.tabs
+tag(): terminal
 window reload: user.vscode("workbench.action.reloadWindow")
 window close: user.vscode("workbench.action.closeWindow")
 #multiple_cursor.py support end
@@ -87,6 +88,12 @@ whitespace trim: user.vscode("editor.action.trimTrailingWhitespace")
 language switch: user.vscode("workbench.action.editor.changeLanguageMode")
 refactor rename: user.vscode("editor.action.rename")
 refactor this: user.vscode("editor.action.refactor")
+extract function: 
+  key(alt-cmd-m)
+  sleep(200ms)
+  key(down)
+  sleep(20ms)
+  key(enter)
 
 #code navigation
 (go declaration | follow): user.vscode("editor.action.revealDefinition")
