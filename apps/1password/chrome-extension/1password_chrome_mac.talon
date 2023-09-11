@@ -2,4 +2,5 @@ app: chrome
 os: mac
 -
 
-password: password_open_search()
+^password$: user.password_open_search()
+
