@@ -1,4 +1,5 @@
 win.title: /OCTOPATH TRAVELER/
+mode: command
 -
 settings():
   # Necessary to stop commands like 'slap' getting jumbled
@@ -10,6 +11,7 @@ parrot(hiss): key(o:4)
 parrot(kik): key(w)
 parrot(cluck): key(s)
 parrot(fft): key(enter)
+parrot(tsk): key(escape)
 
 item <number_small>:
   number = number_small or 0
@@ -21,7 +23,9 @@ item <number_small>:
 victory: 
   key(e)
   sleep(1000ms)
-  key(e:2)
+  key(e)
+  sleep(500ms)
+  key(e)
 
 talk: key(enter)
 
@@ -46,13 +50,26 @@ dialog:
   sleep(3000ms)
   key(enter)
 
-cyrus fire:
+cast fire:
   key(down enter enter)
 
-cyrus ice:
+cast ice:
   key(down enter down enter)
 
 skip this now:
   key(backspace:down)
   sleep(6000ms)
   key(backspace:up)
+
+collect: key(down enter enter)
+
+switch attack: key(right enter)
+
+running: key(shift:down)
+walking: key(shift:up)
+
+last: key(enter)
+
+next: key(right)
+
+boost: key(o)
