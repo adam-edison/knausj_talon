@@ -51,10 +51,10 @@ dialog:
   key(enter)
 
 cast fire:
-  key(down enter enter)
+  key(down enter enter enter)
 
 cast ice:
-  key(down enter down enter)
+  key(down enter down enter enter)
 
 skip this now:
   key(backspace:down)
@@ -73,3 +73,11 @@ last: key(enter)
 next: key(right)
 
 boost: key(o)
+
+level slash: key(down enter enter enter)
+
+trade tempest: key(down enter down down enter enter)
+
+defend: key(down:3 enter)
+
+get me the hell out of here: key(down:4 enter)
