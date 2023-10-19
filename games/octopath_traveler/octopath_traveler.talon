@@ -7,13 +7,24 @@ settings():
 
 <phrase>: skip()
 
-parrot(hiss): key(o:4)
 parrot(kik): key(w)
 parrot(cluck): key(s)
 parrot(fft): key(enter)
-parrot(tsk): key(escape)
+parrot(hiss): key(escape)
 
-item <number_small>:
+
+sell one: 
+  key(enter:2)
+  sleep(500ms)
+  key(up enter)
+
+path <number_small>:
+  key(j)
+  sleep(300ms)
+  user.octopath_list(number_small)
+
+
+go <number_small>:
   number = number_small or 0
   times = number - 1
   key(s)
@@ -51,12 +62,16 @@ go no:
 
 proceed: key(enter:2)
 
-quick talk:
-  user.advance_dialog(5)
+very (quick|fast) talk:
+  user.octopath_advance_dialog(3)
+  repeat(10)
+
+(quick|fast) talk:
+  user.octopath_advance_dialog(5)
   repeat(10)
 
 slow talk:
-  user.advance_dialog(9)
+  user.octopath_advance_dialog(9)
   repeat(10)
 
 
@@ -77,37 +92,45 @@ level slash: key(down enter:3)
 cross strike: key(down enter down:2 enter)
 stout wall: key(down enter down:3 enter:2)
 the dude abides: key(down enter down enter:2)
-thousand spears: key(down enter down:4 enter)
+thousand spears: user.octopath_menu(2, 6)
 
 # tressa
 tempest: key(down enter down:3 enter:2)
 trade winds: key(down enter down enter)
 
+# therion
+share skill: user.octopath_menu(2, 7)
+wildfire: user.octopath_menu(2, 2)
+
 # ophelia
-luminescence: key(down:2 enter down:2 enter:2)
-holy light: key(down:2 enter down enter:2)
-boost holy light: key(o:4 down:1 enter down enter:2)
-heal wounds: key(down:2 enter:3)
-heal more: key(down:2 enter down:3 enter:2)
-boost heal more: key(o:4 down:1 enter down:3 enter:2)
+luminescence: user.octopath_menu(3, 3)
+holy light: user.octopath_menu(3, 3)
+heal wounds: user.octopath_menu(3, 1)
+heal more: user.octopath_menu(3, 4)
 
 # cyrus
-analyze: key(down enter down:2 enter)
-cast fire: key(down enter enter:2)
-cast ice: key(down enter down enter:2)
-double lightning: key(down enter down:3 enter:2)
-double fire: key(down enter down:4 enter:2)
+analyze: user.octopath_menu(2, 3)
+cast fire: user.octopath_menu(2, 1)
+cast ice: user.octopath_menu(2, 2)
+double lightning: user.octopath_menu(2, 4)
+double fire: user.octopath_menu(2, 5)
+double ice: user.octopath_menu(2, 6)
 
 # alfyn
 last stand: key(down:2 enter up enter:2)
-boost last stand: key(o:4 down:1 enter up enter:2)
 first aid: key(down:2 enter:2)
-boost amputate: key(o:4 down:1 enter down:3 enter)
+amputate: key(down:2 enter down:3 enter)
+
+# primrose
+darkness:  user.octopath_menu(3, 3)
 
 # all
+to all: key(enter:2)  
 defend: key(up:2 enter)
-(get me the hell out of here | fly you fools): key(down:4 enter)
+(get me the hell out of here | fly you fools): user.octopath_menu(5, 0)
 last: key(enter)
 next: key(right)
-boost: key(o)
-olive of life: key(down:2 enter down:10)
+single$: key(o)
+double$: key(o:2)
+max$: key(o:4)
+olive of life: user.octopath_menu(3, 11)
