@@ -1,4 +1,3 @@
-import appscript
 from talon import Context, Module, actions, app, ctrl, storage, clip
 
 ctx = Context()
