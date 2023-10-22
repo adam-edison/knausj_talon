@@ -12,6 +12,12 @@ parrot(cluck): key(s)
 parrot(fft): key(enter)
 parrot(hiss): key(escape)
 
+# movement basics
+start north: key(w:down)
+start west: key(a:down)
+start south: key(s:down)
+start east: key(d:down)
+stop: key(w:up a:up s:up d:up shift:up)
 
 sell one: 
   key(enter:2)
@@ -23,6 +29,8 @@ path <number_small>:
   sleep(300ms)
   user.octopath_list(number_small)
 
+top <number_small>: user.octopath_list(number_small)
+bot <number_small>: user.octopath_reverse_list(number_small)
 
 go <number_small>:
   number = number_small or 0
@@ -88,7 +96,7 @@ running: key(shift:up shift:down)
 walking: key(shift:down shift:up)
 
 # olberic
-level slash: key(down enter:3)
+level slash: user.octopath_menu(2, 4)
 cross strike: key(down enter down:2 enter)
 stout wall: key(down enter down:3 enter:2)
 the dude abides: key(down enter down enter:2)
