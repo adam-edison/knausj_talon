@@ -33,9 +33,8 @@ class Actions:
         actions.key(f"down:{first}")
         actions.key("enter")
 
-    def octopath_reverse_list(order1: int):
-        "Chooses [order1] item in the menu"
+    def octopath_reverse_list(number: int):
+        "Chooses [number] from the bottom, item in the menu"
 
-        first = order1 - 1
-        actions.key(f"up:{first}")
+        actions.key(f"up:{number}")
         actions.key("enter")

@@ -2,7 +2,6 @@ win.title: /OCTOPATH TRAVELER/
 mode: command
 -
 settings():
-  # Necessary to stop commands like 'slap' getting jumbled
   key_wait = 15.0
 
 <phrase>: skip()
@@ -29,8 +28,15 @@ path <number_small>:
   sleep(300ms)
   user.octopath_list(number_small)
 
-top <number_small>: user.octopath_list(number_small)
-bot <number_small>: user.octopath_reverse_list(number_small)
+
+
+head <number_small>: user.octopath_list(number_small)
+head to: user.octopath_list(2)
+head for: user.octopath_list(4)
+
+tail <number_small>: user.octopath_reverse_list(number_small)
+tail to: user.octopath_reverse_list(2)
+tail for: user.octopath_reverse_list(4)
 
 go <number_small>:
   number = number_small or 0
@@ -138,7 +144,7 @@ defend: key(up:2 enter)
 (get me the hell out of here | fly you fools): user.octopath_menu(5, 0)
 last: key(enter)
 next: key(right)
-single$: key(o)
-double$: key(o:2)
-max$: key(o:4)
+boost: key(o)
+double: key(o:2)
+maximum: key(o:4)
 olive of life: user.octopath_menu(3, 11)
