@@ -30,6 +30,13 @@ git status:
 # refresh the git view, requires keybinding to be defined for "git refresh"
   key(ctrl-shift-alt-f5)
 
+view to do:
+  user.vscode("workbench.action.quickOpen")
+  sleep(50ms)
+  insert("view todo")
+  sleep(100ms)
+  key(enter)
+
 log below:
   edit.copy()
   edit.line_end()
