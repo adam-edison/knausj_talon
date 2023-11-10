@@ -166,8 +166,10 @@ punctuation_words = {
     "hyphen": "-",
     "L paren": "(",
     "left paren": "(",
+    "left pair": "(",
     "R paren": ")",
     "right paren": ")",
+    "right pair": ")",
 }
 symbol_key_words = {
     "dot": ".",
