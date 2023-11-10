@@ -25,3 +25,11 @@ git status:
   user.vscode("workbench.scm.focus")
 # refresh the git view, requires keybinding to be defined for "git refresh"
   key(ctrl-shift-alt-f5)
+
+log below:
+  edit.copy()
+  edit.line_end()
+  key(enter)
+  user.paste("console.log({{ ")
+  edit.paste()
+  user.paste(" }});")
