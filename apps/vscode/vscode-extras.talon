@@ -13,9 +13,11 @@ run test:
 
 coding:
   user.vscode("workbench.action.focusActiveEditorGroup")
+  user.vscode("workbench.action.focusActiveEditorGroup")
 
 terminal git push:
   user.vscode_terminal(1)
+  sleep(500ms)
   insert("git push\n")
   user.vscode("workbench.action.toggleMaximizedPanel")
 
