@@ -8,8 +8,12 @@ rerun:
 
 run test:
   user.vscode_terminal(1)
+  sleep(500ms)
   insert("npm run test\n")
   user.vscode("workbench.action.toggleMaximizedPanel")
+
+update snapshots:
+  insert("npm run test -- -u\n")
 
 coding:
   user.vscode("workbench.action.focusActiveEditorGroup")
