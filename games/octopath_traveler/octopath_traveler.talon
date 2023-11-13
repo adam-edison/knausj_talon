@@ -18,10 +18,19 @@ start south: key(s:down)
 start east: key(d:down)
 stop: key(w:up a:up s:up d:up shift:up)
 
-sell one: 
+(buy | sell) one: 
   key(enter:2)
   sleep(500ms)
   key(up enter)
+  sleep(500ms)
+
+(buy | sell) tons: 
+  key(enter)
+  sleep(500ms)
+  key(right)
+  sleep(200ms)
+  key(up enter)
+  
 
 path <number_small>:
   key(j)
@@ -57,12 +66,28 @@ victory:
   sleep(500ms)
   key(e)
 
-purchase next: 
-  key(down enter)
+purchase it: 
+  key(enter)
   sleep(500ms)
   key(up enter)
+  sleep(500ms)
+  # might mention a discount
+  key(enter)
+  sleep(200ms)
+  key(down)
+  sleep(200ms)
 
-action: key(j)
+steal it: 
+  key(enter)
+  sleep(500ms)
+  key(up enter)
+  sleep(500ms)
+  key(down)
+
+path <number_small>: 
+  key(j)
+  sleep(200ms)
+  user.octopath_list(number_small)
 
 go yes:
   key(up)
@@ -93,6 +118,7 @@ skip this now:
   key(backspace:down)
   sleep(6000ms)
   key(backspace:up)
+
 
 collect: key(down enter enter)
 
