@@ -1,6 +1,8 @@
 app: vscode
 -
 
+auto fix: key(alt-enter)
+
 rerun:
   user.vscode_terminal(1)
   key(up enter)
@@ -10,6 +12,18 @@ run test:
   user.vscode_terminal(1)
   sleep(500ms)
   insert("npm run test\n")
+  user.vscode("workbench.action.toggleMaximizedPanel")
+
+run test unit:
+  user.vscode_terminal(1)
+  sleep(500ms)
+  insert("npm run test:unit\n")
+  user.vscode("workbench.action.toggleMaximizedPanel")
+
+run test unit update:
+  user.vscode_terminal(1)
+  sleep(500ms)
+  insert("npm run test:unit -- -u\n")
   user.vscode("workbench.action.toggleMaximizedPanel")
 
 update snapshots:

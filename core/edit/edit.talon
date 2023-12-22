@@ -112,6 +112,11 @@ copy line end: user.copy_line_end()
 copy word: user.copy_word()
 copy word left: user.copy_word_left()
 copy word right: user.copy_word_right()
+copy here:
+    mouse_click()
+    sleep(100ms)
+    mouse_click()
+    edit.copy()
 
 #to do: do we want these variants, seem to conflict
 # copy left:
@@ -162,6 +167,11 @@ paste match: edit.paste_match_style()
 (pace | paste) line start: user.paste_line_start()
 (pace | paste) line end: user.paste_line_end()
 (pace | paste) word: user.paste_word()
+(pace | paste) here:
+    mouse_click()
+    sleep(100ms)
+    mouse_click()
+    edit.paste()
 
 # Duplication
 clone that: edit.selection_clone()

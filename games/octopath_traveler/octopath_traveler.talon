@@ -44,7 +44,7 @@ head to: user.octopath_list(2)
 head for: user.octopath_list(4)
 
 tail <number_small>: user.octopath_reverse_list(number_small)
-tail to: user.octopath_reverse_list(2)
+tail (to | too): user.octopath_reverse_list(2)
 tail for: user.octopath_reverse_list(4)
 
 go <number_small>:
@@ -83,11 +83,6 @@ steal it:
   key(up enter)
   sleep(500ms)
   key(down)
-
-path <number_small>: 
-  key(j)
-  sleep(200ms)
-  user.octopath_list(number_small)
 
 go yes:
   key(up)
