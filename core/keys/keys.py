@@ -219,6 +219,7 @@ symbol_key_words = {
     "pipe": "|",
     "dub quote": '"',
     "double quote": '"',
+    "abrupt": ";",
     # Currencies
     "dollar": "$",
     "pound": "£",
