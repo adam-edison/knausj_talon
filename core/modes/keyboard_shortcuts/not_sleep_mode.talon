@@ -1,5 +1,4 @@
 not mode: sleep
-os: windows
 -
 
 key(keypad_minus):
