@@ -2,7 +2,7 @@ win.title: /MinionMasters/
 -
 
 settings():
-  key_wait = 20.0
+  key_wait = 19.0
 
 one:
   key(q)
