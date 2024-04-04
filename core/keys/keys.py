@@ -175,6 +175,7 @@ symbol_key_words = {
     "dot": ".",
     "point": ".",
     "quote": "'",
+    "twin": "'",
     "question": "?",
     "apostrophe": "'",
     "L square": "[",
