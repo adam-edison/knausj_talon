@@ -20,6 +20,12 @@ run test unit:
   insert("npm run test:unit\n")
   user.vscode("workbench.action.toggleMaximizedPanel")
 
+run test integration:
+  user.vscode_terminal(1)
+  sleep(500ms)
+  insert("npm run test:integration\n")
+  user.vscode("workbench.action.toggleMaximizedPanel")
+
 run test unit update:
   user.vscode_terminal(1)
   sleep(500ms)
