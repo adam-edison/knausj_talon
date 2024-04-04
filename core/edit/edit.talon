@@ -133,7 +133,7 @@ copy here:
 #     edit.copy()
 
 # Cut
-cut that: edit.cut()
+(cut that | cutter): edit.cut()
 cut all: user.cut_all()
 cut line: user.cut_line()
 cut line start: user.cut_line_start()
