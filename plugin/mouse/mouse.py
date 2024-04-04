@@ -285,7 +285,8 @@ class UserActions:
     def noise_trigger_hiss(active: bool):
         if setting_mouse_enable_hiss_scroll.get():
             if active:
-                actions.user.mouse_scroll_down_continuous()
+                # up instead of down for natural scroll, since using external mouse
+                actions.user.mouse_scroll_up_continuous()
             else:
                 actions.user.mouse_scroll_stop()
 
