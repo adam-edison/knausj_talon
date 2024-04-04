@@ -2,6 +2,7 @@ app: chrome
 -
 tag(): browser
 tag(): user.tabs
+tag(): user.emoji
 
 profile switch: user.chrome_mod("shift-m")
 
