@@ -29,7 +29,7 @@ def noise_trigger_hiss_debounce(active: bool):
     """Since the hiss noise triggers while you're talking we need to debounce it"""
     global hiss_cron
     if active:
-        hiss_cron = cron.after("300ms", lambda: actions.user.noise_trigger_hiss(active))
+        hiss_cron = cron.after("500ms", lambda: actions.user.noise_trigger_hiss(active))
     else:
         cron.cancel(hiss_cron)
         actions.user.noise_trigger_hiss(active)
