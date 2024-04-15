@@ -64,3 +64,6 @@ log below:
   user.paste("console.log({{ ")
   edit.paste()
   user.paste(" }});")
+
+open folder:
+  user.vscode("workbench.action.files.openFolder")
