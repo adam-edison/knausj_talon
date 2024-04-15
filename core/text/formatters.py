@@ -154,6 +154,7 @@ formatters_dict = {
     ),
     "DOUBLE_COLON_SEPARATED": words_with_joiner("::"),
     "ALL_CAPS": (SEP, every_word(lambda w: w.upper())),
+    "SCREAMING_SNAKE_CASE": (NOSEP, first_vs_rest(lambda w: w.upper(), lambda w: "_" + w.upper())),
     "ALL_LOWERCASE": (SEP, every_word(lambda w: w.lower())),
     "DOUBLE_QUOTED_STRING": (SEP, surround('"')),
     "SINGLE_QUOTED_STRING": (SEP, surround("'")),
@@ -172,6 +173,7 @@ formatters_dict = {
 code_formatter_names = {
     "all cap": "ALL_CAPS",
     "yell": "ALL_CAPS",
+    "scream": "SCREAMING_SNAKE_CASE",
     "all down": "ALL_LOWERCASE",
     "camel": "PRIVATE_CAMEL_CASE",
     "dotted": "DOT_SEPARATED",
