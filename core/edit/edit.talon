@@ -195,3 +195,5 @@ redo that: edit.redo()
 # Save
 (file save | saver): edit.save()
 file save all: edit.save_all()
+
+sleeper: sleep(200ms)

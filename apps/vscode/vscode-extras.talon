@@ -67,3 +67,41 @@ log below:
 
 open folder:
   user.vscode("workbench.action.files.openFolder")
+
+# mac os version
+terminal here:
+  key(ctrl-shift-`)
+
+terminal status:
+  user.vscode("workbench.action.terminal.focus")
+  sleep(200ms)
+  insert("git status\n")
+
+terminal bottom:
+  user.vscode("workbench.action.terminal.scrollToBottom")
+
+rebase against develop:
+  user.vscode("workbench.action.terminal.focus")
+  sleep(200ms)
+  insert("git checkout develop && git pull && git checkout - && git rebase develop\n")
+
+git graph:
+  user.vscode("git-graph.view")
+
+terminal clip <user.word>:
+  user.vscode("workbench.action.terminal.focus")
+  sleep(200ms)
+  user.indexed_clipboard_paste(clipboard_index)
+
+new folder <user.word>:
+  user.vscode("explorer.newFolder")
+  insert("{user.word}")
+
+new file <user.word>:
+  user.vscode("explorer.newFile")
+  insert("{user.word}")
+
+checkout dot:
+  user.vscode("workbench.action.terminal.focus")
+  sleep(200ms)
+  insert("git checkout .\n")
