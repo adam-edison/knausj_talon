@@ -4,13 +4,11 @@ import re
 ctx = Context()
 mod = Module()
 
-@ctx.action_class("user")
+@mod.action_class
 class UserActions:
     def line_parse_link():
         """Parse the current line and extract the first link"""
-        actions.edit.copy_line()
-        actions.sleep("200ms")
-        contents = actions.clipboard.get()
+        actions.user.copy_line()
         
         # Regex pattern to find URLs, matching both 'http' and 'https'
         pattern = r"https?://[^\s\)]+"
