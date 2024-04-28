@@ -105,3 +105,8 @@ checkout dot:
   user.vscode("workbench.action.terminal.focus")
   sleep(200ms)
   insert("git checkout .\n")
+
+terminal clear:
+  user.vscode("workbench.action.terminal.focus")
+  sleep(200ms)
+  insert("clear\n")
