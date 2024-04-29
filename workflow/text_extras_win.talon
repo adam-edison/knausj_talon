@@ -1,4 +1,4 @@
-os: mac
+os: win
 -
 
 sender: key(ctrl-enter)
