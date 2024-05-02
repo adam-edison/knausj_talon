@@ -1,4 +1,4 @@
 os: mac
 -
 
-sender: key(cmd-enter)
+(sender | poster | send it): key(cmd-enter)
