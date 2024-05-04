@@ -1,4 +1,4 @@
 os: win
 -
 
-sender: key(ctrl-enter)
+(sender | poster | send it): key(ctrl-enter)
