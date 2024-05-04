@@ -93,6 +93,11 @@ terminal clip <user.word>:
   sleep(200ms)
   user.indexed_clipboard_paste(clipboard_index)
 
+terminal paster:
+  user.vscode("workbench.action.terminal.focus")
+  sleep(200ms)
+  edit.paste()
+
 new folder <user.word>:
   user.vscode("explorer.newFolder")
   insert("{user.word}")
