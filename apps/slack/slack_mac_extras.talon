@@ -11,6 +11,15 @@ react ship:
   sleep(300ms)
   key(enter)
 
+react (thumbs up|like):
+  mouse_click(1)
+  sleep(300ms)
+  key(r)
+  sleep(300ms)
+  insert(":thumbsup")
+  sleep(300ms)
+  key(enter)
+
 react (thanks|thank you): 
   mouse_click(1)
   sleep(300ms)
