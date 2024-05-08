@@ -3,10 +3,24 @@ app: vscode
 
 auto fix: key(alt-enter)
 
+comment line: key(cmd-/)
+
+terminal max:
+  user.vscode("workbench.action.toggleMaximizedPanel")
+
+window <user.word>:
+  user.vscode("workbench.action.switchWindow")
+  sleep(100ms)
+  insert("{user.word}\n")
+
 rerun:
   user.vscode_terminal(1)
   key(up enter)
-  user.vscode("workbench.action.toggleMaximizedPanel")
+
+run lint:
+  user.vscode_terminal(1)
+  sleep(500ms)
+  insert("npm run lint\n")
 
 run test:
   user.vscode_terminal(1)
@@ -79,6 +93,11 @@ terminal status:
 
 terminal bottom:
   user.vscode("workbench.action.terminal.scrollToBottom")
+
+fetch develop:
+  user.vscode("workbench.action.terminal.focus")
+  sleep(200ms)
+  insert("git checkout develop && git fetch -p && git pull\n")
 
 rebase against develop:
   user.vscode("workbench.action.terminal.focus")
