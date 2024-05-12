@@ -13,7 +13,7 @@ window <user.word>:
   sleep(100ms)
   insert("{user.word}\n")
 
-rerun:
+(rerun | run last):
   user.vscode_terminal(1)
   key(up enter)
 
