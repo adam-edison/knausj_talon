@@ -8,6 +8,26 @@ comment line: key(cmd-/)
 terminal max:
   user.vscode("workbench.action.toggleMaximizedPanel")
 
+package <user.word>:
+  user.vscode_terminal(1)
+  sleep(300ms)
+  insert("npm run {user.word}")
+
+package <user.word> <user.word>:
+  user.vscode_terminal(1)
+  sleep(100ms)
+  insert("npm run {user.word_1}:{user.word_2}")
+
+perform <user.word>:
+  user.vscode_terminal(1)
+  sleep(300ms)
+  insert("pnpm run {user.word}")
+
+perform <user.word> <user.word>:
+  user.vscode_terminal(1)
+  sleep(100ms)
+  insert("pnpm run {user.word_1}:{user.word_2}")
+
 window <user.word>:
   user.vscode("workbench.action.switchWindow")
   sleep(100ms)
