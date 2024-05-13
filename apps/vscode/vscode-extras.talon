@@ -18,6 +18,9 @@ package <user.word> <user.word>:
   sleep(100ms)
   insert("npm run {user.word_1}:{user.word_2}")
 
+perform {user.pnpm_filters} <user.word>:
+  user.pnpm_run_with_filter(user.pnpm_filters, user.word)
+
 perform <user.word>:
   user.vscode_terminal(1)
   sleep(300ms)
