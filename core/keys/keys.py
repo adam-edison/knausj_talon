@@ -220,6 +220,8 @@ symbol_key_words = {
     "pipe": "|",
     "dub quote": '"',
     "double quote": '"',
+    "fingers": '"', # double quote
+    "ears": "'", # single quote
     "abrupt": ";",
     # Currencies
     "dollar": "$",
