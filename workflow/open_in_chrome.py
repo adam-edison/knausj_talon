@@ -1,15 +1,15 @@
-from talon import Context, Module, actions
+from talon import Context, Module, actions, clip
 
 ctx = Context()
 mod = Module()
 
-@ctx.action_class("user")
+@mod.action_class
 class UserActions:
     def chrome_tab_this():
         """Open tab in Chrome and go to address on clipboard"""
         actions.edit.copy()
         actions.sleep("200ms")
-        UserActions.chrome_tab_string(actions.clipboard.get())
+        UserActions.chrome_tab_string(clip.get())
 
     def chrome_tab_line():
         """Open tab in Chrome and go to address on current line"""
@@ -21,5 +21,5 @@ class UserActions:
         actions.sleep("100ms")
         actions.app.tab_open()
         actions.sleep("100ms")
-        actions.edit.paste()
+        actions.user.paste(address)
         actions.key("enter")
