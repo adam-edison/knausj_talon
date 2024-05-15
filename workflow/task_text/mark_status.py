@@ -1,4 +1,4 @@
-from talon import Context, Module, actions
+from talon import Context, Module, actions, clip
 import re
 
 ctx = Context()
@@ -26,7 +26,7 @@ class Actions:
     def mark_clear_status():
         """Remove the status from the current line"""
         actions.user.copy_line()
-        contents = actions.edit.selected_text()
+        contents = clip.get()
 
         # check if any status emoji is present
         emoji_is_present = re.search(r"[✅🚧⏭️⛔️⏳⏸️❌]", contents)
@@ -43,8 +43,10 @@ class Actions:
 
         for i in range(emoji_position - 1):
             actions.edit.right()
+            actions.sleep("15ms")
         
         actions.edit.delete_right()
+        actions.sleep("50ms")
 
         # delete the space after the emoji if present
         if contents[emoji_position] == " ":
@@ -53,13 +55,12 @@ class Actions:
 
     def mark_status(status_emoji: str):
         """Parse the current line and mark or change a status"""
-        # get the current line text
-        actions.user.copy_line()
-        contents = actions.edit.selected_text()
-
         # clear emoji if present, first
         Actions.mark_clear_status()
 
+        # get the current line
+        actions.user.copy_line()
+        contents = clip.get()
         
         # Regexes to match line patterns
         
@@ -86,8 +87,10 @@ class Actions:
         total_left_length = leading_whitespace_length + star_length
 
         actions.edit.line_start()
+        actions.sleep("50ms")
         
         for i in range(total_left_length):
             actions.edit.right()
+            actions.sleep("15ms")
 
         actions.insert(f"{status_emoji} ")
