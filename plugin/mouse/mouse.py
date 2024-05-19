@@ -219,6 +219,14 @@ class Actions:
         rect = ui.active_window().rect
         ctrl.mouse_move(rect.left + (rect.width / 2), rect.top + (rect.height / 2))
 
+    def mouse_move_relative(x: int, y: int):
+        """move the cursor relative to its current position"""
+        position = ctrl.mouse_pos()
+        new_x = position[0] + x
+        new_y = position[1] + y
+        print(f"{position} moving {x},{y} to {new_x},{new_y}")
+        ctrl.mouse_move(new_x, new_y)
+
 
 def show_cursor_helper(show):
     """Show/hide the cursor"""
