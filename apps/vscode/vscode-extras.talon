@@ -36,6 +36,13 @@ window <user.word>:
   sleep(100ms)
   insert("{user.word}\n")
 
+clear run last:
+  user.vscode_terminal(1)
+  sleep(500ms)
+  insert("clear\n")
+  sleep(3000ms)
+  key(up up enter)
+
 (rerun | run last):
   user.vscode_terminal(1)
   key(up enter)
