@@ -12,6 +12,8 @@ edit {user.task_status}:
   user.mark_status(user.task_status)
   sleep(100ms)
   key(cmd-enter)
+  sleep(200ms)
+  key(enter)
 
 event {user.task_status}:
   key(tab)
