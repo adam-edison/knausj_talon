@@ -8,9 +8,6 @@ tag(): user.snippets
 tag(): user.splits
 tag(): user.tabs
 
-settings():
-  key_wait = 6
-
 window reload: user.vscode("workbench.action.reloadWindow")
 window close: user.vscode("workbench.action.closeWindow")
 #multiple_cursor.py support end

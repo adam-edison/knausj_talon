@@ -93,6 +93,7 @@ class EditActions:
         if text is not None:
             clip.set_text(text, mode="find")
         actions.key("cmd-f")
+        actions.sleep("100ms")
 
     def find_next():
         actions.key("cmd-g")
