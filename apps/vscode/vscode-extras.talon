@@ -8,6 +8,11 @@ comment line: key(cmd-/)
 terminal max:
   user.vscode("workbench.action.toggleMaximizedPanel")
 
+hunt failure:
+  user.vscode_terminal(1)
+  sleep(100ms)
+  user.find("FAIL")
+
 package <user.word>:
   user.vscode_terminal(1)
   sleep(300ms)
