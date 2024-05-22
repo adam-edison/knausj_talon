@@ -15,6 +15,17 @@ hunt failure:
   sleep(200ms)
   insert("FAIL")
 
+filter test selection:
+  edit.copy()
+  sleep(200ms)
+  user.vscode_terminal(1)
+  sleep(100ms)
+  insert(" -- -t ''")
+  sleep(300ms)
+  key(left)
+  edit.paste()
+  key(enter)
+
 package <user.word>:
   user.vscode_terminal(1)
   sleep(300ms)
