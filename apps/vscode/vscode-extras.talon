@@ -11,7 +11,9 @@ terminal max:
 hunt failure:
   user.vscode_terminal(1)
   sleep(100ms)
-  user.find("FAIL")
+  user.find("")
+  sleep(200ms)
+  insert("FAIL")
 
 package <user.word>:
   user.vscode_terminal(1)
