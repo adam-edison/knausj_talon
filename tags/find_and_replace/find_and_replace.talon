@@ -7,7 +7,7 @@ hunt clip:
     edit.paste()
 hunt <user.text>: user.find(text)
 hunt all: user.find_everywhere("")
-hunt all (pace | paste):
+hunt all (pace | paste | clip):
     user.find_everywhere("")
     sleep(25ms)
     edit.paste()
