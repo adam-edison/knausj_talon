@@ -8,6 +8,12 @@ comment line: key(cmd-/)
 terminal max:
   user.vscode("workbench.action.toggleMaximizedPanel")
 
+toggle selection:
+  user.vscode("toggleFindInSelection")
+
+toggle regex:
+  user.vscode("toggleFindRegex")
+
 hunt failure:
   user.vscode_terminal(1)
   sleep(100ms)
