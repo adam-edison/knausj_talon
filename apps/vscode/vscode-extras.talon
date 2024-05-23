@@ -64,7 +64,7 @@ clear run last:
   user.vscode_terminal(1)
   sleep(500ms)
   insert("clear\n")
-  sleep(3000ms)
+  sleep(1000ms)
   key(up up enter)
 
 (rerun | run last):
