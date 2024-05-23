@@ -6,6 +6,9 @@ get <number_small>:
   mouse_click(0)
   repeat(times)
 
+place <number_small>:
+  user.double_click(number_small, 100)
+
 parrot(smooch): 
   mouse_click(0)
   sleep(50ms)
