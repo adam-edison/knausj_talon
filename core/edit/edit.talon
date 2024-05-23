@@ -197,3 +197,7 @@ redo that: edit.redo()
 file save all: edit.save_all()
 
 sleeper: sleep(200ms)
+
+replace line end:
+    user.select_line_end()
+    edit.paste()
