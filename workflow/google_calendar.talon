@@ -6,13 +6,13 @@ edit {user.task_status}:
   key(tab)
   sleep(50ms)
   key(enter)
-  sleep(1500ms)
+  sleep(2000ms)
   key(tab)
-  sleep(100ms)
+  sleep(200ms)
   user.mark_status(user.task_status)
   sleep(100ms)
   key(cmd-enter)
-  sleep(200ms)
+  sleep(600ms)
   key(enter)
 
 event {user.task_status}:
@@ -21,5 +21,5 @@ event {user.task_status}:
   user.mark_status(user.task_status)
   sleep(50ms)
   key(cmd-enter)
-  sleep(400ms)
+  sleep(600ms)
   key(enter)
