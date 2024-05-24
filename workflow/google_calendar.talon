@@ -2,6 +2,9 @@ os: mac
 win.title: /Google Calendar/
 -
 
+settings():
+  key_wait: 20
+
 edit {user.task_status}:
   key(tab)
   sleep(50ms)
@@ -23,3 +26,17 @@ event {user.task_status}:
   key(cmd-enter)
   sleep(600ms)
   key(enter)
+
+event (dupe | duplicate | copy):
+  key(tab:4)
+  sleep(1000ms)
+  key(enter)
+  sleep(200ms)
+  key(down)
+  sleep(300ms)
+  key(enter)
+  sleep(1000ms)
+  key(cmd-enter)
+  sleep(1000ms)
+  key(enter)
+  sleep(1000ms)
