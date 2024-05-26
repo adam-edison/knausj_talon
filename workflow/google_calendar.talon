@@ -17,6 +17,14 @@ edit {user.task_status}:
   key(cmd-enter)
   sleep(600ms)
   key(enter)
+  sleep(1000ms)
+  key(esc)
+  sleep(50ms)
+  key(esc)
+  sleep(50ms)
+  key(esc)
+  sleep(50ms)
+
 
 event {user.task_status}:
   key(tab)
