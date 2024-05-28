@@ -1,4 +1,4 @@
-from talon import Context, Module, actions, app
+from talon import Context, Module, actions, app, clip
 
 ctx = Context()
 mod = Module()
@@ -22,3 +22,14 @@ class Actions:
         """Run pnpm with a filter"""
         actions.user.vscode_terminal(1)
         actions.insert(f"pnpm run --filter='{filter}' {command}\n")
+
+    def clean_jest_object_paste():
+        """Take clipboard code and clean it up from jest diff"""
+        contents = clip.get()
+        # replace + with nothing
+        clean = (
+            contents.replace("+", "")
+            .replace("Object", "")
+            .replace("Array", "")
+        )
+        actions.user.paste(clean)

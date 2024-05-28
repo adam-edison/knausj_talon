@@ -21,6 +21,8 @@ hunt failure:
   sleep(200ms)
   insert("FAIL")
 
+paste clean object: user.clean_jest_object_paste()
+
 filter test selection:
   edit.copy()
   sleep(200ms)
