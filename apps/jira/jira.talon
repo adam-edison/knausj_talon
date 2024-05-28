@@ -1,4 +1,4 @@
-win.title: /jira/
+app: chrome
 -
 
 make expand <user.text>:
