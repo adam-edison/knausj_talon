@@ -27,8 +27,9 @@ filter test selection:
   user.vscode_terminal(1)
   sleep(100ms)
   insert(" -- -t ''")
-  sleep(300ms)
+  sleep(800ms)
   key(left)
+  sleep(300ms)
   edit.paste()
   key(enter)
 
