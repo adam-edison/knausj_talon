@@ -7,6 +7,7 @@ tag(): user.multiple_cursors
 tag(): user.snippets
 tag(): user.splits
 tag(): user.tabs
+
 window reload: user.vscode("workbench.action.reloadWindow")
 window close: user.vscode("workbench.action.closeWindow")
 #multiple_cursor.py support end
@@ -63,11 +64,11 @@ wrap switch: user.vscode("editor.action.toggleWordWrap")
 zen switch: user.vscode("workbench.action.toggleZenMode")
 
 # File Commands
-file hunt [<user.text>]:
+hunt file [<user.text>]:
     user.vscode("workbench.action.quickOpen")
     sleep(50ms)
     insert(text or "")
-file hunt (pace | paste):
+hunt file (pace | paste | paster):
     user.vscode("workbench.action.quickOpen")
     sleep(50ms)
     edit.paste()
@@ -139,10 +140,10 @@ toggle mark: user.vscode("bookmarks.toggle")
 go next mark: user.vscode("bookmarks.jumpToNext")
 go last mark: user.vscode("bookmarks.jumpToPrevious")
 
-close other tabs: user.vscode("workbench.action.closeOtherEditors")
-close all tabs: user.vscode("workbench.action.closeAllEditors")
-close tabs way right: user.vscode("workbench.action.closeEditorsToTheRight")
-close tabs way left: user.vscode("workbench.action.closeEditorsToTheLeft")
+tab close other: user.vscode("workbench.action.closeOtherEditors")
+tab close all: user.vscode("workbench.action.closeAllEditors")
+tab close all right: user.vscode("workbench.action.closeEditorsToTheRight")
+tab close all left: user.vscode("workbench.action.closeEditorsToTheLeft")
 
 # Folding
 fold that: user.vscode("editor.fold")
@@ -181,13 +182,13 @@ git merge: user.vscode("git.merge")
 git output: user.vscode("git.showOutput")
 git pull: user.vscode("git.pullRebase")
 git push: user.vscode("git.push")
-git push focus: user.vscode("git.pushForce")
+git push force: user.vscode("git.pushForce")
 git rebase abort: user.vscode("git.rebaseAbort")
 git reveal: user.vscode("git.revealInExplorer")
 git revert: user.vscode("git.revertChange")
 git stash: user.vscode("git.stash")
 git stash pop: user.vscode("git.stashPop")
-git status: user.vscode("workbench.scm.focus")
+# git status: user.vscode("workbench.scm.focus")
 git stage: user.vscode("git.stage")
 git stage all: user.vscode("git.stageAll")
 git sync: user.vscode("git.sync")
@@ -279,3 +280,6 @@ cell run: user.vscode("notebook.cell.execute")
 
 install local: user.vscode("workbench.extensions.action.installVSIX")
 preview markdown: user.vscode("markdown.showPreview")
+
+# Extensions
+git generate: user.vscode("github.copilot.git.generateCommitMessage")

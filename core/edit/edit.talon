@@ -104,7 +104,7 @@ clear way down:
     edit.delete()
 
 # Copy
-copy that: edit.copy()
+(copy that | copier): edit.copy()
 copy all: user.copy_all()
 copy line: user.copy_line()
 copy line start: user.copy_line_start()
@@ -112,6 +112,11 @@ copy line end: user.copy_line_end()
 copy word: user.copy_word()
 copy word left: user.copy_word_left()
 copy word right: user.copy_word_right()
+copy here:
+    mouse_click()
+    sleep(100ms)
+    mouse_click()
+    edit.copy()
 
 #to do: do we want these variants, seem to conflict
 # copy left:
@@ -128,7 +133,7 @@ copy word right: user.copy_word_right()
 #     edit.copy()
 
 # Cut
-cut that: edit.cut()
+(cut that | cutter): edit.cut()
 cut all: user.cut_all()
 cut line: user.cut_line()
 cut line start: user.cut_line_start()
@@ -152,7 +157,7 @@ cut word right: user.cut_word_right()
 #     edit.cut()
 
 # Paste
-(pace | paste) that: edit.paste()
+(((pace | paste) that) | paster): edit.paste()
 (pace | paste) enter:
     edit.paste()
     key(enter)
@@ -162,6 +167,11 @@ paste match: edit.paste_match_style()
 (pace | paste) line start: user.paste_line_start()
 (pace | paste) line end: user.paste_line_end()
 (pace | paste) word: user.paste_word()
+(pace | paste) here:
+    mouse_click()
+    sleep(100ms)
+    mouse_click()
+    edit.paste()
 
 # Duplication
 clone that: edit.selection_clone()
@@ -183,5 +193,11 @@ undo that: edit.undo()
 redo that: edit.redo()
 
 # Save
-file save: edit.save()
+(file save | saver): edit.save()
 file save all: edit.save_all()
+
+sleeper: sleep(200ms)
+
+replace line end:
+    user.select_line_end()
+    edit.paste()

@@ -166,13 +166,16 @@ punctuation_words = {
     "hyphen": "-",
     "L paren": "(",
     "left paren": "(",
+    "left pair": "(",
     "R paren": ")",
     "right paren": ")",
+    "right pair": ")",
 }
 symbol_key_words = {
     "dot": ".",
     "point": ".",
     "quote": "'",
+    "twin": "'",
     "question": "?",
     "apostrophe": "'",
     "L square": "[",
@@ -217,6 +220,9 @@ symbol_key_words = {
     "pipe": "|",
     "dub quote": '"',
     "double quote": '"',
+    "fingers": '"', # double quote
+    "ears": "'", # single quote
+    "abrupt": ";",
     # Currencies
     "dollar": "$",
     "pound": "£",
@@ -247,10 +253,11 @@ simple_keys = [
 ]
 
 alternate_keys = {
-    "wipe": "backspace",
-    "delete": "backspace",
-    #'junk': 'backspace',
-    "forward delete": "delete",
+    "junk": "backspace",
+    "delete": "delete",
+    # "junk": "backspace",
+    # "forward delete": "delete",
+    "wit": "space",
     "page up": "pageup",
     "page down": "pagedown",
 }

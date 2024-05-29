@@ -98,8 +98,11 @@ class EditActions:
     def find(text=None):
         if is_mac:
             actions.key("cmd-f")
+            actions.sleep("500ms")
         else:
             actions.key("ctrl-f")
+            actions.sleep("500ms")
+
         if text is not None:
             actions.insert(text)
 
@@ -290,8 +293,10 @@ class UserActions:
         """Triggers find in current editor"""
         if is_mac:
             actions.key("cmd-f")
+            actions.sleep("500ms")
         else:
             actions.key("ctrl-f")
+            actions.sleep("500ms")
 
         if text:
             actions.insert(text)
