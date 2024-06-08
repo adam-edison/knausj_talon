@@ -55,5 +55,10 @@ Loop 4
 }
 return
 
+j::
+MouseMove, 100, 100, 2, R
+Sleep, 500
+MouseMove, -100, -100, 2, R
+
 #IfWinNotActive, Potionomics
 return

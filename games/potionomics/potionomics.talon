@@ -106,9 +106,26 @@ equipment:
   sleep(100ms)
   mouse_click()
 
+
+close deal:
+  mouse_move(3532, 1275)
+  sleep(100ms)
+  mouse_click()
+
+reset filters:
+  mouse_move(930, 906)
+  sleep(100ms)
+  mouse_click()
+
+recipe:
+  mouse_move(2026, 69)
+  sleep(100ms)
+  mouse_click()
+
+
 # these trigger ahk scripts
 
 
-
+jiggle: key(j)
 expand: key(x)
 (end turn | ending): key(e)
