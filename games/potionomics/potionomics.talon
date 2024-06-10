@@ -122,6 +122,25 @@ recipe:
   sleep(100ms)
   mouse_click()
 
+calendar:
+  mouse_move(3182, 671)
+  sleep(100ms)
+  mouse_click()
+
+brew sort pill:
+  mouse_move(848, 912)
+  sleep(100ms)
+  mouse_click()
+
+brew clear:
+  mouse_move(915, 900)
+  sleep(100ms)
+  mouse_click()
+
+reject:
+  mouse_move(2224, 1635)
+  sleep(100ms)
+  mouse_click()
 
 # these trigger ahk scripts
 
