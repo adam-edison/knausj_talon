@@ -59,6 +59,15 @@ j::
 MouseMove, 100, 100, 2, R
 Sleep, 500
 MouseMove, -100, -100, 2, R
+return
+
+numpad4::
+MouseMove, -200, 0, 2, R
+return
+
+numpad6::
+MouseMove, 200, 0, 2, R
+return
 
 #IfWinNotActive, Potionomics
 return

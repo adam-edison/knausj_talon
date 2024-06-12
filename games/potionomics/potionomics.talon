@@ -81,7 +81,7 @@ basement:
   sleep(100ms)
   mouse_click()
 
-accept bottle:
+accept (bottle | collect):
   mouse_move(1928, 1645)
   sleep(100ms)
   mouse_click()
@@ -141,6 +141,12 @@ reject:
   mouse_move(2224, 1635)
   sleep(100ms)
   mouse_click()
+
+next: key(keypad_6)
+last: key(keypad_4)
+
+
+
 
 # these trigger ahk scripts
 
