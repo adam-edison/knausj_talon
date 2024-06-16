@@ -76,7 +76,7 @@ basement:
   sleep(100ms)
   mouse_click()
 
-(bottle | age | discard | brew <number_small> | embark | collect):
+(bottle | age | discard | brew <number_small> | brew it | brewing| embark | collect):
   mouse_move(1936, 2010)
   sleep(100ms)
   mouse_click()
@@ -142,10 +142,29 @@ reject:
   sleep(100ms)
   mouse_click()
 
+(buy | by | take) <number_small>:
+  mouse_click()
+  sleep(100ms)
+  mouse_move(2300, 1000)
+  sleep(100ms)
+  mouse_move(2302, 1018)
+  sleep(200ms)
+  times = number_small - 1
+  user.single_click(times, 100)
+  sleep(100ms)
+  mouse_move(1754, 1396)
+  sleep(100ms)
+  mouse_click()
+
 next: key(keypad_6)
 last: key(keypad_4)
 
-
+(end turn | ending):
+  mouse_move(3400, 1150)
+  sleep(100ms)
+  mouse_click()
+  sleep(100ms)
+  mouse_move(2000, 1850)
 
 
 # these trigger ahk scripts
@@ -153,4 +172,4 @@ last: key(keypad_4)
 
 jiggle: key(j)
 expand: key(x)
-(end turn | ending): key(e)
+

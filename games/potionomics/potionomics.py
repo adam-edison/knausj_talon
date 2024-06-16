@@ -21,3 +21,11 @@ class Actions:
             actions.sleep("50ms")
             ctrl.mouse_click(button=0, up=True)
             actions.sleep(f"{delayMsBetween}ms")
+
+    def single_click(times: int, delayMsBetween: int):
+        "Single click [times], with a [delaySecondsBetween] each click"
+        for i in range(times):
+            ctrl.mouse_click(button=0, down=True)
+            actions.sleep("50ms")
+            ctrl.mouse_click(button=0, up=True)
+            actions.sleep(f"{delayMsBetween}ms")
