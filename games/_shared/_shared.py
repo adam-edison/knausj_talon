@@ -3,10 +3,6 @@ from talon import Module, Context, actions, ctrl
 mod = Module()
 ctx = Context()
 
-ctx.matches = """
-title: /Potionomics/
-"""
-
 
 @mod.action_class
 class Actions:
@@ -29,3 +25,15 @@ class Actions:
             actions.sleep("50ms")
             ctrl.mouse_click(button=0, up=True)
             actions.sleep(f"{delayMsBetween}ms")
+
+    def mouse_drag_to_position_and_return(x: float, y: float):
+        "Drag and drop from current position to target xy and return to current position"
+        position = ctrl.mouse_pos()
+        actions.mouse_drag(0)
+        actions.sleep("50ms")
+        ctrl.mouse_move(x, y)
+        actions.sleep("50ms")
+        actions.user.mouse_drag_end()
+        actions.sleep("50ms")
+        ctrl.mouse_move(position[0], position[1])
+        actions.sleep("100ms")
