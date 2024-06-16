@@ -1,15 +1,9 @@
 win.title: /Hearthstone/
 -
 
-play button:
-  mouse_move(2839, 1674)
-  sleep(50ms)
-  mouse_click()
+play button: user.mouse_click_position_and_return(2839, 1674)
 
-ending:
-  mouse_move(3098, 982)
-  sleep(50ms)
-  mouse_click()
+ending: user.mouse_click_position_and_return(3098, 982)
 
 hero: user.mouse_drag_to_position_and_return(1872, 405)
 
