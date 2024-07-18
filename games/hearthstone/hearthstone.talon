@@ -2,15 +2,13 @@ win.title: /Hearthstone/
 os: windows
 -
 
-power: 
-  mouse_move(2294, 1622)
-  mouse_click()
+power: user.mouse_click_position_and_return(2294, 1622)
 
-clearing: mouse_move(2921, 1620)
+(clearing | safety): mouse_move(2921, 1620)
 
-play button: user.mouse_click_position_and_return(2839, 1674)
+play [button]: user.mouse_click_position_and_return(2839, 1674)
 
-confirm button: user.mouse_click_position_and_return(1922, 1688)
+confirm [button]: user.mouse_click_position_and_return(1922, 1688)
 
 ending: 
   user.mouse_click_position_and_return(3098, 982)
@@ -18,9 +16,19 @@ ending:
 
 hero: user.mouse_drag_to_position_and_return(1872, 405)
 
-summon: user.mouse_drag_to_position_and_return(928, 1209)
+weapon attack:
+  mouse_move(1924, 1602)
+  sleep(50ms)
+  user.mouse_drag_to_position_and_return(1872, 405)
 
-well played:
+
+(summon | caster): user.mouse_drag_to_position_and_return(928, 1209)
+
+(forge | trade): user.mouse_drag_to_position_and_return(3263, 1274)
+
+show deck: mouse_move(3263, 1274)
+
+say well played:
   mouse_move(1924, 1602)
   sleep(50ms)
   mouse_click(1)
