@@ -36,7 +36,7 @@ class Actions:
         actions.user.mouse_drag_end()
         actions.sleep("50ms")
         ctrl.mouse_move(position[0], position[1])
-        actions.sleep("100ms")
+        actions.sleep("200ms")
 
     def mouse_click_position_and_return(x: float, y: float):
         "Click target xy and return to current position"
@@ -46,4 +46,4 @@ class Actions:
         actions.sleep("100ms")
         actions.user.single_click(1, 50)
         ctrl.mouse_move(position[0], position[1])
-        actions.sleep("100ms")
+        actions.sleep("200ms")

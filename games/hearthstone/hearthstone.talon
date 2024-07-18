@@ -2,7 +2,9 @@ win.title: /Hearthstone/
 os: windows
 -
 
-power: user.mouse_click_position_and_return(2294, 1622)
+power: 
+  user.mouse_click_position_and_return(2294, 1622)
+  sleep(100ms)
 
 (clearing | safety): mouse_move(2921, 1620)
 
@@ -20,9 +22,12 @@ weapon hero:
   mouse_move(1924, 1602)
   sleep(50ms)
   user.mouse_drag_to_position_and_return(1872, 405)
+  sleep(100ms)
 
 
-(summon | caster): user.mouse_drag_to_position_and_return(928, 1209)
+(summon | caster): 
+  user.mouse_drag_to_position_and_return(928, 1209)
+  sleep(200ms)
 
 (forge | trade): user.mouse_drag_to_position_and_return(3263, 1274)
 
@@ -58,6 +63,15 @@ say mistake:
   mouse_click()
   sleep(100ms)
 
+say threat:
+  mouse_move(1924, 1602)
+  sleep(50ms)
+  mouse_click(1)
+  sleep(300ms)
+  mouse_move(2250, 1726)
+  sleep(50ms)
+  mouse_click()
+  sleep(100ms)
 
 parrot(smooch):
   mouse_click()
