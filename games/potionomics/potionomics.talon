@@ -76,7 +76,7 @@ basement:
   sleep(100ms)
   mouse_click()
 
-(bottle | age | discard | brew <number_small> | brew it | brewing| embark | collect):
+(bottle | age | discard | brew it | brewing| embark | test | collect):
   mouse_move(1936, 2010)
   sleep(100ms)
   mouse_click()
@@ -87,7 +87,14 @@ accept (bottle | collect):
   mouse_click()
 
 accept loot:
-  mouse_move(1707, 1693)
+  mouse_move(1715, 1693)
+  sleep(100ms)
+  mouse_click()
+
+garden collect:
+  mouse_click()
+  sleep(300ms)
+  mouse_move(1923, 1615)
   sleep(100ms)
   mouse_click()
 
@@ -159,6 +166,11 @@ reject:
 next: key(keypad_6)
 last: key(keypad_4)
 
+next day:
+  mouse_move(3412, 1847)
+  sleep(100ms)
+  mouse_click()
+
 (end turn | ending):
   mouse_move(3400, 1150)
   sleep(100ms)
@@ -171,5 +183,21 @@ last: key(keypad_4)
 
 
 jiggle: key(j)
-expand: key(x)
+
+expand:
+  mouse_move(1470, 1810)
+  sleep(100ms)
+  mouse_click()
+  sleep(1200ms)
+  mouse_move(320, 420)
+  mouse_click()
+  sleep(200ms)
+  mouse_move(1030, 1095)
+  mouse_click()
+  sleep(8000ms)
+  mouse_move(198, 1750)
+  sleep(100ms)
+  mouse_click()
+  sleep(1000ms)
+
 
