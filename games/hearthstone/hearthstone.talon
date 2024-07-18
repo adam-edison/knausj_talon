@@ -16,7 +16,7 @@ ending:
 
 hero: user.mouse_drag_to_position_and_return(1872, 405)
 
-weapon attack:
+weapon hero:
   mouse_move(1924, 1602)
   sleep(50ms)
   user.mouse_drag_to_position_and_return(1872, 405)
