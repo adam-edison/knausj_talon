@@ -14,6 +14,9 @@ do it: key(space)
 
 end turn [early]: 
   key(end)
+
+breach [breach] [breach]:
+  user.mouse_click_position_and_return(1929, 1937)
     
 parrot(spit): 
   key(2)
