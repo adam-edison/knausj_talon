@@ -35,6 +35,12 @@ filter test selection:
   edit.paste()
   key(enter)
 
+^package install$:
+  user.vscode_terminal(1)
+  sleep(300ms)
+  insert("npm install")
+
+
 package <user.word>:
   user.vscode_terminal(1)
   sleep(300ms)
@@ -73,7 +79,7 @@ window <user.word>:
   sleep(100ms)
   insert("{user.word}\n")
 
-clear run last:
+clean run:
   user.vscode_terminal(1)
   sleep(500ms)
   insert("clear\n")
@@ -120,7 +126,7 @@ coding:
   user.vscode("workbench.action.focusActiveEditorGroup")
   user.vscode("workbench.action.focusActiveEditorGroup")
 
-terminal git push:
+terminal push:
   user.vscode_terminal(1)
   sleep(500ms)
   insert("git push\n")
@@ -192,7 +198,7 @@ new file <user.word>:
   user.vscode("explorer.newFile")
   insert("{user.word}")
 
-checkout dot:
+terminal checkout dot:
   user.vscode("workbench.action.terminal.focus")
   sleep(200ms)
   insert("git checkout .\n")
@@ -201,3 +207,10 @@ terminal clear:
   user.vscode("workbench.action.terminal.focus")
   sleep(200ms)
   insert("clear\n")
+
+uninstall clip:
+  user.vscode("workbench.action.terminal.focus")
+  sleep(200ms)
+  insert("npm uninstall ")
+  sleep(200ms)
+  edit.paste()
