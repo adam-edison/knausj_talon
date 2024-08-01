@@ -3,7 +3,7 @@ app: chrome
 
 settings():
   # Necessary to stop commands like 'slap' getting jumbled
-  key_wait = 9.0
+  key_wait = 4.0
 
 make expand <user.text>:
   insert("/")
