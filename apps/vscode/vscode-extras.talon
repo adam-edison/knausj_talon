@@ -180,7 +180,7 @@ rebase against develop:
 git graph:
   user.vscode("git-graph.view")
 
-terminal clip <user.word>:
+terminal paster <user.word>:
   user.vscode("workbench.action.terminal.focus")
   sleep(200ms)
   user.indexed_clipboard_paste(clipboard_index)
@@ -190,13 +190,15 @@ terminal paster:
   sleep(200ms)
   edit.paste()
 
-new folder <user.word>:
+new folder [<user.word>]:
+  title = user.word or ""
   user.vscode("explorer.newFolder")
-  insert("{user.word}")
+  insert("{title}")
 
-new file <user.word>:
+new file [<user.word>]:
+  title = user.word or ""
   user.vscode("explorer.newFile")
-  insert("{user.word}")
+  insert("{title}")
 
 terminal checkout dot:
   user.vscode("workbench.action.terminal.focus")
