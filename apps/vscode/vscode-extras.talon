@@ -140,6 +140,14 @@ git status:
 git publish:
   user.vscode("git.publish")
 
+next change:
+  key(down space)
+
+first change:
+  key(tab:2)
+  key(down:2)
+  key(space)
+
 view to do:
   user.vscode("workbench.action.quickOpen")
   sleep(50ms)
