@@ -5,6 +5,7 @@ os: mac
 
 code paster:
   user.switcher_focus("code")
+  sleep(500ms)
   user.vscode("workbench.action.terminal.focus")
   sleep(200ms)
-  user.indexed_clipboard_paste(clipboard_index)
+  edit.paste()
