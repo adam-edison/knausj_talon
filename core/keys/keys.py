@@ -222,7 +222,7 @@ symbol_key_words = {
     "double quote": '"',
     "fingers": '"', # double quote
     "ears": "'", # single quote
-    "abrupt": ";",
+    "semi": ";",
     # Currencies
     "dollar": "$",
     "pound": "£",
