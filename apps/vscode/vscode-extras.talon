@@ -1,6 +1,9 @@
 app: vscode
 -
 
+safe saver:
+  user.vscode("workbench.action.files.saveWithoutFormatting")
+
 auto fix: key(alt-enter)
 
 comment line: key(cmd-/)
