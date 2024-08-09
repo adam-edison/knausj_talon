@@ -9,3 +9,5 @@ code paster:
   user.vscode("workbench.action.terminal.focus")
   sleep(200ms)
   edit.paste()
+
+confirm: key(enter)
