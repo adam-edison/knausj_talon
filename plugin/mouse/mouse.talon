@@ -2,7 +2,7 @@ control mouse: tracking.control_toggle()
 control off: user.mouse_sleep()
 zoom mouse: tracking.control_zoom_toggle()
 camera overlay: tracking.control_debug_toggle()
-run calibration: tracking.calibrate()
+(run calibration | calibrate mouse): tracking.calibrate()
 touch:
     mouse_click(0)
     # close the mouse grid if open
