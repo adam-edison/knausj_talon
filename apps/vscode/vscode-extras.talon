@@ -224,6 +224,9 @@ terminal clear:
   sleep(200ms)
   insert("clear\n")
 
+(expand | grow | shrink | contract):
+  user.vscode("workbench.action.toggleMaximizedPanel")
+
 uninstall clip:
   user.vscode("workbench.action.terminal.focus")
   sleep(200ms)
