@@ -5,6 +5,10 @@ phrase <user.text>$:
 phrase <user.text> over:
     user.add_phrase_to_history(text)
     insert(text)
+(phrase | say) <user.text> wit:
+    user.add_phrase_to_history(text)
+    insert(text)
+    key(space)
 {user.prose_formatter} <user.prose>$: user.insert_formatted(prose, prose_formatter)
 {user.prose_formatter} <user.prose> over: user.insert_formatted(prose, prose_formatter)
 {user.prose_formatter} <user.prose> comma: 
