@@ -47,3 +47,11 @@ class Actions:
         actions.user.single_click(1, 50)
         ctrl.mouse_move(position[0], position[1])
         actions.sleep("200ms")
+
+    def mouse_move_relative(x: float, y: float):
+        """move the cursor relative to its current position"""
+        position = ctrl.mouse_pos()
+        new_x = position[0] + x
+        new_y = position[1] + y
+        print(f"{position} moving {x},{y} to {new_x},{new_y}")
+        ctrl.mouse_move(new_x, new_y)
