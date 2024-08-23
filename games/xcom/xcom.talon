@@ -12,11 +12,21 @@ move here:
 
 do it: key(space)
 
-end turn [early]: 
+jiggle:
+  user.mouse_move_relative(0, 10)
+  user.mouse_move_relative(0, -10)
+  user.mouse_move_relative(10, 0)
+  user.mouse_move_relative(0, 10)
+
+
+ending: 
   key(end)
 
 breach [breach] [breach]:
-  user.mouse_click_position_and_return(1929, 1937)
+  mouse_move(1929, 1870)
+  user.mouse_click_position_and_return(1929, 1900)
+  mouse_move(1929, 1870)
+  user.mouse_click_position_and_return(1929, 1900)
     
 parrot(spit): 
   key(2)
