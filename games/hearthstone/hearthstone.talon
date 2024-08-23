@@ -15,6 +15,7 @@ confirm [button]: user.mouse_click_position_and_return(1922, 1688)
 ending: 
   user.mouse_click_position_and_return(3098, 982)
   mouse_move(2921, 1620)
+  user.grid_close()
 
 hero: user.mouse_drag_to_position_and_return(1872, 405)
 
@@ -28,6 +29,7 @@ weapon hero:
 (summon | caster): 
   user.mouse_drag_to_position_and_return(928, 1209)
   sleep(200ms)
+  user.grid_close()
 
 (forge | trade): user.mouse_drag_to_position_and_return(3263, 1274)
 
