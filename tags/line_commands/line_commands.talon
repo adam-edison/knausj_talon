@@ -19,6 +19,16 @@ clear [line] <number>:
 clear <number> until <number>:
     user.select_range(number_1, number_2)
     edit.delete()
+kill [line] <number>:
+    user.select_range(number, number)
+    edit.delete()
+    key(shift-home)
+    key(backspace:2)
+kill <number> until <number>:
+    user.select_range(number_1, number_2)
+    edit.delete()
+    key(shift-home)
+    key(backspace:2)
 copy [line] <number>:
     user.select_range(number, number)
     edit.copy()
