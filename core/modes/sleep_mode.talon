@@ -8,5 +8,5 @@ settings():
     # Stop mouse scroll down using hiss noise
     user.mouse_enable_hiss_scroll = 0
 
-parrot(cluck): speech.enable()
+parrot(spit): speech.enable()
 
