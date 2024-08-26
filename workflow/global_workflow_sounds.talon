@@ -15,7 +15,7 @@ parrot(sss:repeat): user.mouse_scroll_down(0.1)
 
 # actually scrolls down, lower sound = down
 parrot(shh:repeat): user.mouse_scroll_up(0.1)
-parrot(shh): user.mouse_scroll_up(0b.1)
+parrot(shh): user.mouse_scroll_up(0.1)
 
 parrot(whistle_high:repeat): key(right)
 
