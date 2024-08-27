@@ -158,6 +158,7 @@ punctuation_words = {
     "number sign": "#",
     "percent sign": "%",
     "at sign": "@",
+    "attar": "@",  # at sign
     "and sign": "&",
     "ampersand": "&",
     # Currencies
