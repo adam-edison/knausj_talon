@@ -2,7 +2,7 @@
 ^grab screen <number_small>$: user.screenshot(number_small)
 ^grab window$: user.screenshot_window()
 ^grab part$: user.screenshot_selection()
-^grab part clip$: user.screenshot_selection_clip()
+^grab (part clip | snippet)$: user.screenshot_selection_clip()
 ^grab settings$: user.screenshot_settings()
 ^grab screen clip$: user.screenshot_clipboard()
 ^grab screen <number_small> clip$: user.screenshot_clipboard(number_small)
