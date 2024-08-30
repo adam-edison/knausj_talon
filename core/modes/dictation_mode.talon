@@ -50,6 +50,12 @@ clear right <number_small> (word | words):
     edit.extend_word_right()
     repeat(number_small - 1)
     edit.delete()
+clear end:
+    key(shift-end)
+    edit.delete()
+clear home:
+    key(shift-home)
+    edit.delete()
 clear left <number_small> (character | characters):
     edit.extend_left()
     repeat(number_small - 1)
