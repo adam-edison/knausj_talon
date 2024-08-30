@@ -29,6 +29,8 @@ hunt failure:
   sleep(200ms)
   insert("FAIL")
 
+^hunt again$: key(shift-cmd-r)
+
 paste clean object: user.clean_jest_object_paste()
 
 filter test selection:
