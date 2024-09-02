@@ -226,6 +226,9 @@ terminal checkout dot:
   sleep(200ms)
   insert("git checkout .\n")
 
+show to doos:
+  user.vscode("todo-tree-view.focus")
+
 terminal clear:
   user.vscode("workbench.action.terminal.focus")
   sleep(200ms)
