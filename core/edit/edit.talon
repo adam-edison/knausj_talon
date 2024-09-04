@@ -95,6 +95,11 @@ clear (way right | end):
     edit.extend_line_end()
     edit.delete()
 
+clear pre <number>:
+    times = number - 1
+    key(home)
+    key("delete:{times}")
+
 clear way up:
     edit.extend_file_start()
     edit.delete()
