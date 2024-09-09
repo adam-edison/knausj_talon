@@ -29,6 +29,8 @@ hunt failure:
   sleep(200ms)
   insert("FAIL")
 
+[copy] permalink: user.vscode("copy-github-permalink.copy")
+
 ^hunt again$: key(shift-cmd-r)
 
 paste clean object: user.clean_jest_object_paste()
