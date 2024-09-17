@@ -13,6 +13,11 @@ follower:
   mouse_click()
   key(cmd:up)
 
+completer:
+  key(tab)
+  sleep(200ms)
+  key(tab)
+
 terminal max:
   user.vscode("workbench.action.toggleMaximizedPanel")
 
