@@ -19,4 +19,14 @@ code hunt all:
   sleep(200ms)
   edit.paste()
 
+code hunt [(this | that)]:
+  edit.copy()
+  sleep(200ms)
+  user.switcher_focus("code")
+  sleep(500ms)
+  user.vscode("actions.find")
+  sleep(200ms)
+  edit.paste()
+
+
 confirm: key(enter)
