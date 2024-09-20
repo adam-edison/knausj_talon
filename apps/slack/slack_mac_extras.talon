@@ -2,6 +2,15 @@ os: mac
 app: slack
 -
 
+channel <user.text>:
+  key(cmd-k)
+  sleep(300ms)
+  insert("{text}")
+  key(enter)
+
+slack home:
+  key(ctrl-1)
+
 react ship: 
   mouse_click(1)
   sleep(300ms)
