@@ -37,11 +37,11 @@ parrot(fft):
 parrot(hawk): 
   key(esc)
 
-parrot(hiss):
+parrot(sss):
   key(shift)
 
-parrot(shush): 
+parrot(shh): 
   key(tab)
 
-parrot(smooch):
+parrot(kiss):
   key(space)
