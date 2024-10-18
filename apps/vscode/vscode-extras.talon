@@ -18,6 +18,12 @@ completer:
   sleep(200ms)
   key(tab)
 
+slide left:
+  user.vscode("workbench.action.moveEditorLeftInGroup")
+
+slide right:
+  user.vscode("workbench.action.moveEditorRightInGroup")
+
 terminal max:
   user.vscode("workbench.action.toggleMaximizedPanel")
 
