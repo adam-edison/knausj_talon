@@ -64,17 +64,17 @@ filter test selection:
   insert("npm install")
 
 
-package <user.word>:
+^package <user.word>$:
   user.vscode_terminal(1)
   sleep(300ms)
   insert("npm run {user.word}")
 
-package <user.word> <user.word>:
+^package <user.word> <user.word>$:
   user.vscode_terminal(1)
   sleep(100ms)
   insert("npm run {user.word_1}:{user.word_2}")
 
-package <user.word> <user.word> <user.word>:
+^package <user.word> <user.word> <user.word>$:
   user.vscode_terminal(1)
   sleep(100ms)
   insert("npm run {user.word_1}:{user.word_2}:{user.word_3}")
