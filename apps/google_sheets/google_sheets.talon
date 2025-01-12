@@ -9,3 +9,9 @@ clone line:
   key(end)
   key(alt-enter)
   key(cmd-v)
+
+go <user.letter> <number>: 
+  key(ctrl-g)
+  sleep(200ms)
+  insert("{letter}{number}")
+  key(enter)
