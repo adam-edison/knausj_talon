@@ -1,4 +1,5 @@
 app: chrome
+app: brave
 os: mac
 -
 
