@@ -40,6 +40,7 @@ class Actions:
 
         # delete the emoji on the line
         actions.edit.line_start()
+        actions.sleep("15ms")
 
         for i in range(emoji_position - 1):
             actions.edit.right()
