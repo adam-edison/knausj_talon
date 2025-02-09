@@ -5,6 +5,7 @@ mod = Module()
 
 ctx.matches = r"""
 app: vscode
+app: cursor
 """
 
 mod.list("pnpm_filters", "named filters for pnpm working in various repositories")

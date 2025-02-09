@@ -1,4 +1,5 @@
 app: vscode
+app: cursor
 -
 
 safe saver:

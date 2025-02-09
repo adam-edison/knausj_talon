@@ -11,10 +11,12 @@ linux_ctx = Context()
 
 ctx.matches = r"""
 app: vscode
+app: cursor
 """
 linux_ctx.matches = r"""
 os: linux
 app: vscode
+app: cursor
 """
 
 ctx.tags = ["user.command_client"]
