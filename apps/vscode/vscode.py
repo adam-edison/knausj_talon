@@ -12,42 +12,30 @@ os: mac
 and app.bundle: com.microsoft.VSCodeInsiders
 os: mac
 and app.bundle: com.visualstudio.code.oss
-"""
-mod.apps.vscode = """
+os: mac
+and app.name: Code
+os: mac
+and app.name: Cursor
 os: linux
 and app.name: Code
 os: linux
-and app.name: code-oss
+and app.name: code
 os: linux
-and app.name: code-insiders
-os: linux
-and app.name: VSCodium
-os: linux
-and app.name: Codium
-"""
-mod.apps.vscode = """
-os: windows
-and app.name: Visual Studio Code
-os: windows
-and app.name: Visual Studio Code Insiders
-os: windows
-and app.name: Visual Studio Code - Insiders
+and app.name: cursor
 os: windows
 and app.exe: Code.exe
 os: windows
-and app.exe: Code-Insiders.exe
-os: windows
-and app.name: VSCodium
-os: windows
-and app.exe: VSCodium.exe
+and app.exe: Cursor.exe
 """
 
 ctx.matches = r"""
 app: vscode
+app: cursor
 """
 mac_ctx.matches = r"""
 os: mac
 app: vscode
+app: cursor
 """
 
 
