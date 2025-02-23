@@ -26,7 +26,7 @@ class Actions:
 
     def clean_jest_object_paste():
         """Take clipboard code and clean it up from jest diff"""
-        contents = clip.get()
+        contents = clip.text()
         # replace + with nothing
         clean = (
             contents.replace("+", "")

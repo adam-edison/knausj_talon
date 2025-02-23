@@ -35,4 +35,4 @@ class Actions:
         actions.user.password_copy_password()
         actions.sleep("500ms")
         actions.key("esc")
-        return clip.get()
+        return clip.text()

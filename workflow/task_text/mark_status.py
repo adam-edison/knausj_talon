@@ -26,7 +26,7 @@ class Actions:
     def mark_clear_status():
         """Remove the status from the current line"""
         actions.user.copy_line()
-        contents = clip.get()
+        contents = clip.text()
 
         # check if any status emoji is present
         emoji_is_present = re.search(r"[✅🚧⏭️⛔️⏳⏸️❌]", contents)
@@ -57,11 +57,11 @@ class Actions:
     def mark_status(status_emoji: str):
         """Parse the current line and mark or change a status"""
         # clear emoji if present, first
-        Actions.mark_clear_status()
+        actions.user.mark_clear_status()
 
         # get the current line
         actions.user.copy_line()
-        contents = clip.get()
+        contents = clip.text()
         
         # Regexes to match line patterns
         

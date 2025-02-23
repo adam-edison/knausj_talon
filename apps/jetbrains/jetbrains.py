@@ -150,7 +150,7 @@ class Actions:
 
     def idea_grab(times: int):
         """Copies specified number of words to the left"""
-        old_clip = clip.get()
+        old_clip = clip.text()
         try:
             original_line, original_column = get_idea_location()
             for _ in range(times):

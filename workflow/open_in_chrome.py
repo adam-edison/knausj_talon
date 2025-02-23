@@ -9,7 +9,7 @@ class UserActions:
         """Open tab in Chrome and go to address on clipboard"""
         actions.edit.copy()
         actions.sleep("200ms")
-        UserActions.chrome_tab_string(clip.get())
+        UserActions.chrome_tab_string(clip.text())
 
     def chrome_tab_line():
         """Open tab in Chrome and go to address on current line"""
