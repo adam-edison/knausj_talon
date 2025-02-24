@@ -257,3 +257,6 @@ uninstall clip:
   insert("npm uninstall ")
   sleep(200ms)
   edit.paste()
+
+# Extensions
+git generate: key(ctrl-shift-alt-m)
