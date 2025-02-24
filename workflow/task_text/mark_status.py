@@ -26,6 +26,7 @@ class Actions:
     def mark_clear_status():
         """Remove the status from the current line"""
         actions.user.copy_line()
+        actions.sleep("100ms")
         contents = clip.text()
 
         # check if any status emoji is present
@@ -61,6 +62,7 @@ class Actions:
 
         # get the current line
         actions.user.copy_line()
+        actions.sleep("100ms")
         contents = clip.text()
         
         # Regexes to match line patterns
