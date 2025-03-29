@@ -258,5 +258,8 @@ uninstall clip:
   sleep(200ms)
   edit.paste()
 
+git changes:
+  user.vscode("git.viewChanges")
+
 # Extensions
 git generate: key(ctrl-shift-alt-m)
