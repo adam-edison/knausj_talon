@@ -79,15 +79,23 @@ class Actions:
         # # starListStatusPattern e.g. "* ✅ This is a thing" or "    * 🚧 This is a thing"
         # starListStatusPattern = r"^[\s]*\* ([✅🚧⏭️⛔️]) ([^\s]+)"
 
+        # # dashListPattern e.g. "- This is a thing" or "    - This is a thing"
+        # dashListPattern = r"^[\s]*- ([^\s]+)"
+
+        # # dashListStatusPattern e.g. "- ✅ This is a thing" or "    - 🚧 This is a thing"
+        # dashListStatusPattern = r"^[\s]*- ([✅🚧⏭️⛔️]) ([^\s]+)"
+
         # either replace existing status with given status
         # or insert the status at the beginning of the line
         # do this by using edits and not by pasting over existing content
 
-        star_is_present = re.match(r"[\s]*\*", contents)
+        star_is_present = re.match(r"^[\s]*\*", contents)
+        dash_is_present = re.match(r"^[\s]*-", contents)
 
         leading_whitespace_length = len(re.match(r"^[\s]*", contents).group(0))
         star_length = star_is_present and 2 or 0
-        total_left_length = leading_whitespace_length + star_length
+        dash_length = dash_is_present and 2 or 0
+        total_left_length = leading_whitespace_length + star_length + dash_length
 
         actions.edit.line_start()
         actions.sleep("50ms")
