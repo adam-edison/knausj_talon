@@ -23,3 +23,7 @@ class Actions:
   def local_productivity_get_statistics() -> None:
     """Get statistics"""
     send_request("get statistics")
+
+  def local_productivity_update_recurrences() -> None:
+    """Update recurrences"""
+    send_request("update recurring tasks")
