@@ -202,6 +202,9 @@ terminal status:
 terminal bottom:
   user.vscode("workbench.action.terminal.scrollToBottom")
 
+terminal top:
+  user.vscode("workbench.action.terminal.scrollToTop")
+
 fetch develop:
   user.vscode("workbench.action.terminal.focus")
   sleep(200ms)
@@ -235,10 +238,20 @@ new file [<user.word>]:
   user.vscode("explorer.newFile")
   insert("{title}")
 
-terminal checkout dot:
+git checkout dot:
   user.vscode("workbench.action.terminal.focus")
   sleep(200ms)
   insert("git checkout .\n")
+
+git push:
+  user.vscode("workbench.action.terminal.focus")
+  sleep(200ms)
+  insert("git push\n")
+
+git push force:
+  user.vscode("workbench.action.terminal.focus")
+  sleep(200ms)
+  insert("git push --force-with-lease\n")
 
 show to doos:
   user.vscode("todo-tree-view.focus")

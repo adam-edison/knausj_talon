@@ -182,8 +182,10 @@ git ignore: user.vscode("git.ignore")
 git merge: user.vscode("git.merge")
 git output: user.vscode("git.showOutput")
 git pull: user.vscode("git.pullRebase")
-git push: user.vscode("git.push")
-git push force: user.vscode("git.pushForce")
+
+# git push: user.vscode("git.push")
+# git push force: user.vscode("git.pushForce")
+
 git rebase abort: user.vscode("git.rebaseAbort")
 git reveal: user.vscode("git.revealInExplorer")
 git revert: user.vscode("git.revertChange")
