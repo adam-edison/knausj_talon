@@ -67,7 +67,7 @@ zen switch: user.vscode("workbench.action.toggleZenMode")
 hunt file [<user.text>]:
     user.vscode("workbench.action.quickOpen")
     sleep(50ms)
-    search = "/ " + text
+    search = text or ""
     insert(search)
 hunt file (pace | paste | paster):
     user.vscode("workbench.action.quickOpen")
