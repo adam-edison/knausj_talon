@@ -2,6 +2,9 @@ app: vscode
 app: cursor
 -
 
+bar right:
+  key(alt-cmd-b)
+
 safe saver:
   user.vscode("workbench.action.files.saveWithoutFormatting")
 
