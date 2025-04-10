@@ -156,6 +156,14 @@ terminal push:
   insert("git push\n")
   user.vscode("workbench.action.toggleMaximizedPanel")
 
+terminal this line:
+  user.copy_line()
+  user.vscode("workbench.action.terminal.focus")
+  sleep(200ms)
+  edit.paste()
+  sleep(200ms)
+  key(enter)
+
 git status:
   user.vscode("workbench.scm.focus")
 # refresh the git view, requires keybinding to be defined for "git refresh"
