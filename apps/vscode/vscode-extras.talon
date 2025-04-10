@@ -5,6 +5,9 @@ app: cursor
 bar right:
   key(alt-cmd-b)
 
+bar left:
+  key(cmd-b)
+
 safe saver:
   user.vscode("workbench.action.files.saveWithoutFormatting")
 
