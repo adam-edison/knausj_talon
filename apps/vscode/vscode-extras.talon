@@ -65,42 +65,46 @@ filter test selection:
   edit.paste()
   key(enter)
 
-^package install$:
+^package install [<number_small>]$:
+  terminal = number_small or 1
   user.vscode_terminal(1)
   sleep(300ms)
   insert("npm install")
 
 
-^package <user.word>$:
-  user.vscode_terminal(1)
+^package <user.word> [<number_small>]$:
+  terminal = number_small or 1
+  user.vscode_terminal(terminal)
   sleep(300ms)
   insert("npm run {user.word}")
 
-^package <user.word> <user.word>$:
-  user.vscode_terminal(1)
+^package <user.word> <user.word> [<number_small>]$:
+  terminal = number_small or 1
+  user.vscode_terminal(terminal)
   sleep(100ms)
   insert("npm run {user.word_1}:{user.word_2}")
 
-^package <user.word> <user.word> <user.word>$:
-  user.vscode_terminal(1)
+^package <user.word> <user.word> <user.word> [<number_small>]$:
+  terminal = number_small or 1
+  user.vscode_terminal(terminal)
   sleep(100ms)
   insert("npm run {user.word_1}:{user.word_2}:{user.word_3}")
 
-perform {user.pnpm_filters} <user.word>:
-  user.pnpm_run_with_filter(user.pnpm_filters, user.word)
-
-perform <user.word>:
-  user.vscode_terminal(1)
+perform <user.word> [<number_small>]:
+  terminal = number_small or 1
+  user.vscode_terminal(terminal)
   sleep(300ms)
   insert("pnpm run {user.word}")
 
-perform <user.word> <user.word>:
-  user.vscode_terminal(1)
+perform <user.word> <user.word> [<number_small>]:
+  terminal = number_small or 1
+  user.vscode_terminal(terminal)
   sleep(100ms)
   insert("pnpm run {user.word_1}:{user.word_2}")
 
-perform <user.word> <user.word> <user.word>:
-  user.vscode_terminal(1)
+perform <user.word> <user.word> <user.word> [<number_small>]:
+  terminal = number_small or 1
+  user.vscode_terminal(terminal)
   sleep(100ms)
   insert("pnpm run {user.word_1}:{user.word_2}:{user.word_3}")
 
