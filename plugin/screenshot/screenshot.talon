@@ -1,4 +1,4 @@
-^screenshot$: user.screenshot()
+^screenshot file$: user.screenshot()
 ^screenshot clip$: user.screenshot_clipboard()
 ^screenshot <number_small>$: user.screenshot(number_small)
 ^screenshot <number_small> clip$: user.screenshot_clipboard(number_small)
