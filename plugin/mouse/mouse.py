@@ -1,6 +1,6 @@
 import os
 
-from talon import Context, Module, actions, app, clip, cron, ctrl, imgui, ui
+from talon import Context, Module, actions, app, clip, cron, ctrl, imgui, settings, ui
 from talon_plugins import eye_zoom_mouse
 
 key = actions.key
@@ -283,7 +283,7 @@ class UserActions:
                 ctrl.mouse_click(button=0, hold=16000)
 
     def noise_trigger_hiss(active: bool):
-        if setting_mouse_enable_hiss_scroll.get():
+        if settings.get('user.mouse_enable_hiss_scroll'):
             if active:
                 # up instead of down for natural scroll, since using external mouse
                 actions.user.mouse_scroll_up_continuous()
