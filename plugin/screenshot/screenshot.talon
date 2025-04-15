@@ -5,5 +5,5 @@
 ^screenshot window$: user.screenshot_window()
 ^screenshot window clip$: user.screenshot_window_clipboard()
 ^screenshot select$: user.screenshot_selection()
-(^screenshot select clip$ | ^screenshot$): user.screenshot_selection_clip()
+^(screenshot select clip | screenshot)$: user.screenshot_selection_clip()
 ^screenshot settings$: user.screenshot_settings()
