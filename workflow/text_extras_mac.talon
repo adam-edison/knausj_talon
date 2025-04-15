@@ -28,5 +28,12 @@ code hunt [(this | that)]:
   sleep(200ms)
   edit.paste()
 
+flick:
+  key(end)
+  sleep(50ms)
+  key(shift-enter)
+
+nudge:
+  key(shift-enter)
 
 confirm: key(enter)
