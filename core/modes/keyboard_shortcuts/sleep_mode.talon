@@ -5,5 +5,5 @@ key(keypad_plus):
   speech.enable()
 
 key(keypad_multiply):
-  sound.set_microphone("BlackHole 2ch")
+  sound.set_microphone("Wireless Microphone RX")
   speech.enable()
