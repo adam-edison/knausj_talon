@@ -2,8 +2,8 @@ mode: command
 -
 
 # actually scrolls up, higher sound = up
-parrot(hawk): edit.copy()
-parrot(kiss): edit.paste()
+# parrot(hawk): edit.copy()
+# parrot(kiss): edit.paste()
 
 # parrot(fft): mouse_click()
 # parrot(ffk): mouse_click(1)
