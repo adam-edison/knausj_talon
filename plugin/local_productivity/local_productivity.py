@@ -8,7 +8,7 @@ os: mac
 """
 
 def send_request(text: str, data: dict = None):
-  url = "http://localhost:5052/command"
+  url = "http://localhost:5052/command/execute"
   
   payload = {"command": text }
 
