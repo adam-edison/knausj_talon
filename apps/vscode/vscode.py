@@ -16,6 +16,8 @@ os: mac
 and app.name: Code
 os: mac
 and app.name: Cursor
+os: mac
+and app.name: Windsurf
 os: linux
 and app.name: Code
 os: linux
