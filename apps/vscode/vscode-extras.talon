@@ -182,6 +182,11 @@ git status:
 git publish:
   user.vscode("git.publish")
 
+git checkout dot:
+  user.vscode_terminal(1)
+  sleep(500ms)
+  insert("git checkout .")
+
 next change:
   key(down space)
 
