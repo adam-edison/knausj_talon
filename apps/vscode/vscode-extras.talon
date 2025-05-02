@@ -261,7 +261,7 @@ new file [<user.word>]:
   user.vscode("explorer.newFile")
   insert("{title}")
 
-git checkout dot:
+git checkout dot confirm:
   user.vscode("workbench.action.terminal.focus")
   sleep(200ms)
   insert("git checkout .\n")
