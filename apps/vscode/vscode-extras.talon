@@ -297,5 +297,10 @@ uninstall clip:
 git changes:
   user.vscode("git.viewChanges")
 
+reference <user.word>+:
+  insert("@")
+  sleep(200ms)
+  user.insert_many(word_list)
+
 # Extensions
 git generate: key(ctrl-shift-alt-m)
