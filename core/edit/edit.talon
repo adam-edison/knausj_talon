@@ -47,13 +47,23 @@ indent [more]: edit.indent_more()
 (indent less | out dent): edit.indent_less()
 
 # Copy
-copy that: edit.copy()
+(copy that | copier): edit.copy()
+copy here:
+    mouse_click()
+    sleep(100ms)
+    mouse_click()
+    edit.copy()
 
 # Cut
-cut that: edit.cut()
+(cut that | cutter): edit.cut()
 
 # Paste
-(pace | paste) (that | it): edit.paste()
+(pace | paste) (that | it) | paster: edit.paste()
+(pace | paste) here:
+    mouse_click()
+    sleep(100ms)
+    mouse_click()
+    edit.paste()
 (pace | paste) enter:
     edit.paste()
     key(enter)
@@ -79,7 +89,11 @@ undo that: edit.undo()
 redo that: edit.redo()
 
 # Save
-file save: edit.save()
+(file save | saver): edit.save()
 file save all: edit.save_all()
+
+replace line end:
+    user.select_line_end()
+    edit.paste()
 
 [go] line mid: user.line_middle()
