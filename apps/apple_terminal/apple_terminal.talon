@@ -23,3 +23,12 @@ suspend: key(ctrl-z)
 resume:
     insert("fg")
     key(enter)
+
+paste image: key(ctrl-v)
+
+follower:
+    mouse_click(1)
+    sleep(500ms)
+    key(down:2)
+    sleep(50ms)
+    key(enter)

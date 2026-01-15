@@ -9,3 +9,8 @@ tag(): user.git
 tag(): user.kubectl
 tag(): user.tabs
 tag(): user.readline
+
+follower:
+    key(cmd:down)
+    mouse_click()
+    key(cmd:up)
