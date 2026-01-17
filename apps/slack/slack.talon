@@ -7,6 +7,11 @@ tag(): user.emoji
 workspace <number>: user.slack_open_workspace(number)
 # Channel
 (slack | lack) [channel] info: user.slack_show_channel_info()
+channel <user.text>:
+    user.messaging_open_channel_picker()
+    sleep(300ms)
+    insert(text)
+    key(enter)
 focus (move | next): key(ctrl-`)
 (section | zone) [next]: user.slack_section_next()
 (section | zone) (previous | last): user.slack_section_previous()
@@ -32,6 +37,7 @@ add line: key(shift-enter)
 
 (go | undo | toggle) full: user.slack_toggle_full_screen()
 (slack | lack) (react | reaction): user.slack_add_reaction()
+react {user.slack_reactions}: user.slack_emoji_reaction(slack_reactions)
 (insert command | commandify): user.slack_insert_command()
 insert link: user.slack_insert_link()
 insert code: user.slack_insert_code()

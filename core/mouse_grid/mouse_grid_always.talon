@@ -13,3 +13,6 @@ grid <user.number_key>+:
 grid screen [<number>]:
     user.grid_select_screen(number or 1)
     user.grid_activate()
+
+grid close:
+    user.grid_close()

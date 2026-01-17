@@ -2,6 +2,9 @@ from talon import Context, Module, actions
 
 ctx = Context()
 mod = Module()
+
+mod.list("slack_reactions", desc="Predefined reactions for Slack messages")
+
 apps = mod.apps
 apps.slack = "app.name: Slack"
 mod.apps.slack = r"""
@@ -117,3 +120,19 @@ class Actions:
 
     def slack_toggle_right_sidebar():
         """Toggles the visibility of the right sidebar in Slack"""
+
+    def slack_emoji_reaction(reaction: str):
+        """Add a specific emoji reaction to the message under cursor"""
+        actions.mouse_click(button=1)
+        actions.sleep("200ms")
+
+        # Use Slack's keyboard shortcut to open emoji picker on current message
+        actions.key("r")
+        actions.sleep("300ms")
+
+        # Type the emoji name
+        actions.insert(reaction)
+        actions.sleep("700ms")
+
+        # Press enter to select the first matching emoji
+        actions.key("enter")

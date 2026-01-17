@@ -15,6 +15,15 @@ directories_to_remap = {}
 directories_to_exclude = {}
 
 
+@ctx.action_class("edit")
+class EditActions:
+    def line_start():
+        actions.key("home")
+
+    def line_end():
+        actions.key("end")
+
+
 @ctx.action_class("user")
 class UserActions:
     def tab_jump(number: int):

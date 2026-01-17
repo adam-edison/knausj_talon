@@ -6,6 +6,20 @@ os: mac
 app: slack
 """
 
+ctx.lists["user.slack_reactions"] = {
+    "complete": "white_check_mark",
+    "done": "white_check_mark",
+    "ship": "ship",
+    "thumbs up": "thumbsup",
+    "thanks": "thankyou",
+    "thank you": "thankyou",
+    "heart": "heart",
+    "looking": "eyes",
+    "eyes": "eyes",
+    "party": "tada",
+    "one hundred": "100",
+}
+
 
 @ctx.action_class("user")
 class UserActions:
