@@ -2,6 +2,7 @@
 Face-triggered continuous scroll with grace period.
 
 Uses direct mouse_scroll() to avoid the GUI popup from the built-in continuous scroll.
+Also includes delayed control mouse toggle.
 """
 
 from talon import Module, actions, cron
@@ -11,6 +12,9 @@ mod = Module()
 # Track scheduled scroll jobs and active scroll jobs
 _pending_jobs: dict[str, cron.Job] = {}
 _scroll_jobs: dict[str, cron.Job] = {}
+
+# Track pending control mouse toggle
+_control_mouse_pending: cron.Job | None = None
 
 # Scroll amount per tick (can be changed via voice command)
 _scroll_speed = 8
@@ -77,3 +81,24 @@ class Actions:
     def face_scroll_speed_get() -> int:
         """Get current face scroll speed."""
         return _scroll_speed
+
+    def face_control_mouse_start(delay_ms: int = 300):
+        """Schedule control mouse toggle after delay."""
+        global _control_mouse_pending
+        if _control_mouse_pending:
+            cron.cancel(_control_mouse_pending)
+        _control_mouse_pending = cron.after(f"{delay_ms}ms", _do_control_mouse_toggle)
+
+    def face_control_mouse_stop():
+        """Cancel pending control mouse toggle if released too early."""
+        global _control_mouse_pending
+        if _control_mouse_pending:
+            cron.cancel(_control_mouse_pending)
+            _control_mouse_pending = None
+
+
+def _do_control_mouse_toggle():
+    """Toggle control mouse after delay elapsed."""
+    global _control_mouse_pending
+    _control_mouse_pending = None
+    actions.tracking.control_toggle()
