@@ -17,6 +17,10 @@ scroll slower: user.face_scroll_speed_set(user.face_scroll_speed_get() - 4)
 
 face off: mode.disable("face")
 
-# pucker lips -> toggle control mouse (after 300ms hold)
+# pucker lips -> toggle control mouse (after 500ms hold)
 face(pucker_lips_outwards:start): user.face_control_mouse_start(500)
 face(pucker_lips_outwards:stop): user.face_control_mouse_stop()
+
+# blink -> mouse click (after 600ms hold)
+face(blink:start): user.face_click_start(600)
+face(blink:stop): user.face_click_stop()

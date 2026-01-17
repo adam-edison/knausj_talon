@@ -16,6 +16,9 @@ _scroll_jobs: dict[str, cron.Job] = {}
 # Track pending control mouse toggle
 _control_mouse_pending: cron.Job | None = None
 
+# Track pending mouse click
+_click_pending: cron.Job | None = None
+
 # Scroll amount per tick (can be changed via voice command)
 _scroll_speed = 8
 
@@ -96,9 +99,30 @@ class Actions:
             cron.cancel(_control_mouse_pending)
             _control_mouse_pending = None
 
+    def face_click_start(delay_ms: int = 600):
+        """Schedule mouse click after delay."""
+        global _click_pending
+        if _click_pending:
+            cron.cancel(_click_pending)
+        _click_pending = cron.after(f"{delay_ms}ms", _do_mouse_click)
+
+    def face_click_stop():
+        """Cancel pending mouse click if released too early."""
+        global _click_pending
+        if _click_pending:
+            cron.cancel(_click_pending)
+            _click_pending = None
+
 
 def _do_control_mouse_toggle():
     """Toggle control mouse after delay elapsed."""
     global _control_mouse_pending
     _control_mouse_pending = None
     actions.tracking.control_toggle()
+
+
+def _do_mouse_click():
+    """Click mouse after delay elapsed."""
+    global _click_pending
+    _click_pending = None
+    actions.mouse_click(0)
