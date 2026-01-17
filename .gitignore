@@ -16,3 +16,4 @@ __pycache__
 # Vim (from https://github.com/github/gitignore/blob/main/Global/Vim.gitignore)
 [._]*.swp
 node_modules
+*.log

@@ -2,23 +2,23 @@ mode: command
 -
 
 # actually scrolls up, higher sound = up
-parrot(hawk): edit.copy()
-parrot(kiss): key(tab)
+# parrot(hawk): edit.copy()
+# parrot(kiss): key(tab)
 
-# parrot(fft): mouse_click()
-# parrot(ffk): mouse_click(1)
+# # parrot(fft): mouse_click()
+# # parrot(ffk): mouse_click(1)
 
-# # actually scrolls up, higher sound = up
-parrot(sss_soft): user.mouse_scroll_up(0.1)
-parrot(sss_soft:repeat): user.mouse_scroll_up(0.1)
-parrot(sss_loud): user.mouse_scroll_up(0.5)
-parrot(sss_loud:repeat): user.mouse_scroll_up(0.5)
+# # # actually scrolls up, higher sound = up
+# parrot(sss_soft): user.mouse_scroll_up(0.1)
+# parrot(sss_soft:repeat): user.mouse_scroll_up(0.1)
+# parrot(sss_loud): user.mouse_scroll_up(0.5)
+# parrot(sss_loud:repeat): user.mouse_scroll_up(0.5)
 
-# # actually scrolls down, lower sound = down
-parrot(shh_soft): user.mouse_scroll_down(0.1)
-parrot(shh_soft:repeat): user.mouse_scroll_down(0.1)
-parrot(shh_loud): user.mouse_scroll_down(0.5)
-parrot(shh_loud:repeat): user.mouse_scroll_down(0.5)
+# # # actually scrolls down, lower sound = down
+# parrot(shh_soft): user.mouse_scroll_down(0.1)
+# parrot(shh_soft:repeat): user.mouse_scroll_down(0.1)
+# parrot(shh_loud): user.mouse_scroll_down(0.5)
+# parrot(shh_loud:repeat): user.mouse_scroll_down(0.5)
 
 # parrot(whistle_high:repeat): key(right)
 
