@@ -17,3 +17,7 @@ __pycache__
 [._]*.swp
 node_modules
 *.log
+# Machine-specific paths (auto-generated)
+core/system_paths-*.talon-list
+core/repo_paths-*.talon-list
+*.log

@@ -1,4 +1,5 @@
 talon check updates: menu.check_for_updates()
+talon restart: user.talon_restart()
 # the debug window is only available in the talon beta
 talon open debug: menu.open_debug_window()
 talon open log: menu.open_log()
