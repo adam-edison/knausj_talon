@@ -32,16 +32,7 @@ code hunt [(this | that)]:
   edit.paste()
 
 flick: key(alt-enter)
-flicker: 
-  key(end)
-  sleep(50ms)
-  key(alt-enter)
 
 strike: key(shift-enter)
-
-striker:
-  key(end)
-  sleep(50ms)
-  key(shift-enter)
 
 confirm: key(enter)

@@ -1,0 +1,16 @@
+list: user.system_paths
+hostname: Adams-MacBook-Pro
+-
+user: /Users/aedison
+desktop: /Users/aedison/Desktop
+desk: /Users/aedison/Desktop
+documents: /Users/aedison/Documents
+docks: /Users/aedison/Documents
+downloads: /Users/aedison/Downloads
+music: /Users/aedison/Music
+pictures: /Users/aedison/Pictures
+videos: /Users/aedison/Videos
+talon home: /Users/aedison/.talon
+talon recordings: /Users/aedison/.talon/recordings
+talon user: /Users/aedison/.talon/user
+home: /Users/aedison
