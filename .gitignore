@@ -16,3 +16,7 @@ __pycache__
 # Vim (from https://github.com/github/gitignore/blob/main/Global/Vim.gitignore)
 [._]*.swp
 node_modules
+*.log
+# Machine-specific paths (auto-generated)
+core/system_paths-*.talon-list
+core/repo_paths-*.talon-list
