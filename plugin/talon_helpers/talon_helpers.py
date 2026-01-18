@@ -2,6 +2,7 @@ import os
 import platform
 import pprint
 import re
+import subprocess
 from itertools import islice
 from typing import Union
 
@@ -168,3 +169,15 @@ class Actions:
     def talon_get_active_registry_list(name: str) -> ListTypeFull:
         """Returns the active list from the Talon registry"""
         return registry.lists[name][-1]
+
+    def talon_restart():
+        """Restart Talon (macOS only)"""
+        if app.platform == "mac":
+            subprocess.Popen([
+                "osascript",
+                "-e", 'tell application "Talon" to quit',
+                "-e", "delay 1",
+                "-e", 'tell application "Talon" to activate',
+            ])
+        else:
+            app.notify("Talon restart is only supported on macOS")
