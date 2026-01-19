@@ -7,6 +7,7 @@ branch and implement: branch-and-implement
 commit: commit
 create ticket: create-ticket
 implement: implement
+plan ticket: plan-ticket
 pr: pr
 pr review: pr-review
 process human review: process-human-review
