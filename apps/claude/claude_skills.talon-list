@@ -12,4 +12,5 @@ pr review: pr-review
 process human review: process-human-review
 process review: process-review
 refactor: refactor
+split ticket: split-ticket
 test: test

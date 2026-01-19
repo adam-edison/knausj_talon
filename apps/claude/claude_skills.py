@@ -4,7 +4,7 @@ Auto-generates a list of Claude skill commands for voice navigation.
 Scans ~/.claude/commands/ for .md files and creates spoken forms
 based on the filename (e.g., branch-and-implement.md -> "branch and implement").
 
-The generated list is saved to claude_skills-<hostname>.talon-list
+The generated list is saved to claude_skills.talon-list
 """
 
 import os
@@ -40,9 +40,8 @@ mod.setting(
 
 
 def get_claude_skills_file() -> Path:
-    """Get the path to the claude_skills talon-list file for this host."""
-    hostname = actions.user.talon_get_hostname()
-    return Path(__file__).with_name(f"claude_skills-{hostname}.talon-list")
+    """Get the path to the claude_skills talon-list file."""
+    return Path(__file__).with_name("claude_skills.talon-list")
 
 
 def find_command_files(commands_dir: Path) -> list[Path]:
@@ -84,11 +83,9 @@ def generate_claude_skills():
     
     # Write to file
     skills_file = get_claude_skills_file()
-    hostname = actions.user.talon_get_hostname()
     
     with open(skills_file, "w") as f:
         f.write("list: user.claude_skills\n")
-        f.write(f"hostname: {hostname}\n")
         f.write("-\n")
         for spoken_form, skill_name in sorted(spoken_forms.items()):
             f.write(f"{spoken_form}: {skill_name}\n")
