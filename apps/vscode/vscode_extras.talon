@@ -239,7 +239,7 @@ cursor agent: key(cmd-i)
 
 cursor mode: key(cmd-.)
 
-git generate: key(ctrl-shift-alt-m)
+git generate: user.vscode("cursor.generateGitCommitMessage")
 
 give claude: key(cmd-alt-k)
 
