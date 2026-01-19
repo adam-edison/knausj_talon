@@ -77,48 +77,6 @@ filter test selection:
     sleep(300ms)
     insert("dwa {user.word_1}:{user.word_2}")
 
-^package install [<number_small>]$:
-    terminal = number_small or 1
-    user.vscode_terminal(1)
-    sleep(300ms)
-    insert("npm install")
-
-^package <user.word> [<number_small>]$:
-    terminal = number_small or 1
-    user.vscode_terminal(terminal)
-    sleep(300ms)
-    insert("npm run {user.word}")
-
-^package <user.word> <user.word> [<number_small>]$:
-    terminal = number_small or 1
-    user.vscode_terminal(terminal)
-    sleep(100ms)
-    insert("npm run {user.word_1}:{user.word_2}")
-
-^package <user.word> <user.word> <user.word> [<number_small>]$:
-    terminal = number_small or 1
-    user.vscode_terminal(terminal)
-    sleep(100ms)
-    insert("npm run {user.word_1}:{user.word_2}:{user.word_3}")
-
-perform <user.word> [<number_small>]:
-    terminal = number_small or 1
-    user.vscode_terminal(terminal)
-    sleep(300ms)
-    insert("pnpm run {user.word}")
-
-perform <user.word> <user.word> [<number_small>]:
-    terminal = number_small or 1
-    user.vscode_terminal(terminal)
-    sleep(100ms)
-    insert("pnpm run {user.word_1}:{user.word_2}")
-
-perform <user.word> <user.word> <user.word> [<number_small>]:
-    terminal = number_small or 1
-    user.vscode_terminal(terminal)
-    sleep(100ms)
-    insert("pnpm run {user.word_1}:{user.word_2}:{user.word_3}")
-
 window <user.word>:
     user.vscode("workbench.action.switchWindow")
     sleep(100ms)
@@ -134,38 +92,6 @@ clean run:
 (rerun | run last):
     user.vscode_terminal(1)
     key(up enter)
-
-run lint:
-    user.vscode_terminal(1)
-    sleep(500ms)
-    insert("npm run lint\n")
-
-run test:
-    user.vscode_terminal(1)
-    sleep(500ms)
-    insert("npm run test\n")
-    user.vscode("workbench.action.toggleMaximizedPanel")
-
-run test unit:
-    user.vscode_terminal(1)
-    sleep(500ms)
-    insert("npm run test:unit\n")
-    user.vscode("workbench.action.toggleMaximizedPanel")
-
-run test integration:
-    user.vscode_terminal(1)
-    sleep(500ms)
-    insert("npm run test:integration\n")
-    user.vscode("workbench.action.toggleMaximizedPanel")
-
-run test unit update:
-    user.vscode_terminal(1)
-    sleep(500ms)
-    insert("npm run test:unit -- -u\n")
-    user.vscode("workbench.action.toggleMaximizedPanel")
-
-update snapshots:
-    insert("npm run test -- -u\n")
 
 coding:
     user.vscode("workbench.action.focusActiveEditorGroup")
