@@ -1,4 +1,5 @@
 mode: face
+and mode: command
 and not mode: sleep
 -
 

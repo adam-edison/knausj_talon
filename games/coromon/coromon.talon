@@ -1,3 +1,4 @@
+mode: user.game
 win.title: /coromon/i
 app.name: /coromon/i
 -

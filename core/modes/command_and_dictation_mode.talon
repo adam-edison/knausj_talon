@@ -11,3 +11,8 @@ mode: dictation
     mode.disable("sleep")
     mode.disable("dictation")
     mode.enable("command")
+^game mode$:
+    mode.disable("sleep")
+    mode.disable("dictation")
+    mode.disable("command")
+    mode.enable("user.game")
