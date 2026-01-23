@@ -10,10 +10,6 @@ katie (up | back): user.terminal_change_directory("..")
 go <user.system_path>: insert('cd "{system_path}"\n')
 path <user.system_path>: insert('"{system_path}"')
 
-# Repo path commands
-repo <user.repo_paths>: insert('cd "{repo_paths}"\n')
-cursor <user.repo_paths>: insert('cursor "{repo_paths}"\n')
-code <user.repo_paths>: insert('code "{repo_paths}"\n')
 clear screen: user.terminal_clear_screen()
 run last: user.terminal_run_last()
 rerun [<user.text>]: user.terminal_rerun_search(text or "")
