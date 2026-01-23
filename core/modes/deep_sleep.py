@@ -33,6 +33,7 @@ class Actions:
 
         """
         ctx.tags = ["user.deep_sleep"]
+        actions.user.face_scroll_stop_all()
         actions.speech.disable()
 
     def deep_sleep_disable():

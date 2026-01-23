@@ -12,7 +12,9 @@ speech.engine: dragon
 # sleep and ignore "hey bob". Note that subtitles will show "sleep all hey bob",
 # because it's part of the rule definition, but "hey bob" will be ignored, because
 # we don't do anything with the <phrase> in the body of the command.
-^talon sleep [<phrase>]$: speech.disable()
+^talon sleep [<phrase>]$:
+    user.face_scroll_stop_all()
+    speech.disable()
 ^talon wake [<phrase>]$: speech.enable()
 
 ^sleep all [<phrase>]$:
@@ -21,5 +23,6 @@ speech.engine: dragon
     user.homophones_hide()
     user.help_hide()
     user.mouse_sleep()
+    user.face_scroll_stop_all()
     speech.disable()
     user.dragon_engine_sleep()

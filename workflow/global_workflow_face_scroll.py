@@ -113,6 +113,25 @@ class Actions:
             cron.cancel(_click_pending)
             _click_pending = None
 
+    def face_scroll_stop_all():
+        """Stop all face scrolling states (pending and active). Called when going to sleep."""
+        # Stop all pending scroll jobs
+        for key in list(_pending_jobs.keys()):
+            _stop_scroll(key)
+        # Stop all active scroll jobs
+        for key in list(_scroll_jobs.keys()):
+            _stop_scroll(key)
+        # Cancel pending control mouse toggle
+        global _control_mouse_pending
+        if _control_mouse_pending:
+            cron.cancel(_control_mouse_pending)
+            _control_mouse_pending = None
+        # Cancel pending mouse click
+        global _click_pending
+        if _click_pending:
+            cron.cancel(_click_pending)
+            _click_pending = None
+
 
 def _do_control_mouse_toggle():
     """Toggle control mouse after delay elapsed."""

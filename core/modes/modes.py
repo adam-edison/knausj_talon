@@ -55,6 +55,7 @@ class Actions:
 
         if "dragon" in engine:
             # app.notify("dragon mode")
+            actions.user.face_scroll_stop_all()
             actions.speech.disable()
             if app.platform == "mac":
                 actions.user.dragon_engine_wake()

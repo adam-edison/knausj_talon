@@ -2,6 +2,7 @@ mode: user.game
 -
 
 key(keypad_minus):
+    user.face_scroll_stop_all()
     speech.disable()
     sound.set_microphone("None")
 
