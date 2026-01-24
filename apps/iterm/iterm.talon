@@ -14,3 +14,11 @@ follower:
     key(cmd:down)
     mouse_click()
     key(cmd:up)
+
+session <user.text>:
+    key(cmd-i)
+    sleep(100ms)
+    insert(text)
+    key(enter)
+    sleep(100ms)
+    key(esc)
