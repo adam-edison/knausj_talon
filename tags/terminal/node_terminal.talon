@@ -3,6 +3,7 @@ tag: terminal
 # npm commands
 package install: insert("npm install\n")
 package run$: insert("npm run\n")
+package dev$: insert("npm run dev\n")
 package <user.word>: insert("npm run {user.word}")
 package <user.word> <user.word>: insert("npm run {user.word_1}:{user.word_2}")
 package <user.word> <user.word> <user.word>: insert("npm run {user.word_1}:{user.word_2}:{user.word_3}")
