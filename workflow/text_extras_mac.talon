@@ -35,4 +35,4 @@ flick: key(alt-enter)
 
 strike: key(shift-enter)
 
-confirm: key(enter)
+confirm (that | this): key(enter)
