@@ -1,13 +1,10 @@
-win.title: /sounds_test\.log/i
--
-
-# Sound test file - logs parrot sounds with timestamps
-# Only active when viewing the log file: workflow/sounds_test.log
+# Sound test - logs parrot sounds with timestamps (always active)
+# Log output: workflow/sounds_test.log (see sounds_test.py)
 # Say "clear sound log" to clear the log file
 
 clear sound log: user.sound_test_clear_log()
 
-# Sounds match ~/.talon/parrot/patterns.json
+# Names must match pattern keys in ~/.talon/parrot/patterns.json (not raw model classes)
 parrot(clop): user.sound_test_log('clop')
 parrot(kuh): user.sound_test_log('kuh')
 parrot(motor): user.sound_test_log('motor')

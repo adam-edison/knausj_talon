@@ -1,7 +1,8 @@
 """
 Sound testing with timestamps.
 
-Logs parrot sounds as they are detected.
+Logs parrot sounds as they are detected. Used by workflow/sounds_test.talon;
+output is written to workflow/sounds_test.log (same directory as this script).
 """
 
 import os
@@ -10,8 +11,8 @@ from talon import Module
 
 mod = Module()
 
-# Log file path - in the same directory as this script
-_LOG_FILE = os.path.join(os.path.dirname(__file__), "sounds_test.log")
+# Log file: sounds_test.log (cross-ref: sounds_test.talon)
+_LOG_FILE = os.path.join(os.path.realpath(os.path.dirname(__file__)), "sounds_test.log")
 
 
 def _timestamp() -> str:
@@ -22,9 +23,14 @@ def _timestamp() -> str:
 
 def _log(message: str):
     """Write message to log file."""
-    with open(_LOG_FILE, "a") as f:
-        f.write(message + "\n")
-        f.flush()
+    try:
+        with open(_LOG_FILE, "a") as f:
+            f.write(message + "\n")
+            f.flush()
+    except OSError as e:
+        from talon import actions
+
+        actions.app.notify(f"Sound test log write failed: {e}")
 
 
 @mod.action_class
@@ -37,3 +43,4 @@ class Actions:
         """Clear the sound test log file."""
         with open(_LOG_FILE, "w") as f:
             f.write(f"[{_timestamp()}] Log cleared\n")
+            f.write(f"# Log file: {_LOG_FILE}\n")
