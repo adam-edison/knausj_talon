@@ -17,12 +17,12 @@ class Actions:
     # Implements the functions from terminal.py for unix shells
 
     def terminal_list_directories(path: Optional[str] = None):
-        actions.insert(f"ls {path or ''}")
+        actions.insert(f"ls -al {path or ''}")
         actions.key("enter")
 
     def terminal_list_all_directories():
         """Lists all directories including hidden"""
-        actions.insert("ls -a")
+        actions.insert("ls -al")
         actions.key("enter")
 
     def terminal_change_directory(path: str):
