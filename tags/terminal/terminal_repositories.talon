@@ -18,9 +18,9 @@ launch claude [code]: insert('claude\n')
 
 relaunch claude:
     key(ctrl-c)
-    sleep(100ms)
+    sleep(200ms)
     insert('/quit\n')
-    sleep(500ms)
+    sleep(1000ms)
     insert('clear\n')
-    sleep(100ms)
+    sleep(1000ms)
     insert('claude\n')
