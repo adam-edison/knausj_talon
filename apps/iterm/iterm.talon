@@ -23,6 +23,7 @@ session <user.text>:
     sleep(100ms)
     key(esc)
 
+# requires keyboard shortcut defined in iterm settings
 pane new [vertical]: key(shift-alt-cmd-n)
 
 pane <number_small>: user.pane_jump(number_small)
