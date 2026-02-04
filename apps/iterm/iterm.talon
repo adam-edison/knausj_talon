@@ -27,7 +27,7 @@ session <user.text>:
 # requires keyboard shortcut defined in iterm settings
 pane new [vertical]: key(shift-alt-cmd-n)
 
-pane <number_small>: user.pane_jump(number_small)
+pane (max | min): key(shift-cmd-enter)
 
 jump <number_small> <number_small>: user.pane_jump_into(number_small_1, number_small_2)
 
