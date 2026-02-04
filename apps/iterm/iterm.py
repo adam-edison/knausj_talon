@@ -50,6 +50,12 @@ class UserActions:
         actions.key(f"ctrl-{number}")
 
     def pane_jump_into(tab_number: int, pane_number: int):
+        if not (1 <= tab_number <= 9):
+            return
+
+        if not (1 <= pane_number <= 9):
+            return
+
         actions.key(f"cmd-{tab_number}")
         actions.sleep("200ms")
         actions.key(f"ctrl-{pane_number}")
