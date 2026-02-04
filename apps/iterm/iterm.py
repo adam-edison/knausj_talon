@@ -11,6 +11,16 @@ ctx.matches = r"""
 app: iterm2
 """
 
+
+@mod.action_class
+class PaneActions:
+    def pane_jump(number: int):
+        """Jumps to the specified pane in the current tab."""
+
+    def pane_jump_into(tab_number: int, pane_number: int):
+        """Jumps to the specified pane in the specified tab."""
+
+
 directories_to_remap = {}
 directories_to_exclude = {}
 
@@ -35,3 +45,11 @@ class UserActions:
     def terminal_clear_screen():
         """Clear screen"""
         actions.key("ctrl-l")
+
+    def pane_jump(number: int):
+        actions.key(f"ctrl-{number}")
+
+    def pane_jump_into(tab_number: int, pane_number: int):
+        actions.key(f"cmd-{tab_number}")
+        actions.sleep("200ms")
+        actions.key(f"ctrl-{pane_number}")
