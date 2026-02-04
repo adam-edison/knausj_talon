@@ -1,8 +1,17 @@
 tag: terminal
 -
 # Repo path commands
+list repos: insert('ls -al ~/repositories\n')
+
+hunt repo <user.text>: 
+    insert('cd ~/repositories\n')
+    sleep(200ms)
+    insert('cd {text}')
+    sleep(100ms)
+    key(tab:3)
+
 open [repo] <user.repo_paths>: insert('cd "{repo_paths}"\n')
 cursor <user.repo_paths>: insert('cursor "{repo_paths}"\n')
-code <user.repo_paths>: insert('code "{repo_paths}"\n')
+cursor dot: insert('cursor .\n')
 
 launch claude [code]: insert('claude\n')
