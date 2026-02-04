@@ -18,6 +18,7 @@ follower:
 session <user.text>:
     key(cmd-i)
     sleep(100ms)
+    key(tab:2)
     insert(text)
     key(enter)
     sleep(100ms)
@@ -29,3 +30,5 @@ pane new [vertical]: key(shift-alt-cmd-n)
 pane <number_small>: user.pane_jump(number_small)
 
 jump <number_small> <number_small>: user.pane_jump_into(number_small_1, number_small_2)
+
+arrangement restore: key(shift-cmd-r)
