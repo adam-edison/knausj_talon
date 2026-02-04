@@ -15,3 +15,12 @@ cursor <user.repo_paths>: insert('cursor "{repo_paths}"\n')
 cursor dot: insert('cursor .\n')
 
 launch claude [code]: insert('claude\n')
+
+relaunch claude:
+    key(ctrl-c)
+    sleep(100ms)
+    insert('/quit\n')
+    sleep(500ms)
+    insert('clear\n')
+    sleep(100ms)
+    insert('claude\n')
