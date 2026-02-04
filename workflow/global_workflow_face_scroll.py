@@ -85,6 +85,18 @@ class Actions:
         """Get current face scroll speed."""
         return _scroll_speed
 
+    def face_scroll_speed_increase(amount: int = 4):
+        """Increase face scroll speed by amount."""
+        global _scroll_speed
+        _scroll_speed = max(1, min(50, _scroll_speed + amount))
+        actions.app.notify(f"Face scroll speed: {_scroll_speed}")
+
+    def face_scroll_speed_decrease(amount: int = 4):
+        """Decrease face scroll speed by amount."""
+        global _scroll_speed
+        _scroll_speed = max(1, min(50, _scroll_speed - amount))
+        actions.app.notify(f"Face scroll speed: {_scroll_speed}")
+
     def face_control_mouse_start(delay_ms: int = 300):
         """Schedule control mouse toggle after delay."""
         global _control_mouse_pending

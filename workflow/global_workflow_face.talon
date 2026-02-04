@@ -13,8 +13,8 @@ face(smile:stop): user.face_scroll_down_stop()
 
 # scroll speed control (1-50, default 8)
 scroll speed <number_small>: user.face_scroll_speed_set(number_small)
-scroll faster: user.face_scroll_speed_set(user.face_scroll_speed_get() + 4)
-scroll slower: user.face_scroll_speed_set(user.face_scroll_speed_get() - 4)
+scroll faster: user.face_scroll_speed_increase()
+scroll slower: user.face_scroll_speed_decrease()
 
 face off: mode.disable("face")
 

@@ -3,7 +3,7 @@ win.title: /Google Calendar/
 -
 
 settings():
-  key_wait: 20
+  key_wait = 20
 
 edit {user.task_status}:
   key(tab)
