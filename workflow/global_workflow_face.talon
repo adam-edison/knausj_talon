@@ -1,6 +1,7 @@
 mode: face
 and mode: command
 and not mode: sleep
+and win.title: /DISABLING_ALL_WORKFLOW_FACE_COMMANDS/i
 -
 
 # eyebrows raised -> continuous scroll up (starts after 500ms grace period)
