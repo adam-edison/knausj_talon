@@ -237,6 +237,7 @@ formatter_list = [
     CodeFormatter("PRIVATE_CAMEL_CASE", "", lower, capitalize),
     CodeFormatter("PUBLIC_CAMEL_CASE", "", capitalize, capitalize),
     CodeFormatter("SNAKE_CASE", "_", lower, lower),
+    CodeFormatter("SCREAM", "_", lambda text: text.upper(), lambda text: text.upper()),
     CodeFormatter("DASH_SEPARATED", "-", lower, lower),
     CodeFormatter("DOT_SEPARATED", ".", lower, lower),
     CodeFormatter("SLASH_SEPARATED", "/", lower, lower),

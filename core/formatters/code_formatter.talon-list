@@ -15,5 +15,6 @@ slasher: ALL_SLASHES
 conga: SLASH_SEPARATED
 smash: NO_SPACES
 snake: SNAKE_CASE
+scream: SCREAM
 string: SINGLE_QUOTED_STRING
 constant: ALL_CAPS,SNAKE_CASE
