@@ -1,6 +1,6 @@
 # Voice-driven screenshot selection that bypasses macOS modal screenshot mode
-# Usage: Position cursor at corner, say "shot start", move to opposite corner, say "shot it"
+# Usage: Position cursor at corner, say "grab start", move to opposite corner, say "grab it"
 
-shot start: user.screenshot_mark_start()
-shot (it | end): user.screenshot_capture_selection()
-shot cancel: user.screenshot_cancel_selection()
+grab start: user.screenshot_mark_start()
+grab (it | end): user.screenshot_capture_selection()
+grab cancel: user.screenshot_cancel_selection()
