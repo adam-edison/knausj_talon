@@ -16,5 +16,6 @@ sounds test on:
     mode.disable("command")
     mode.enable("user.sound_test")
     user.sound_test_clear_log()
+    app.notify("Sound test mode ON")
 
 sounds log clear: user.sound_test_clear_log()
