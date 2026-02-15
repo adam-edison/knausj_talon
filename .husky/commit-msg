@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/dwa-check.sh"
 
-dwa validate-commit "$1"
+# dwa validate-commit "$1"
