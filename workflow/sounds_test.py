@@ -10,6 +10,7 @@ from datetime import datetime
 from talon import Module
 
 mod = Module()
+mod.mode("sound_test", desc="Sound test mode - logs parrot sounds to sounds_test.log")
 
 # Log file: sounds_test.log (cross-ref: sounds_test.talon)
 _LOG_FILE = os.path.join(os.path.realpath(os.path.dirname(__file__)), "sounds_test.log")
