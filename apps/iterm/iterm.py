@@ -25,6 +25,15 @@ directories_to_remap = {}
 directories_to_exclude = {}
 
 
+@ctx.action_class("app")
+class AppActions:
+    def tab_next():
+        actions.key("shift-cmd-]")
+
+    def tab_previous():
+        actions.key("shift-cmd-[")
+
+
 @ctx.action_class("edit")
 class EditActions:
     def line_start():
