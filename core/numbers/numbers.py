@@ -24,6 +24,11 @@ numbers_map.update(teens_map)
 numbers_map.update(tens_map)
 numbers_map.update(scales_map)
 
+# Homophones for "eight" (often misrecognized as "ate", "aid", "hay")
+numbers_map["ate"] = 8
+numbers_map["aid"] = 8
+numbers_map["hay"] = 8
+
 
 def get_spoken_form_under_one_hundred(
     start,
