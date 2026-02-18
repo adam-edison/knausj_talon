@@ -11,7 +11,6 @@ ctx.matches = r"""
 app: iterm2
 """
 
-
 @mod.action_class
 class PaneActions:
     def pane_jump(number: int):
