@@ -1,13 +1,25 @@
 """
-Sound-triggered continuous scroll with 300ms grace period.
+Global workflow sounds: parrot combos (500ms window) and continuous scroll.
 
 Requires sss/shh to be sustained for 300ms before scrolling starts,
 filtering out false positives during speech.
 """
 
-from talon import Module, actions, cron
+from talon import Module, Context, actions, cron
 
 mod = Module()
+ctx = Context()
+
+global_parrot_config = {
+    "puh puh": ("enter", lambda: actions.key("enter")),
+    "puh clop": ("puh clop", lambda: actions.app.notify("puh clop")),
+}
+
+
+@ctx.action_class("user")
+class UserActions:
+    def parrot_config():
+        return global_parrot_config
 
 _pending_jobs: dict[str, cron.Job] = {}
 _scroll_jobs: dict[str, cron.Job] = {}
