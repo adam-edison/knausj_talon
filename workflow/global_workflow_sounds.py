@@ -1,25 +1,55 @@
 """
-Global workflow sounds: parrot combos (500ms window) and continuous scroll.
+Global workflow sounds: scroll (sss/shh) and command/dictation toggle.
 
-Requires sss/shh to be sustained for 300ms before scrolling starts,
-filtering out false positives during speech.
+- Scrolling: sss/shh sustained 300ms scroll up/down.
+- Command/dictation toggle registered with sound_mode_select menu.
 """
 
-from talon import Module, Context, actions, cron
+from talon import Module, actions, app, cron, scope
 
 mod = Module()
-ctx = Context()
-
-global_parrot_config = {
-    "puh puh": ("enter", lambda: actions.key("enter")),
-    "puh clop": ("puh clop", lambda: actions.app.notify("puh clop")),
-}
 
 
-@ctx.action_class("user")
-class UserActions:
-    def parrot_config():
-        return global_parrot_config
+# --- Mode switch: command <-> dictation with notification ---
+
+
+def _switch_to_dictation():
+    actions.mode.disable("sleep")
+    actions.mode.disable("command")
+    actions.mode.enable("dictation")
+    actions.user.code_clear_language_mode()
+    actions.user.gdb_disable()
+    actions.app.notify("Dictation mode")
+
+
+def _switch_to_command():
+    actions.mode.disable("sleep")
+    actions.mode.disable("dictation")
+    actions.mode.enable("command")
+    actions.app.notify("Command mode")
+
+
+def _toggle_command_dictation():
+    modes = scope.get("mode", set())
+
+    if "dictation" in modes and "command" not in modes:
+        _switch_to_command()
+    else:
+        _switch_to_dictation()
+
+
+def _on_ready():
+    actions.user.sound_mode_register(
+        "command_dictation_toggle",
+        "Command/Dictation Toggle",
+        _toggle_command_dictation,
+    )
+
+
+app.register("ready", _on_ready)
+
+
+# --- Scrolling ---
 
 _pending_jobs: dict[str, cron.Job] = {}
 _scroll_jobs: dict[str, cron.Job] = {}
@@ -46,6 +76,7 @@ def _start_scroll_down():
 def _stop_scroll(key: str):
     if job := _pending_jobs.pop(key, None):
         cron.cancel(job)
+
     if job := _scroll_jobs.pop(key, None):
         cron.cancel(job)
 
@@ -69,3 +100,7 @@ class Actions:
     def sound_scroll_down_stop():
         """Stop scroll down."""
         _stop_scroll("shh")
+
+    def workflow_toggle_command_dictation():
+        """Toggle between command and dictation mode."""
+        _toggle_command_dictation()
