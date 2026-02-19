@@ -1,5 +1,5 @@
 # Sound test - logs parrot sounds with timestamps when sound test mode is active
-# Log output: workflow/sounds_test.log (see sounds_test.py)
+# Log output: sounds_test.log (see sounds_test.py in this folder)
 
 mode: user.sound_test
 -

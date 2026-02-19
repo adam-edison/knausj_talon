@@ -1,8 +1,8 @@
 """
 Sound testing with timestamps.
 
-Logs parrot sounds as they are detected. Used by workflow/sounds_test.talon;
-output is written to workflow/sounds_test.log (same directory as this script).
+Logs parrot sounds as they are detected. Used by sounds_test.talon (this folder);
+output is written to sounds_test.log (same directory as this script).
 """
 
 import os
@@ -12,7 +12,7 @@ from talon import Module
 mod = Module()
 mod.mode("sound_test", desc="Sound test mode - logs parrot sounds to sounds_test.log")
 
-# Log file: sounds_test.log (cross-ref: sounds_test.talon)
+# Log file: sounds_test.log in this directory
 _LOG_FILE = os.path.join(os.path.realpath(os.path.dirname(__file__)), "sounds_test.log")
 
 
