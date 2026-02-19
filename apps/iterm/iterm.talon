@@ -24,8 +24,9 @@ session <user.text>:
     sleep(100ms)
     key(esc)
 
-# Parrot: single tih = tab next (old-school, no combo)
+# Parrot: tih = tab next, kuh = tab last (previous)
 parrot(tih): app.tab_next()
+parrot(kuh): app.tab_previous()
 
 # requires keyboard shortcut defined in iterm settings
 pane new [vertical]: key(shift-alt-cmd-n)
