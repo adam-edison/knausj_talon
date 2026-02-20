@@ -14,6 +14,12 @@ app: iterm2
 primary_tab: int = 1
 total_tabs: int = 9
 secondary_index: int = 0
+skip_tabs: set = set()
+
+def _clear_skip_list():
+    """Clear the skip list (internal)."""
+    global skip_tabs
+    skip_tabs = set()
 
 @mod.action_class
 class PaneActions:
@@ -28,6 +34,7 @@ class PaneActions:
         global primary_tab, secondary_index
         primary_tab = number
         secondary_index = 0
+        _clear_skip_list()
         actions.app.notify(f"Primary tab: {primary_tab}")
 
     def jump_to_primary():
@@ -39,12 +46,26 @@ class PaneActions:
         global total_tabs, secondary_index
         total_tabs = number
         secondary_index = 0
+        _clear_skip_list()
         actions.app.notify(f"Total tabs: {total_tabs}")
+
+    def skip_tab(number: int):
+        """Add a tab number to the skip list (excluded from secondaries)."""
+        global skip_tabs
+        skip_tabs.add(number)
+
+    def clear_skip_list():
+        """Clear the skip list for secondary tabs."""
+        _clear_skip_list()
 
     def cycle_to_next_secondary():
         """Cycles to the next secondary (non-primary) tab."""
         global secondary_index
-        tabs = [t for t in range(1, total_tabs + 1) if t != primary_tab]
+        tabs = [
+            t
+            for t in range(1, total_tabs + 1)
+            if t != primary_tab and t not in skip_tabs
+        ]
         if not tabs:
             return
         secondary_index = secondary_index % len(tabs)
