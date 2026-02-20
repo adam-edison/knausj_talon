@@ -55,6 +55,7 @@ cached_active_contexts_list = []
 
 live_update = True
 show_enabled_contexts_only = False
+show_commands_only = False
 
 selected_list = None
 current_list_page = 1
@@ -226,6 +227,9 @@ def get_current_context_page_length() -> int:
 
 def get_command_line_count(command: tuple[str, str]) -> int:
     """This should be kept in sync with draw_commands"""
+    global show_commands_only
+    if show_commands_only:
+        return 1
     _, body = command
     lines = len(body.split("\n"))
     if lines == 1:
@@ -356,9 +360,12 @@ def draw_context_commands(gui: imgui.GUI):
     global selected_context
     global total_page_count
     global selected_context_page
+    global show_commands_only
 
     context_title = format_context_title(selected_context)
     title = f"Context: {context_title}"
+    if show_commands_only:
+        title += " (commands only)"
     commands = context_command_map[selected_context].items()
     item_line_counts = [get_command_line_count(command) for command in commands]
     pages = get_pages(item_line_counts)
@@ -437,14 +444,18 @@ def draw_commands_title(gui: imgui.GUI, title: str):
 
 
 def draw_commands(gui: imgui.GUI, commands: Iterable[tuple[str, str]]):
+    global show_commands_only
     for key, val in commands:
-        val = val.split("\n")
-        if len(val) > 1:
-            gui.text(f"{key}:")
-            for line in val:
-                gui.text(f"    {line}")
+        if show_commands_only:
+            gui.text(key)
         else:
-            gui.text(f"{key}: {val[0]}")
+            val = val.split("\n")
+            if len(val) > 1:
+                gui.text(f"{key}:")
+                for line in val:
+                    gui.text(f"    {line}")
+            else:
+                gui.text(f"{key}: {val[0]}")
 
 
 def reset():
@@ -454,6 +465,7 @@ def reset():
     global search_phrase
     global selected_context_page
     global show_enabled_contexts_only
+    global show_commands_only
     global display_name_to_context_name_map
     global selected_list
     global current_list_page
@@ -464,6 +476,7 @@ def reset():
     search_phrase = None
     selected_context_page = 1
     show_enabled_contexts_only = False
+    show_commands_only = False
     display_name_to_context_name_map = {}
     selected_list = None
     current_list_page = 1
@@ -611,6 +624,17 @@ def register_events(register: bool):
         events_registered = False
         # registry.unregister('post:update_contexts', contexts_updated)
         registry.unregister("update_commands", commands_updated)
+
+
+def _update_help_contexts_list(_):
+    """Keep help_contexts list populated so 'help app X' and 'help context X'
+    match before the user has opened help. Runs on every update_commands."""
+    refresh_context_command_map()
+
+
+# Populate help_contexts list whenever commands change so "help app X" and
+# "help context X" work without opening help first.
+registry.register("update_commands", _update_help_contexts_list)
 
 
 def hide_all_help_guis():
@@ -773,6 +797,26 @@ class Actions:
         register_events(True)
         ctx.tags = ["user.help_open"]
 
+    def help_app_commands(m: str):
+        """Display only command phrases (no bodies) for selected context"""
+        global selected_context
+        global selected_context_page
+        global show_commands_only
+
+        if not gui_context_help.showing:
+            reset()
+            refresh_context_command_map()
+        else:
+            selected_context_page = 1
+            update_active_contexts_cache(registry.last_active_contexts)
+
+        show_commands_only = True
+        selected_context = m
+        hide_all_help_guis()
+        gui_context_help.show()
+        register_events(True)
+        ctx.tags = ["user.help_open"]
+
     def help_next():
         """Navigates to next page"""
         global current_context_page
@@ -852,11 +896,13 @@ class Actions:
         global selected_context
         global selected_context_page
         global show_enabled_contexts_only
+        global show_commands_only
 
         if gui_context_help.showing:
             refresh_context_command_map(show_enabled_contexts_only)
             selected_context_page = 1
             selected_context = None
+            show_commands_only = False
 
     def help_refresh():
         """Refreshes the help"""
