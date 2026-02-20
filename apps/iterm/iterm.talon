@@ -32,3 +32,11 @@ pane (max | min): key(shift-cmd-enter)
 jump <number_small> <number_small>: user.pane_jump_into(number_small_1, number_small_2)
 
 arrangement restore: key(shift-cmd-r)
+
+tab primary <number_small>: user.set_iterm_tab_primary(number_small)
+
+tab total <number_small>: user.set_iterm_tab_total(number_small)
+
+primary: user.jump_to_primary()
+
+secondary: user.cycle_to_next_secondary()

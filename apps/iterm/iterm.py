@@ -11,6 +11,10 @@ ctx.matches = r"""
 app: iterm2
 """
 
+primary_tab: int = 1
+total_tabs: int = 9
+secondary_index: int = 0
+
 @mod.action_class
 class PaneActions:
     def pane_jump(number: int):
@@ -18,7 +22,34 @@ class PaneActions:
 
     def pane_jump_into(tab_number: int, pane_number: int):
         """Jumps to the specified pane in the specified tab."""
+    
+    def set_iterm_tab_primary(number: int):
+        """Sets the primary iTerm tab number."""
+        global primary_tab, secondary_index
+        primary_tab = number
+        secondary_index = 0
+        actions.app.notify(f"Primary tab: {primary_tab}")
 
+    def jump_to_primary():
+        """Jumps to the primary iTerm tab."""
+        actions.key(f"cmd-{primary_tab}")
+
+    def set_iterm_tab_total(number: int):
+        """Sets the total number of iTerm tabs."""
+        global total_tabs, secondary_index
+        total_tabs = number
+        secondary_index = 0
+        actions.app.notify(f"Total tabs: {total_tabs}")
+
+    def cycle_to_next_secondary():
+        """Cycles to the next secondary (non-primary) tab."""
+        global secondary_index
+        tabs = [t for t in range(1, total_tabs + 1) if t != primary_tab]
+        if not tabs:
+            return
+        secondary_index = secondary_index % len(tabs)
+        actions.key(f"cmd-{tabs[secondary_index]}")
+        secondary_index = (secondary_index + 1) % len(tabs)
 
 directories_to_remap = {}
 directories_to_exclude = {}
