@@ -44,3 +44,5 @@ secondary: user.cycle_to_next_secondary()
 skip <number_small>: user.skip_tab(number_small)
 
 skip clear: user.clear_skip_list()
+
+start ember <number>: insert("/branch-and-implement ember-{number}")
