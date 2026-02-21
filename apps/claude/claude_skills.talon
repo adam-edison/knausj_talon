@@ -1,6 +1,6 @@
 tag: terminal
 -
-# Claude skill command: say "skill <words>" to insert /word-word-word and tab
+# Claude skill command: say "do <words>" to insert /word-word-word and tab
 
-skill <user.text>:
+do <user.text>:
     user.claude_skill_insert(text)

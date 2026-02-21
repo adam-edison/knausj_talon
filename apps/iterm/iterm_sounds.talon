@@ -3,7 +3,7 @@ mode: command
 -
 # entries
 parrot(clop): key(enter)
-parrot(puh):  insert("1\n")
+parrot(puh):  key(tab)
 
 # clear
 parrot(motor:stop): insert("/clear\n")
