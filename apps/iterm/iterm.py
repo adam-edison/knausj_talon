@@ -13,7 +13,7 @@ app: iterm2
 
 primary_tab: int = 1
 total_tabs: int = 9
-secondary_index: int = 0
+cycle_index: int = 0
 skip_tabs: set = set()
 
 def _clear_skip_list():
@@ -31,9 +31,9 @@ class PaneActions:
     
     def set_iterm_tab_primary(number: int):
         """Sets the primary iTerm tab number."""
-        global primary_tab, secondary_index
+        global primary_tab, cycle_index
         primary_tab = number
-        secondary_index = 0
+        cycle_index = 0
         _clear_skip_list()
         actions.app.notify(f"Primary tab: {primary_tab}")
 
@@ -43,9 +43,9 @@ class PaneActions:
 
     def set_iterm_tab_total(number: int):
         """Sets the total number of iTerm tabs."""
-        global total_tabs, secondary_index
+        global total_tabs, cycle_index
         total_tabs = number
-        secondary_index = 0
+        cycle_index = 0
         _clear_skip_list()
         actions.app.notify(f"Total tabs: {total_tabs}")
 
@@ -58,19 +58,24 @@ class PaneActions:
         """Clear the skip list for secondary tabs."""
         _clear_skip_list()
 
-    def cycle_to_next_secondary():
-        """Cycles to the next secondary (non-primary) tab."""
-        global secondary_index
-        tabs = [
+    def cycle_tabs():
+        """Cycles to the next tab: primary, secondary 1, primary, secondary 2, etc."""
+        global cycle_index
+        secondaries = [
             t
             for t in range(1, total_tabs + 1)
             if t != primary_tab and t not in skip_tabs
         ]
+        # Order: primary, sec1, primary, sec2, primary, sec3, ...
+        tabs = [primary_tab]
+        for s in secondaries:
+            tabs.append(s)
+            tabs.append(primary_tab)
         if not tabs:
             return
-        secondary_index = secondary_index % len(tabs)
-        actions.key(f"cmd-{tabs[secondary_index]}")
-        secondary_index = (secondary_index + 1) % len(tabs)
+        cycle_index = cycle_index % len(tabs)
+        actions.key(f"cmd-{tabs[cycle_index]}")
+        cycle_index = (cycle_index + 1) % len(tabs)
 
 directories_to_remap = {}
 directories_to_exclude = {}

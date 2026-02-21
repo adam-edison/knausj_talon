@@ -37,9 +37,7 @@ primary <number_small>: user.set_iterm_tab_primary(number_small)
 
 total <number_small>: user.set_iterm_tab_total(number_small)
 
-primary: user.jump_to_primary()
-
-secondary: user.cycle_to_next_secondary()
+cycle tabs: user.cycle_tabs()
 
 skip <number_small>: user.skip_tab(number_small)
 
