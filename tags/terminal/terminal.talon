@@ -10,7 +10,9 @@ katie root: user.terminal_change_directory_root()
 katie (up | back): user.terminal_change_directory("..")
 katie clip: 
     insert("cd ")
+    sleep(50ms)
     edit.paste()
+    sleep(50ms)
     key("enter")
 
 katie back: insert("cd -\n")
