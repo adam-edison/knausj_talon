@@ -16,7 +16,18 @@ cursor dot: insert('cursor .\n')
 
 launch (clock | claude): insert('claude\n')
 
-relaunch claude:
+claude [restart] resume:
+    key(ctrl-c)
+    sleep(100ms)
+    key(ctrl-c)
+    sleep(2000ms)
+    insert('clear\n')
+    sleep(1000ms)
+    insert('claude --resume\n')
+    sleep(2000ms)
+    key(enter)
+
+claude restart:
     key(ctrl-c)
     sleep(200ms)
     insert('/quit\n')
