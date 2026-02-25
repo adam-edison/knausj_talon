@@ -1,6 +1,7 @@
 from talon import Context, Module, actions, canvas, cron, ctrl, screen, settings, ui
 from talon.skia import Paint, Rect
-from talon.types.point import Point2d
+
+GRID_SIZE = 5
 
 mod = Module()
 mod.tag(
@@ -64,12 +65,11 @@ class GazeMouseGrid:
         self.restore_eye_tracking_state()
 
     def draw(self, c):
-        """Draw the centered grid with screenshot background and cell numbers."""
+        """Draw the centered grid with screenshot background."""
         draw_rect = self.calc_draw_rect()
 
         self.draw_screenshot(c, draw_rect)
         self.draw_grid_lines(c, draw_rect)
-        self.draw_cell_numbers(c, draw_rect)
 
     def calc_draw_rect(self):
         """Compute centered draw rect at ~1/3 screen size."""
@@ -99,7 +99,7 @@ class GazeMouseGrid:
         c.draw_image_rect(self.img, src, draw_rect)
 
     def draw_grid_lines(self, c, draw_rect):
-        """Draw the 3x3 grid lines over the draw rect."""
+        """Draw the 5x5 grid lines over the draw rect."""
         paint = c.paint
         paint.color = "ff0000ff"
         paint.stroke_width = 1
@@ -107,37 +107,9 @@ class GazeMouseGrid:
 
         x, y, w, h = draw_rect.x, draw_rect.y, draw_rect.width, draw_rect.height
 
-        c.draw_line(x + w // 3, y, x + w // 3, y + h)
-        c.draw_line(x + 2 * w // 3, y, x + 2 * w // 3, y + h)
-        c.draw_line(x, y + h // 3, x + w, y + h // 3)
-        c.draw_line(x, y + 2 * h // 3, x + w, y + 2 * h // 3)
-
-    def draw_cell_numbers(self, c, draw_rect):
-        """Draw numbered labels in each cell."""
-        paint = c.paint
-        paint.text_align = paint.TextAlign.CENTER
-
-        x, y, w, h = draw_rect.x, draw_rect.y, draw_rect.width, draw_rect.height
-
-        for row in range(3):
-            for col in range(3):
-                num = row * 3 + col + 1
-                text = str(num)
-                text_rect = paint.measure_text(text)[1]
-
-                cx = x + w / 6 + col * w / 3
-                cy = y + h / 6 + row * h / 3
-
-                bg = text_rect.copy()
-                bg.center = Point2d(cx, cy)
-                bg = bg.inset(-4)
-
-                paint.color = "9999995f"
-                paint.style = Paint.Style.FILL
-                c.draw_rect(bg)
-
-                paint.color = "00ff00ff"
-                c.draw_text(text, cx, cy + text_rect.height / 2)
+        for i in range(1, GRID_SIZE):
+            c.draw_line(x + i * w / GRID_SIZE, y, x + i * w / GRID_SIZE, y + h)
+            c.draw_line(x, y + i * h / GRID_SIZE, x + w, y + i * h / GRID_SIZE)
 
     def narrow_at_cursor(self):
         """Map cursor position on drawn grid to a cell, narrow target rect."""
@@ -156,22 +128,22 @@ class GazeMouseGrid:
         self.narrow_to_cell(row, col)
 
     def pos_to_cell_index(self, pos, origin, size):
-        """Convert a position to a 0-2 cell index, or None if outside."""
+        """Convert a position to a 0-(GRID_SIZE-1) cell index, or None if outside."""
         relative = pos - origin
 
         if relative < 0 or relative >= size:
             return None
 
-        index = int(relative / (size / 3))
-        return min(index, 2)
+        index = int(relative / (size / GRID_SIZE))
+        return min(index, GRID_SIZE - 1)
 
     def narrow_to_cell(self, row, col):
         """Narrow self.rect to the specified cell and update screenshot."""
         self.rect = Rect(
-            self.rect.x + col * self.rect.width / 3,
-            self.rect.y + row * self.rect.height / 3,
-            self.rect.width / 3,
-            self.rect.height / 3,
+            self.rect.x + col * self.rect.width / GRID_SIZE,
+            self.rect.y + row * self.rect.height / GRID_SIZE,
+            self.rect.width / GRID_SIZE,
+            self.rect.height / GRID_SIZE,
         )
 
         self.update_screenshot()
