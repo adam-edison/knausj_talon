@@ -1,17 +1,59 @@
-from talon import Module, actions, canvas, cron, ctrl, scope, screen, ui
+from talon import Module, actions, canvas, cron, ctrl, scope, screen, settings, ui
 from talon.skia import Paint, Rect
-
-GRID_SIZE = 6
 
 
 def clamp(value, lo, hi):
     """Clamp value between lo and hi."""
     return max(lo, min(hi, value))
 
+
 mod = Module()
 mod.mode(
     "gaze_mouse_grid",
     desc="Gaze mouse grid is active — parrot sounds control the grid",
+)
+
+mod.setting(
+    "gaze_grid_size",
+    type=int,
+    default=6,
+    desc="Grid subdivision count (NxN cells)",
+)
+mod.setting(
+    "gaze_grid_initial_narrow_factor",
+    type=int,
+    default=2,
+    desc="How much the initial gaze-based narrow zooms in (2 = half screen)",
+)
+mod.setting(
+    "gaze_grid_settle_delay",
+    type=str,
+    default="200ms",
+    desc="Delay for eye tracker to update cursor position before reading gaze",
+)
+mod.setting(
+    "gaze_grid_line_color",
+    type=str,
+    default="ff0000ff",
+    desc="Grid line color in RRGGBBAA hex format",
+)
+mod.setting(
+    "gaze_grid_hint_color",
+    type=str,
+    default="ff000044",
+    desc="Hint highlight color in RRGGBBAA hex format",
+)
+mod.setting(
+    "gaze_grid_line_width",
+    type=int,
+    default=1,
+    desc="Grid line stroke width in pixels",
+)
+mod.setting(
+    "gaze_grid_display_ratio",
+    type=float,
+    default=0.5,
+    desc="Fraction of screen used for the drawn grid (0.5 = half screen)",
 )
 
 _previous_modes: set[str] = set()
@@ -79,7 +121,7 @@ class GazeMouseGrid:
 
         self.save_eye_tracking_state()
         actions.tracking.control1_toggle(True)
-        cron.after("200ms", self.show_after_gaze_settle)
+        cron.after(settings.get("user.gaze_grid_settle_delay"), self.show_after_gaze_settle)
 
     def show_after_gaze_settle(self):
         """Read gaze position, switch to control mouse, auto-narrow and display."""
@@ -94,8 +136,8 @@ class GazeMouseGrid:
         self.update_screenshot()
 
     def auto_narrow_to_cursor(self, mx, my):
-        """Narrow self.rect to half the screen centered on (mx, my)."""
-        self.narrow_centered_on(mx, my, factor=2)
+        """Narrow self.rect centered on (mx, my) by the initial narrow factor."""
+        self.narrow_centered_on(mx, my, factor=settings.get("user.gaze_grid_initial_narrow_factor"))
 
     def close(self):
         """Map cursor position to target region, restore eye tracking, hide grid."""
@@ -136,20 +178,21 @@ class GazeMouseGrid:
         self.draw_grid_lines(c, draw_rect)
 
     def calc_draw_rect(self):
-        """Compute centered draw rect at ~1/2 screen size."""
+        """Compute centered draw rect scaled by the display ratio setting."""
         if self._draw_rect_cache is not None:
             return self._draw_rect_cache
 
         sw = self.screen.width
         sh = self.screen.height
+        ratio = settings.get("user.gaze_grid_display_ratio")
 
         aspect = self.rect.width / self.rect.height
 
         if aspect >= 1:
-            w = sw / 2
+            w = sw * ratio
             h = w / aspect
         else:
-            h = sh / 2
+            h = sh * ratio
             w = h * aspect
 
         x = self.screen.x + (sw - w) / 2
@@ -167,19 +210,21 @@ class GazeMouseGrid:
         c.draw_image_rect(self.img, src, draw_rect)
 
     def draw_hint_highlight(self, c, draw_rect):
-        """Draw a faint red highlight on the grid cell closest to the last cursor position."""
+        """Draw a faint highlight on the grid cell closest to the last cursor position."""
         if self._hint_pos is None:
             return
+
+        grid_size = settings.get("user.gaze_grid_size")
 
         real_x, real_y = self._hint_pos
         pct_x = clamp((real_x - self.rect.x) / self.rect.width, 0, 0.999)
         pct_y = clamp((real_y - self.rect.y) / self.rect.height, 0, 0.999)
 
-        col = int(pct_x * GRID_SIZE)
-        row = int(pct_y * GRID_SIZE)
+        col = int(pct_x * grid_size)
+        row = int(pct_y * grid_size)
 
-        cell_w = draw_rect.width / GRID_SIZE
-        cell_h = draw_rect.height / GRID_SIZE
+        cell_w = draw_rect.width / grid_size
+        cell_h = draw_rect.height / grid_size
         cell_rect = Rect(
             draw_rect.x + col * cell_w,
             draw_rect.y + row * cell_h,
@@ -188,22 +233,24 @@ class GazeMouseGrid:
         )
 
         paint = c.paint
-        paint.color = "ff000044"
+        paint.color = settings.get("user.gaze_grid_hint_color")
         paint.style = Paint.Style.FILL
         c.draw_rect(cell_rect)
 
     def draw_grid_lines(self, c, draw_rect):
         """Draw grid lines over the draw rect."""
+        grid_size = settings.get("user.gaze_grid_size")
+
         paint = c.paint
-        paint.color = "ff0000ff"
-        paint.stroke_width = 1
+        paint.color = settings.get("user.gaze_grid_line_color")
+        paint.stroke_width = settings.get("user.gaze_grid_line_width")
         paint.style = Paint.Style.STROKE
 
         x, y, w, h = draw_rect.x, draw_rect.y, draw_rect.width, draw_rect.height
 
-        for i in range(1, GRID_SIZE):
-            c.draw_line(x + i * w / GRID_SIZE, y, x + i * w / GRID_SIZE, y + h)
-            c.draw_line(x, y + i * h / GRID_SIZE, x + w, y + i * h / GRID_SIZE)
+        for i in range(1, grid_size):
+            c.draw_line(x + i * w / grid_size, y, x + i * w / grid_size, y + h)
+            c.draw_line(x, y + i * h / grid_size, x + w, y + i * h / grid_size)
 
     def narrow_at_cursor(self):
         """Narrow target rect centered on cursor's position within the drawn grid."""
@@ -220,8 +267,11 @@ class GazeMouseGrid:
         self._hint_pos = (target_x, target_y)
         self.update_screenshot()
 
-    def narrow_centered_on(self, x, y, factor=GRID_SIZE):
+    def narrow_centered_on(self, x, y, factor=None):
         """Narrow self.rect by the given factor, centered on (x, y)."""
+        if factor is None:
+            factor = settings.get("user.gaze_grid_size")
+
         new_w = self.rect.width / factor
         new_h = self.rect.height / factor
 
