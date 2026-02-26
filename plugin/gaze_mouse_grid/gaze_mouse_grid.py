@@ -72,16 +72,35 @@ class GazeMouseGrid:
             self.mcanvas.freeze()
 
     def show(self):
-        """Save eye tracking state, enable control mouse, show grid."""
+        """Save eye tracking state, enable control mouse, auto-narrow to gaze, show grid."""
         if self.active:
             return
 
         self.save_eye_tracking_state()
         self.enable_control_mouse()
+        self.auto_narrow_to_cursor()
 
         self.mcanvas.register("draw", self.draw)
         self.active = True
         self.update_screenshot()
+
+    def auto_narrow_to_cursor(self):
+        """Narrow self.rect to the cell containing the cursor's real screen position."""
+        mx, my = ctrl.mouse_pos()
+
+        col = self.pos_to_cell_index(mx, self.rect.x, self.rect.width)
+        row = self.pos_to_cell_index(my, self.rect.y, self.rect.height)
+
+        if col is None or row is None:
+            return
+
+        self._draw_rect_cache = None
+        self.rect = Rect(
+            self.rect.x + col * self.rect.width / GRID_SIZE,
+            self.rect.y + row * self.rect.height / GRID_SIZE,
+            self.rect.width / GRID_SIZE,
+            self.rect.height / GRID_SIZE,
+        )
 
     def close(self):
         """Map cursor position to target region, restore eye tracking, hide grid."""
