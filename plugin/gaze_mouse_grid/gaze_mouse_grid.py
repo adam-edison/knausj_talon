@@ -250,6 +250,13 @@ class GazeGridActions:
         gaze_grid.close()
         _restore_previous_modes()
 
+    def gaze_grid_toggle():
+        """Toggle the gaze mouse grid open/closed"""
+        if gaze_grid.active:
+            actions.user.gaze_grid_close()
+        else:
+            actions.user.gaze_grid_activate()
+
     def gaze_grid_narrow_at_cursor():
         """Select the grid cell under the cursor"""
         gaze_grid.narrow_at_cursor()
