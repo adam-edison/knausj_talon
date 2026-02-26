@@ -1,5 +1,5 @@
-tag: user.gaze_mouse_grid_showing
+mode: user.gaze_mouse_grid
 -
-parrot(clop): user.gaze_grid_narrow_at_cursor()
-parrot(puh): user.gaze_grid_click()
-parrot(tih): user.gaze_grid_hover()
+parrot(tih): user.gaze_grid_narrow_at_cursor()
+parrot(clop): user.gaze_grid_click()
+parrot(puh): user.gaze_grid_hover()

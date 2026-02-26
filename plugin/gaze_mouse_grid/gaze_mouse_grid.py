@@ -1,15 +1,41 @@
-from talon import Context, Module, actions, canvas, cron, ctrl, screen, settings, ui
+from talon import Module, actions, canvas, cron, ctrl, scope, screen, ui
 from talon.skia import Paint, Rect
 
 GRID_SIZE = 5
 
 mod = Module()
-mod.tag(
-    "gaze_mouse_grid_showing",
-    desc="Tag indicates whether the gaze mouse grid is showing",
+mod.mode(
+    "gaze_mouse_grid",
+    desc="Gaze mouse grid is active — parrot sounds control the grid",
 )
 
-ctx = Context()
+_previous_modes: set[str] = set()
+
+
+def _save_current_modes():
+    global _previous_modes
+    modes = scope.get("mode", set())
+
+    _previous_modes = set()
+    if "command" in modes:
+        _previous_modes.add("command")
+    if "dictation" in modes:
+        _previous_modes.add("dictation")
+
+
+def _enter_grid_mode():
+    actions.mode.disable("command")
+    actions.mode.disable("dictation")
+    actions.mode.enable("user.gaze_mouse_grid")
+
+
+def _exit_grid_mode():
+    actions.mode.disable("user.gaze_mouse_grid")
+
+
+def _restore_previous_modes():
+    for mode_name in _previous_modes:
+        actions.mode.enable(mode_name)
 
 
 class GazeMouseGrid:
@@ -222,13 +248,15 @@ class GazeGridActions:
         if not gaze_grid.mcanvas:
             gaze_grid.setup()
 
+        _save_current_modes()
         gaze_grid.show()
-        ctx.tags = ["user.gaze_mouse_grid_showing"]
+        _enter_grid_mode()
 
     def gaze_grid_close():
         """Close the gaze mouse grid"""
-        ctx.tags = []
+        _exit_grid_mode()
         gaze_grid.close()
+        _restore_previous_modes()
 
     def gaze_grid_narrow_at_cursor():
         """Select the grid cell under the cursor"""
@@ -236,10 +264,12 @@ class GazeGridActions:
 
     def gaze_grid_click():
         """Click at the target location and close the grid"""
-        ctx.tags = []
+        _exit_grid_mode()
         gaze_grid.click_target()
+        _restore_previous_modes()
 
     def gaze_grid_hover():
         """Hover at the target location and close the grid"""
-        ctx.tags = []
+        _exit_grid_mode()
         gaze_grid.hover_target()
+        _restore_previous_modes()
