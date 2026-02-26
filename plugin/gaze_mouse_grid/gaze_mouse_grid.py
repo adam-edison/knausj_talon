@@ -82,17 +82,18 @@ class GazeMouseGrid:
 
     def show_after_gaze_settle(self):
         """Read gaze position, switch to control mouse, auto-narrow and display."""
-        self.auto_narrow_to_cursor()
+        gaze_x, gaze_y = ctrl.mouse_pos()
+        self.auto_narrow_to_cursor_from(gaze_x, gaze_y)
         actions.tracking.control1_toggle(False)
         self.enable_control_mouse()
 
         self.mcanvas.register("draw", self.draw)
         self.active = True
+        self.snap_cursor_to_drawn_grid(gaze_x, gaze_y)
         self.update_screenshot()
 
-    def auto_narrow_to_cursor(self):
-        """Snap self.rect to the screen quadrant the cursor is in."""
-        mx, my = ctrl.mouse_pos()
+    def auto_narrow_to_cursor_from(self, mx, my):
+        """Snap self.rect to the screen quadrant containing (mx, my)."""
         half_w = self.rect.width / 2
         half_h = self.rect.height / 2
 
@@ -135,6 +136,18 @@ class GazeMouseGrid:
         return (
             self.rect.x + pct_x * self.rect.width,
             self.rect.y + pct_y * self.rect.height,
+        )
+
+    def snap_cursor_to_drawn_grid(self, real_x, real_y):
+        """Move the cursor to the drawn grid position corresponding to a real point."""
+        draw_rect = self.calc_draw_rect()
+
+        pct_x = clamp((real_x - self.rect.x) / self.rect.width, 0, 1)
+        pct_y = clamp((real_y - self.rect.y) / self.rect.height, 0, 1)
+
+        ctrl.mouse_move(
+            draw_rect.x + pct_x * draw_rect.width,
+            draw_rect.y + pct_y * draw_rect.height,
         )
 
     def draw(self, c):
@@ -200,6 +213,7 @@ class GazeMouseGrid:
         target_y = self.rect.y + clamp((my - draw_rect.y) / draw_rect.height, 0, 1) * self.rect.height
 
         self.narrow_centered_on(target_x, target_y)
+        self.snap_cursor_to_drawn_grid(target_x, target_y)
         self.update_screenshot()
 
     def narrow_centered_on(self, x, y, factor=GRID_SIZE):
