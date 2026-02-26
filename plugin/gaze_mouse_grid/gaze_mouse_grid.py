@@ -200,7 +200,7 @@ class GazeMouseGrid:
         )
 
         paint = c.paint
-        paint.color = "20ff0000"
+        paint.color = "66ff0000"
         paint.style = Paint.Style.FILL
         c.draw_rect(cell_rect)
 
