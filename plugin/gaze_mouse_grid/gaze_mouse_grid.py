@@ -77,9 +77,11 @@ class GazeMouseGrid:
         self.update_screenshot()
 
     def close(self):
-        """Disable control mouse, restore eye tracking state, hide grid."""
+        """Move mouse to target center, restore eye tracking, hide grid."""
         if not self.active:
             return
+
+        target = self.rect.center
 
         self.mcanvas.unregister("draw", self.draw)
         self.mcanvas.close()
@@ -89,6 +91,7 @@ class GazeMouseGrid:
 
         self.disable_control_mouse()
         self.restore_eye_tracking_state()
+        ctrl.mouse_move(*target)
 
     def draw(self, c):
         """Draw the centered grid with screenshot background."""
@@ -175,23 +178,12 @@ class GazeMouseGrid:
         self.update_screenshot()
 
     def click_target(self):
-        """Move cursor to target center, click, and close grid."""
+        """Close grid (moves mouse to target) and click."""
         if not self.active:
             return
 
-        target = self.rect.center
         self.close()
-        ctrl.mouse_move(*target)
         actions.mouse_click(0)
-
-    def hover_target(self):
-        """Move cursor to target center and close grid without clicking."""
-        if not self.active:
-            return
-
-        target = self.rect.center
-        self.close()
-        ctrl.mouse_move(*target)
 
     def update_screenshot(self):
         """Capture screenshot of target rect for background display."""
@@ -268,8 +260,3 @@ class GazeGridActions:
         gaze_grid.click_target()
         _restore_previous_modes()
 
-    def gaze_grid_hover():
-        """Hover at the target location and close the grid"""
-        _exit_grid_mode()
-        gaze_grid.hover_target()
-        _restore_previous_modes()
