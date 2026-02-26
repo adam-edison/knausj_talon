@@ -91,22 +91,9 @@ class GazeMouseGrid:
         self.update_screenshot()
 
     def auto_narrow_to_cursor(self):
-        """Narrow self.rect to the cell containing the cursor's real screen position."""
+        """Narrow self.rect centered on the cursor's real screen position."""
         mx, my = ctrl.mouse_pos()
-
-        col = self.pos_to_cell_index(mx, self.rect.x, self.rect.width)
-        row = self.pos_to_cell_index(my, self.rect.y, self.rect.height)
-
-        if col is None or row is None:
-            return
-
-        self._draw_rect_cache = None
-        self.rect = Rect(
-            self.rect.x + col * self.rect.width / GRID_SIZE,
-            self.rect.y + row * self.rect.height / GRID_SIZE,
-            self.rect.width / GRID_SIZE,
-            self.rect.height / GRID_SIZE,
-        )
+        self.narrow_centered_on(mx, my)
 
     def close(self):
         """Map cursor position to target region, restore eye tracking, hide grid."""
@@ -190,42 +177,29 @@ class GazeMouseGrid:
             c.draw_line(x, y + i * h / GRID_SIZE, x + w, y + i * h / GRID_SIZE)
 
     def narrow_at_cursor(self):
-        """Map cursor position on drawn grid to a cell, narrow target rect."""
+        """Narrow target rect centered on cursor's position within the drawn grid."""
         if not self.active:
             return
 
         draw_rect = self.calc_draw_rect()
         mx, my = ctrl.mouse_pos()
 
-        col = self.pos_to_cell_index(mx, draw_rect.x, draw_rect.width)
-        row = self.pos_to_cell_index(my, draw_rect.y, draw_rect.height)
+        target_x = self.rect.x + clamp((mx - draw_rect.x) / draw_rect.width, 0, 1) * self.rect.width
+        target_y = self.rect.y + clamp((my - draw_rect.y) / draw_rect.height, 0, 1) * self.rect.height
 
-        if col is None or row is None:
-            return
-
-        self.narrow_to_cell(row, col)
-
-    def pos_to_cell_index(self, pos, origin, size):
-        """Convert a position to a 0-(GRID_SIZE-1) cell index, or None if outside."""
-        relative = pos - origin
-
-        if relative < 0 or relative >= size:
-            return None
-
-        index = int(relative / (size / GRID_SIZE))
-        return min(index, GRID_SIZE - 1)
-
-    def narrow_to_cell(self, row, col):
-        """Narrow self.rect to the specified cell and update screenshot."""
-        self._draw_rect_cache = None
-        self.rect = Rect(
-            self.rect.x + col * self.rect.width / GRID_SIZE,
-            self.rect.y + row * self.rect.height / GRID_SIZE,
-            self.rect.width / GRID_SIZE,
-            self.rect.height / GRID_SIZE,
-        )
-
+        self.narrow_centered_on(target_x, target_y)
         self.update_screenshot()
+
+    def narrow_centered_on(self, x, y):
+        """Narrow self.rect to a GRID_SIZE-th of its size, centered on (x, y)."""
+        new_w = self.rect.width / GRID_SIZE
+        new_h = self.rect.height / GRID_SIZE
+
+        new_x = clamp(x - new_w / 2, self.rect.x, self.rect.x + self.rect.width - new_w)
+        new_y = clamp(y - new_h / 2, self.rect.y, self.rect.y + self.rect.height - new_h)
+
+        self._draw_rect_cache = None
+        self.rect = Rect(new_x, new_y, new_w, new_h)
 
     def click_target(self):
         """Close grid (moves mouse to target) and click."""
