@@ -3,6 +3,11 @@ from talon.skia import Paint, Rect
 
 GRID_SIZE = 5
 
+
+def clamp(value, lo, hi):
+    """Clamp value between lo and hi."""
+    return max(lo, min(hi, value))
+
 mod = Module()
 mod.mode(
     "gaze_mouse_grid",
@@ -77,11 +82,11 @@ class GazeMouseGrid:
         self.update_screenshot()
 
     def close(self):
-        """Move mouse to target center, restore eye tracking, hide grid."""
+        """Map cursor position to target region, restore eye tracking, hide grid."""
         if not self.active:
             return
 
-        target = self.rect.center
+        target = self.cursor_to_target()
 
         self.mcanvas.unregister("draw", self.draw)
         self.mcanvas.close()
@@ -92,6 +97,19 @@ class GazeMouseGrid:
         self.disable_control_mouse()
         self.restore_eye_tracking_state()
         ctrl.mouse_move(*target)
+
+    def cursor_to_target(self):
+        """Map the cursor's position on the drawn grid to the real target region."""
+        draw_rect = self.calc_draw_rect()
+        mx, my = ctrl.mouse_pos()
+
+        pct_x = clamp((mx - draw_rect.x) / draw_rect.width, 0, 1)
+        pct_y = clamp((my - draw_rect.y) / draw_rect.height, 0, 1)
+
+        return (
+            self.rect.x + pct_x * self.rect.width,
+            self.rect.y + pct_y * self.rect.height,
+        )
 
     def draw(self, c):
         """Draw the centered grid with screenshot background."""
