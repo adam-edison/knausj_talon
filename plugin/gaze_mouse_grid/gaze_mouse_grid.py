@@ -78,7 +78,7 @@ class GazeMouseGrid:
 
         self.save_eye_tracking_state()
         self.enable_control_mouse()
-        cron.after("100ms", self.show_after_gaze_settle)
+        cron.after("200ms", self.show_after_gaze_settle)
 
     def show_after_gaze_settle(self):
         """Auto-narrow to gaze position and display the grid."""
