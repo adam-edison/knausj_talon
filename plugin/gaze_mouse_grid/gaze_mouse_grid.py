@@ -51,6 +51,7 @@ class GazeMouseGrid:
         self.mcanvas = None
         self.active = False
         self._draw_rect_cache = None
+        self._hint_pos = None
         self.was_zoom_mouse_active = False
         self.was_control_mouse_active = False
         self.was_control1_mouse_active = False
@@ -82,7 +83,9 @@ class GazeMouseGrid:
 
     def show_after_gaze_settle(self):
         """Read gaze position, switch to control mouse, auto-narrow and display."""
-        self.auto_narrow_to_cursor()
+        gaze_x, gaze_y = ctrl.mouse_pos()
+        self.auto_narrow_to_cursor(gaze_x, gaze_y)
+        self._hint_pos = (gaze_x, gaze_y)
         actions.tracking.control1_toggle(False)
         self.enable_control_mouse()
 
@@ -90,9 +93,8 @@ class GazeMouseGrid:
         self.active = True
         self.update_screenshot()
 
-    def auto_narrow_to_cursor(self):
-        """Snap self.rect to the screen quadrant the cursor is in."""
-        mx, my = ctrl.mouse_pos()
+    def auto_narrow_to_cursor(self, mx, my):
+        """Snap self.rect to the screen quadrant containing (mx, my)."""
         half_w = self.rect.width / 2
         half_h = self.rect.height / 2
 
@@ -138,10 +140,11 @@ class GazeMouseGrid:
         )
 
     def draw(self, c):
-        """Draw the centered grid with screenshot background."""
+        """Draw the centered grid with screenshot background and hint highlight."""
         draw_rect = self.calc_draw_rect()
 
         self.draw_screenshot(c, draw_rect)
+        self.draw_hint_highlight(c, draw_rect)
         self.draw_grid_lines(c, draw_rect)
 
     def calc_draw_rect(self):
@@ -175,6 +178,32 @@ class GazeMouseGrid:
         src = Rect(0, 0, self.img.width, self.img.height)
         c.draw_image_rect(self.img, src, draw_rect)
 
+    def draw_hint_highlight(self, c, draw_rect):
+        """Draw a faint red highlight on the grid cell closest to the last cursor position."""
+        if self._hint_pos is None:
+            return
+
+        real_x, real_y = self._hint_pos
+        pct_x = clamp((real_x - self.rect.x) / self.rect.width, 0, 0.999)
+        pct_y = clamp((real_y - self.rect.y) / self.rect.height, 0, 0.999)
+
+        col = int(pct_x * GRID_SIZE)
+        row = int(pct_y * GRID_SIZE)
+
+        cell_w = draw_rect.width / GRID_SIZE
+        cell_h = draw_rect.height / GRID_SIZE
+        cell_rect = Rect(
+            draw_rect.x + col * cell_w,
+            draw_rect.y + row * cell_h,
+            cell_w,
+            cell_h,
+        )
+
+        paint = c.paint
+        paint.color = "20ff0000"
+        paint.style = Paint.Style.FILL
+        c.draw_rect(cell_rect)
+
     def draw_grid_lines(self, c, draw_rect):
         """Draw grid lines over the draw rect."""
         paint = c.paint
@@ -200,6 +229,7 @@ class GazeMouseGrid:
         target_y = self.rect.y + clamp((my - draw_rect.y) / draw_rect.height, 0, 1) * self.rect.height
 
         self.narrow_centered_on(target_x, target_y)
+        self._hint_pos = (target_x, target_y)
         self.update_screenshot()
 
     def narrow_centered_on(self, x, y, factor=GRID_SIZE):
