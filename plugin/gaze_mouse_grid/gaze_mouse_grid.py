@@ -72,17 +72,19 @@ class GazeMouseGrid:
             self.mcanvas.freeze()
 
     def show(self):
-        """Save eye tracking state, enable control mouse, wait for gaze, then show grid."""
+        """Save eye tracking state, snap cursor via control1, then show grid."""
         if self.active:
             return
 
         self.save_eye_tracking_state()
-        self.enable_control_mouse()
+        actions.tracking.control1_toggle(True)
         cron.after("200ms", self.show_after_gaze_settle)
 
     def show_after_gaze_settle(self):
-        """Auto-narrow to gaze position and display the grid."""
+        """Read gaze position, switch to control mouse, auto-narrow and display."""
         self.auto_narrow_to_cursor()
+        actions.tracking.control1_toggle(False)
+        self.enable_control_mouse()
 
         self.mcanvas.register("draw", self.draw)
         self.active = True
