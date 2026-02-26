@@ -91,9 +91,21 @@ class GazeMouseGrid:
         self.update_screenshot()
 
     def auto_narrow_to_cursor(self):
-        """Narrow self.rect centered on the cursor's real screen position."""
+        """Snap self.rect to the screen quadrant the cursor is in."""
         mx, my = ctrl.mouse_pos()
-        self.narrow_centered_on(mx, my, factor=2)
+        half_w = self.rect.width / 2
+        half_h = self.rect.height / 2
+
+        col = 0 if mx < self.rect.x + half_w else 1
+        row = 0 if my < self.rect.y + half_h else 1
+
+        self._draw_rect_cache = None
+        self.rect = Rect(
+            self.rect.x + col * half_w,
+            self.rect.y + row * half_h,
+            half_w,
+            half_h,
+        )
 
     def close(self):
         """Map cursor position to target region, restore eye tracking, hide grid."""
