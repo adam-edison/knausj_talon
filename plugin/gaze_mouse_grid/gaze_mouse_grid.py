@@ -1,7 +1,7 @@
 from talon import Module, actions, canvas, cron, ctrl, scope, screen, ui
 from talon.skia import Paint, Rect
 
-GRID_SIZE = 5
+GRID_SIZE = 6
 
 
 def clamp(value, lo, hi):
@@ -50,6 +50,7 @@ class GazeMouseGrid:
         self.img = None
         self.mcanvas = None
         self.active = False
+        self._draw_rect_cache = None
         self.was_zoom_mouse_active = False
         self.was_control_mouse_active = False
         self.was_control1_mouse_active = False
@@ -58,6 +59,7 @@ class GazeMouseGrid:
         """Initialize canvas and set target rect to full screen."""
         self.screen = ui.screens()[0]
         self.rect = self.screen.rect.copy()
+        self._draw_rect_cache = None
         self.img = None
 
         if self.mcanvas is not None:
@@ -119,23 +121,27 @@ class GazeMouseGrid:
         self.draw_grid_lines(c, draw_rect)
 
     def calc_draw_rect(self):
-        """Compute centered draw rect at ~1/3 screen size."""
+        """Compute centered draw rect at ~1/2 screen size."""
+        if self._draw_rect_cache is not None:
+            return self._draw_rect_cache
+
         sw = self.screen.width
         sh = self.screen.height
 
         aspect = self.rect.width / self.rect.height
 
         if aspect >= 1:
-            w = sw / 3
+            w = sw / 2
             h = w / aspect
         else:
-            h = sh / 3
+            h = sh / 2
             w = h * aspect
 
         x = self.screen.x + (sw - w) / 2
         y = self.screen.y + (sh - h) / 2
 
-        return Rect(x, y, w, h)
+        self._draw_rect_cache = Rect(x, y, w, h)
+        return self._draw_rect_cache
 
     def draw_screenshot(self, c, draw_rect):
         """Draw captured screenshot as grid background."""
@@ -146,7 +152,7 @@ class GazeMouseGrid:
         c.draw_image_rect(self.img, src, draw_rect)
 
     def draw_grid_lines(self, c, draw_rect):
-        """Draw the 5x5 grid lines over the draw rect."""
+        """Draw grid lines over the draw rect."""
         paint = c.paint
         paint.color = "ff0000ff"
         paint.stroke_width = 1
@@ -186,6 +192,7 @@ class GazeMouseGrid:
 
     def narrow_to_cell(self, row, col):
         """Narrow self.rect to the specified cell and update screenshot."""
+        self._draw_rect_cache = None
         self.rect = Rect(
             self.rect.x + col * self.rect.width / GRID_SIZE,
             self.rect.y + row * self.rect.height / GRID_SIZE,
