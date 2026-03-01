@@ -7,6 +7,9 @@ parrot(clop): mouse_click(0)
 # Enter (universal)
 parrot(tih): key(enter)
 
+# Tab (universal)
+parrot(puh): key(tab)
+
 # Scrolling sounds
 parrot(sss):      user.sound_scroll_up_start(300)
 parrot(sss:stop): user.sound_scroll_up_stop()
