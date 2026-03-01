@@ -19,6 +19,13 @@ katie back: insert("cd -\n")
 
 go <user.system_path>: insert('cd "{system_path}"\n')
 
+go clip:
+    insert("cd ")
+    sleep(50ms)
+    edit.paste()
+    sleep(50ms)
+    key("enter")
+
 path <user.system_path>: insert('"{system_path}"')
 
 clear screen: user.terminal_clear_screen()
