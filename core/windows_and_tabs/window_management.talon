@@ -8,6 +8,7 @@ focus <user.running_applications>: user.switcher_focus(running_applications)
 # following only works on windows. Can't figure out how to make it work for mac. No idea what the equivalent for linux would be.
 focus$: user.switcher_menu()
 (focus | switch) (last | back): user.switcher_focus_last()
+(focus | switch) (backer | laster): user.switcher_focus_last_twice()
 running list: user.switcher_toggle_running()
 running close: user.switcher_hide_running()
 launch <user.launch_applications>: user.switcher_launch(launch_applications)

@@ -49,3 +49,9 @@ class AppActions:
 class UserActions:
     def switcher_focus_last():
         actions.key("cmd-tab")
+
+    def switcher_focus_last_twice():
+        actions.key("cmd:down")
+        actions.key("tab")
+        actions.key("tab")
+        actions.key("cmd:up")
