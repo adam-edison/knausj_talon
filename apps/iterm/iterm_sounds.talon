@@ -1,8 +1,6 @@
 app: iterm2
 mode: command
 -
-# entries
-parrot(clop): key(enter)
 parrot(cha:stop):  user.cycle_tabs()
 
 # clear
