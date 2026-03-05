@@ -1,7 +1,7 @@
 app: iterm2
 mode: command
 -
-parrot(cha:stop):  user.cycle_tabs()
+parrot(puh):  user.cycle_tabs()
 
 # clear
 # parrot(motor:stop): insert("/clear\n")
