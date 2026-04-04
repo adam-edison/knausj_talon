@@ -16,6 +16,8 @@ cursor dot: insert('cursor .\n')
 
 (claude | chat) launch: insert('claude\n')
 
+(cursor | claude) clear: insert('/clear\n')
+
 (claude | chat) resume:
     key(ctrl-c)
     sleep(200ms)
