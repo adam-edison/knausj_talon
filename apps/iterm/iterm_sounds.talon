@@ -9,4 +9,4 @@ parrot(puh): app.tab_next()
 
 # navigation
 parrot(whistle:stop):  key(tab)
-# parrot(tih):  user.cycle_tabs()
+# parrot(tih):  user.cycle_tabs()2
