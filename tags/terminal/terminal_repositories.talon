@@ -42,6 +42,10 @@ cursor dot: insert('cursor .\n')
     insert('claude\n')
 
 clear next ticket:
-    insert('/clear\n')
-    sleep(1000ms)
-    insert('/next-ticket\n')
+    insert('/clear')
+    sleep(100ms)
+    key(enter)
+    sleep(100ms)
+    insert('/next-ticket')
+    sleep(100ms)
+    key(enter)
