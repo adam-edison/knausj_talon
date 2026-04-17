@@ -19,7 +19,7 @@ katie back: insert("cd -\n")
 
 go <user.system_path>: insert('cd "{system_path}"\n')
 
-go clip:
+city clip:
     insert("cd ")
     sleep(50ms)
     edit.paste()
