@@ -12,6 +12,8 @@ hunt repo <user.text>:
     sleep(100ms)
     key(tab:3)
 
+city <user.word>: insert('cd {word}\t')
+
 open [repo] <user.repo_paths>: insert('cd "{repo_paths}"\n')
 cursor <user.repo_paths>: insert('cursor "{repo_paths}"\n')
 cursor dot: insert('cursor .\n')
