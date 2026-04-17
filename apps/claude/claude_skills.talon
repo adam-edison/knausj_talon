@@ -10,7 +10,7 @@ chat clear <user.text>:
     sleep(100ms)
     user.claude_skill_insert(text)
 
-chat <number_small>:
+option <number_small>:
     insert("{number_small}\n")
 
 chat show (pr | pull request):
