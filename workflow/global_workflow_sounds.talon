@@ -18,3 +18,6 @@ parrot(shh:stop): user.sound_scroll_down_stop()
 
 # Sound mode select: spit opens the mode menu
 parrot(spit): user.sound_mode_select_toggle()
+
+# Left drag toggle with notifications
+parrot(cha): user.workflow_toggle_left_drag()

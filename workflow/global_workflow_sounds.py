@@ -5,7 +5,7 @@ Global workflow sounds: scroll (sss/shh) and command/dictation toggle.
 - Command/dictation toggle registered with sound_mode_select menu.
 """
 
-from talon import Module, actions, app, cron, scope
+from talon import Module, actions, app, cron, ctrl, scope
 
 mod = Module()
 
@@ -36,6 +36,15 @@ def _toggle_command_dictation():
         _switch_to_command()
     else:
         _switch_to_dictation()
+
+
+def _toggle_left_drag():
+    if 0 in ctrl.mouse_buttons_down():
+        actions.user.mouse_drag_end()
+        actions.app.notify("Left drag OFF")
+    else:
+        actions.user.mouse_drag(0)
+        actions.app.notify("Left drag ON")
 
 
 def _on_ready():
@@ -104,3 +113,7 @@ class Actions:
     def workflow_toggle_command_dictation():
         """Toggle between command and dictation mode."""
         _toggle_command_dictation()
+
+    def workflow_toggle_left_drag():
+        """Toggle left mouse drag and show ON/OFF notification."""
+        _toggle_left_drag()
