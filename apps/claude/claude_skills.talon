@@ -9,3 +9,6 @@ chat clear <user.text>:
     insert("/clear\n")
     sleep(100ms)
     user.claude_skill_insert(text)
+
+chat <number_small>:
+    insert("/{number_small}\n")
