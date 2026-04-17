@@ -11,4 +11,4 @@ chat clear <user.text>:
     user.claude_skill_insert(text)
 
 chat <number_small>:
-    insert("/{number_small}\n")
+    insert("{number_small}\n")
