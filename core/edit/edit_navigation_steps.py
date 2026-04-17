@@ -32,6 +32,14 @@ def navigation_step(m) -> NavigationStep:
 
 @mod.action_class
 class Actions:
+    def navigate_words_left(count: int = 1):
+        """Move the caret left by `count` words."""
+        repeat_action(actions.edit.word_left, count, True)
+
+    def navigate_words_right(count: int = 1):
+        """Move the caret right by `count` words."""
+        repeat_action(actions.edit.word_right, count, True)
+
     def perform_navigation_steps(steps: list[NavigationStep]):
         """Navigate by a series of steps"""
         for step in steps:

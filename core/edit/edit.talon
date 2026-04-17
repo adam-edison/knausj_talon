@@ -26,6 +26,10 @@ scroll down: edit.page_down()
 # go word left, go 2 words right
 go <user.navigation_step>+: user.perform_navigation_steps(navigation_step_list)
 
+# Fast word jumps (optional count defaults to 1)
+whirl [<number_small>]: user.navigate_words_left(number_small or 1)
+wetter [<number_small>]: user.navigate_words_right(number_small or 1)
+
 go line start | head: edit.line_start()
 go line end | tail: edit.line_end()
 
