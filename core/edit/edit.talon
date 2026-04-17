@@ -29,6 +29,9 @@ go <user.navigation_step>+: user.perform_navigation_steps(navigation_step_list)
 go line start | head: edit.line_start()
 go line end | tail: edit.line_end()
 
+header: edit.line_start()
+tailer: edit.line_end()
+
 go way left:
     edit.line_start()
     edit.line_start()
