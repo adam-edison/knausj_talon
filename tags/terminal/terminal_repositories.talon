@@ -3,6 +3,8 @@ tag: terminal
 # Repo path commands
 list repos: insert('ls -al ~/repositories\n')
 
+list all: insert('ls -al\n')
+
 hunt repo <user.text>: 
     insert('cd ~/repositories\n')
     sleep(200ms)
