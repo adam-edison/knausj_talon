@@ -13,11 +13,11 @@ chat clear <user.text>:
 option <number_small>:
     insert("{number_small}\n")
 
-chat show (pr | pull request):
+show pull request:
     insert("can you open the pull request in brave for me?\n")
 
-chat show ticket:
+show ticket:
     insert("can you open the ticket in brave for me?\n")
 
-chat show project:
+show project:
     insert("can you open the project in brave for me?\n")
