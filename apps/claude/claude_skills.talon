@@ -25,6 +25,18 @@ chat clear <user.text>:
 option <number_small>:
     insert("{number_small}\n")
 
+option no:
+    insert("no\n")
+
+option yes:
+    insert("yes\n")
+
+option proceed:
+    insert("proceed\n")
+
+option approve:
+    insert("approve\n")
+
 show pull request:
     insert("can you open the pull request in brave for me?\n")
 
