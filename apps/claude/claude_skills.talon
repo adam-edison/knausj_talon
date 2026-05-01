@@ -45,3 +45,27 @@ show ticket:
 
 show project:
     insert("can you open the project in brave for me?\n")
+
+remote control:
+    key(cmd-i)
+    sleep(100ms)
+    key(tab:2)
+    sleep(100ms)
+    key(cmd-a)
+    sleep(100ms)
+    key(cmd-c)
+    sleep(100ms)
+    key(esc)
+    sleep(100ms)
+    insert("/remote-control ")
+    sleep(100ms)
+    key(cmd-v)
+    sleep(100ms)
+    key(enter)
+
+remote control off:
+    insert("/remote-control")
+    sleep(200ms)
+    key(up:2)
+    sleep(100ms)
+    key(enter)
