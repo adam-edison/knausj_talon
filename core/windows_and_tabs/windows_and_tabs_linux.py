@@ -42,9 +42,3 @@ class AppActions:
 class UserActions:
     def switcher_focus_last():
         actions.key("alt-tab")
-
-    def switcher_focus_last_twice():
-        actions.key("alt:down")
-        actions.key("tab")
-        actions.key("tab")
-        actions.key("alt:up")
