@@ -3,6 +3,7 @@ import datetime
 from talon import Module, actions
 
 mod = Module()
+mod.list("date_month_name", desc="Month names for spoken date entry")
 
 
 @mod.action_class
