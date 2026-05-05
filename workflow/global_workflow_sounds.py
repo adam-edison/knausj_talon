@@ -63,13 +63,20 @@ app.register("ready", _on_ready)
 _pending_jobs: dict[str, cron.Job] = {}
 _scroll_jobs: dict[str, cron.Job] = {}
 
+# Scroll speed (1.0-50.0, default 8.0). 8.0 reproduces the original 0.1 wheel-ticks per 16ms.
+_scroll_speed: float = 8.0
+
+
+def _scroll_amount() -> float:
+    return _scroll_speed / 80.0
+
 
 def _do_scroll_up():
-    actions.user.mouse_scroll_up(0.1)
+    actions.user.mouse_scroll_up(_scroll_amount())
 
 
 def _do_scroll_down():
-    actions.user.mouse_scroll_down(0.1)
+    actions.user.mouse_scroll_down(_scroll_amount())
 
 
 def _start_scroll_up():
@@ -109,6 +116,12 @@ class Actions:
     def sound_scroll_down_stop():
         """Stop scroll down."""
         _stop_scroll("shh")
+
+    def sound_scroll_speed_multiply(factor: float):
+        """Multiply sound scroll speed by factor (clamped to 1.0-50.0)."""
+        global _scroll_speed
+        _scroll_speed = max(1.0, min(50.0, _scroll_speed * factor))
+        actions.app.notify(f"Sound scroll speed: {_scroll_speed:.2f}")
 
     def workflow_toggle_command_dictation():
         """Toggle between command and dictation mode."""
