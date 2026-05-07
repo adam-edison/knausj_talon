@@ -63,30 +63,35 @@ app.register("ready", _on_ready)
 _pending_jobs: dict[str, cron.Job] = {}
 _scroll_jobs: dict[str, cron.Job] = {}
 
-# Scroll speed (1.0-50.0, default 8.0). 8.0 reproduces the original 0.1 wheel-ticks per 16ms.
+# Scroll speed (0.5-32.0, default 8.0). Higher = more events per second.
+# 8.0 reproduces the original 16ms cron interval. Interval = 128 / _scroll_speed ms.
 _scroll_speed: float = 8.0
 
+# Per-tick scroll amount stays fixed at the known-good value to avoid mouse_scroll
+# rounding issues at small fractional deltas.
+_SCROLL_AMOUNT_PER_TICK = 0.1
 
-def _scroll_amount() -> float:
-    return _scroll_speed / 80.0
+
+def _interval_ms() -> int:
+    return max(4, min(512, int(round(128.0 / _scroll_speed))))
 
 
 def _do_scroll_up():
-    actions.user.mouse_scroll_up(_scroll_amount())
+    actions.user.mouse_scroll_up(_SCROLL_AMOUNT_PER_TICK)
 
 
 def _do_scroll_down():
-    actions.user.mouse_scroll_down(_scroll_amount())
+    actions.user.mouse_scroll_down(_SCROLL_AMOUNT_PER_TICK)
 
 
 def _start_scroll_up():
     _pending_jobs.pop("sss", None)
-    _scroll_jobs["sss"] = cron.interval("16ms", _do_scroll_up)
+    _scroll_jobs["sss"] = cron.interval(f"{_interval_ms()}ms", _do_scroll_up)
 
 
 def _start_scroll_down():
     _pending_jobs.pop("shh", None)
-    _scroll_jobs["shh"] = cron.interval("16ms", _do_scroll_down)
+    _scroll_jobs["shh"] = cron.interval(f"{_interval_ms()}ms", _do_scroll_down)
 
 
 def _stop_scroll(key: str):
@@ -118,10 +123,10 @@ class Actions:
         _stop_scroll("shh")
 
     def sound_scroll_speed_multiply(factor: float):
-        """Multiply sound scroll speed by factor (clamped to 1.0-50.0)."""
+        """Multiply sound scroll speed by factor (clamped to 0.5-32.0)."""
         global _scroll_speed
-        _scroll_speed = max(1.0, min(50.0, _scroll_speed * factor))
-        actions.app.notify(f"Sound scroll speed: {_scroll_speed:.2f}")
+        _scroll_speed = max(0.5, min(32.0, _scroll_speed * factor))
+        actions.app.notify(f"Sound scroll speed: {_scroll_speed:.2f} ({_interval_ms()}ms)")
 
     def workflow_toggle_command_dictation():
         """Toggle between command and dictation mode."""
