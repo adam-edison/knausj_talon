@@ -36,3 +36,28 @@ class UserActions:
             import webbrowser
 
             webbrowser.open(url)
+
+    def open_in_brave(url: str):
+        """Open <url> in Brave browser."""
+        if app.platform == "mac":
+            subprocess.run(
+                ["open", "-a", "Brave Browser", url],
+                check=False,
+                timeout=5,
+            )
+        elif app.platform == "linux":
+            subprocess.run(
+                ["xdg-open", url],
+                check=False,
+                timeout=5,
+            )
+        elif app.platform == "windows":
+            subprocess.run(
+                ["cmd", "/c", "start", "", url],
+                check=False,
+                timeout=5,
+            )
+        else:
+            import webbrowser
+
+            webbrowser.open(url)

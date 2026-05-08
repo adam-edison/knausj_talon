@@ -9,6 +9,7 @@ create ticket: create-ticket
 feature ticket planner: feature-ticket-planner
 implement: implement
 links: links
+merge safe: merge-safe
 next ticket: next-ticket
 plan ticket: plan-ticket
 pr explain: pr-explain
