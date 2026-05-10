@@ -82,7 +82,7 @@ next ticket:
     key(esc)
     sleep(100ms)
     user.open_in_brave("https://linear.app/ember-and-tide/view/current-cycle-adam-20922a08a066")
-    sleep(1500ms)
+    sleep(3000ms)
     key(cmd-f)
     sleep(300ms)
     key(cmd-v)
