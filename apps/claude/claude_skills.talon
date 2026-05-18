@@ -25,6 +25,9 @@ chat clear <user.text>:
 option <number_small>:
     insert("{number_small}\n")
 
+select <number_small>:
+    key("{number_small}")
+
 option no:
     insert("no\n")
 
